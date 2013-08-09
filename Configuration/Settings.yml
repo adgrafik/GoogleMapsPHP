@@ -1,0 +1,103 @@
+
+# If set TRUE options will be printed in a readable format.
+debug: FALSE
+
+
+#
+# view
+# Settings for the HTML output.
+#
+view:
+
+  node:
+
+    document:
+      xmlVersion: 1.0
+      xmlEncoding: utf-8
+
+    canvas:
+      tagName: div
+      defaultStyle: height: 300px;
+
+    jQuery:
+      source: //code.jquery.com/jquery-1.10.1.min.js
+      forceOnTop: TRUE
+      external: TRUE
+
+    googleMapsApi:
+      source: //maps.googleapis.com/maps/api/js?v=3.exp&sensor=false
+      forceOnTop: TRUE
+      external: TRUE
+
+    markerClusterer:
+      source: GoogleMapsPHP/Ressources/Public/JavaScript/markerclusterer-1.0.0.min.js
+
+    mapBuilder:
+      source: GoogleMapsPHP/Ressources/Public/JavaScript/mapbuilder-1.0.0.js
+
+    options:
+      # DOM ready function
+      wrap:
+        - google.maps.event.addDomListener(window, 'load', function(){
+        - });
+
+
+#
+# defaultOptions
+# Currently only default map options can set.
+#
+defaultOptions:
+
+  map:
+    center: 48.208202, 16.373749
+    mapTypeId: \GoogleMapsPHP\API\Map\MapTypeId::ROADMAP
+    zoom: 7
+
+
+#
+# plugInBuilders
+# Add user defined builders if you want. methodName is by default "build".
+#
+plugInBuilders:
+
+  Loader:
+    className: \GoogleMapsPHP\PlugIns\Loader\Builder
+
+  Map:
+    className: \GoogleMapsPHP\PlugIns\Map\Builder
+
+  StyledMapType:
+    className: \GoogleMapsPHP\PlugIns\StyledMapType\Builder
+
+  Marker:
+    className: \GoogleMapsPHP\PlugIns\Marker\Builder
+
+  InfoWindow:
+    className: \GoogleMapsPHP\PlugIns\InfoWindow\Builder
+
+  Polyline:
+    className: \GoogleMapsPHP\PlugIns\Polyline\Builder
+
+  Polygon:
+    className: \GoogleMapsPHP\PlugIns\Polygon\Builder
+
+  KmlLayer:
+    className: \GoogleMapsPHP\PlugIns\KmlLayer\Builder
+
+  MarkerClusterer:
+    className: \GoogleMapsPHP\AddOns\MarkerClusterer\PlugIns\MarkerClusterer\Builder
+
+
+#
+# dataProvider
+# Error and exception handler for AJAX requests.
+#
+dataProvider:
+
+  errorHandler:
+    className: \GoogleMapsPHP\DataProvider
+    methodName: errorHandler
+
+  exceptionHandler:
+    className: \GoogleMapsPHP\DataProvider
+    methodName: exceptionHandler

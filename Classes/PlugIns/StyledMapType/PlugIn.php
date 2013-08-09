@@ -1,0 +1,55 @@
+<?php
+
+/***************************************************************
+ * Copyright notice
+ *
+ * (c) 2013 Arno Dudek <webmaster@adgrafik.at>
+ * All rights reserved
+ *
+ * This script is part of the GoogleMapsPHP project. An easy to 
+ * use Google Maps API for PHP.
+ *
+ * Commercial use requires one-time purchase of a commercial license 
+ * license for every domain. The license can be found at
+ * https://github.com/adgrafik/GoogleMapsPHP/blob/master/LICENSE
+ *
+ * This copyright notice MUST APPEAR in all copies of the script!
+ ***************************************************************/
+
+namespace GoogleMapsPHP\PlugIns\StyledMapType;
+
+/**
+ * Plug-in class for GoogleMapsPHP initial options.
+ *
+ * @author Arno Dudek <webmaster@adgrafik.at>
+ */
+class PlugIn extends \GoogleMapsPHP\PlugIns\AbstractPlugIn {
+
+	/**
+	 * @var boolean $showOnInitialize
+	 */
+	public $showOnInitialize;
+
+	/**
+	 * Set showOnInitialize
+	 *
+	 * @param boolean $showOnInitialize
+	 * @return \GoogleMapsPHP\PlugIns\StyledMapType\PlugIn
+	 */
+	public function setShowOnInitialize($showOnInitialize) {
+		$this->showOnInitialize = (boolean) $showOnInitialize;
+		return $this;
+	}
+
+	/**
+	 * Get showOnInitialize
+	 *
+	 * @return boolean
+	 */
+	public function isShowOnInitialize() {
+		return $this->showOnInitialize;
+	}
+
+}
+
+?>
