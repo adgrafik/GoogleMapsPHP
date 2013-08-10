@@ -26,7 +26,7 @@ use GoogleMapsPHP\Utility\ClassUtility;
  * @author Arno Dudek <webmaster@adgrafik.at>
  * @api
  */
-class DataProvider implements \GoogleMapsPHP\MapBuilder\MapBuilderInterface {
+class PlugInProvider implements \GoogleMapsPHP\MapBuilder\MapBuilderInterface {
 
 	/**
 	 * @var array $registeredMapIds
@@ -93,13 +93,13 @@ class DataProvider implements \GoogleMapsPHP\MapBuilder\MapBuilderInterface {
 		if (GMP_XHR && get_class($this) === get_class()) {
 
 			set_error_handler(array(
-				$this->getSettings()->get('dataProvider.errorHandler.className'),
-				$this->getSettings()->get('dataProvider.errorHandler.methodName'),
+				$this->getSettings()->get('plugInProvider.errorHandler.className'),
+				$this->getSettings()->get('plugInProvider.errorHandler.methodName'),
 			));
 
 			set_exception_handler(array(
-				$this->getSettings()->get('dataProvider.exceptionHandler.className'),
-				$this->getSettings()->get('dataProvider.exceptionHandler.methodName'),
+				$this->getSettings()->get('plugInProvider.exceptionHandler.className'),
+				$this->getSettings()->get('plugInProvider.exceptionHandler.methodName'),
 			));
 		}
 
@@ -205,7 +205,7 @@ class DataProvider implements \GoogleMapsPHP\MapBuilder\MapBuilderInterface {
 	 * Set jsonObject
 	 *
 	 * @param \GoogleMapsPHP\MapBuilder\JsonObject $jsonObject
-	 * @return \GoogleMapsPHP\DataProvider
+	 * @return \GoogleMapsPHP\PlugInProvider
 	 */
 	public function setJsonObject(\GoogleMapsPHP\MapBuilder\JsonObject $jsonObject) {
 		$this->jsonObject = $jsonObject;

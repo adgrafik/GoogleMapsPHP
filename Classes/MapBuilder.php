@@ -26,7 +26,7 @@ use GoogleMapsPHP\Utility\ClassUtility;
  * @author Arno Dudek <webmaster@adgrafik.at>
  * @api
  */
-class MapBuilder extends \GoogleMapsPHP\DataProvider {
+class MapBuilder extends \GoogleMapsPHP\PlugInProvider {
 
 	/**
 	 * @var \GoogleMapsPHP\View\Document $view

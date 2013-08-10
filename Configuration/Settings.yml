@@ -89,15 +89,15 @@ plugInBuilders:
 
 
 #
-# dataProvider
+# plugInProvider
 # Error and exception handler for AJAX requests.
 #
-dataProvider:
+plugInProvider:
 
   errorHandler:
-    className: \GoogleMapsPHP\DataProvider
+    className: \GoogleMapsPHP\PlugInProvider
     methodName: errorHandler
 
   exceptionHandler:
-    className: \GoogleMapsPHP\DataProvider
+    className: \GoogleMapsPHP\PlugInProvider
     methodName: exceptionHandler
