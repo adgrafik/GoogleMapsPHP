@@ -47,6 +47,13 @@ class ArrayUtility {
 				} else {
 					$array[$key[$i]] = $value;
 				}
+			} else {
+				if ($i == (count($key) - 1)) {
+					$array[$key[$i]] = $value;
+				} else {
+					$array[$key[$i]] = array();
+					$array = &$array[$key[$i]];
+				}
 			}
 		}
 	}
