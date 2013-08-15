@@ -16,7 +16,7 @@
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-namespace GoogleMapsPHP\API\Layers;
+namespace AdGrafik\GoogleMapsPHP\API\Layers;
 
 /**
  * API equivalent to google.maps.ControlPosition.

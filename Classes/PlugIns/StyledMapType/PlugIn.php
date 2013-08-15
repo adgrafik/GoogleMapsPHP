@@ -16,14 +16,14 @@
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-namespace GoogleMapsPHP\PlugIns\StyledMapType;
+namespace AdGrafik\GoogleMapsPHP\PlugIns\StyledMapType;
 
 /**
  * Plug-in class for GoogleMapsPHP initial options.
  *
  * @author Arno Dudek <webmaster@adgrafik.at>
  */
-class PlugIn extends \GoogleMapsPHP\PlugIns\AbstractPlugIn {
+class PlugIn extends \AdGrafik\GoogleMapsPHP\PlugIns\AbstractPlugIn {
 
 	/**
 	 * @var boolean $showOnInitialize
@@ -34,7 +34,7 @@ class PlugIn extends \GoogleMapsPHP\PlugIns\AbstractPlugIn {
 	 * Set showOnInitialize
 	 *
 	 * @param boolean $showOnInitialize
-	 * @return \GoogleMapsPHP\PlugIns\StyledMapType\PlugIn
+	 * @return \AdGrafik\GoogleMapsPHP\PlugIns\StyledMapType\PlugIn
 	 */
 	public function setShowOnInitialize($showOnInitialize) {
 		$this->showOnInitialize = (boolean) $showOnInitialize;

@@ -16,7 +16,7 @@
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-namespace GoogleMapsPHP\API\Base;
+namespace AdGrafik\GoogleMapsPHP\API\Base;
 
 /**
  * API equivalent to google.maps.Size.
@@ -24,7 +24,7 @@ namespace GoogleMapsPHP\API\Base;
  * @see https://developers.google.com/maps/documentation/javascript/reference
  * @author Arno Dudek <webmaster@adgrafik.at>
  */
-class Size extends \GoogleMapsPHP\Object\PropertyArrayAccess {
+class Size extends \AdGrafik\GoogleMapsPHP\Object\PropertyArrayAccess {
 
 	/**
 	 * @var integer $width
@@ -90,7 +90,7 @@ class Size extends \GoogleMapsPHP\Object\PropertyArrayAccess {
 	 * Set width
 	 *
 	 * @param integer $width
-	 * @return \GoogleMapsPHP\API\Base\Point
+	 * @return \AdGrafik\GoogleMapsPHP\API\Base\Point
 	 */
 	public function setWidth($width) {
 		$this->width = (integer) $width;
@@ -110,7 +110,7 @@ class Size extends \GoogleMapsPHP\Object\PropertyArrayAccess {
 	 * Set height
 	 *
 	 * @param integer $height
-	 * @return \GoogleMapsPHP\API\Base\Point
+	 * @return \AdGrafik\GoogleMapsPHP\API\Base\Point
 	 */
 	public function setHeight($height) {
 		$this->height = (integer) $height;
@@ -130,7 +130,7 @@ class Size extends \GoogleMapsPHP\Object\PropertyArrayAccess {
 	 * Set widthUnit
 	 *
 	 * @param string $widthUnit
-	 * @return \GoogleMapsPHP\API\Base\Point
+	 * @return \AdGrafik\GoogleMapsPHP\API\Base\Point
 	 */
 	public function setWidthUnit($widthUnit) {
 		$this->widthUnit = $widthUnit;
@@ -150,7 +150,7 @@ class Size extends \GoogleMapsPHP\Object\PropertyArrayAccess {
 	 * Set heightUnit
 	 *
 	 * @param string $heightUnit
-	 * @return \GoogleMapsPHP\API\Base\Point
+	 * @return \AdGrafik\GoogleMapsPHP\API\Base\Point
 	 */
 	public function setHeightUnit($heightUnit) {
 		$this->heightUnit = $heightUnit;

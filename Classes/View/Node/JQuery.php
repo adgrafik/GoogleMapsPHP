@@ -16,14 +16,14 @@
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-namespace GoogleMapsPHP\View\Node;
+namespace AdGrafik\GoogleMapsPHP\View\Node;
 
 /**
  * DOMElement for JQuery.
  *
  * @author Arno Dudek <webmaster@adgrafik.at>
  */
-class JQuery extends \GoogleMapsPHP\View\Node\AbstractNode {
+class JQuery extends \AdGrafik\GoogleMapsPHP\View\Node\AbstractNode {
 
 	/**
 	 * @var boolean $printed
@@ -34,7 +34,7 @@ class JQuery extends \GoogleMapsPHP\View\Node\AbstractNode {
 	 * Set printed
 	 *
 	 * @param boolean $printed
-	 * @return \GoogleMapsPHP\View\Node\JQuery
+	 * @return \AdGrafik\GoogleMapsPHP\View\Node\JQuery
 	 */
 	public function setPrinted($printed) {
 		static::$printed = (boolean) $printed;

@@ -16,9 +16,9 @@
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-namespace GoogleMapsPHP\API\Overlays;
+namespace AdGrafik\GoogleMapsPHP\API\Overlays;
 
-use GoogleMapsPHP\Utility\ClassUtility;
+use AdGrafik\GoogleMapsPHP\Utility\ClassUtility;
 
 /**
  * API equivalent to google.maps.Marker.
@@ -26,10 +26,10 @@ use GoogleMapsPHP\Utility\ClassUtility;
  * @see https://developers.google.com/maps/documentation/javascript/reference
  * @author Arno Dudek <webmaster@adgrafik.at>
  */
-class Marker extends \GoogleMapsPHP\Object\OptionsArrayAccess implements \GoogleMapsPHP\API\Overlays\OverlayInterface {
+class Marker extends \AdGrafik\GoogleMapsPHP\Object\OptionsArrayAccess implements \AdGrafik\GoogleMapsPHP\API\Overlays\OverlayInterface {
 
 	/**
-	 * @var \GoogleMapsPHP\API\Overlays\MarkerOptions $options
+	 * @var \AdGrafik\GoogleMapsPHP\API\Overlays\MarkerOptions $options
 	 */
 	public $options;
 
@@ -37,33 +37,33 @@ class Marker extends \GoogleMapsPHP\Object\OptionsArrayAccess implements \Google
 	 * Constructor
 	 *
 	 * @param mixed $options
-	 * @throws \GoogleMapsPHP\Exceptions\RequiredArgumentMissingException
+	 * @throws \AdGrafik\GoogleMapsPHP\Exceptions\RequiredArgumentMissingException
 	 */
 	public function __construct($options) {
 
 		// Set required values
-		$this->options = ClassUtility::makeInstance('\\GoogleMapsPHP\\API\\Overlays\\MarkerOptions');
+		$this->options = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\API\\Overlays\\MarkerOptions');
 
 		// Set properties
 		$this->setOptions($options);
 
 		// Check required options
 		if ($this->getPosition() === NULL) {
-			throw new \GoogleMapsPHP\Exceptions\RequiredArgumentMissingException('Missing option "position".', 1369555246);
+			throw new \AdGrafik\GoogleMapsPHP\Exceptions\RequiredArgumentMissingException('Missing option "position".', 1369555246);
 		}
 	}
 
 	/**
 	 * Set options
 	 *
-	 * @param mixed $options Can be an object of type \GoogleMapsPHP\API\Overlays\MarkerOptions or an map options array.
-	 * @return \GoogleMapsPHP\API\Overlays\Marker
+	 * @param mixed $options Can be an object of type \AdGrafik\GoogleMapsPHP\API\Overlays\MarkerOptions or an map options array.
+	 * @return \AdGrafik\GoogleMapsPHP\API\Overlays\Marker
 	 */
 	public function setOptions($options) {
 		if (is_array($options)) {
 			ClassUtility::setPropertiesFromArray($this->options, $options);
-		} else if ($options instanceof \GoogleMapsPHP\API\Overlays\MarkerOptions === FALSE) {
-			throw new \GoogleMapsPHP\Exceptions\InvalidValueException('Map options must be an array or an instance of "\GoogleMapsPHP\API\Overlays\MarkerOptions".', 1369563745);
+		} else if ($options instanceof \AdGrafik\GoogleMapsPHP\API\Overlays\MarkerOptions === FALSE) {
+			throw new \AdGrafik\GoogleMapsPHP\Exceptions\InvalidValueException('Map options must be an array or an instance of "\AdGrafik\GoogleMapsPHP\API\Overlays\MarkerOptions".', 1369563745);
 		} else {
 			$this->options = $options;
 		}
@@ -73,7 +73,7 @@ class Marker extends \GoogleMapsPHP\Object\OptionsArrayAccess implements \Google
 	/**
 	 * Get options
 	 *
-	 * @return \GoogleMapsPHP\API\Overlays\MarkerOptions
+	 * @return \AdGrafik\GoogleMapsPHP\API\Overlays\MarkerOptions
 	 */
 	public function getOptions() {
 		return $this->options;
@@ -85,11 +85,11 @@ class Marker extends \GoogleMapsPHP\Object\OptionsArrayAccess implements \Google
 	 * @param string $propertyName
 	 * @param mixed $propertyValue
 	 * @return mixed
-	 * @throws \GoogleMapsPHP\Exceptions\InvalidMethodException
+	 * @throws \AdGrafik\GoogleMapsPHP\Exceptions\InvalidMethodException
 	 */
 	public function __call($methodName, $arguments) {
 		if (ClassUtility::methodExists($this->options, $methodName, FALSE) === FALSE) {
-			throw new \GoogleMapsPHP\Exceptions\InvalidMethodException(sprintf('Method "%s" not exists.', $methodName), 1369563744);
+			throw new \AdGrafik\GoogleMapsPHP\Exceptions\InvalidMethodException(sprintf('Method "%s" not exists.', $methodName), 1369563744);
 		}
 		return call_user_func_array(array($this->options, $methodName), $arguments);
 	}

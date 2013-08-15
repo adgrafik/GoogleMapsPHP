@@ -16,9 +16,9 @@
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-namespace GoogleMapsPHP\AddOns\MarkerClusterer\API\MapTypes;
+namespace AdGrafik\GoogleMapsPHP\AddOns\MarkerClusterer\API\MapTypes;
 
-use GoogleMapsPHP\Utility\ClassUtility;
+use AdGrafik\GoogleMapsPHP\Utility\ClassUtility;
 
 /**
  * An array of these is passed into the MarkerClustererOptions styles option.
@@ -26,7 +26,7 @@ use GoogleMapsPHP\Utility\ClassUtility;
  * @see http://gmaps-utility-library-dev.googlecode.com/svn/tags/markerclusterer/
  * @author Arno Dudek <webmaster@adgrafik.at>
  */
-class MarkerClustererStyle extends \GoogleMapsPHP\Object\PropertyArrayAccess {
+class MarkerClustererStyle extends \AdGrafik\GoogleMapsPHP\Object\PropertyArrayAccess {
 
 	/**
 	 * Image url.
@@ -73,7 +73,7 @@ class MarkerClustererStyle extends \GoogleMapsPHP\Object\PropertyArrayAccess {
 	 * Set url
 	 *
 	 * @param string $url
-	 * @return \GoogleMapsPHP\AddOns\MarkerClusterer\API\MapTypes\MarkerClustererStyle
+	 * @return \AdGrafik\GoogleMapsPHP\AddOns\MarkerClusterer\API\MapTypes\MarkerClustererStyle
 	 */
 	public function setUrl($url) {
 		$this->url = $url;
@@ -93,7 +93,7 @@ class MarkerClustererStyle extends \GoogleMapsPHP\Object\PropertyArrayAccess {
 	 * Set height
 	 *
 	 * @param integer $height
-	 * @return \GoogleMapsPHP\AddOns\MarkerClusterer\API\MapTypes\MarkerClustererStyle
+	 * @return \AdGrafik\GoogleMapsPHP\AddOns\MarkerClusterer\API\MapTypes\MarkerClustererStyle
 	 */
 	public function setHeight($height) {
 		$this->height = (integer) $height;
@@ -113,7 +113,7 @@ class MarkerClustererStyle extends \GoogleMapsPHP\Object\PropertyArrayAccess {
 	 * Set width
 	 *
 	 * @param integer $width
-	 * @return \GoogleMapsPHP\AddOns\MarkerClusterer\API\MapTypes\MarkerClustererStyle
+	 * @return \AdGrafik\GoogleMapsPHP\AddOns\MarkerClusterer\API\MapTypes\MarkerClustererStyle
 	 */
 	public function setWidth($width) {
 		$this->width = (integer) $width;
@@ -133,7 +133,7 @@ class MarkerClustererStyle extends \GoogleMapsPHP\Object\PropertyArrayAccess {
 	 * Set anchor
 	 *
 	 * @param array $anchor
-	 * @return \GoogleMapsPHP\AddOns\MarkerClusterer\API\MapTypes\MarkerClustererStyle
+	 * @return \AdGrafik\GoogleMapsPHP\AddOns\MarkerClusterer\API\MapTypes\MarkerClustererStyle
 	 */
 	public function setAnchor(array $anchor) {
 		$this->anchor = $anchor;
@@ -153,7 +153,7 @@ class MarkerClustererStyle extends \GoogleMapsPHP\Object\PropertyArrayAccess {
 	 * Set textColor
 	 *
 	 * @param string $textColor
-	 * @return \GoogleMapsPHP\AddOns\MarkerClusterer\API\MapTypes\MarkerClustererStyle
+	 * @return \AdGrafik\GoogleMapsPHP\AddOns\MarkerClusterer\API\MapTypes\MarkerClustererStyle
 	 */
 	public function setTextColor($textColor) {
 		$this->textColor = $textColor;
@@ -173,7 +173,7 @@ class MarkerClustererStyle extends \GoogleMapsPHP\Object\PropertyArrayAccess {
 	 * Set textSize
 	 *
 	 * @param integer $textSize
-	 * @return \GoogleMapsPHP\AddOns\MarkerClusterer\API\MapTypes\MarkerClustererStyle
+	 * @return \AdGrafik\GoogleMapsPHP\AddOns\MarkerClusterer\API\MapTypes\MarkerClustererStyle
 	 */
 	public function setTextSize($textSize) {
 		$this->textSize = (integer) $textSize;

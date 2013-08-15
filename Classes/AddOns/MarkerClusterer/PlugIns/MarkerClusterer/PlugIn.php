@@ -16,14 +16,14 @@
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-namespace GoogleMapsPHP\AddOns\MarkerClusterer\PlugIns\MarkerClusterer;
+namespace AdGrafik\GoogleMapsPHP\AddOns\MarkerClusterer\PlugIns\MarkerClusterer;
 
 /**
  * Plug-in class for GoogleMapsPHP initial options.
  *
  * @author Arno Dudek <webmaster@adgrafik.at>
  */
-class PlugIn extends \GoogleMapsPHP\PlugIns\AbstractPlugIn {
+class PlugIn extends \AdGrafik\GoogleMapsPHP\PlugIns\AbstractPlugIn {
 
 }
 

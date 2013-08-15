@@ -16,7 +16,7 @@
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-namespace GoogleMapsPHP\API\Base;
+namespace AdGrafik\GoogleMapsPHP\API\Base;
 
 /**
  * API equivalent to google.maps.Point.
@@ -24,7 +24,7 @@ namespace GoogleMapsPHP\API\Base;
  * @see https://developers.google.com/maps/documentation/javascript/reference
  * @author Arno Dudek <webmaster@adgrafik.at>
  */
-class Point extends \GoogleMapsPHP\Object\PropertyArrayAccess {
+class Point extends \AdGrafik\GoogleMapsPHP\Object\PropertyArrayAccess {
 
 	/**
 	 * @var integer $x
@@ -77,7 +77,7 @@ class Point extends \GoogleMapsPHP\Object\PropertyArrayAccess {
 	 * Set x
 	 *
 	 * @param integer $x
-	 * @return \GoogleMapsPHP\API\Base\Point
+	 * @return \AdGrafik\GoogleMapsPHP\API\Base\Point
 	 */
 	public function setX($x) {
 		$this->x = (integer) $x;
@@ -97,7 +97,7 @@ class Point extends \GoogleMapsPHP\Object\PropertyArrayAccess {
 	 * Set y
 	 *
 	 * @param integer $y
-	 * @return \GoogleMapsPHP\API\Base\Point
+	 * @return \AdGrafik\GoogleMapsPHP\API\Base\Point
 	 */
 	public function setY($y) {
 		$this->y = (integer) $y;

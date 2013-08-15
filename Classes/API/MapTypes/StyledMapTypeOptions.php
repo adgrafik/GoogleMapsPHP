@@ -16,7 +16,7 @@
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-namespace GoogleMapsPHP\API\MapTypes;
+namespace AdGrafik\GoogleMapsPHP\API\MapTypes;
 
 /**
  * API equivalent to google.maps.StyledMapTypeOptions.
@@ -50,7 +50,7 @@ class StyledMapTypeOptions extends AbstractMapTypeOptions {
 	 * Set alt
 	 *
 	 * @param string $alt
-	 * @return \GoogleMapsPHP\API\MapTypes\StyledMapTypeOptions
+	 * @return \AdGrafik\GoogleMapsPHP\API\MapTypes\StyledMapTypeOptions
 	 */
 	public function setAlt($alt) {
 		$this->alt = $alt;
@@ -70,7 +70,7 @@ class StyledMapTypeOptions extends AbstractMapTypeOptions {
 	 * Set maxZoom
 	 *
 	 * @param integer $maxZoom
-	 * @return \GoogleMapsPHP\API\MapTypes\StyledMapTypeOptions
+	 * @return \AdGrafik\GoogleMapsPHP\API\MapTypes\StyledMapTypeOptions
 	 */
 	public function setMaxZoom($maxZoom) {
 		$this->maxZoom = (integer) $maxZoom;
@@ -90,7 +90,7 @@ class StyledMapTypeOptions extends AbstractMapTypeOptions {
 	 * Set minZoom
 	 *
 	 * @param integer $minZoom
-	 * @return \GoogleMapsPHP\API\MapTypes\StyledMapTypeOptions
+	 * @return \AdGrafik\GoogleMapsPHP\API\MapTypes\StyledMapTypeOptions
 	 */
 	public function setMinZoom($minZoom) {
 		$this->minZoom = (integer) $minZoom;
@@ -110,7 +110,7 @@ class StyledMapTypeOptions extends AbstractMapTypeOptions {
 	 * Set name
 	 *
 	 * @param string $name
-	 * @return \GoogleMapsPHP\API\MapTypes\StyledMapTypeOptions
+	 * @return \AdGrafik\GoogleMapsPHP\API\MapTypes\StyledMapTypeOptions
 	 */
 	public function setName($name) {
 		$this->name = $name;

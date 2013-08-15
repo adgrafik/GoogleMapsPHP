@@ -16,9 +16,9 @@
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-namespace GoogleMapsPHP\API\StreetView;
+namespace AdGrafik\GoogleMapsPHP\API\StreetView;
 
-use GoogleMapsPHP\Utility\ClassUtility;
+use AdGrafik\GoogleMapsPHP\Utility\ClassUtility;
 
 /**
  * API equivalent to google.maps.StreetViewPanorama.
@@ -34,7 +34,7 @@ class StreetViewPanorama {
 	public $container;
 
 	/**
-	 * @var \GoogleMapsPHP\API\StreetView\StreetViewPanoramaOptions $options
+	 * @var \AdGrafik\GoogleMapsPHP\API\StreetView\StreetViewPanoramaOptions $options
 	 */
 	public $options;
 
@@ -42,12 +42,12 @@ class StreetViewPanorama {
 	 * Constructor
 	 *
 	 * @param \DOMElement $container
-	 * @param mixed $options Can be an object of type \GoogleMapsPHP\API\StreetView\StreetViewPanoramaOptions or an map options array.
+	 * @param mixed $options Can be an object of type \AdGrafik\GoogleMapsPHP\API\StreetView\StreetViewPanoramaOptions or an map options array.
 	 */
 	public function __construct(\DOMElement $container, $options = array()) {
 
 		// Set required values
-		$this->options = new \GoogleMapsPHP\API\StreetView\StreetViewPanoramaOptions();
+		$this->options = new \AdGrafik\GoogleMapsPHP\API\StreetView\StreetViewPanoramaOptions();
 
 		// Set properties
 		$this->setDiv($div);
@@ -55,24 +55,24 @@ class StreetViewPanorama {
 
 		// Check required options
 		if ($this->getCenter() === NULL) {
-			throw new \GoogleMapsPHP\Exceptions\RequiredArgumentMissingException('Missing option "center".', 1369566987);
+			throw new \AdGrafik\GoogleMapsPHP\Exceptions\RequiredArgumentMissingException('Missing option "center".', 1369566987);
 		}
 		if ($this->getMapTypeId() === NULL) {
-			throw new \GoogleMapsPHP\Exceptions\RequiredArgumentMissingException('Missing option "mapTypeId".', 1369566988);
+			throw new \AdGrafik\GoogleMapsPHP\Exceptions\RequiredArgumentMissingException('Missing option "mapTypeId".', 1369566988);
 		}
 	}
 
 	/**
 	 * Set options
 	 *
-	 * @param mixed $options Can be an object of type \GoogleMapsPHP\API\Overlays\MarkerOptions or an map options array.
-	 * @return \GoogleMapsPHP\API\Overlays\Marker
+	 * @param mixed $options Can be an object of type \AdGrafik\GoogleMapsPHP\API\Overlays\MarkerOptions or an map options array.
+	 * @return \AdGrafik\GoogleMapsPHP\API\Overlays\Marker
 	 */
 	public function setOptions($options) {
 		if (is_array($options)) {
 			ClassUtility::setPropertiesFromArray($this->options, $options);
-		} else if ($options instanceof \GoogleMapsPHP\API\StreetView\StreetViewPanoramaOptions === FALSE) {
-			throw new \GoogleMapsPHP\Exceptions\InvalidValueException('Map options must be an array or an instance of "\GoogleMapsPHP\API\Overlays\MarkerOptions".', 1369563745);
+		} else if ($options instanceof \AdGrafik\GoogleMapsPHP\API\StreetView\StreetViewPanoramaOptions === FALSE) {
+			throw new \AdGrafik\GoogleMapsPHP\Exceptions\InvalidValueException('Map options must be an array or an instance of "\AdGrafik\GoogleMapsPHP\API\Overlays\MarkerOptions".', 1369563745);
 		} else {
 			$this->options = $options;
 		}
@@ -82,7 +82,7 @@ class StreetViewPanorama {
 	/**
 	 * Get options
 	 *
-	 * @return \GoogleMapsPHP\API\Overlays\MarkerOptions
+	 * @return \AdGrafik\GoogleMapsPHP\API\Overlays\MarkerOptions
 	 */
 	public function getOptions() {
 		return $this->options;
@@ -94,11 +94,11 @@ class StreetViewPanorama {
 	 * @param string $propertyName
 	 * @param mixed $propertyValue
 	 * @return mixed
-	 * @throws \GoogleMapsPHP\Exceptions\InvalidMethodException
+	 * @throws \AdGrafik\GoogleMapsPHP\Exceptions\InvalidMethodException
 	 */
 	public function __call($methodName, $arguments) {
 		if (ClassUtility::methodExists($this->options, $methodName, FALSE) === FALSE) {
-			throw new \GoogleMapsPHP\Exceptions\InvalidMethodException(sprintf('Method "%s" not exists.', $methodName), 1369563744);
+			throw new \AdGrafik\GoogleMapsPHP\Exceptions\InvalidMethodException(sprintf('Method "%s" not exists.', $methodName), 1369563744);
 		}
 		return call_user_func(array($this->options, $methodName), $arguments);
 	}

@@ -16,7 +16,7 @@
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-namespace GoogleMapsPHP\API\Base;
+namespace AdGrafik\GoogleMapsPHP\API\Base;
 
 /**
  * API equivalent to google.maps.LatLng.
@@ -24,7 +24,7 @@ namespace GoogleMapsPHP\API\Base;
  * @see https://developers.google.com/maps/documentation/javascript/reference
  * @author Arno Dudek <webmaster@adgrafik.at>
  */
-class LatLng extends \GoogleMapsPHP\Object\PropertyArrayAccess {
+class LatLng extends \AdGrafik\GoogleMapsPHP\Object\PropertyArrayAccess {
 
 	/**
 	 * @var float $latitude
@@ -76,8 +76,8 @@ class LatLng extends \GoogleMapsPHP\Object\PropertyArrayAccess {
 	 *
 	 * @param mixed $latitude Can be a string of latitude,longitude or a float of latitude.
 	 * @param float $longitude
-	 * @return \GoogleMapsPHP\API\Base\LatLng
-	 * @throws \GoogleMapsPHP\Exceptions\ValueNotValidException
+	 * @return \AdGrafik\GoogleMapsPHP\API\Base\LatLng
+	 * @throws \AdGrafik\GoogleMapsPHP\Exceptions\ValueNotValidException
 	 */
 	public function setLatLng($latitude, $longitude = NULL) {
 
@@ -86,7 +86,7 @@ class LatLng extends \GoogleMapsPHP\Object\PropertyArrayAccess {
 		}
 
 		if ($longitude === NULL) {
-			throw new \GoogleMapsPHP\Exceptions\InvalidValueException('The longitude was not set.', 1369496352);
+			throw new \AdGrafik\GoogleMapsPHP\Exceptions\InvalidValueException('The longitude was not set.', 1369496352);
 		}
 
 		$this->setLatitude($latitude);
@@ -99,7 +99,7 @@ class LatLng extends \GoogleMapsPHP\Object\PropertyArrayAccess {
 	 * Set latitude
 	 *
 	 * @param float $latitude
-	 * @return \GoogleMapsPHP\API\Base\LatLng
+	 * @return \AdGrafik\GoogleMapsPHP\API\Base\LatLng
 	 */
 	public function setLatitude($latitude) {
 		$this->latitude = (float) $latitude;
@@ -119,7 +119,7 @@ class LatLng extends \GoogleMapsPHP\Object\PropertyArrayAccess {
 	 * Set longitude
 	 *
 	 * @param float $longitude
-	 * @return \GoogleMapsPHP\API\Base\LatLng
+	 * @return \AdGrafik\GoogleMapsPHP\API\Base\LatLng
 	 */
 	public function setLongitude($longitude) {
 		$this->longitude = (float) $longitude;
@@ -139,7 +139,7 @@ class LatLng extends \GoogleMapsPHP\Object\PropertyArrayAccess {
 	 * Set noWrap
 	 *
 	 * @param boolean $noWrap
-	 * @return \GoogleMapsPHP\API\Base\LatLng
+	 * @return \AdGrafik\GoogleMapsPHP\API\Base\LatLng
 	 */
 	public function setNoWrap($noWrap) {
 		$this->noWrap = (boolean) $noWrap;

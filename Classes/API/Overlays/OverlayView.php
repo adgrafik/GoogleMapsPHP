@@ -16,7 +16,7 @@
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-namespace GoogleMapsPHP\API\Overlays;
+namespace AdGrafik\GoogleMapsPHP\API\Overlays;
 
 /**
  * API equivalent to google.maps.OverlayView.
@@ -24,7 +24,7 @@ namespace GoogleMapsPHP\API\Overlays;
  * @see https://developers.google.com/maps/documentation/javascript/reference
  * @author Arno Dudek <webmaster@adgrafik.at>
  */
-class OverlayView extends \GoogleMapsPHP\Object\OptionsArrayAccess implements \GoogleMapsPHP\API\Overlays\OverlayInterface {
+class OverlayView extends \AdGrafik\GoogleMapsPHP\Object\OptionsArrayAccess implements \AdGrafik\GoogleMapsPHP\API\Overlays\OverlayInterface {
 
 }
 

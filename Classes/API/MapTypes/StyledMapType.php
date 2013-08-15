@@ -16,9 +16,9 @@
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-namespace GoogleMapsPHP\API\MapTypes;
+namespace AdGrafik\GoogleMapsPHP\API\MapTypes;
 
-use GoogleMapsPHP\Utility\ClassUtility;
+use AdGrafik\GoogleMapsPHP\Utility\ClassUtility;
 
 /**
  * API equivalent to google.maps.StyledMapType.
@@ -26,15 +26,15 @@ use GoogleMapsPHP\Utility\ClassUtility;
  * @see https://developers.google.com/maps/documentation/javascript/reference
  * @author Arno Dudek <webmaster@adgrafik.at>
  */
-class StyledMapType extends \GoogleMapsPHP\Object\OptionsArrayAccess {
+class StyledMapType extends \AdGrafik\GoogleMapsPHP\Object\OptionsArrayAccess {
 
 	/**
-	 * @var array<array>|array<\GoogleMapsPHP\API\MapTypes\MapTypeStyle> $styles
+	 * @var array<array>|array<\AdGrafik\GoogleMapsPHP\API\MapTypes\MapTypeStyle> $styles
 	 */
 	public $styles;
 
 	/**
-	 * @var array|\GoogleMapsPHP\API\MapTypes\StyledMapTypeOptions $options
+	 * @var array|\AdGrafik\GoogleMapsPHP\API\MapTypes\StyledMapTypeOptions $options
 	 */
 	public $options;
 
@@ -42,12 +42,12 @@ class StyledMapType extends \GoogleMapsPHP\Object\OptionsArrayAccess {
 	 * Set mapTypeIds
 	 *
 	 * @param array $styles
-	 * @param array|\GoogleMapsPHP\API\MapTypes\StyledMapTypeOptions $options
+	 * @param array|\AdGrafik\GoogleMapsPHP\API\MapTypes\StyledMapTypeOptions $options
 	 */
 	public function __construct($styles = array(), $options = array()) {
 
 		// Set required values
-		$this->options = ClassUtility::makeInstance('\\GoogleMapsPHP\\API\\MapTypes\\StyledMapTypeOptions');
+		$this->options = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\API\\MapTypes\\StyledMapTypeOptions');
 
 		// Set properties
 		$this->setStyles($styles);
@@ -57,14 +57,14 @@ class StyledMapType extends \GoogleMapsPHP\Object\OptionsArrayAccess {
 	/**
 	 * Set styles
 	 *
-	 * @param array<array>|array<\GoogleMapsPHP\API\MapTypes\MapTypeStyle> $styles
-	 * @return \GoogleMapsPHP\API\MapTypes\StyledMapType
+	 * @param array<array>|array<\AdGrafik\GoogleMapsPHP\API\MapTypes\MapTypeStyle> $styles
+	 * @return \AdGrafik\GoogleMapsPHP\API\MapTypes\StyledMapType
 	 */
 	public function setStyles(array $styles) {
 
 		foreach ($styles as $key => &$style) {
-			if ($style instanceof \GoogleMapsPHP\API\MapTypes\MapTypeStyle === FALSE) {
-				$styles[$key] = ClassUtility::makeInstance('\\GoogleMapsPHP\\API\\MapTypes\\MapTypeStyle', $style);
+			if ($style instanceof \AdGrafik\GoogleMapsPHP\API\MapTypes\MapTypeStyle === FALSE) {
+				$styles[$key] = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\API\\MapTypes\\MapTypeStyle', $style);
 			}
 		}
 
@@ -84,14 +84,14 @@ class StyledMapType extends \GoogleMapsPHP\Object\OptionsArrayAccess {
 	/**
 	 * Set options
 	 *
-	 * @param array|\GoogleMapsPHP\API\MapTypes\StyledMapTypeOptions $options
-	 * @return \GoogleMapsPHP\API\MapTypes\StyledMapType
+	 * @param array|\AdGrafik\GoogleMapsPHP\API\MapTypes\StyledMapTypeOptions $options
+	 * @return \AdGrafik\GoogleMapsPHP\API\MapTypes\StyledMapType
 	 */
 	public function setOptions($options) {
 		if (is_array($options)) {
 			ClassUtility::setPropertiesFromArray($this->options, $options);
-		} else if ($options instanceof \GoogleMapsPHP\API\MapTypes\StyledMapTypeOptions === FALSE) {
-			throw new \GoogleMapsPHP\Exceptions\InvalidValueException('Map options must be an array or an instance of "\GoogleMapsPHP\API\Map\MapOptions".', 1369563745);
+		} else if ($options instanceof \AdGrafik\GoogleMapsPHP\API\MapTypes\StyledMapTypeOptions === FALSE) {
+			throw new \AdGrafik\GoogleMapsPHP\Exceptions\InvalidValueException('Map options must be an array or an instance of "\AdGrafik\GoogleMapsPHP\API\Map\MapOptions".', 1369563745);
 		} else {
 			$this->options = $options;
 		}
@@ -101,7 +101,7 @@ class StyledMapType extends \GoogleMapsPHP\Object\OptionsArrayAccess {
 	/**
 	 * Get options
 	 *
-	 * @return \GoogleMapsPHP\API\MapTypes\StyledMapTypeOptions
+	 * @return \AdGrafik\GoogleMapsPHP\API\MapTypes\StyledMapTypeOptions
 	 */
 	public function getOptions() {
 		return $this->options;

@@ -16,9 +16,9 @@
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-namespace GoogleMapsPHP\Object;
+namespace AdGrafik\GoogleMapsPHP\Object;
 
-use GoogleMapsPHP\Utility\ClassUtility;
+use AdGrafik\GoogleMapsPHP\Utility\ClassUtility;
 
 /**
  * OptionsArrayAccess class.
@@ -160,11 +160,11 @@ class OptionsArrayAccess implements \ArrayAccess, \Iterator, \Countable {
 	 * @param string $methodName
 	 * @param array $arguments
 	 * @return mixed
-	 * @throws \GoogleMapsPHP\Exceptions\InvalidMethodException
+	 * @throws \AdGrafik\GoogleMapsPHP\Exceptions\InvalidMethodException
 	 */
 	public function __call($methodName, $arguments) {
 		if (ClassUtility::methodExists($this->options, $methodName, FALSE) === FALSE) {
-			throw new \GoogleMapsPHP\Exceptions\InvalidMethodException(sprintf('Method "%s" not exists.', $methodName), 1369563744);
+			throw new \AdGrafik\GoogleMapsPHP\Exceptions\InvalidMethodException(sprintf('Method "%s" not exists.', $methodName), 1369563744);
 		}
 		return call_user_func_array(array($this->options, $methodName), $arguments);
 	}

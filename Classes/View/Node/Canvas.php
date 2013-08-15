@@ -16,14 +16,14 @@
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-namespace GoogleMapsPHP\View\Node;
+namespace AdGrafik\GoogleMapsPHP\View\Node;
 
 /**
  * DOMElement for Canvas.
  *
  * @author Arno Dudek <webmaster@adgrafik.at>
  */
-class Canvas extends \GoogleMapsPHP\View\Node\AbstractNode {
+class Canvas extends \AdGrafik\GoogleMapsPHP\View\Node\AbstractNode {
 
 	/**
 	 * @var boolean $printed
@@ -34,7 +34,7 @@ class Canvas extends \GoogleMapsPHP\View\Node\AbstractNode {
 	 * Set printed
 	 *
 	 * @param boolean $printed
-	 * @return \GoogleMapsPHP\View\Node\Canvas
+	 * @return \AdGrafik\GoogleMapsPHP\View\Node\Canvas
 	 */
 	public function setPrinted($printed) {
 		$this->printed = (boolean) $printed;

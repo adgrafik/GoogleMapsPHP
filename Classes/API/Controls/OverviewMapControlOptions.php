@@ -16,7 +16,7 @@
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-namespace GoogleMapsPHP\API\Controls;
+namespace AdGrafik\GoogleMapsPHP\API\Controls;
 
 /**
  * API equivalent to google.maps.OverviewMapControlOptions.
@@ -35,7 +35,7 @@ class OverviewMapControlOptions extends AbstractControlOptions {
 	 * Set opened
 	 *
 	 * @param boolean $opened
-	 * @return \GoogleMapsPHP\API\Controls\OverviewMapControlOptions
+	 * @return \AdGrafik\GoogleMapsPHP\API\Controls\OverviewMapControlOptions
 	 */
 	public function setOpened($opened) {
 		$this->opened = (boolean) $opened;

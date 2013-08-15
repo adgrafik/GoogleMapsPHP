@@ -16,7 +16,7 @@
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-namespace GoogleMapsPHP\Utility;
+namespace AdGrafik\GoogleMapsPHP\Utility;
 
 /**
  * ClassUtility class.
@@ -36,18 +36,18 @@ class ClassUtility {
 	 * @param string $className
 	 * @param array $arguments
 	 * @return mixed
-	 * @throws \GoogleMapsPHP\InvalidArgumentException
+	 * @throws \AdGrafik\GoogleMapsPHP\InvalidArgumentException
 	 */
 	static public function makeInstance($className) {
 
 		if (!is_string($className) || empty($className)) {
-			throw new \GoogleMapsPHP\Exceptions\InvalidArgumentException(sprintf('Class "%s" must be a non empty string.', $className), 1369925720);
+			throw new \AdGrafik\GoogleMapsPHP\Exceptions\InvalidArgumentException(sprintf('Class "%s" must be a non empty string.', $className), 1369925720);
 		}
 
 		$className = '\\' . ltrim($className, '\\');
 
 		if (class_exists($className) === FALSE) {
-			throw new \GoogleMapsPHP\Exceptions\InvalidArgumentException(sprintf('Class "%s" not exists.', $className), 1369764749);
+			throw new \AdGrafik\GoogleMapsPHP\Exceptions\InvalidArgumentException(sprintf('Class "%s" not exists.', $className), 1369764749);
 		}
 
 		// Return singleton instance if it is already registered.
@@ -71,7 +71,7 @@ class ClassUtility {
 		}
 
 		// Register new singleton instance.
-		if ($instance instanceof \GoogleMapsPHP\Object\SingletonInterface) {
+		if ($instance instanceof \AdGrafik\GoogleMapsPHP\Object\SingletonInterface) {
 			self::$singletonInstances[$className] = $instance;
 		}
 
@@ -98,13 +98,13 @@ class ClassUtility {
 	 * @param mixed $propertyName
 	 * @param mixed $propertyValue
 	 * @return void
-	 * @throws \GoogleMapsPHP\InvalidPropertyException
+	 * @throws \AdGrafik\GoogleMapsPHP\InvalidPropertyException
 	 */
 	static public function setProperty($object, $propertyName, $propertyValue) {
 
 		$setterName = 'set' . ucfirst($propertyName);
 		if (self::methodExists($object, $setterName, FALSE) === FALSE) {
-			throw new \GoogleMapsPHP\Exceptions\InvalidPropertyException(sprintf('Property "%s" of class "%s" can not be set.', $propertyName, get_class($object)), 1369488120);
+			throw new \AdGrafik\GoogleMapsPHP\Exceptions\InvalidPropertyException(sprintf('Property "%s" of class "%s" can not be set.', $propertyName, get_class($object)), 1369488120);
 		}
 
 		call_user_func(array($object, $setterName), $propertyValue);
@@ -141,13 +141,13 @@ class ClassUtility {
 	 * @param mixed $object
 	 * @param mixed $propertyName
 	 * @return void
-	 * @throws \GoogleMapsPHP\InvalidPropertyException
+	 * @throws \AdGrafik\GoogleMapsPHP\InvalidPropertyException
 	 */
 	static public function unsetProperty($object, $propertyName) {
 
 		$setterName = 'set' . ucfirst($propertyName);
 		if (self::methodExists($object, $setterName, FALSE) === FALSE) {
-			throw new \GoogleMapsPHP\Exceptions\InvalidPropertyException(sprintf('Property "%s" of class "%s" can not be set.', $propertyName, get_class($object)), 1369488120);
+			throw new \AdGrafik\GoogleMapsPHP\Exceptions\InvalidPropertyException(sprintf('Property "%s" of class "%s" can not be set.', $propertyName, get_class($object)), 1369488120);
 		}
 
 		call_user_func(array($object, $setterName), NULL);
@@ -159,7 +159,7 @@ class ClassUtility {
 	 * @param mixed $object
 	 * @param mixed $propertyName
 	 * @return string
-	 * @throws \GoogleMapsPHP\InvalidPropertyException
+	 * @throws \AdGrafik\GoogleMapsPHP\InvalidPropertyException
 	 */
 	static public function getProperty($object, $propertyName) {
 
@@ -167,7 +167,7 @@ class ClassUtility {
 		if (self::methodExists($object, $getterName, FALSE) === FALSE) {
 			$getterName = 'is' . ucfirst($propertyName);
 			if (self::methodExists($object, $getterName, FALSE) === FALSE) {
-				throw new \GoogleMapsPHP\Exceptions\InvalidPropertyException(sprintf('Property "%s" of class "%s" dosn\'t exists.', $propertyName, get_class($object)), 1369488121);
+				throw new \AdGrafik\GoogleMapsPHP\Exceptions\InvalidPropertyException(sprintf('Property "%s" of class "%s" dosn\'t exists.', $propertyName, get_class($object)), 1369488121);
 			}
 		}
 
@@ -196,11 +196,11 @@ class ClassUtility {
 	 * @param array $callback
 	 * @param array $arguments
 	 * @return void
-	 * @throws \GoogleMapsPHP\InvalidMethodException
+	 * @throws \AdGrafik\GoogleMapsPHP\InvalidMethodException
 	 */
 	static public function callMethod($callback, $arguments) {
 		if (self::methodExists($callback[0], $callback[1]) === FALSE) {
-			throw new \GoogleMapsPHP\Exceptions\InvalidMethodException(sprintf('Method "%s" of class "%s" dosn\'t exists.', $callback[1], get_class($callback[0])), 1369488221);
+			throw new \AdGrafik\GoogleMapsPHP\Exceptions\InvalidMethodException(sprintf('Method "%s" of class "%s" dosn\'t exists.', $callback[1], get_class($callback[0])), 1369488221);
 		}
 		return call_user_func_array($callback, $arguments);
 	}

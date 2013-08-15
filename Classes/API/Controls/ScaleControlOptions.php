@@ -16,7 +16,7 @@
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-namespace GoogleMapsPHP\API\Controls;
+namespace AdGrafik\GoogleMapsPHP\API\Controls;
 
 /**
  * API equivalent to google.maps.ScaleControlOptions.
@@ -40,7 +40,7 @@ class ScaleControlOptions extends AbstractControlOptions {
 	 * Set position
 	 *
 	 * @param string $position
-	 * @return \GoogleMapsPHP\API\Controls\ScaleControlOptions
+	 * @return \AdGrafik\GoogleMapsPHP\API\Controls\ScaleControlOptions
 	 */
 	public function setPosition($position) {
 
@@ -64,7 +64,7 @@ class ScaleControlOptions extends AbstractControlOptions {
 	 * Set style
 	 *
 	 * @param string $style
-	 * @return \GoogleMapsPHP\API\Controls\ScaleControlOptions
+	 * @return \AdGrafik\GoogleMapsPHP\API\Controls\ScaleControlOptions
 	 */
 	public function setStyle($style) {
 

@@ -16,9 +16,9 @@
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-namespace GoogleMapsPHP\View;
+namespace AdGrafik\GoogleMapsPHP\View;
 
-use GoogleMapsPHP\Utility\ClassUtility;
+use AdGrafik\GoogleMapsPHP\Utility\ClassUtility;
 
 /**
  * View class to manage the HTML output.
@@ -28,7 +28,7 @@ use GoogleMapsPHP\Utility\ClassUtility;
 class View {
 
 	/**
-	 * @var \GoogleMapsPHP\View\Node\Document $documentNode
+	 * @var \AdGrafik\GoogleMapsPHP\View\Node\Document $documentNode
 	 */
 	protected $documentNode;
 
@@ -64,17 +64,17 @@ class View {
 
 		$this->nodeStack = array();
 
-		$settings = ClassUtility::makeInstance('\\GoogleMapsPHP\\Configuration\\Settings');
+		$settings = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\Configuration\\Settings');
 
-		$this->documentNode = ClassUtility::makeInstance('\\GoogleMapsPHP\\View\\Node\\Document', $settings->get('view.node.document.xmlVersion'), $settings->get('view.node.document.xmlEncoding'));
+		$this->documentNode = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\View\\Node\\Document', $settings->get('view.node.document.xmlVersion'), $settings->get('view.node.document.xmlEncoding'));
 		$this->documentNode->encoding = $settings->get('view.node.document.xmlEncoding');
 		$this->documentNode->preserveWhiteSpace = FALSE;
 		$this->documentNode->formatOutput = TRUE;
 
-		$this->headNode = ClassUtility::makeInstance('\\GoogleMapsPHP\\View\\Node\\Head', 'head');
+		$this->headNode = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\View\\Node\\Head', 'head');
 		$this->documentNode->appendChild($this->headNode);
 
-		$this->bodyNode = ClassUtility::makeInstance('\\GoogleMapsPHP\\View\\Node\\Body', 'body');
+		$this->bodyNode = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\View\\Node\\Body', 'body');
 		$this->documentNode->appendChild($this->bodyNode);
 	}
 
@@ -85,13 +85,13 @@ class View {
 	 * @param string $source
 	 * @param boolean $external
 	 * @param boolean $forceOnTop
-	 * @return \GoogleMapsPHP\View\Node\NodeInterface
+	 * @return \AdGrafik\GoogleMapsPHP\View\Node\NodeInterface
 	public function addJavaScriptLibrary($source, $forceOnTop = FALSE) {
 
 		$node = NULL;
 
 		if ($source) {
-			$node = ClassUtility::makeInstance('\\GoogleMapsPHP\\View\\Node\\JavaScriptLibrary', 'script');
+			$node = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\View\\Node\\JavaScriptLibrary', 'script');
 			$this->addHead($node, $forceOnTop);
 			$node->setAttribute('type', 'text/javascript');
 			$node->setAttribute('src', $source);
@@ -105,9 +105,9 @@ class View {
 	/**
 	 * addHead
 	 *
-	 * @param \GoogleMapsPHP\View\Node\NodeInterface $node
+	 * @param \AdGrafik\GoogleMapsPHP\View\Node\NodeInterface $node
 	 * @param boolean $forceOnTop
-	 * @return \GoogleMapsPHP\View\View
+	 * @return \AdGrafik\GoogleMapsPHP\View\View
 	 */
 	public function addHead($node, $forceOnTop = FALSE) {
 
@@ -133,9 +133,9 @@ class View {
 	/**
 	 * addBody
 	 *
-	 * @param \GoogleMapsPHP\View\Node\NodeInterface $node
+	 * @param \AdGrafik\GoogleMapsPHP\View\Node\NodeInterface $node
 	 * @param boolean $forceOnTop
-	 * @return \GoogleMapsPHP\View\View
+	 * @return \AdGrafik\GoogleMapsPHP\View\View
 	 */
 	public function addBody($node, $forceOnTop = FALSE) {
 
@@ -161,10 +161,10 @@ class View {
 	/**
 	 * Set documentNode
 	 *
-	 * @param \GoogleMapsPHP\View\Node\Document $documentNode
-	 * @return \GoogleMapsPHP\View\View
+	 * @param \AdGrafik\GoogleMapsPHP\View\Node\Document $documentNode
+	 * @return \AdGrafik\GoogleMapsPHP\View\View
 	 */
-	public function setDocumentNode(\GoogleMapsPHP\View\Node\Document $documentNode) {
+	public function setDocumentNode(\AdGrafik\GoogleMapsPHP\View\Node\Document $documentNode) {
 		$this->documentNode = $documentNode;
 		return $this;
 	}
@@ -172,7 +172,7 @@ class View {
 	/**
 	 * Get documentNode
 	 *
-	 * @return \GoogleMapsPHP\View\Node\Document
+	 * @return \AdGrafik\GoogleMapsPHP\View\Node\Document
 	 */
 	public function getDocumentNode() {
 		return $this->documentNode;
@@ -181,10 +181,10 @@ class View {
 	/**
 	 * Set headNode
 	 *
-	 * @param \GoogleMapsPHP\View\Node\Head $headNode
-	 * @return \GoogleMapsPHP\View\View
+	 * @param \AdGrafik\GoogleMapsPHP\View\Node\Head $headNode
+	 * @return \AdGrafik\GoogleMapsPHP\View\View
 	 */
-	public function setHeadNode(\GoogleMapsPHP\View\Node\Head $headNode) {
+	public function setHeadNode(\AdGrafik\GoogleMapsPHP\View\Node\Head $headNode) {
 		$this->headNode = $headNode;
 		return $this;
 	}
@@ -192,7 +192,7 @@ class View {
 	/**
 	 * Get headNode
 	 *
-	 * @return \GoogleMapsPHP\View\Node\Head
+	 * @return \AdGrafik\GoogleMapsPHP\View\Node\Head
 	 */
 	public function getHeadNode() {
 		return $this->headNode;
@@ -201,10 +201,10 @@ class View {
 	/**
 	 * Set bodyNode
 	 *
-	 * @param \GoogleMapsPHP\View\Node\Body $bodyNode
-	 * @return \GoogleMapsPHP\View\View
+	 * @param \AdGrafik\GoogleMapsPHP\View\Node\Body $bodyNode
+	 * @return \AdGrafik\GoogleMapsPHP\View\View
 	 */
-	public function setBodyNode(\GoogleMapsPHP\View\Node\Body $bodyNode) {
+	public function setBodyNode(\AdGrafik\GoogleMapsPHP\View\Node\Body $bodyNode) {
 		$this->bodyNode = $bodyNode;
 		return $this;
 	}
@@ -212,7 +212,7 @@ class View {
 	/**
 	 * Get bodyNode
 	 *
-	 * @return \GoogleMapsPHP\View\Node\Body
+	 * @return \AdGrafik\GoogleMapsPHP\View\Node\Body
 	 */
 	public function getBodyNode() {
 		return $this->bodyNode;
@@ -221,10 +221,10 @@ class View {
 	/**
 	 * printHead
 	 *
-	 * @param \GoogleMapsPHP\View\Node\NodeInterface $node
+	 * @param \AdGrafik\GoogleMapsPHP\View\Node\NodeInterface $node
 	 * @return string
 	 */
-	public function printNode(\GoogleMapsPHP\View\Node\NodeInterface $node) {
+	public function printNode(\AdGrafik\GoogleMapsPHP\View\Node\NodeInterface $node) {
 
 		$html = '';
 		if ($node->isPrinted() === FALSE) {

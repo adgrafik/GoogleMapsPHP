@@ -16,9 +16,9 @@
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-namespace GoogleMapsPHP\API\Overlays;
+namespace AdGrafik\GoogleMapsPHP\API\Overlays;
 
-use GoogleMapsPHP\Utility\ClassUtility;
+use AdGrafik\GoogleMapsPHP\Utility\ClassUtility;
 
 /**
  * API equivalent to google.maps.InfoWindowOptions.
@@ -44,12 +44,12 @@ class InfoWindowOptions {
 	public $maxWidth;
 
 	/**
-	 * @var array|\GoogleMapsPHP\API\Base\Size $pixelOffset
+	 * @var array|\AdGrafik\GoogleMapsPHP\API\Base\Size $pixelOffset
 	 */
 	public $pixelOffset;
 
 	/**
-	 * @var string|\GoogleMapsPHP\API\Base\LatLng $position
+	 * @var string|\AdGrafik\GoogleMapsPHP\API\Base\LatLng $position
 	 */
 	public $position;
 
@@ -62,7 +62,7 @@ class InfoWindowOptions {
 	 * Set content
 	 *
 	 * @param string $content
-	 * @return \GoogleMapsPHP\API\Overlays\InfoWindowOptions
+	 * @return \AdGrafik\GoogleMapsPHP\API\Overlays\InfoWindowOptions
 	 */
 	public function setContent($content) {
 		$this->content = $content;
@@ -82,7 +82,7 @@ class InfoWindowOptions {
 	 * Set disableAutoPan
 	 *
 	 * @param boolean $disableAutoPan
-	 * @return \GoogleMapsPHP\API\Overlays\InfoWindowOptions
+	 * @return \AdGrafik\GoogleMapsPHP\API\Overlays\InfoWindowOptions
 	 */
 	public function setDisableAutoPan($disableAutoPan) {
 		$this->disableAutoPan = (boolean) $disableAutoPan;
@@ -102,7 +102,7 @@ class InfoWindowOptions {
 	 * Set maxWidth
 	 *
 	 * @param integer $maxWidth
-	 * @return \GoogleMapsPHP\API\Overlays\InfoWindowOptions
+	 * @return \AdGrafik\GoogleMapsPHP\API\Overlays\InfoWindowOptions
 	 */
 	public function setMaxWidth($maxWidth) {
 		$this->maxWidth = (integer) $maxWidth;
@@ -121,13 +121,13 @@ class InfoWindowOptions {
 	/**
 	 * Set pixelOffset
 	 *
-	 * @param array|\GoogleMapsPHP\API\Base\Size $pixelOffset
-	 * @return \GoogleMapsPHP\API\Overlays\InfoWindowOptions
+	 * @param array|\AdGrafik\GoogleMapsPHP\API\Base\Size $pixelOffset
+	 * @return \AdGrafik\GoogleMapsPHP\API\Overlays\InfoWindowOptions
 	 */
 	public function setPixelOffset($pixelOffset) {
 
-		if ($pixelOffset instanceof \GoogleMapsPHP\API\Base\LatLng === FALSE) {
-			$pixelOffset = ClassUtility::makeInstance('\\GoogleMapsPHP\\API\\Base\\Size', $pixelOffset);
+		if ($pixelOffset instanceof \AdGrafik\GoogleMapsPHP\API\Base\LatLng === FALSE) {
+			$pixelOffset = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\API\\Base\\Size', $pixelOffset);
 		}
 
 		$this->pixelOffset = $pixelOffset;
@@ -137,7 +137,7 @@ class InfoWindowOptions {
 	/**
 	 * Get pixelOffset
 	 *
-	 * @return \GoogleMapsPHP\API\Base\Size
+	 * @return \AdGrafik\GoogleMapsPHP\API\Base\Size
 	 */
 	public function getPixelOffset() {
 		return $this->pixelOffset;
@@ -146,13 +146,13 @@ class InfoWindowOptions {
 	/**
 	 * Set position
 	 *
-	 * @param string|\GoogleMapsPHP\API\Base\LatLng $position
-	 * @return \GoogleMapsPHP\API\Overlays\InfoWindowOptions
+	 * @param string|\AdGrafik\GoogleMapsPHP\API\Base\LatLng $position
+	 * @return \AdGrafik\GoogleMapsPHP\API\Overlays\InfoWindowOptions
 	 */
 	public function setPosition($position) {
 
-		if ($position instanceof \GoogleMapsPHP\API\Base\LatLng === FALSE) {
-			$position = ClassUtility::makeInstance('\\GoogleMapsPHP\\API\\Base\\LatLng', $position);
+		if ($position instanceof \AdGrafik\GoogleMapsPHP\API\Base\LatLng === FALSE) {
+			$position = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\API\\Base\\LatLng', $position);
 		}
 
 		$this->position = $position;
@@ -162,7 +162,7 @@ class InfoWindowOptions {
 	/**
 	 * Get position
 	 *
-	 * @return \GoogleMapsPHP\API\Base\LatLng
+	 * @return \AdGrafik\GoogleMapsPHP\API\Base\LatLng
 	 */
 	public function getPosition() {
 		return $this->position;
@@ -172,7 +172,7 @@ class InfoWindowOptions {
 	 * Set zIndex
 	 *
 	 * @param integer $zIndex
-	 * @return \GoogleMapsPHP\API\Overlays\InfoWindowOptions
+	 * @return \AdGrafik\GoogleMapsPHP\API\Overlays\InfoWindowOptions
 	 */
 	public function setZIndex($zIndex) {
 		$this->zIndex = (integer) $zIndex;

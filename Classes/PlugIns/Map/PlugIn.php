@@ -16,14 +16,14 @@
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-namespace GoogleMapsPHP\PlugIns\Map;
+namespace AdGrafik\GoogleMapsPHP\PlugIns\Map;
 
 /**
  * Plug-in class for GoogleMapsPHP initial options.
  *
  * @author Arno Dudek <webmaster@adgrafik.at>
  */
-class PlugIn extends \GoogleMapsPHP\PlugIns\AbstractPlugIn {
+class PlugIn extends \AdGrafik\GoogleMapsPHP\PlugIns\AbstractPlugIn {
 
 	/**
 	 * @var boolean $fitBoundsOnLoad
@@ -39,7 +39,7 @@ class PlugIn extends \GoogleMapsPHP\PlugIns\AbstractPlugIn {
 	 * Set fitBoundsOnLoad
 	 *
 	 * @param boolean $fitBoundsOnLoad
-	 * @return \GoogleMapsPHP\PlugIns\Map\PlugIn
+	 * @return \AdGrafik\GoogleMapsPHP\PlugIns\Map\PlugIn
 	 */
 	public function setFitBoundsOnLoad($fitBoundsOnLoad) {
 		$this->fitBoundsOnLoad = (boolean) $fitBoundsOnLoad;
@@ -59,7 +59,7 @@ class PlugIn extends \GoogleMapsPHP\PlugIns\AbstractPlugIn {
 	 * Set closeAllInfoWindowsOnMapClick
 	 *
 	 * @param boolean $closeAllInfoWindowsOnMapClick
-	 * @return \GoogleMapsPHP\PlugIns\Map\PlugIn
+	 * @return \AdGrafik\GoogleMapsPHP\PlugIns\Map\PlugIn
 	 */
 	public function setCloseAllInfoWindowsOnMapClick($closeAllInfoWindowsOnMapClick) {
 		$this->closeAllInfoWindowsOnMapClick = (boolean) $closeAllInfoWindowsOnMapClick;

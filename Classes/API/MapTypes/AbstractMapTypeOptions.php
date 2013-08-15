@@ -16,16 +16,16 @@
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-namespace GoogleMapsPHP\API\MapTypes;
+namespace AdGrafik\GoogleMapsPHP\API\MapTypes;
 
-use GoogleMapsPHP\Utility\ClassUtility;
+use AdGrafik\GoogleMapsPHP\Utility\ClassUtility;
 
 /**
  * AbstractMapTypeOptions.
  *
  * @author Arno Dudek <webmaster@adgrafik.at>
  */
-abstract class AbstractMapTypeOptions extends \GoogleMapsPHP\Object\PropertyArrayAccess implements MapTypeOptionsInterface {
+abstract class AbstractMapTypeOptions extends \AdGrafik\GoogleMapsPHP\Object\PropertyArrayAccess implements MapTypeOptionsInterface {
 
 	/**
 	 * Constructor

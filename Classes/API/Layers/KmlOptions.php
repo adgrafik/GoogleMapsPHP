@@ -16,7 +16,7 @@
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-namespace GoogleMapsPHP\API\Layers;
+namespace AdGrafik\GoogleMapsPHP\API\Layers;
 
 /**
  * API equivalent to google.maps.KmlOptions.
@@ -50,7 +50,7 @@ class KmlOptions {
 	 * Set clickable
 	 *
 	 * @param boolean $clickable
-	 * @return \GoogleMapsPHP\API\Layers\KmlOptions
+	 * @return \AdGrafik\GoogleMapsPHP\API\Layers\KmlOptions
 	 */
 	public function setClickable($clickable) {
 		$this->clickable = (boolean) $clickable;
@@ -70,7 +70,7 @@ class KmlOptions {
 	 * Set preserveViewport
 	 *
 	 * @param boolean $preserveViewport
-	 * @return \GoogleMapsPHP\API\Layers\KmlOptions
+	 * @return \AdGrafik\GoogleMapsPHP\API\Layers\KmlOptions
 	 */
 	public function setPreserveViewport($preserveViewport) {
 		$this->preserveViewport = (boolean) $preserveViewport;
@@ -90,7 +90,7 @@ class KmlOptions {
 	 * Set suppressInfoWindows
 	 *
 	 * @param boolean $suppressInfoWindows
-	 * @return \GoogleMapsPHP\API\Layers\KmlOptions
+	 * @return \AdGrafik\GoogleMapsPHP\API\Layers\KmlOptions
 	 */
 	public function setSuppressInfoWindows($suppressInfoWindows) {
 		$this->suppressInfoWindows = (boolean) $suppressInfoWindows;
@@ -110,7 +110,7 @@ class KmlOptions {
 	 * Set url
 	 *
 	 * @param string $url
-	 * @return \GoogleMapsPHP\API\Layers\KmlOptions
+	 * @return \AdGrafik\GoogleMapsPHP\API\Layers\KmlOptions
 	 */
 	public function setUrl($url) {
 		$this->url = $url;

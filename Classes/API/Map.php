@@ -16,9 +16,9 @@
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-namespace GoogleMapsPHP\API;
+namespace AdGrafik\GoogleMapsPHP\API;
 
-use GoogleMapsPHP\Utility\ClassUtility;
+use AdGrafik\GoogleMapsPHP\Utility\ClassUtility;
 
 /**
  * API equivalent to google.maps.Map.
@@ -26,7 +26,7 @@ use GoogleMapsPHP\Utility\ClassUtility;
  * @see https://developers.google.com/maps/documentation/javascript/reference
  * @author Arno Dudek <webmaster@adgrafik.at>
  */
-class Map extends \GoogleMapsPHP\Object\OptionsArrayAccess {
+class Map extends \AdGrafik\GoogleMapsPHP\Object\OptionsArrayAccess {
 
 	/**
 	 * @var string $div
@@ -34,7 +34,7 @@ class Map extends \GoogleMapsPHP\Object\OptionsArrayAccess {
 	public $div;
 
 	/**
-	 * @var \GoogleMapsPHP\API\Map\MapOptions $options
+	 * @var \AdGrafik\GoogleMapsPHP\API\Map\MapOptions $options
 	 */
 	public $options;
 
@@ -42,12 +42,12 @@ class Map extends \GoogleMapsPHP\Object\OptionsArrayAccess {
 	 * Constructor
 	 *
 	 * @param string $div
-	 * @param array|\GoogleMapsPHP\API\Map\MapOptions $options Can be an object of type \GoogleMapsPHP\API\Map\MapOptions or an map options array.
+	 * @param array|\AdGrafik\GoogleMapsPHP\API\Map\MapOptions $options Can be an object of type \AdGrafik\GoogleMapsPHP\API\Map\MapOptions or an map options array.
 	 */
 	public function __construct($div, $options = array()) {
 
 		// Set required values
-		$this->options = ClassUtility::makeInstance('\\GoogleMapsPHP\\API\\Map\\MapOptions');
+		$this->options = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\API\\Map\\MapOptions');
 
 		// Set properties
 		$this->setDiv($div);
@@ -55,10 +55,10 @@ class Map extends \GoogleMapsPHP\Object\OptionsArrayAccess {
 
 		// Check required options
 		if ($this->getCenter() === NULL) {
-			throw new \GoogleMapsPHP\Exceptions\RequiredArgumentMissingException('Missing option "center".', 1369566987);
+			throw new \AdGrafik\GoogleMapsPHP\Exceptions\RequiredArgumentMissingException('Missing option "center".', 1369566987);
 		}
 		if ($this->getMapTypeId() === NULL) {
-			throw new \GoogleMapsPHP\Exceptions\RequiredArgumentMissingException('Missing option "mapTypeId".', 1369566988);
+			throw new \AdGrafik\GoogleMapsPHP\Exceptions\RequiredArgumentMissingException('Missing option "mapTypeId".', 1369566988);
 		}
 	}
 
@@ -66,7 +66,7 @@ class Map extends \GoogleMapsPHP\Object\OptionsArrayAccess {
 	 * Set div
 	 *
 	 * @param string $div
-	 * @return \GoogleMapsPHP\API\Map
+	 * @return \AdGrafik\GoogleMapsPHP\API\Map
 	 */
 	public function setDiv($div) {
 		$this->div = $div;
@@ -85,14 +85,14 @@ class Map extends \GoogleMapsPHP\Object\OptionsArrayAccess {
 	/**
 	 * Set options
 	 *
-	 * @param mixed $options Can be an object of type \GoogleMapsPHP\API\Map\MapOptions or an map options array.
-	 * @return \GoogleMapsPHP\API\Map
+	 * @param mixed $options Can be an object of type \AdGrafik\GoogleMapsPHP\API\Map\MapOptions or an map options array.
+	 * @return \AdGrafik\GoogleMapsPHP\API\Map
 	 */
 	public function setOptions($options) {
 		if (is_array($options)) {
 			ClassUtility::setPropertiesFromArray($this->options, $options);
-		} else if ($options instanceof \GoogleMapsPHP\API\Map\MapOptions === FALSE) {
-			throw new \GoogleMapsPHP\Exceptions\InvalidValueException('Map options must be an array or an instance of "\GoogleMapsPHP\API\Map\MapOptions".', 1369563745);
+		} else if ($options instanceof \AdGrafik\GoogleMapsPHP\API\Map\MapOptions === FALSE) {
+			throw new \AdGrafik\GoogleMapsPHP\Exceptions\InvalidValueException('Map options must be an array or an instance of "\AdGrafik\GoogleMapsPHP\API\Map\MapOptions".', 1369563745);
 		} else {
 			$this->options = $options;
 		}
@@ -102,7 +102,7 @@ class Map extends \GoogleMapsPHP\Object\OptionsArrayAccess {
 	/**
 	 * Get options
 	 *
-	 * @return \GoogleMapsPHP\API\Map\MapOptions
+	 * @return \AdGrafik\GoogleMapsPHP\API\Map\MapOptions
 	 */
 	public function getOptions() {
 		return $this->options;
@@ -114,11 +114,11 @@ class Map extends \GoogleMapsPHP\Object\OptionsArrayAccess {
 	 * @param string $propertyName
 	 * @param mixed $propertyValue
 	 * @return mixed
-	 * @throws \GoogleMapsPHP\Exceptions\InvalidMethodException
+	 * @throws \AdGrafik\GoogleMapsPHP\Exceptions\InvalidMethodException
 	 */
 	public function __call($methodName, $arguments) {
 		if (ClassUtility::methodExists($this->options, $methodName, FALSE) === FALSE) {
-			throw new \GoogleMapsPHP\Exceptions\InvalidMethodException(sprintf('Method "%s" not exists.', $methodName), 1369563744);
+			throw new \AdGrafik\GoogleMapsPHP\Exceptions\InvalidMethodException(sprintf('Method "%s" not exists.', $methodName), 1369563744);
 		}
 		return call_user_func_array(array($this->options, $methodName), $arguments);
 	}

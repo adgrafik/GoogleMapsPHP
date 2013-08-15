@@ -16,22 +16,22 @@
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-namespace GoogleMapsPHP\PlugIns\Polyline;
+namespace AdGrafik\GoogleMapsPHP\PlugIns\Polyline;
 
 /**
  * Plug-in class for GoogleMapsPHP initial options.
  *
  * @author Arno Dudek <webmaster@adgrafik.at>
  */
-class PlugIn extends \GoogleMapsPHP\PlugIns\AbstractPlugIn {
+class PlugIn extends \AdGrafik\GoogleMapsPHP\PlugIns\AbstractPlugIn {
 
 	/**
 	 * isWithinViewport
 	 *
-	 * @param \GoogleMapsPHP\API\Base\LatLngBounds $bounds
+	 * @param \AdGrafik\GoogleMapsPHP\API\Base\LatLngBounds $bounds
 	 * @return boolean
 	 */
-	public function isWithinViewport(\GoogleMapsPHP\API\Base\LatLngBounds $bounds) {
+	public function isWithinViewport(\AdGrafik\GoogleMapsPHP\API\Base\LatLngBounds $bounds) {
 
 		$path = $this->getObject()->getPath();
 		foreach ($path as &$latlng) {

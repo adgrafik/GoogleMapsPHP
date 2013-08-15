@@ -16,9 +16,9 @@
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-namespace GoogleMapsPHP\API\Base;
+namespace AdGrafik\GoogleMapsPHP\API\Base;
 
-use GoogleMapsPHP\Utility\ClassUtility;
+use AdGrafik\GoogleMapsPHP\Utility\ClassUtility;
 
 /**
  * API equivalent to google.maps.LatLngBounds.
@@ -26,15 +26,15 @@ use GoogleMapsPHP\Utility\ClassUtility;
  * @see https://developers.google.com/maps/documentation/javascript/reference
  * @author Arno Dudek <webmaster@adgrafik.at>
  */
-class LatLngBounds extends \GoogleMapsPHP\Object\PropertyArrayAccess {
+class LatLngBounds extends \AdGrafik\GoogleMapsPHP\Object\PropertyArrayAccess {
 
 	/**
-	 * @var \GoogleMapsPHP\API\Base\LatLng $northEast
+	 * @var \AdGrafik\GoogleMapsPHP\API\Base\LatLng $northEast
 	 */
 	protected $northEast;
 
 	/**
-	 * @var \GoogleMapsPHP\API\Base\LatLng $southWest
+	 * @var \AdGrafik\GoogleMapsPHP\API\Base\LatLng $southWest
 	 */
 	protected $southWest;
 
@@ -55,15 +55,15 @@ class LatLngBounds extends \GoogleMapsPHP\Object\PropertyArrayAccess {
 	 * ('47.359293,14.231415,49.544816,18.625946')
 	 * ('47.359293,14.231415')
 	 * ('47.359293,14.231415', '49.544816,18.625946')
-	 * (\GoogleMapsPHP\API\Base\LatLng)
-	 * (\GoogleMapsPHP\API\Base\LatLng, \GoogleMapsPHP\API\Base\LatLng)
+	 * (\AdGrafik\GoogleMapsPHP\API\Base\LatLng)
+	 * (\AdGrafik\GoogleMapsPHP\API\Base\LatLng, \AdGrafik\GoogleMapsPHP\API\Base\LatLng)
 	 *
-	 * @param mixed $southWest Can be a string of latitude,longitude, a float of latitude or an instance of \GoogleMapsPHP\API\Base\LatLng.
-	 * @param mixed $northEast Can be a string of latitude,longitude, a float of latitude or an instance of \GoogleMapsPHP\API\Base\LatLng.
+	 * @param mixed $southWest Can be a string of latitude,longitude, a float of latitude or an instance of \AdGrafik\GoogleMapsPHP\API\Base\LatLng.
+	 * @param mixed $northEast Can be a string of latitude,longitude, a float of latitude or an instance of \AdGrafik\GoogleMapsPHP\API\Base\LatLng.
 	 */
 	public function __construct($southWest = NULL, $northEast = NULL) {
 
-		if ($northEast === NULL && $southWest !== NULL && $southWest instanceof \GoogleMapsPHP\API\Base\LatLng === FALSE) {
+		if ($northEast === NULL && $southWest !== NULL && $southWest instanceof \AdGrafik\GoogleMapsPHP\API\Base\LatLng === FALSE) {
 			@list($southWestLat, $southWestLng, $northEastLat, $northEastLng) = explode(',', $southWest);
 			$southWest = $southWestLat . ',' . $southWestLng;
 			if ($northEastLat !== NULL && $northEastLng !== NULL) {
@@ -96,8 +96,8 @@ class LatLngBounds extends \GoogleMapsPHP\Object\PropertyArrayAccess {
 	 */
 	public function setNorthEast($northEast) {
 
-		if ($northEast instanceof \GoogleMapsPHP\API\Base\LatLng === FALSE) {
-			$northEast = ClassUtility::makeInstance('\\GoogleMapsPHP\\API\\Base\\LatLng', $northEast);
+		if ($northEast instanceof \AdGrafik\GoogleMapsPHP\API\Base\LatLng === FALSE) {
+			$northEast = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\API\\Base\\LatLng', $northEast);
 		}
 
 		$this->northEast = $northEast;
@@ -108,7 +108,7 @@ class LatLngBounds extends \GoogleMapsPHP\Object\PropertyArrayAccess {
 	/**
 	 * Get northEast
 	 *
-	 * @return \GoogleMapsPHP\API\Base\LatLng
+	 * @return \AdGrafik\GoogleMapsPHP\API\Base\LatLng
 	 */
 	public function getNorthEast() {
 		return $this->northEast;
@@ -118,12 +118,12 @@ class LatLngBounds extends \GoogleMapsPHP\Object\PropertyArrayAccess {
 	 * Set southWest
 	 *
 	 * @param mixed $southWest
-	 * @return \GoogleMapsPHP\API\Base\LatLngBounds
+	 * @return \AdGrafik\GoogleMapsPHP\API\Base\LatLngBounds
 	 */
 	public function setSouthWest($southWest) {
 
-		if ($southWest instanceof \GoogleMapsPHP\API\Base\LatLng === FALSE) {
-			$southWest = ClassUtility::makeInstance('\\GoogleMapsPHP\\API\\Base\\LatLng', $southWest);
+		if ($southWest instanceof \AdGrafik\GoogleMapsPHP\API\Base\LatLng === FALSE) {
+			$southWest = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\API\\Base\\LatLng', $southWest);
 		}
 
 		$this->southWest = $southWest;
@@ -134,7 +134,7 @@ class LatLngBounds extends \GoogleMapsPHP\Object\PropertyArrayAccess {
 	/**
 	 * Get southWest
 	 *
-	 * @return \GoogleMapsPHP\API\Base\LatLng
+	 * @return \AdGrafik\GoogleMapsPHP\API\Base\LatLng
 	 */
 	public function getSouthWest() {
 		return $this->southWest;
@@ -143,7 +143,7 @@ class LatLngBounds extends \GoogleMapsPHP\Object\PropertyArrayAccess {
 	/**
 	 * Computes the center of this LatLngBounds.
 	 *
-	 * @return \GoogleMapsPHP\API\Base\LatLng
+	 * @return \AdGrafik\GoogleMapsPHP\API\Base\LatLng
 	 */
 	public function getCenter() {
 
@@ -153,14 +153,14 @@ class LatLngBounds extends \GoogleMapsPHP\Object\PropertyArrayAccess {
 		$latitude = $southWest->getLatitude() + (($northEast->getLatitude() - $southWest->getLatitude()) / 2);
 		$longitude = $southWest->getLongitude() + (($northEast->getLongitude() - $southWest->getLongitude()) / 2);
 
-		return ClassUtility::makeInstance('\\GoogleMapsPHP\\API\\Base\\LatLng', $latitude, $longitude);
+		return ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\API\\Base\\LatLng', $latitude, $longitude);
 	}
 
 	/**
 	 * Returns TRUE if this bounds approximately equals the given bounds.
 	 * 
-	 * @param \GoogleMapsPHP\API\Base\LatLngBounds $bounds
-	 * @return \GoogleMapsPHP\API\Base\LatLngBounds
+	 * @param \AdGrafik\GoogleMapsPHP\API\Base\LatLngBounds $bounds
+	 * @return \AdGrafik\GoogleMapsPHP\API\Base\LatLngBounds
 	 */
 	public function equals($bounds) {
 		return ($this == $bounds);
@@ -170,26 +170,26 @@ class LatLngBounds extends \GoogleMapsPHP\Object\PropertyArrayAccess {
 	 * Extends this bounds to contain the given point.
 	 * 
 	 * @param mixed $latLng
-	 * @return \GoogleMapsPHP\API\Base\LatLngBounds
+	 * @return \AdGrafik\GoogleMapsPHP\API\Base\LatLngBounds
 	 */
 	public function extend($latLng) {
 
 		if ($this->getSouthWest() === NULL) {
-			$southWest = ($latLng instanceof \GoogleMapsPHP\API\Base\LatLng)
+			$southWest = ($latLng instanceof \AdGrafik\GoogleMapsPHP\API\Base\LatLng)
 				? clone $latLng
-				: ClassUtility::makeInstance('\\GoogleMapsPHP\\API\\Base\\LatLng', $latLng);
+				: ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\API\\Base\\LatLng', $latLng);
 			$this->setSouthWest(clone $southWest);
 		}
 
 		if ($this->getNorthEast() === NULL) {
-			$northEast = ($latLng instanceof \GoogleMapsPHP\API\Base\LatLng)
+			$northEast = ($latLng instanceof \AdGrafik\GoogleMapsPHP\API\Base\LatLng)
 				? clone $latLng
-				: ClassUtility::makeInstance('\\GoogleMapsPHP\\API\\Base\\LatLng', $latLng);
+				: ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\API\\Base\\LatLng', $latLng);
 			$this->setNorthEast(clone $northEast);
 		}
 
-		if ($latLng instanceof \GoogleMapsPHP\API\Base\LatLng === FALSE) {
-			$latLng = ClassUtility::makeInstance('\\GoogleMapsPHP\\API\\Base\\LatLng', $latLng);
+		if ($latLng instanceof \AdGrafik\GoogleMapsPHP\API\Base\LatLng === FALSE) {
+			$latLng = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\API\\Base\\LatLng', $latLng);
 		}
 
 		if ($latLng->getLatitude()  < $this->getSouthWest()->getLatitude())  $this->getSouthWest()->setLatitude($latLng->getLatitude());
@@ -208,8 +208,8 @@ class LatLngBounds extends \GoogleMapsPHP\Object\PropertyArrayAccess {
 	 */
 	public function contains($latLng) {
 
-		if ($latLng instanceof \GoogleMapsPHP\API\Base\LatLng === FALSE) {
-			$latLng = ClassUtility::makeInstance('\\GoogleMapsPHP\\API\\Base\\LatLng', $latLng);
+		if ($latLng instanceof \AdGrafik\GoogleMapsPHP\API\Base\LatLng === FALSE) {
+			$latLng = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\API\\Base\\LatLng', $latLng);
 		}
 
 		return (
@@ -223,13 +223,13 @@ class LatLngBounds extends \GoogleMapsPHP\Object\PropertyArrayAccess {
 	/**
 	 * Returns TRUE if this bounds shares any points with this bounds.
 	 * 
-	 * @param \GoogleMapsPHP\API\Base\LatLngBounds $bounds
+	 * @param \AdGrafik\GoogleMapsPHP\API\Base\LatLngBounds $bounds
 	 * @return boolean
 	 */
 	public function intersects($bounds) {
 
-		if ($bounds instanceof \GoogleMapsPHP\API\Base\LatLngBounds === FALSE) {
-			$bounds = ClassUtility::makeInstance('\\GoogleMapsPHP\\API\\Base\\LatLngBounds', $bounds);
+		if ($bounds instanceof \AdGrafik\GoogleMapsPHP\API\Base\LatLngBounds === FALSE) {
+			$bounds = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\API\\Base\\LatLngBounds', $bounds);
 		}
 	 // TODO: implement intersects for LatLngBounds
 	}
@@ -237,13 +237,13 @@ class LatLngBounds extends \GoogleMapsPHP\Object\PropertyArrayAccess {
 	/**
 	 * Extends this bounds to contain the union of this and the given bounds.
 	 * 
-	 * @param \GoogleMapsPHP\API\Base\LatLngBounds $bounds
-	 * @return \GoogleMapsPHP\API\Base\LatLngBounds
+	 * @param \AdGrafik\GoogleMapsPHP\API\Base\LatLngBounds $bounds
+	 * @return \AdGrafik\GoogleMapsPHP\API\Base\LatLngBounds
 	 */
 	public function union($bounds) {
 
-		if ($bounds instanceof \GoogleMapsPHP\API\Base\LatLngBounds === FALSE) {
-			$bounds = ClassUtility::makeInstance('\\GoogleMapsPHP\\API\\Base\\LatLngBounds', $bounds);
+		if ($bounds instanceof \AdGrafik\GoogleMapsPHP\API\Base\LatLngBounds === FALSE) {
+			$bounds = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\API\\Base\\LatLngBounds', $bounds);
 		}
 
 		if ($this->southWest === NULL) {

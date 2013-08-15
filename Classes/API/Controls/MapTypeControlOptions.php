@@ -16,7 +16,7 @@
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-namespace GoogleMapsPHP\API\Controls;
+namespace AdGrafik\GoogleMapsPHP\API\Controls;
 
 /**
  * API equivalent to google.maps.MapTypeControlOptions.
@@ -45,7 +45,7 @@ class MapTypeControlOptions extends AbstractControlOptions {
 	 * Set mapTypeIds
 	 *
 	 * @param array $mapTypeIds
-	 * @return \GoogleMapsPHP\API\Controls\MapTypeControlOptions
+	 * @return \AdGrafik\GoogleMapsPHP\API\Controls\MapTypeControlOptions
 	 */
 	public function setMapTypeIds($mapTypeIds) {
 
@@ -62,16 +62,16 @@ class MapTypeControlOptions extends AbstractControlOptions {
 	 * Add mapTypeId
 	 *
 	 * @param string $mapTypeId
-	 * @return \GoogleMapsPHP\API\Controls\MapTypeControlOptions
+	 * @return \AdGrafik\GoogleMapsPHP\API\Controls\MapTypeControlOptions
 	 */
 	public function addMapTypeId($mapTypeId) {
 
 		if (!in_array($mapTypeId, (array) $this->mapTypeIds)) {
 
-			if ($mapTypeId == \GoogleMapsPHP\API\Map\MapTypeId::HYBRID
-					|| $mapTypeId == \GoogleMapsPHP\API\Map\MapTypeId::ROADMAP
-					|| $mapTypeId == \GoogleMapsPHP\API\Map\MapTypeId::SATELLITE
-					|| $mapTypeId == \GoogleMapsPHP\API\Map\MapTypeId::TERRAIN) {
+			if ($mapTypeId == \AdGrafik\GoogleMapsPHP\API\Map\MapTypeId::HYBRID
+					|| $mapTypeId == \AdGrafik\GoogleMapsPHP\API\Map\MapTypeId::ROADMAP
+					|| $mapTypeId == \AdGrafik\GoogleMapsPHP\API\Map\MapTypeId::SATELLITE
+					|| $mapTypeId == \AdGrafik\GoogleMapsPHP\API\Map\MapTypeId::TERRAIN) {
 
 				$id = new \StdClass();
 				$id->className = 'MapTypeId';
@@ -91,7 +91,7 @@ class MapTypeControlOptions extends AbstractControlOptions {
 	 * Remove mapTypeId
 	 *
 	 * @param string $mapTypeId
-	 * @return \GoogleMapsPHP\API\Controls\MapTypeControlOptions
+	 * @return \AdGrafik\GoogleMapsPHP\API\Controls\MapTypeControlOptions
 	 */
 	public function removeMapTypeId($mapTypeId) {
 		if ($key = array_search($mapTypeId, $this->mapTypeIds)) {
@@ -113,7 +113,7 @@ class MapTypeControlOptions extends AbstractControlOptions {
 	 * Set position
 	 *
 	 * @param string $position
-	 * @return \GoogleMapsPHP\API\Controls\MapTypeControlOptions
+	 * @return \AdGrafik\GoogleMapsPHP\API\Controls\MapTypeControlOptions
 	 */
 	public function setPosition($position) {
 
@@ -137,7 +137,7 @@ class MapTypeControlOptions extends AbstractControlOptions {
 	 * Set style
 	 *
 	 * @param string $style
-	 * @return \GoogleMapsPHP\API\Controls\MapTypeControlOptions
+	 * @return \AdGrafik\GoogleMapsPHP\API\Controls\MapTypeControlOptions
 	 */
 	public function setStyle($style) {
 

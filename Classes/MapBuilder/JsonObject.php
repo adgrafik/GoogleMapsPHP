@@ -16,7 +16,7 @@
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-namespace GoogleMapsPHP\MapBuilder;
+namespace AdGrafik\GoogleMapsPHP\MapBuilder;
 
 /**
  * JsonObject class.
@@ -31,7 +31,7 @@ class JsonObject {
 	public $debug;
 
 	/**
-	 * @var \GoogleMapsPHP\PlugIns\Map\PlugIn $mapPlugIn
+	 * @var \AdGrafik\GoogleMapsPHP\PlugIns\Map\PlugIn $mapPlugIn
 	 */
 	public $mapPlugIn;
 
@@ -50,7 +50,7 @@ class JsonObject {
 	 * Set debug
 	 *
 	 * @param boolean $debug
-	 * @return \GoogleMapsPHP\MapBuilder\JsonObject
+	 * @return \AdGrafik\GoogleMapsPHP\MapBuilder\JsonObject
 	 */
 	public function setDebug($debug) {
 		$this->debug = (boolean) $debug;
@@ -60,10 +60,10 @@ class JsonObject {
 	/**
 	 * Set mapPlugIn
 	 *
-	 * @param \GoogleMapsPHP\PlugIns\Map\PlugIn $mapPlugIn
-	 * @return \GoogleMapsPHP\MapBuilder\JsonObject
+	 * @param \AdGrafik\GoogleMapsPHP\PlugIns\Map\PlugIn $mapPlugIn
+	 * @return \AdGrafik\GoogleMapsPHP\MapBuilder\JsonObject
 	 */
-	public function setMapPlugIn(\GoogleMapsPHP\PlugIns\Map\PlugIn $mapPlugIn) {
+	public function setMapPlugIn(\AdGrafik\GoogleMapsPHP\PlugIns\Map\PlugIn $mapPlugIn) {
 		$this->mapPlugIn = $mapPlugIn;
 		return $this;
 	}
@@ -71,7 +71,7 @@ class JsonObject {
 	/**
 	 * Get mapPlugIn
 	 *
-	 * @return \GoogleMapsPHP\PlugIns\Map
+	 * @return \AdGrafik\GoogleMapsPHP\PlugIns\Map
 	 */
 	public function getMapPlugIn() {
 		return $this->mapPlugIn;
@@ -81,7 +81,7 @@ class JsonObject {
 	 * Set plugIns
 	 *
 	 * @param array $plugIns
-	 * @return \GoogleMapsPHP\MapBuilder\JsonObject
+	 * @return \AdGrafik\GoogleMapsPHP\MapBuilder\JsonObject
 	 */
 	public function setPlugIns(array $plugIns) {
 		$this->plugIns = $plugIns;
@@ -91,10 +91,10 @@ class JsonObject {
 	/**
 	 * Add plugIn
 	 *
-	 * @param \GoogleMapsPHP\PlugIns\PlugInInterface $plugIn
-	 * @return \GoogleMapsPHP\MapBuilder\JsonObject
+	 * @param \AdGrafik\GoogleMapsPHP\PlugIns\PlugInInterface $plugIn
+	 * @return \AdGrafik\GoogleMapsPHP\MapBuilder\JsonObject
 	 */
-	public function addPlugIn(\GoogleMapsPHP\PlugIns\PlugInInterface $plugIn) {
+	public function addPlugIn(\AdGrafik\GoogleMapsPHP\PlugIns\PlugInInterface $plugIn) {
 		$this->plugIns[] = $plugIn;
 		return $this;
 	}
@@ -112,7 +112,7 @@ class JsonObject {
 	 * Get plugIn by ID
 	 *
 	 * @param integer $id
-	 * @return \GoogleMapsPHP\PlugIns\PlugInInterface
+	 * @return \AdGrafik\GoogleMapsPHP\PlugIns\PlugInInterface
 	 */
 	public function findPlugInById($id) {
 

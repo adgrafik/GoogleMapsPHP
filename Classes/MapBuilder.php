@@ -16,9 +16,9 @@
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-namespace GoogleMapsPHP;
+namespace AdGrafik\GoogleMapsPHP;
 
-use GoogleMapsPHP\Utility\ClassUtility;
+use AdGrafik\GoogleMapsPHP\Utility\ClassUtility;
 
 /**
  * Class to create and manage HTML output.
@@ -26,35 +26,35 @@ use GoogleMapsPHP\Utility\ClassUtility;
  * @author Arno Dudek <webmaster@adgrafik.at>
  * @api
  */
-class MapBuilder extends \GoogleMapsPHP\PlugInProvider {
+class MapBuilder extends \AdGrafik\GoogleMapsPHP\PlugInProvider {
 
 	/**
-	 * @var \GoogleMapsPHP\View\Document $view
+	 * @var \AdGrafik\GoogleMapsPHP\View\Document $view
 	 */
 	protected $view;
 
 	/**
-	 * @var \GoogleMapsPHP\View\Node\JQuery $jQueryNode
+	 * @var \AdGrafik\GoogleMapsPHP\View\Node\JQuery $jQueryNode
 	 */
 	protected $jQueryNode;
 
 	/**
-	 * @var \GoogleMapsPHP\View\Node\GoogleMapsAPI $googleMapsApiNode
+	 * @var \AdGrafik\GoogleMapsPHP\View\Node\GoogleMapsAPI $googleMapsApiNode
 	 */
 	protected $googleMapsApiNode;
 
 	/**
-	 * @var \GoogleMapsPHP\View\Node\MapBuilder $mapBuilderNode
+	 * @var \AdGrafik\GoogleMapsPHP\View\Node\MapBuilder $mapBuilderNode
 	 */
 	protected $mapBuilderNode;
 
 	/**
-	 * @var \GoogleMapsPHP\View\Node\Options $optionsNode
+	 * @var \AdGrafik\GoogleMapsPHP\View\Node\Options $optionsNode
 	 */
 	protected $optionsNode;
 
 	/**
-	 * @var \GoogleMapsPHP\View\Node\Canvas $canvasNode
+	 * @var \AdGrafik\GoogleMapsPHP\View\Node\Canvas $canvasNode
 	 */
 	protected $canvasNode;
 
@@ -63,7 +63,7 @@ class MapBuilder extends \GoogleMapsPHP\PlugInProvider {
 	 * MapBuilder( [$mapId] [, $options] );
 	 *
 	 * @param mixed $mapId
-	 * @param mixed $options Can be an object of type \GoogleMapsPHP\API\Map\MapOptions or an map options array.
+	 * @param mixed $options Can be an object of type \AdGrafik\GoogleMapsPHP\API\Map\MapOptions or an map options array.
 	 */
 	public function __construct($mapId = '', $options = array()) {
 
@@ -71,7 +71,7 @@ class MapBuilder extends \GoogleMapsPHP\PlugInProvider {
 		call_user_func(array('parent', '__construct'), $mapId, $options);
 
 		// Create XML document and nodes in order of appearance.
-		$this->view = ClassUtility::makeInstance('\\GoogleMapsPHP\\View\\View');
+		$this->view = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\View\\View');
 
 /*
 		// TODO: Use of universal JavaScript nodes.
@@ -95,7 +95,7 @@ class MapBuilder extends \GoogleMapsPHP\PlugInProvider {
 		$jQuerySource = $this->getSettings()->get('view.node.jQuery.source');
 		if ($jQuerySource) {
 			$http = $this->getSettings()->get('view.node.jQuery.external') ? '' : GMP_HTTP_PATH;
-			$this->jQueryNode = ClassUtility::makeInstance('\\GoogleMapsPHP\\View\\Node\\JQuery', 'script');
+			$this->jQueryNode = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\View\\Node\\JQuery', 'script');
 			$this->view->addHead($this->jQueryNode, TRUE);
 			$this->jQueryNode->setAttribute('type', 'text/javascript');
 			$this->jQueryNode->setAttribute('src', $http . $jQuerySource);
@@ -104,7 +104,7 @@ class MapBuilder extends \GoogleMapsPHP\PlugInProvider {
 		$googleMapsApiSource = $this->getSettings()->get('view.node.googleMapsApi.source');
 		if ($googleMapsApiSource) {
 			$http = $this->getSettings()->get('view.node.googleMapsApi.external') ? '' : GMP_HTTP_PATH;
-			$this->googleMapsApiNode = ClassUtility::makeInstance('\\GoogleMapsPHP\\View\\Node\\GoogleMapsAPI', 'script');
+			$this->googleMapsApiNode = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\View\\Node\\GoogleMapsAPI', 'script');
 			$this->view->addHead($this->googleMapsApiNode, TRUE);
 			$this->googleMapsApiNode->setAttribute('type', 'text/javascript');
 			$this->googleMapsApiNode->setAttribute('src', $http . $googleMapsApiSource);
@@ -113,20 +113,20 @@ class MapBuilder extends \GoogleMapsPHP\PlugInProvider {
 		$mapBuilderSource = $this->getSettings()->get('view.node.mapBuilder.source');
 		if ($mapBuilderSource) {
 			$http = $this->getSettings()->get('view.node.mapBuilder.external') ? '' : GMP_HTTP_PATH;
-			$this->mapBuilderNode = ClassUtility::makeInstance('\\GoogleMapsPHP\\View\\Node\\MapBuilder', 'script');
+			$this->mapBuilderNode = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\View\\Node\\MapBuilder', 'script');
 			$this->view->addHead($this->mapBuilderNode, TRUE);
 			$this->mapBuilderNode->setAttribute('type', 'text/javascript');
 			$this->mapBuilderNode->setAttribute('src', $http . $mapBuilderSource);
 		}
 
-		$this->optionsNode = ClassUtility::makeInstance('\\GoogleMapsPHP\\View\\Node\\Options', 'script');
+		$this->optionsNode = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\View\\Node\\Options', 'script');
 		$this->view->addHead($this->optionsNode);
 		$this->optionsNode->setAttribute('type', 'text/javascript');
 
 		if (($tagName = $this->getSettings()->get('view.node.canvas.tagName')) === NULL) {
 			$tagName = 'div';
 		}
-		$this->canvasNode = ClassUtility::makeInstance('\\GoogleMapsPHP\\View\\Node\\Canvas', $tagName);
+		$this->canvasNode = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\View\\Node\\Canvas', $tagName);
 		$this->view->addBody($this->canvasNode, TRUE);
 		$this->canvasNode->setAttribute('id', $this->getMapId());
 		$this->canvasNode->setIdAttribute('id', TRUE);
@@ -142,10 +142,10 @@ class MapBuilder extends \GoogleMapsPHP\PlugInProvider {
 	/**
 	 * Set map
 	 *
-	 * @param \GoogleMapsPHP\API\Map $map
-	 * @return \GoogleMapsPHP\MapBuilder
+	 * @param \AdGrafik\GoogleMapsPHP\API\Map $map
+	 * @return \AdGrafik\GoogleMapsPHP\MapBuilder
 	 */
-	public function setMap(\GoogleMapsPHP\API\Map $map) {
+	public function setMap(\AdGrafik\GoogleMapsPHP\API\Map $map) {
 		$this->getJsonObject()->getMapPlugIn()->getObject()->setMap($map);
 		return $this;
 	}
@@ -153,7 +153,7 @@ class MapBuilder extends \GoogleMapsPHP\PlugInProvider {
 	/**
 	 * Get map
 	 *
-	 * @return \GoogleMapsPHP\API\Map
+	 * @return \AdGrafik\GoogleMapsPHP\API\Map
 	 */
 	public function getMap() {
 		return $this->getJsonObject()->getMapPlugIn()->getObject();
@@ -162,10 +162,10 @@ class MapBuilder extends \GoogleMapsPHP\PlugInProvider {
 	/**
 	 * Set view
 	 *
-	 * @param \GoogleMapsPHP\View\Document $view
-	 * @return \GoogleMapsPHP\MapBuilder
+	 * @param \AdGrafik\GoogleMapsPHP\View\Document $view
+	 * @return \AdGrafik\GoogleMapsPHP\MapBuilder
 	 */
-	public function setView(\GoogleMapsPHP\View\Document $view) {
+	public function setView(\AdGrafik\GoogleMapsPHP\View\Document $view) {
 		$this->view = $view;
 		return $this;
 	}
@@ -173,7 +173,7 @@ class MapBuilder extends \GoogleMapsPHP\PlugInProvider {
 	/**
 	 * Get view
 	 *
-	 * @return \GoogleMapsPHP\View\Document
+	 * @return \AdGrafik\GoogleMapsPHP\View\Document
 	 */
 	public function getView() {
 		return $this->view;
@@ -182,10 +182,10 @@ class MapBuilder extends \GoogleMapsPHP\PlugInProvider {
 	/**
 	 * Set jQueryNode
 	 *
-	 * @param \GoogleMapsPHP\View\Node\JavaScriptLibrary $jQueryNode
-	 * @return \GoogleMapsPHP\MapBuilder
+	 * @param \AdGrafik\GoogleMapsPHP\View\Node\JavaScriptLibrary $jQueryNode
+	 * @return \AdGrafik\GoogleMapsPHP\MapBuilder
 	 */
-	public function setJQueryNode(\GoogleMapsPHP\View\Node\JavaScriptLibrary $jQueryNode) {
+	public function setJQueryNode(\AdGrafik\GoogleMapsPHP\View\Node\JavaScriptLibrary $jQueryNode) {
 		$this->jQueryNode = $jQueryNode;
 		return $this;
 	}
@@ -193,7 +193,7 @@ class MapBuilder extends \GoogleMapsPHP\PlugInProvider {
 	/**
 	 * Get jQueryNode
 	 *
-	 * @return \GoogleMapsPHP\View\Node\JavaScriptLibrary
+	 * @return \AdGrafik\GoogleMapsPHP\View\Node\JavaScriptLibrary
 	 */
 	public function getJQueryNode() {
 		return $this->jQueryNode;
@@ -202,10 +202,10 @@ class MapBuilder extends \GoogleMapsPHP\PlugInProvider {
 	/**
 	 * Set googleMapsApiNode
 	 *
-	 * @param \GoogleMapsPHP\View\Node\JavaScriptLibrary $googleMapsApiNode
-	 * @return \GoogleMapsPHP\MapBuilder
+	 * @param \AdGrafik\GoogleMapsPHP\View\Node\JavaScriptLibrary $googleMapsApiNode
+	 * @return \AdGrafik\GoogleMapsPHP\MapBuilder
 	 */
-	public function setGoogleMapsApiNode(\GoogleMapsPHP\View\Node\JavaScriptLibrary $googleMapsApiNode) {
+	public function setGoogleMapsApiNode(\AdGrafik\GoogleMapsPHP\View\Node\JavaScriptLibrary $googleMapsApiNode) {
 		$this->googleMapsApiNode = $googleMapsApiNode;
 		return $this;
 	}
@@ -213,7 +213,7 @@ class MapBuilder extends \GoogleMapsPHP\PlugInProvider {
 	/**
 	 * Get googleMapsApiNode
 	 *
-	 * @return \GoogleMapsPHP\View\Node\JavaScriptLibrary
+	 * @return \AdGrafik\GoogleMapsPHP\View\Node\JavaScriptLibrary
 	 */
 	public function getGoogleMapsApiNode() {
 		return $this->googleMapsApiNode;
@@ -222,10 +222,10 @@ class MapBuilder extends \GoogleMapsPHP\PlugInProvider {
 	/**
 	 * Set mapBuilderNode
 	 *
-	 * @param \GoogleMapsPHP\View\Node\JavaScriptLibrary $mapBuilderNode
-	 * @return \GoogleMapsPHP\MapBuilder
+	 * @param \AdGrafik\GoogleMapsPHP\View\Node\JavaScriptLibrary $mapBuilderNode
+	 * @return \AdGrafik\GoogleMapsPHP\MapBuilder
 	 */
-	public function setMapBuilderNode(\GoogleMapsPHP\View\Node\JavaScriptLibrary $mapBuilderNode) {
+	public function setMapBuilderNode(\AdGrafik\GoogleMapsPHP\View\Node\JavaScriptLibrary $mapBuilderNode) {
 		$this->mapBuilderNode = $mapBuilderNode;
 		return $this;
 	}
@@ -233,7 +233,7 @@ class MapBuilder extends \GoogleMapsPHP\PlugInProvider {
 	/**
 	 * Get mapBuilderNode
 	 *
-	 * @return \GoogleMapsPHP\View\Node\JavaScriptLibrary
+	 * @return \AdGrafik\GoogleMapsPHP\View\Node\JavaScriptLibrary
 	 */
 	public function getMapBuilderNode() {
 		return $this->mapBuilderNode;
@@ -242,10 +242,10 @@ class MapBuilder extends \GoogleMapsPHP\PlugInProvider {
 	/**
 	 * Set optionsNode
 	 *
-	 * @param \GoogleMapsPHP\View\Node\Options $optionsNode
-	 * @return \GoogleMapsPHP\MapBuilder
+	 * @param \AdGrafik\GoogleMapsPHP\View\Node\Options $optionsNode
+	 * @return \AdGrafik\GoogleMapsPHP\MapBuilder
 	 */
-	public function setOptionsNode(\GoogleMapsPHP\View\Node\Options $optionsNode) {
+	public function setOptionsNode(\AdGrafik\GoogleMapsPHP\View\Node\Options $optionsNode) {
 		$this->optionsNode = $optionsNode;
 		return $this;
 	}
@@ -253,7 +253,7 @@ class MapBuilder extends \GoogleMapsPHP\PlugInProvider {
 	/**
 	 * Get optionsNode
 	 *
-	 * @return \GoogleMapsPHP\View\Node\Options
+	 * @return \AdGrafik\GoogleMapsPHP\View\Node\Options
 	 */
 	public function getOptionsNode() {
 		return $this->optionsNode;
@@ -262,10 +262,10 @@ class MapBuilder extends \GoogleMapsPHP\PlugInProvider {
 	/**
 	 * Set canvasNode
 	 *
-	 * @param \GoogleMapsPHP\View\Node\Canvas $canvasNode
-	 * @return \GoogleMapsPHP\MapBuilder
+	 * @param \AdGrafik\GoogleMapsPHP\View\Node\Canvas $canvasNode
+	 * @return \AdGrafik\GoogleMapsPHP\MapBuilder
 	 */
-	public function setCanvasNode(\GoogleMapsPHP\View\Node\Canvas $canvasNode) {
+	public function setCanvasNode(\AdGrafik\GoogleMapsPHP\View\Node\Canvas $canvasNode) {
 		$this->canvasNode = $canvasNode;
 		return $this;
 	}
@@ -273,7 +273,7 @@ class MapBuilder extends \GoogleMapsPHP\PlugInProvider {
 	/**
 	 * Get canvasNode
 	 *
-	 * @return \GoogleMapsPHP\View\Node\Canvas
+	 * @return \AdGrafik\GoogleMapsPHP\View\Node\Canvas
 	 */
 	public function getCanvasNode() {
 		return $this->canvasNode;
@@ -424,14 +424,14 @@ class MapBuilder extends \GoogleMapsPHP\PlugInProvider {
 	 * @param string $methodName
 	 * @param array $arguments
 	 * @return mixed
-	 * @throws \GoogleMapsPHP\Exceptions\InvalidMethodException
+	 * @throws \AdGrafik\GoogleMapsPHP\Exceptions\InvalidMethodException
 	 */
 	public function __call($methodName, $arguments) {
 		$object = $this->getJsonObject()->getMapPlugIn();
 		if (ClassUtility::methodExists($object, $methodName, FALSE) === FALSE) {
 			$object = $object->getObject();
 			if (ClassUtility::methodExists($object, $methodName, FALSE) === FALSE) {
-				throw new \GoogleMapsPHP\Exceptions\InvalidMethodException(sprintf('Method "%s" not exists.', $methodName), 1369563764);
+				throw new \AdGrafik\GoogleMapsPHP\Exceptions\InvalidMethodException(sprintf('Method "%s" not exists.', $methodName), 1369563764);
 			}
 		}
 		return call_user_func_array(array($object, $methodName), $arguments);

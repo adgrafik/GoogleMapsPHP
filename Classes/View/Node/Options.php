@@ -16,14 +16,14 @@
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-namespace GoogleMapsPHP\View\Node;
+namespace AdGrafik\GoogleMapsPHP\View\Node;
 
 /**
  * DOMElement for Options.
  *
  * @author Arno Dudek <webmaster@adgrafik.at>
  */
-class Options extends \GoogleMapsPHP\View\Node\AbstractNode {
+class Options extends \AdGrafik\GoogleMapsPHP\View\Node\AbstractNode {
 
 	/**
 	 * @var boolean $printed
@@ -34,7 +34,7 @@ class Options extends \GoogleMapsPHP\View\Node\AbstractNode {
 	 * Set printed
 	 *
 	 * @param boolean $printed
-	 * @return \GoogleMapsPHP\View\Node\Options
+	 * @return \AdGrafik\GoogleMapsPHP\View\Node\Options
 	 */
 	public function setPrinted($printed) {
 		$this->printed = (boolean) $printed;

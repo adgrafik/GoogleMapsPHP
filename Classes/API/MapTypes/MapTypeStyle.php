@@ -16,9 +16,9 @@
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-namespace GoogleMapsPHP\API\MapTypes;
+namespace AdGrafik\GoogleMapsPHP\API\MapTypes;
 
-use GoogleMapsPHP\Utility\ClassUtility;
+use AdGrafik\GoogleMapsPHP\Utility\ClassUtility;
 
 /**
  * API equivalent to google.maps.MapTypeStyle.
@@ -57,7 +57,7 @@ class MapTypeStyle {
 	 * Set elementType
 	 *
 	 * @param string $elementType
-	 * @return \GoogleMapsPHP\API\MapTypes\MapTypeStyle
+	 * @return \AdGrafik\GoogleMapsPHP\API\MapTypes\MapTypeStyle
 	 */
 	public function setElementType($elementType) {
 		$this->elementType = $elementType;
@@ -77,7 +77,7 @@ class MapTypeStyle {
 	 * Set featureType
 	 *
 	 * @param string $featureType
-	 * @return \GoogleMapsPHP\API\MapTypes\MapTypeStyle
+	 * @return \AdGrafik\GoogleMapsPHP\API\MapTypes\MapTypeStyle
 	 */
 	public function setFeatureType($featureType) {
 		$this->featureType = $featureType;
@@ -97,7 +97,7 @@ class MapTypeStyle {
 	 * Set stylers
 	 *
 	 * @param array $stylers
-	 * @return \GoogleMapsPHP\API\MapTypes\MapTypeStyle
+	 * @return \AdGrafik\GoogleMapsPHP\API\MapTypes\MapTypeStyle
 	 */
 	public function setStylers(array $stylers) {
 		foreach ($stylers as &$styler) {
@@ -110,12 +110,12 @@ class MapTypeStyle {
 	 * Add a styler
 	 *
 	 * @param array $styler
-	 * @return \GoogleMapsPHP\API\MapTypes\MapTypeStyle
+	 * @return \AdGrafik\GoogleMapsPHP\API\MapTypes\MapTypeStyle
 	 */
 	public function addStyler(array $styler) {
 
-		if ($styler instanceof \GoogleMapsPHP\API\MapTypes\MapTypeStyler === FALSE) {
-			$styler = ClassUtility::makeInstance('\\GoogleMapsPHP\\API\\MapTypes\\MapTypeStyler', $styler);
+		if ($styler instanceof \AdGrafik\GoogleMapsPHP\API\MapTypes\MapTypeStyler === FALSE) {
+			$styler = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\API\\MapTypes\\MapTypeStyler', $styler);
 		}
 
 		$this->stylers[] = $styler;

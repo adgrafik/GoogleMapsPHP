@@ -16,16 +16,16 @@
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-namespace GoogleMapsPHP\Configuration;
+namespace AdGrafik\GoogleMapsPHP\Configuration;
 
-use GoogleMapsPHP\Utility\ClassUtility;
+use AdGrafik\GoogleMapsPHP\Utility\ClassUtility;
 
 /**
  * Settings class.
  *
  * @author Arno Dudek <webmaster@adgrafik.at>
  */
-class Settings implements \GoogleMapsPHP\Object\SingletonInterface {
+class Settings implements \AdGrafik\GoogleMapsPHP\Object\SingletonInterface {
 
 	/**
 	 * @var array $settings
@@ -45,10 +45,10 @@ class Settings implements \GoogleMapsPHP\Object\SingletonInterface {
 	 *
 	 * @param string $key
 	 * @param mixed $value
-	 * @return \GoogleMapsPHP\Configuration\Settings
+	 * @return \AdGrafik\GoogleMapsPHP\Configuration\Settings
 	 */
 	public function set($key, $value) {
-		\GoogleMapsPHP\Utility\ArrayUtility::setValueByObjectPath($this->settings, $key, $value);
+		\AdGrafik\GoogleMapsPHP\Utility\ArrayUtility::setValueByObjectPath($this->settings, $key, $value);
 		return $this;
 	}
 
@@ -59,14 +59,14 @@ class Settings implements \GoogleMapsPHP\Object\SingletonInterface {
 	 * @return mixed
 	 */
 	public function get($key) {
-		return \GoogleMapsPHP\Utility\ArrayUtility::getValueByObjectPath($this->settings, $key);
+		return \AdGrafik\GoogleMapsPHP\Utility\ArrayUtility::getValueByObjectPath($this->settings, $key);
 	}
 
 	/**
 	 * Set settings
 	 *
 	 * @param array $settings
-	 * @return \GoogleMapsPHP\Configuration\Settings
+	 * @return \AdGrafik\GoogleMapsPHP\Configuration\Settings
 	 */
 	public function setSettings(array $settings) {
 		$this->settings = $settings;

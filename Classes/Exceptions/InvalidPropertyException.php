@@ -16,14 +16,14 @@
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-namespace GoogleMapsPHP\Exceptions;
+namespace AdGrafik\GoogleMapsPHP\Exceptions;
 
 /**
  * InvalidPropertyException.
  *
  * @author Arno Dudek <webmaster@adgrafik.at>
  */
-class InvalidPropertyException extends \GoogleMapsPHP\Exceptions\Exception {
+class InvalidPropertyException extends \AdGrafik\GoogleMapsPHP\Exceptions\Exception {
 
 }
 

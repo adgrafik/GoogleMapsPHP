@@ -16,7 +16,7 @@
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-namespace GoogleMapsPHP\MapBuilder;
+namespace AdGrafik\GoogleMapsPHP\MapBuilder;
 
 /**
  * MapBuilderInterface.

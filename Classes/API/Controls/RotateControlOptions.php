@@ -16,7 +16,7 @@
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-namespace GoogleMapsPHP\API\Controls;
+namespace AdGrafik\GoogleMapsPHP\API\Controls;
 
 /**
  * API equivalent to google.maps.RotateControlOptions.
@@ -35,7 +35,7 @@ class RotateControlOptions extends AbstractControlOptions {
 	 * Set position
 	 *
 	 * @param string $position
-	 * @return \GoogleMapsPHP\API\Controls\MapTypeControlOptions
+	 * @return \AdGrafik\GoogleMapsPHP\API\Controls\MapTypeControlOptions
 	 */
 	public function setPosition($position) {
 

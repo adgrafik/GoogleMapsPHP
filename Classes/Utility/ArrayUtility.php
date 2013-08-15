@@ -16,7 +16,7 @@
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-namespace GoogleMapsPHP\Utility;
+namespace AdGrafik\GoogleMapsPHP\Utility;
 
 /**
  * ArrayUtility class.
@@ -84,14 +84,14 @@ class ArrayUtility {
 	 * @param mixed $array1
 	 * @param mixed $array2
 	 * @return mixed
-	 * @throws \GoogleMapsPHP\InvalidArgumentException
+	 * @throws \AdGrafik\GoogleMapsPHP\InvalidArgumentException
 	 */
 	static public function arrayMerge($array1, $array2) {
 
 		$arrays = func_get_args();
 		foreach ($arrays as $key => &$array) {
 			if (is_array($array) === FALSE && $array instanceof \Traversable === FALSE && $array instanceof \ArrayAccess === FALSE) {
-				throw new \GoogleMapsPHP\Exceptions\InvalidArgumentException(sprintf('\\GoogleMapsPHP\\Utility\ArrayUtility::arrayMerge: Argument #%s is not an array in', $key + 1), 1369925720);
+				throw new \AdGrafik\GoogleMapsPHP\Exceptions\InvalidArgumentException(sprintf('\\AdGrafik\\GoogleMapsPHP\\Utility\ArrayUtility::arrayMerge: Argument #%s is not an array in', $key + 1), 1369925720);
 			}
 		}
 		foreach ($array1 as $key => &$value) {

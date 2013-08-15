@@ -16,16 +16,16 @@
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-namespace GoogleMapsPHP\PlugIns\Loader;
+namespace AdGrafik\GoogleMapsPHP\PlugIns\Loader;
 
-use GoogleMapsPHP\Utility\ClassUtility;
+use AdGrafik\GoogleMapsPHP\Utility\ClassUtility;
 
 /**
  * Builder class for GoogleMapsPHP plug-in.
  *
  * @author Arno Dudek <webmaster@adgrafik.at>
  */
-class Builder extends \GoogleMapsPHP\PlugIns\AbstractBuilder {
+class Builder extends \AdGrafik\GoogleMapsPHP\PlugIns\AbstractBuilder {
 
 	/**
 	 * Build a plugIn
@@ -38,7 +38,7 @@ class Builder extends \GoogleMapsPHP\PlugIns\AbstractBuilder {
 		$options['id'] = $this->evaluateId($options);
 
 		// Create plug-in object.
-		$plugIn = ClassUtility::makeInstance('\\GoogleMapsPHP\\PlugIns\\Loader\\PlugIn', $this->getMapBuilder(), $options);
+		$plugIn = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\PlugIns\\Loader\\PlugIn', $this->getMapBuilder(), $options);
 
 		$this->getMapBuilder()->getJsonObject()->addPlugIn($plugIn);
 	}

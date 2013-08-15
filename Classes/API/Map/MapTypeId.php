@@ -16,7 +16,7 @@
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-namespace GoogleMapsPHP\API\Map;
+namespace AdGrafik\GoogleMapsPHP\API\Map;
 
 /**
  * API equivalent to google.maps.MapTypeId.

@@ -16,14 +16,14 @@
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-namespace GoogleMapsPHP\Exceptions;
+namespace AdGrafik\GoogleMapsPHP\Exceptions;
 
 /**
  * ClassNotFoundException.
  *
  * @author Arno Dudek <webmaster@adgrafik.at>
  */
-class ClassNotFoundException extends \GoogleMapsPHP\Exceptions\Exception {
+class ClassNotFoundException extends \AdGrafik\GoogleMapsPHP\Exceptions\Exception {
 
 }
 

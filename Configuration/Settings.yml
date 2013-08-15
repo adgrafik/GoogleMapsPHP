@@ -50,7 +50,7 @@ defaultOptions:
 
   map:
     center: 48.208202, 16.373749
-    mapTypeId: \GoogleMapsPHP\API\Map\MapTypeId::ROADMAP
+    mapTypeId: \AdGrafik\GoogleMapsPHP\API\Map\MapTypeId::ROADMAP
     zoom: 7
 
 
@@ -61,31 +61,31 @@ defaultOptions:
 plugInBuilders:
 
   Loader:
-    className: \GoogleMapsPHP\PlugIns\Loader\Builder
+    className: \AdGrafik\GoogleMapsPHP\PlugIns\Loader\Builder
 
   Map:
-    className: \GoogleMapsPHP\PlugIns\Map\Builder
+    className: \AdGrafik\GoogleMapsPHP\PlugIns\Map\Builder
 
   StyledMapType:
-    className: \GoogleMapsPHP\PlugIns\StyledMapType\Builder
+    className: \AdGrafik\GoogleMapsPHP\PlugIns\StyledMapType\Builder
 
   Marker:
-    className: \GoogleMapsPHP\PlugIns\Marker\Builder
+    className: \AdGrafik\GoogleMapsPHP\PlugIns\Marker\Builder
 
   InfoWindow:
-    className: \GoogleMapsPHP\PlugIns\InfoWindow\Builder
+    className: \AdGrafik\GoogleMapsPHP\PlugIns\InfoWindow\Builder
 
   Polyline:
-    className: \GoogleMapsPHP\PlugIns\Polyline\Builder
+    className: \AdGrafik\GoogleMapsPHP\PlugIns\Polyline\Builder
 
   Polygon:
-    className: \GoogleMapsPHP\PlugIns\Polygon\Builder
+    className: \AdGrafik\GoogleMapsPHP\PlugIns\Polygon\Builder
 
   KmlLayer:
-    className: \GoogleMapsPHP\PlugIns\KmlLayer\Builder
+    className: \AdGrafik\GoogleMapsPHP\PlugIns\KmlLayer\Builder
 
   MarkerClusterer:
-    className: \GoogleMapsPHP\AddOns\MarkerClusterer\PlugIns\MarkerClusterer\Builder
+    className: \AdGrafik\GoogleMapsPHP\AddOns\MarkerClusterer\PlugIns\MarkerClusterer\Builder
 
 
 #
@@ -95,9 +95,9 @@ plugInBuilders:
 plugInProvider:
 
   errorHandler:
-    className: \GoogleMapsPHP\PlugInProvider
+    className: \AdGrafik\GoogleMapsPHP\PlugInProvider
     methodName: errorHandler
 
   exceptionHandler:
-    className: \GoogleMapsPHP\PlugInProvider
+    className: \AdGrafik\GoogleMapsPHP\PlugInProvider
     methodName: exceptionHandler

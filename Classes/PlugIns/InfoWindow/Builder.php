@@ -16,16 +16,16 @@
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-namespace GoogleMapsPHP\PlugIns\InfoWindow;
+namespace AdGrafik\GoogleMapsPHP\PlugIns\InfoWindow;
 
-use GoogleMapsPHP\Utility\ClassUtility;
+use AdGrafik\GoogleMapsPHP\Utility\ClassUtility;
 
 /**
  * Builder class for GoogleMapsPHP plug-in.
  *
  * @author Arno Dudek <webmaster@adgrafik.at>
  */
-class Builder extends \GoogleMapsPHP\PlugIns\AbstractBuilder {
+class Builder extends \AdGrafik\GoogleMapsPHP\PlugIns\AbstractBuilder {
 
 	/**
 	 * Build a plugIn
@@ -34,12 +34,12 @@ class Builder extends \GoogleMapsPHP\PlugIns\AbstractBuilder {
 	 * @param array $objectOptions
 	 * @param array $additionalOptions
 	 * @return void
-	 * @throws \GoogleMapsPHP\Exceptions\RequiredArgumentMissingException
+	 * @throws \AdGrafik\GoogleMapsPHP\Exceptions\RequiredArgumentMissingException
 	 */
 	public function build(array $options = array()) {
 
 		if (isset($options['anchor']) === FALSE && isset($options['position']) === FALSE) {
-			throw new \GoogleMapsPHP\Exceptions\RequiredArgumentMissingException('The property "anchor" or "position" of \GoogleMapsPHP\API\Overlays\InfoWindow is required.', 1371382056);
+			throw new \AdGrafik\GoogleMapsPHP\Exceptions\RequiredArgumentMissingException('The property "anchor" or "position" of \AdGrafik\GoogleMapsPHP\API\Overlays\InfoWindow is required.', 1371382056);
 		}
 
 		// Find option split configuration.
@@ -49,18 +49,18 @@ class Builder extends \GoogleMapsPHP\PlugIns\AbstractBuilder {
 		foreach ($options as $key => &$value) {
 
 			// Split properties into API and plug-in options.
-			$this->parseOptions($value, $objectOptions, $plugInOptions, $additionalOptions, '\\GoogleMapsPHP\\API\\Overlays\\InfoWindowOptions', '\\GoogleMapsPHP\\PlugIns\\InfoWindow\\PlugIn');
+			$this->parseOptions($value, $objectOptions, $plugInOptions, $additionalOptions, '\\AdGrafik\\GoogleMapsPHP\\API\\Overlays\\InfoWindowOptions', '\\AdGrafik\\GoogleMapsPHP\\PlugIns\\InfoWindow\\PlugIn');
 
 			// If an anchor is set by ID attach this layer instead.
-			if (isset($plugInOptions['anchor']) && $plugInOptions['anchor'] instanceof \GoogleMapsPHP\PlugIns\PlugInInterface === FALSE) {
+			if (isset($plugInOptions['anchor']) && $plugInOptions['anchor'] instanceof \AdGrafik\GoogleMapsPHP\PlugIns\PlugInInterface === FALSE) {
 				$plugInOptions['anchor'] = $this->getMapBuilder()->getJsonObject()->findPlugInById($plugInOptions['anchor']);
 			}
 
 			// Create API object.
-			$object = ClassUtility::makeInstance('\\GoogleMapsPHP\\API\\Overlays\\InfoWindow', $objectOptions);
+			$object = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\API\\Overlays\\InfoWindow', $objectOptions);
 
 			// Create plug-in object.
-			$plugIn = ClassUtility::makeInstance('\\GoogleMapsPHP\\PlugIns\\InfoWindow\\PlugIn', $this->getMapBuilder(), $plugInOptions)
+			$plugIn = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\PlugIns\\InfoWindow\\PlugIn', $this->getMapBuilder(), $plugInOptions)
 				->setId($this->evaluateId($plugInOptions))
 				->setObject($object);
 

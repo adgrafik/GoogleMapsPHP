@@ -16,9 +16,9 @@
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-namespace GoogleMapsPHP\API\MapTypes;
+namespace AdGrafik\GoogleMapsPHP\API\MapTypes;
 
-use GoogleMapsPHP\Utility\ClassUtility;
+use AdGrafik\GoogleMapsPHP\Utility\ClassUtility;
 
 /**
  * API equivalent to google.maps.MapTypeStyler.
@@ -26,7 +26,7 @@ use GoogleMapsPHP\Utility\ClassUtility;
  * @see https://developers.google.com/maps/documentation/javascript/reference
  * @author Arno Dudek <webmaster@adgrafik.at>
  */
-class MapTypeStyler extends \GoogleMapsPHP\Object\PropertyArrayAccess {
+class MapTypeStyler extends \AdGrafik\GoogleMapsPHP\Object\PropertyArrayAccess {
 
 	/**
 	 * @var string $color
@@ -81,7 +81,7 @@ class MapTypeStyler extends \GoogleMapsPHP\Object\PropertyArrayAccess {
 	 * Set color
 	 *
 	 * @param string $color
-	 * @return \GoogleMapsPHP\API\MapTypes\MapTypeStyler
+	 * @return \AdGrafik\GoogleMapsPHP\API\MapTypes\MapTypeStyler
 	 */
 	public function setColor($color) {
 		$this->color = $color;
@@ -101,7 +101,7 @@ class MapTypeStyler extends \GoogleMapsPHP\Object\PropertyArrayAccess {
 	 * Set gamma
 	 *
 	 * @param double $gamma
-	 * @return \GoogleMapsPHP\API\MapTypes\MapTypeStyler
+	 * @return \AdGrafik\GoogleMapsPHP\API\MapTypes\MapTypeStyler
 	 */
 	public function setGamma($gamma) {
 		$this->gamma = $gamma;
@@ -121,7 +121,7 @@ class MapTypeStyler extends \GoogleMapsPHP\Object\PropertyArrayAccess {
 	 * Set hue
 	 *
 	 * @param string $hue
-	 * @return \GoogleMapsPHP\API\MapTypes\MapTypeStyler
+	 * @return \AdGrafik\GoogleMapsPHP\API\MapTypes\MapTypeStyler
 	 */
 	public function setHue($hue) {
 		$this->hue = $hue;
@@ -141,7 +141,7 @@ class MapTypeStyler extends \GoogleMapsPHP\Object\PropertyArrayAccess {
 	 * Set invert_lightness
 	 *
 	 * @param boolean $invertLightness
-	 * @return \GoogleMapsPHP\API\MapTypes\MapTypeStyler
+	 * @return \AdGrafik\GoogleMapsPHP\API\MapTypes\MapTypeStyler
 	 */
 	public function setInvertLightness($invertLightness) {
 		$this->invert_lightness = (boolean) $invertLightness;
@@ -161,7 +161,7 @@ class MapTypeStyler extends \GoogleMapsPHP\Object\PropertyArrayAccess {
 	 * Set lightness
 	 *
 	 * @param integer $lightness
-	 * @return \GoogleMapsPHP\API\MapTypes\MapTypeStyler
+	 * @return \AdGrafik\GoogleMapsPHP\API\MapTypes\MapTypeStyler
 	 */
 	public function setLightness($lightness) {
 		$this->lightness = (integer) $lightness;
@@ -181,7 +181,7 @@ class MapTypeStyler extends \GoogleMapsPHP\Object\PropertyArrayAccess {
 	 * Set saturation
 	 *
 	 * @param integer $saturation
-	 * @return \GoogleMapsPHP\API\MapTypes\MapTypeStyler
+	 * @return \AdGrafik\GoogleMapsPHP\API\MapTypes\MapTypeStyler
 	 */
 	public function setSaturation($saturation) {
 		$this->saturation = (integer) $saturation;
@@ -201,7 +201,7 @@ class MapTypeStyler extends \GoogleMapsPHP\Object\PropertyArrayAccess {
 	 * Set visibility
 	 *
 	 * @param string $visibility
-	 * @return \GoogleMapsPHP\API\MapTypes\MapTypeStyler
+	 * @return \AdGrafik\GoogleMapsPHP\API\MapTypes\MapTypeStyler
 	 */
 	public function setVisibility($visibility) {
 		$this->visibility = $visibility;
@@ -221,7 +221,7 @@ class MapTypeStyler extends \GoogleMapsPHP\Object\PropertyArrayAccess {
 	 * Set weight
 	 *
 	 * @param integer $weight
-	 * @return \GoogleMapsPHP\API\MapTypes\MapTypeStyler
+	 * @return \AdGrafik\GoogleMapsPHP\API\MapTypes\MapTypeStyler
 	 */
 	public function setWeight($weight) {
 		$this->weight = (integer) $weight;

@@ -16,28 +16,28 @@
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-namespace GoogleMapsPHP\PlugIns\Marker;
+namespace AdGrafik\GoogleMapsPHP\PlugIns\Marker;
 
-use GoogleMapsPHP\Utility\ClassUtility;
+use AdGrafik\GoogleMapsPHP\Utility\ClassUtility;
 
 /**
  * Builder class for GoogleMapsPHP plug-in.
  *
  * @author Arno Dudek <webmaster@adgrafik.at>
  */
-class Builder extends \GoogleMapsPHP\PlugIns\AbstractBuilder {
+class Builder extends \AdGrafik\GoogleMapsPHP\PlugIns\AbstractBuilder {
 
 	/**
 	 * Build a plugIn
 	 *
 	 * @param array $options
 	 * @return void
-	 * @throws \GoogleMapsPHP\Exceptions\RequiredArgumentMissingException
+	 * @throws \AdGrafik\GoogleMapsPHP\Exceptions\RequiredArgumentMissingException
 	 */
 	public function build(array $options = array()) {
 
 		if (is_array($options) && isset($options['position']) === FALSE) {
-			throw new \GoogleMapsPHP\Exceptions\RequiredArgumentMissingException('The property "position" of \GoogleMapsPHP\API\Overlays\Marker is required.', 1371382146);
+			throw new \AdGrafik\GoogleMapsPHP\Exceptions\RequiredArgumentMissingException('The property "position" of \AdGrafik\GoogleMapsPHP\API\Overlays\Marker is required.', 1371382146);
 		}
 
 		// Split properties into API and plug-in options.
@@ -46,13 +46,13 @@ class Builder extends \GoogleMapsPHP\PlugIns\AbstractBuilder {
 		foreach ($options as $key => &$value) {
 
 			// Split properties to API and layer options.
-			$this->parseOptions($value, $objectOptions, $plugInOptions, $additionalOptions, '\\GoogleMapsPHP\\API\\Overlays\\MarkerOptions', '\\GoogleMapsPHP\\PlugIns\\Marker\\PlugIn');
+			$this->parseOptions($value, $objectOptions, $plugInOptions, $additionalOptions, '\\AdGrafik\\GoogleMapsPHP\\API\\Overlays\\MarkerOptions', '\\AdGrafik\\GoogleMapsPHP\\PlugIns\\Marker\\PlugIn');
 
 			// Create API object.
-			$object = ClassUtility::makeInstance('\\GoogleMapsPHP\\API\\Overlays\\Marker', $objectOptions);
+			$object = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\API\\Overlays\\Marker', $objectOptions);
 
 			// Create plug-in object.
-			$plugIn = ClassUtility::makeInstance('\\GoogleMapsPHP\\PlugIns\\Marker\\PlugIn', $this->getMapBuilder(), $plugInOptions)
+			$plugIn = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\PlugIns\\Marker\\PlugIn', $this->getMapBuilder(), $plugInOptions)
 				->setId($this->evaluateId($plugInOptions))
 				->setObject($object);
 

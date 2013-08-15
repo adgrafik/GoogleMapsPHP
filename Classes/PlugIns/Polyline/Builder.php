@@ -16,28 +16,28 @@
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-namespace GoogleMapsPHP\PlugIns\Polyline;
+namespace AdGrafik\GoogleMapsPHP\PlugIns\Polyline;
 
-use GoogleMapsPHP\Utility\ClassUtility;
+use AdGrafik\GoogleMapsPHP\Utility\ClassUtility;
 
 /**
  * Builder class for GoogleMapsPHP plug-in.
  *
  * @author Arno Dudek <webmaster@adgrafik.at>
  */
-class Builder extends \GoogleMapsPHP\PlugIns\AbstractBuilder {
+class Builder extends \AdGrafik\GoogleMapsPHP\PlugIns\AbstractBuilder {
 
 	/**
 	 * Build a plugIn
 	 *
 	 * @param array $options
 	 * @return void
-	 * @throws \GoogleMapsPHP\Exceptions\RequiredArgumentMissingException
+	 * @throws \AdGrafik\GoogleMapsPHP\Exceptions\RequiredArgumentMissingException
 	 */
 	public function build(array $options = array()) {
 
 		if (is_array($options) && isset($options['path']) === FALSE) {
-			throw new \GoogleMapsPHP\Exceptions\RequiredArgumentMissingException('The property "path" of \GoogleMapsPHP\API\Overlays\Polyline is required.', 1373132025);
+			throw new \AdGrafik\GoogleMapsPHP\Exceptions\RequiredArgumentMissingException('The property "path" of \AdGrafik\GoogleMapsPHP\API\Overlays\Polyline is required.', 1373132025);
 		}
 
 		// Find option split configuration for markers.
@@ -49,13 +49,13 @@ class Builder extends \GoogleMapsPHP\PlugIns\AbstractBuilder {
 		foreach ($options as $key => &$value) {
 
 			// Split properties into API and plug-in options.
-			$this->parseOptions($value, $objectOptions, $plugInOptions, $additionalOptions, '\\GoogleMapsPHP\\API\\Overlays\\PolylineOptions', '\\GoogleMapsPHP\\PlugIns\\Polyline\\PlugIn');
+			$this->parseOptions($value, $objectOptions, $plugInOptions, $additionalOptions, '\\AdGrafik\\GoogleMapsPHP\\API\\Overlays\\PolylineOptions', '\\AdGrafik\\GoogleMapsPHP\\PlugIns\\Polyline\\PlugIn');
 
 			// Create API object.
-			$object = ClassUtility::makeInstance('\\GoogleMapsPHP\\API\\Overlays\\Polyline', $objectOptions);
+			$object = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\API\\Overlays\\Polyline', $objectOptions);
 
 			// Create plug-in object.
-			$plugIn = ClassUtility::makeInstance('\\GoogleMapsPHP\\PlugIns\\Polyline\\PlugIn', $this->getMapBuilder(), $plugInOptions)
+			$plugIn = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\PlugIns\\Polyline\\PlugIn', $this->getMapBuilder(), $plugInOptions)
 				->setId($this->evaluateId($plugInOptions))
 				->setObject($object);
 
@@ -68,13 +68,13 @@ class Builder extends \GoogleMapsPHP\PlugIns\AbstractBuilder {
 				if (isset($additionalOptions['infoWindow']['position'])) {
 					// If position value is an instance of LatLng or a string containing a "," it must be an explicit position, 
 					// else it will be the position of the angle of the ploy shape.
-					if ($additionalOptions['infoWindow']['position'] instanceof \GoogleMapsPHP\API\Base\LatLng === FALSE && strpos($additionalOptions['infoWindow']['position'], ',') === FALSE) {
+					if ($additionalOptions['infoWindow']['position'] instanceof \AdGrafik\GoogleMapsPHP\API\Base\LatLng === FALSE && strpos($additionalOptions['infoWindow']['position'], ',') === FALSE) {
 						// Position counting begins with 1.
 						$pathKey = $additionalOptions['infoWindow']['position'] - 1;
 						$additionalOptions['infoWindow']['position'] = $value['path'][$pathKey];
 					}
 				} else {
-					$bounds = ClassUtility::makeInstance('\\GoogleMapsPHP\\API\\Base\\LatLngBounds');
+					$bounds = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\API\\Base\\LatLngBounds');
 					foreach ($value['path'] as &$latlng) {
 						$bounds->extend($latlng);
 					}

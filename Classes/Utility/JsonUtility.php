@@ -12,7 +12,7 @@
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-namespace GoogleMapsPHP\Utility;
+namespace AdGrafik\GoogleMapsPHP\Utility;
 
 /**
  * Format JSON With PHP.

@@ -16,7 +16,7 @@
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-namespace GoogleMapsPHP\PlugIns;
+namespace AdGrafik\GoogleMapsPHP\PlugIns;
 
 /**
  * PlugInInterface.
@@ -28,16 +28,16 @@ interface PlugInInterface {
 	/**
 	 * Constructor
 	 *
-	 * @param \GoogleMapsPHP\MapBuilder\MapBuilderInterface $mapBuilder
+	 * @param \AdGrafik\GoogleMapsPHP\MapBuilder\MapBuilderInterface $mapBuilder
 	 * @param array $options
 	 */
-	public function __construct(\GoogleMapsPHP\MapBuilder\MapBuilderInterface $mapBuilder, array $options = array());
+	public function __construct(\AdGrafik\GoogleMapsPHP\MapBuilder\MapBuilderInterface $mapBuilder, array $options = array());
 
 	/**
 	 * Set id
 	 *
 	 * @param string $id
-	 * @return \GoogleMapsPHP\PlugIns\PlugInInterface
+	 * @return \AdGrafik\GoogleMapsPHP\PlugIns\PlugInInterface
 	 */
 	public function setId($id);
 
@@ -52,7 +52,7 @@ interface PlugInInterface {
 	 * Set plugInName
 	 *
 	 * @param string $plugInName
-	 * @return \GoogleMapsPHP\PlugIns\AbstractPlugIn
+	 * @return \AdGrafik\GoogleMapsPHP\PlugIns\AbstractPlugIn
 	 */
 	public function setPlugInName($plugInName);
 
@@ -66,10 +66,10 @@ interface PlugInInterface {
 	/**
 	 * isWithinViewport
 	 *
-	 * @param \GoogleMapsPHP\API\Base\LatLngBounds $bounds
+	 * @param \AdGrafik\GoogleMapsPHP\API\Base\LatLngBounds $bounds
 	 * @return boolean
 	 */
-	public function isWithinViewport(\GoogleMapsPHP\API\Base\LatLngBounds $bounds);
+	public function isWithinViewport(\AdGrafik\GoogleMapsPHP\API\Base\LatLngBounds $bounds);
 
 }
 

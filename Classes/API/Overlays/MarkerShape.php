@@ -16,9 +16,9 @@
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-namespace GoogleMapsPHP\API\Overlays;
+namespace AdGrafik\GoogleMapsPHP\API\Overlays;
 
-use GoogleMapsPHP\Utility\ClassUtility;
+use AdGrafik\GoogleMapsPHP\Utility\ClassUtility;
 
 /**
  * API equivalent to google.maps.MarkerShape.
@@ -26,7 +26,7 @@ use GoogleMapsPHP\Utility\ClassUtility;
  * @see https://developers.google.com/maps/documentation/javascript/reference
  * @author Arno Dudek <webmaster@adgrafik.at>
  */
-class MarkerShape extends \GoogleMapsPHP\Object\PropertyArrayAccess {
+class MarkerShape extends \AdGrafik\GoogleMapsPHP\Object\PropertyArrayAccess {
 
 	/**
 	 * @var array $coords
@@ -42,7 +42,7 @@ class MarkerShape extends \GoogleMapsPHP\Object\PropertyArrayAccess {
 	 * Constructor
 	 *
 	 * @param array $options
-	 * @throws \GoogleMapsPHP\Exceptions\RequiredArgumentMissingException
+	 * @throws \AdGrafik\GoogleMapsPHP\Exceptions\RequiredArgumentMissingException
 	 */
 	public function __construct(array $options = array()) {
 		ClassUtility::setPropertiesFromArray($this, $options);
@@ -52,7 +52,7 @@ class MarkerShape extends \GoogleMapsPHP\Object\PropertyArrayAccess {
 	 * Set coords
 	 *
 	 * @param array $coords
-	 * @return \GoogleMapsPHP\API\Overlays\MarkerShape
+	 * @return \AdGrafik\GoogleMapsPHP\API\Overlays\MarkerShape
 	 */
 	public function setCoords(array $coords) {
 		$this->coords = $coords;
@@ -72,7 +72,7 @@ class MarkerShape extends \GoogleMapsPHP\Object\PropertyArrayAccess {
 	 * Set type
 	 *
 	 * @param string $type
-	 * @return \GoogleMapsPHP\API\Overlays\MarkerShape
+	 * @return \AdGrafik\GoogleMapsPHP\API\Overlays\MarkerShape
 	 */
 	public function setType(string $type) {
 		$this->type = $type;

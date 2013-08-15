@@ -16,7 +16,7 @@
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-namespace GoogleMapsPHP\API\StreetView;
+namespace AdGrafik\GoogleMapsPHP\API\StreetView;
 
 /**
  * API equivalent to google.maps.StreetViewPanoramaOptions.
@@ -24,7 +24,7 @@ namespace GoogleMapsPHP\API\StreetView;
  * @see https://developers.google.com/maps/documentation/javascript/reference
  * @author Arno Dudek <webmaster@adgrafik.at>
  */
-class StreetViewPanoramaOptions extends \GoogleMapsPHP\Object\OptionsArrayAccess {
+class StreetViewPanoramaOptions extends \AdGrafik\GoogleMapsPHP\Object\OptionsArrayAccess {
 
 	/**
 	 * @var boolean $addressControl
@@ -32,7 +32,7 @@ class StreetViewPanoramaOptions extends \GoogleMapsPHP\Object\OptionsArrayAccess
 	public $addressControl;
 
 	/**
-	 * @var \GoogleMapsPHP\API\Controls\StreetViewAddressControlOptions $addressControlOptions
+	 * @var \AdGrafik\GoogleMapsPHP\API\Controls\StreetViewAddressControlOptions $addressControlOptions
 	 */
 	public $addressControlOptions;
 
@@ -67,7 +67,7 @@ class StreetViewPanoramaOptions extends \GoogleMapsPHP\Object\OptionsArrayAccess
 	public $panControl;
 
 	/**
-	 * @var \GoogleMapsPHP\API\Controls\PanControlOptions $panControlOptions
+	 * @var \AdGrafik\GoogleMapsPHP\API\Controls\PanControlOptions $panControlOptions
 	 */
 	public $panControlOptions;
 
@@ -83,12 +83,12 @@ class StreetViewPanoramaOptions extends \GoogleMapsPHP\Object\OptionsArrayAccess
 	 */
 
 	/**
-	 * @var \GoogleMapsPHP\API\Base\LatLng $position
+	 * @var \AdGrafik\GoogleMapsPHP\API\Base\LatLng $position
 	 */
 	public $position;
 
 	/**
-	 * @var \GoogleMapsPHP\API\StreetView\StreetViewPov $pov
+	 * @var \AdGrafik\GoogleMapsPHP\API\StreetView\StreetViewPov $pov
 	 * TODO: implement StreetViewPov
 	public $pov;
 	 */
@@ -109,7 +109,7 @@ class StreetViewPanoramaOptions extends \GoogleMapsPHP\Object\OptionsArrayAccess
 	public $zoomControl;
 
 	/**
-	 * @var \GoogleMapsPHP\API\Controls\ZoomControlOptions $zoomControlOptions
+	 * @var \AdGrafik\GoogleMapsPHP\API\Controls\ZoomControlOptions $zoomControlOptions
 	 */
 	public $zoomControlOptions;
 
@@ -117,7 +117,7 @@ class StreetViewPanoramaOptions extends \GoogleMapsPHP\Object\OptionsArrayAccess
 	 * Set addressControl
 	 *
 	 * @param boolean $addressControl
-	 * @return \GoogleMapsPHP\API\StreetView\StreetViewPanoramaOptions
+	 * @return \AdGrafik\GoogleMapsPHP\API\StreetView\StreetViewPanoramaOptions
 	 */
 	public function setAddressControl($addressControl) {
 		$this->addressControl = (boolean) $addressControl;
@@ -136,10 +136,10 @@ class StreetViewPanoramaOptions extends \GoogleMapsPHP\Object\OptionsArrayAccess
 	/**
 	 * Set addressControlOptions
 	 *
-	 * @param \GoogleMapsPHP\API\Controls\StreetViewAddressControlOptions $addressControlOptions
-	 * @return \GoogleMapsPHP\API\StreetView\StreetViewPanoramaOptions
+	 * @param \AdGrafik\GoogleMapsPHP\API\Controls\StreetViewAddressControlOptions $addressControlOptions
+	 * @return \AdGrafik\GoogleMapsPHP\API\StreetView\StreetViewPanoramaOptions
 	 */
-	public function setAddressControlOptions(\GoogleMapsPHP\API\Controls\StreetViewAddressControlOptions $addressControlOptions) {
+	public function setAddressControlOptions(\AdGrafik\GoogleMapsPHP\API\Controls\StreetViewAddressControlOptions $addressControlOptions) {
 		$this->addressControlOptions = $addressControlOptions;
 		return $this;
 	}
@@ -147,7 +147,7 @@ class StreetViewPanoramaOptions extends \GoogleMapsPHP\Object\OptionsArrayAccess
 	/**
 	 * Get addressControlOptions
 	 *
-	 * @return \GoogleMapsPHP\API\Controls\StreetViewAddressControlOptions
+	 * @return \AdGrafik\GoogleMapsPHP\API\Controls\StreetViewAddressControlOptions
 	 */
 	public function getAddressControlOptions() {
 		return $this->addressControlOptions;
@@ -157,7 +157,7 @@ class StreetViewPanoramaOptions extends \GoogleMapsPHP\Object\OptionsArrayAccess
 	 * Set clickToGo
 	 *
 	 * @param boolean $clickToGo
-	 * @return \GoogleMapsPHP\API\StreetView\StreetViewPanoramaOptions
+	 * @return \AdGrafik\GoogleMapsPHP\API\StreetView\StreetViewPanoramaOptions
 	 */
 	public function setClickToGo($clickToGo) {
 		$this->clickToGo = (boolean) $clickToGo;
@@ -177,7 +177,7 @@ class StreetViewPanoramaOptions extends \GoogleMapsPHP\Object\OptionsArrayAccess
 	 * Set disableDoubleClickZoom
 	 *
 	 * @param boolean $disableDoubleClickZoom
-	 * @return \GoogleMapsPHP\API\StreetView\StreetViewPanoramaOptions
+	 * @return \AdGrafik\GoogleMapsPHP\API\StreetView\StreetViewPanoramaOptions
 	 */
 	public function setDisableDoubleClickZoom($disableDoubleClickZoom) {
 		$this->disableDoubleClickZoom = (boolean) $disableDoubleClickZoom;
@@ -197,7 +197,7 @@ class StreetViewPanoramaOptions extends \GoogleMapsPHP\Object\OptionsArrayAccess
 	 * Set enableCloseButton
 	 *
 	 * @param boolean $enableCloseButton
-	 * @return \GoogleMapsPHP\API\StreetView\StreetViewPanoramaOptions
+	 * @return \AdGrafik\GoogleMapsPHP\API\StreetView\StreetViewPanoramaOptions
 	 */
 	public function setEnableCloseButton($enableCloseButton) {
 		$this->enableCloseButton = (boolean) $enableCloseButton;
@@ -217,7 +217,7 @@ class StreetViewPanoramaOptions extends \GoogleMapsPHP\Object\OptionsArrayAccess
 	 * Set imageDateControl
 	 *
 	 * @param boolean $imageDateControl
-	 * @return \GoogleMapsPHP\API\StreetView\StreetViewPanoramaOptions
+	 * @return \AdGrafik\GoogleMapsPHP\API\StreetView\StreetViewPanoramaOptions
 	 */
 	public function setImageDateControl($imageDateControl) {
 		$this->imageDateControl = (boolean) $imageDateControl;
@@ -237,7 +237,7 @@ class StreetViewPanoramaOptions extends \GoogleMapsPHP\Object\OptionsArrayAccess
 	 * Set linksControl
 	 *
 	 * @param boolean $linksControl
-	 * @return \GoogleMapsPHP\API\StreetView\StreetViewPanoramaOptions
+	 * @return \AdGrafik\GoogleMapsPHP\API\StreetView\StreetViewPanoramaOptions
 	 */
 	public function setLinksControl($linksControl) {
 		$this->linksControl = (boolean) $linksControl;
@@ -257,7 +257,7 @@ class StreetViewPanoramaOptions extends \GoogleMapsPHP\Object\OptionsArrayAccess
 	 * Set panControl
 	 *
 	 * @param boolean $panControl
-	 * @return \GoogleMapsPHP\API\StreetView\StreetViewPanoramaOptions
+	 * @return \AdGrafik\GoogleMapsPHP\API\StreetView\StreetViewPanoramaOptions
 	 */
 	public function setPanControl($panControl) {
 		$this->panControl = (boolean) $panControl;
@@ -276,10 +276,10 @@ class StreetViewPanoramaOptions extends \GoogleMapsPHP\Object\OptionsArrayAccess
 	/**
 	 * Set panControlOptions
 	 *
-	 * @param \GoogleMapsPHP\API\Controls\PanControlOptions $panControlOptions
-	 * @return \GoogleMapsPHP\API\StreetView\StreetViewPanoramaOptions
+	 * @param \AdGrafik\GoogleMapsPHP\API\Controls\PanControlOptions $panControlOptions
+	 * @return \AdGrafik\GoogleMapsPHP\API\StreetView\StreetViewPanoramaOptions
 	 */
-	public function setPanControlOptions(\GoogleMapsPHP\API\Controls\PanControlOptions $panControlOptions) {
+	public function setPanControlOptions(\AdGrafik\GoogleMapsPHP\API\Controls\PanControlOptions $panControlOptions) {
 		$this->panControlOptions = $panControlOptions;
 		return $this;
 	}
@@ -287,7 +287,7 @@ class StreetViewPanoramaOptions extends \GoogleMapsPHP\Object\OptionsArrayAccess
 	/**
 	 * Get panControlOptions
 	 *
-	 * @return \GoogleMapsPHP\API\Controls\PanControlOptions
+	 * @return \AdGrafik\GoogleMapsPHP\API\Controls\PanControlOptions
 	 */
 	public function getPanControlOptions() {
 		return $this->panControlOptions;
@@ -297,7 +297,7 @@ class StreetViewPanoramaOptions extends \GoogleMapsPHP\Object\OptionsArrayAccess
 	 * Set pano
 	 *
 	 * @param string $pano
-	 * @return \GoogleMapsPHP\API\StreetView\StreetViewPanoramaOptions
+	 * @return \AdGrafik\GoogleMapsPHP\API\StreetView\StreetViewPanoramaOptions
 	 */
 	public function setPano($pano) {
 		$this->pano = $pano;
@@ -317,7 +317,7 @@ class StreetViewPanoramaOptions extends \GoogleMapsPHP\Object\OptionsArrayAccess
 	 * Set panoProvider
 	 *
 	 * @param mixed $panoProvider
-	 * @return \GoogleMapsPHP\API\StreetView\StreetViewPanoramaOptions
+	 * @return \AdGrafik\GoogleMapsPHP\API\StreetView\StreetViewPanoramaOptions
 	 */
 	public function setPanoProvider($panoProvider) {
 		$this->panoProvider = $panoProvider;
@@ -336,10 +336,10 @@ class StreetViewPanoramaOptions extends \GoogleMapsPHP\Object\OptionsArrayAccess
 	/**
 	 * Set position
 	 *
-	 * @param \GoogleMapsPHP\API\Base\LatLng $position
-	 * @return \GoogleMapsPHP\API\StreetView\StreetViewPanoramaOptions
+	 * @param \AdGrafik\GoogleMapsPHP\API\Base\LatLng $position
+	 * @return \AdGrafik\GoogleMapsPHP\API\StreetView\StreetViewPanoramaOptions
 	 */
-	public function setPosition(\GoogleMapsPHP\API\Base\LatLng $position) {
+	public function setPosition(\AdGrafik\GoogleMapsPHP\API\Base\LatLng $position) {
 		$this->position = $position;
 		return $this;
 	}
@@ -347,7 +347,7 @@ class StreetViewPanoramaOptions extends \GoogleMapsPHP\Object\OptionsArrayAccess
 	/**
 	 * Get position
 	 *
-	 * @return \GoogleMapsPHP\API\Base\LatLng
+	 * @return \AdGrafik\GoogleMapsPHP\API\Base\LatLng
 	 */
 	public function getPosition() {
 		return $this->position;
@@ -356,10 +356,10 @@ class StreetViewPanoramaOptions extends \GoogleMapsPHP\Object\OptionsArrayAccess
 	/**
 	 * Set pov
 	 *
-	 * @param \GoogleMapsPHP\API\StreetView\StreetViewPov $pov
-	 * @return \GoogleMapsPHP\API\StreetView\StreetViewPanoramaOptions
+	 * @param \AdGrafik\GoogleMapsPHP\API\StreetView\StreetViewPov $pov
+	 * @return \AdGrafik\GoogleMapsPHP\API\StreetView\StreetViewPanoramaOptions
 	 */
-	public function setPov(\GoogleMapsPHP\API\StreetView\StreetViewPov $pov) {
+	public function setPov(\AdGrafik\GoogleMapsPHP\API\StreetView\StreetViewPov $pov) {
 		$this->pov = $pov;
 		return $this;
 	}
@@ -367,7 +367,7 @@ class StreetViewPanoramaOptions extends \GoogleMapsPHP\Object\OptionsArrayAccess
 	/**
 	 * Get pov
 	 *
-	 * @return \GoogleMapsPHP\API\StreetView\StreetViewPov
+	 * @return \AdGrafik\GoogleMapsPHP\API\StreetView\StreetViewPov
 	 */
 	public function getPov() {
 		return $this->pov;
@@ -377,7 +377,7 @@ class StreetViewPanoramaOptions extends \GoogleMapsPHP\Object\OptionsArrayAccess
 	 * Set scrollwheel
 	 *
 	 * @param boolean $scrollwheel
-	 * @return \GoogleMapsPHP\API\StreetView\StreetViewPanoramaOptions
+	 * @return \AdGrafik\GoogleMapsPHP\API\StreetView\StreetViewPanoramaOptions
 	 */
 	public function setScrollwheel($scrollwheel) {
 		$this->scrollwheel = (boolean) $scrollwheel;
@@ -397,7 +397,7 @@ class StreetViewPanoramaOptions extends \GoogleMapsPHP\Object\OptionsArrayAccess
 	 * Set visible
 	 *
 	 * @param boolean $visible
-	 * @return \GoogleMapsPHP\API\StreetView\StreetViewPanoramaOptions
+	 * @return \AdGrafik\GoogleMapsPHP\API\StreetView\StreetViewPanoramaOptions
 	 */
 	public function setVisible($visible) {
 		$this->visible = (boolean) $visible;
@@ -417,7 +417,7 @@ class StreetViewPanoramaOptions extends \GoogleMapsPHP\Object\OptionsArrayAccess
 	 * Set zoomControl
 	 *
 	 * @param boolean $zoomControl
-	 * @return \GoogleMapsPHP\API\StreetView\StreetViewPanoramaOptions
+	 * @return \AdGrafik\GoogleMapsPHP\API\StreetView\StreetViewPanoramaOptions
 	 */
 	public function setZoomControl($zoomControl) {
 		$this->zoomControl = (boolean) $zoomControl;
@@ -436,10 +436,10 @@ class StreetViewPanoramaOptions extends \GoogleMapsPHP\Object\OptionsArrayAccess
 	/**
 	 * Set zoomControlOptions
 	 *
-	 * @param \GoogleMapsPHP\API\Controls\ZoomControlOptions $zoomControlOptions
-	 * @return \GoogleMapsPHP\API\StreetView\StreetViewPanoramaOptions
+	 * @param \AdGrafik\GoogleMapsPHP\API\Controls\ZoomControlOptions $zoomControlOptions
+	 * @return \AdGrafik\GoogleMapsPHP\API\StreetView\StreetViewPanoramaOptions
 	 */
-	public function setZoomControlOptions(\GoogleMapsPHP\API\Controls\ZoomControlOptions $zoomControlOptions) {
+	public function setZoomControlOptions(\AdGrafik\GoogleMapsPHP\API\Controls\ZoomControlOptions $zoomControlOptions) {
 		$this->zoomControlOptions = $zoomControlOptions;
 		return $this;
 	}
@@ -447,7 +447,7 @@ class StreetViewPanoramaOptions extends \GoogleMapsPHP\Object\OptionsArrayAccess
 	/**
 	 * Get zoomControlOptions
 	 *
-	 * @return \GoogleMapsPHP\API\Controls\ZoomControlOptions
+	 * @return \AdGrafik\GoogleMapsPHP\API\Controls\ZoomControlOptions
 	 */
 	public function getZoomControlOptions() {
 		return $this->zoomControlOptions;

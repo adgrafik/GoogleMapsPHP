@@ -16,9 +16,9 @@
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-namespace GoogleMapsPHP\API\Overlays;
+namespace AdGrafik\GoogleMapsPHP\API\Overlays;
 
-use GoogleMapsPHP\Utility\ClassUtility;
+use AdGrafik\GoogleMapsPHP\Utility\ClassUtility;
 
 /**
  * API equivalent to google.maps.Icon.
@@ -29,17 +29,17 @@ use GoogleMapsPHP\Utility\ClassUtility;
 class Icon extends AbstractIcon {
 
 	/**
-	 * @var \GoogleMapsPHP\API\Base\Point $origin
+	 * @var \AdGrafik\GoogleMapsPHP\API\Base\Point $origin
 	 */
 	public $origin;
 
 	/**
-	 * @var \GoogleMapsPHP\API\Base\Size $scaledSize
+	 * @var \AdGrafik\GoogleMapsPHP\API\Base\Size $scaledSize
 	 */
 	public $scaledSize;
 
 	/**
-	 * @var \GoogleMapsPHP\API\Base\Size $size
+	 * @var \AdGrafik\GoogleMapsPHP\API\Base\Size $size
 	 */
 	public $size;
 
@@ -64,10 +64,10 @@ class Icon extends AbstractIcon {
 	/**
 	 * Set origin
 	 *
-	 * @param \GoogleMapsPHP\API\Base\Point $origin
-	 * @return \GoogleMapsPHP\API\Overlays\Icon
+	 * @param \AdGrafik\GoogleMapsPHP\API\Base\Point $origin
+	 * @return \AdGrafik\GoogleMapsPHP\API\Overlays\Icon
 	 */
-	public function setOrigin(\GoogleMapsPHP\API\Base\Point $origin) {
+	public function setOrigin(\AdGrafik\GoogleMapsPHP\API\Base\Point $origin) {
 		$this->origin = $origin;
 		return $this;
 	}
@@ -75,7 +75,7 @@ class Icon extends AbstractIcon {
 	/**
 	 * Get origin
 	 *
-	 * @return \GoogleMapsPHP\API\Base\Point
+	 * @return \AdGrafik\GoogleMapsPHP\API\Base\Point
 	 */
 	public function getOrigin() {
 		return $this->origin;
@@ -84,10 +84,10 @@ class Icon extends AbstractIcon {
 	/**
 	 * Set scaledSize
 	 *
-	 * @param \GoogleMapsPHP\API\Base\Size $scaledSize
-	 * @return \GoogleMapsPHP\API\Overlays\Icon
+	 * @param \AdGrafik\GoogleMapsPHP\API\Base\Size $scaledSize
+	 * @return \AdGrafik\GoogleMapsPHP\API\Overlays\Icon
 	 */
-	public function setScaledSize(\GoogleMapsPHP\API\Base\Size $scaledSize) {
+	public function setScaledSize(\AdGrafik\GoogleMapsPHP\API\Base\Size $scaledSize) {
 		$this->scaledSize = $scaledSize;
 		return $this;
 	}
@@ -95,7 +95,7 @@ class Icon extends AbstractIcon {
 	/**
 	 * Get scaledSize
 	 *
-	 * @return \GoogleMapsPHP\API\Base\Size
+	 * @return \AdGrafik\GoogleMapsPHP\API\Base\Size
 	 */
 	public function getScaledSize() {
 		return $this->scaledSize;
@@ -104,10 +104,10 @@ class Icon extends AbstractIcon {
 	/**
 	 * Set size
 	 *
-	 * @param \GoogleMapsPHP\API\Base\Size $size
-	 * @return \GoogleMapsPHP\API\Overlays\Icon
+	 * @param \AdGrafik\GoogleMapsPHP\API\Base\Size $size
+	 * @return \AdGrafik\GoogleMapsPHP\API\Overlays\Icon
 	 */
-	public function setSize(\GoogleMapsPHP\API\Base\Size $size) {
+	public function setSize(\AdGrafik\GoogleMapsPHP\API\Base\Size $size) {
 		$this->size = $size;
 		return $this;
 	}
@@ -115,7 +115,7 @@ class Icon extends AbstractIcon {
 	/**
 	 * Get size
 	 *
-	 * @return \GoogleMapsPHP\API\Base\Size
+	 * @return \AdGrafik\GoogleMapsPHP\API\Base\Size
 	 */
 	public function getSize() {
 		return $this->size;
@@ -125,7 +125,7 @@ class Icon extends AbstractIcon {
 	 * Set url
 	 *
 	 * @param string $url
-	 * @return \GoogleMapsPHP\API\Overlays\Icon
+	 * @return \AdGrafik\GoogleMapsPHP\API\Overlays\Icon
 	 */
 	public function setUrl($url) {
 		$this->url = $url;

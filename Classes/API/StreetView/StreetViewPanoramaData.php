@@ -16,7 +16,7 @@
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-namespace GoogleMapsPHP\API\StreetView;
+namespace AdGrafik\GoogleMapsPHP\API\StreetView;
 
 /**
  * API equivalent to google.maps.StreetViewPanoramaData.
@@ -42,13 +42,13 @@ class StreetViewPanoramaData {
 	public $links;
 
 	/**
-	 * @var \GoogleMapsPHP\API\StreetView\StreetViewLocation $location
+	 * @var \AdGrafik\GoogleMapsPHP\API\StreetView\StreetViewLocation $location
 	 * TODO: implement StreetViewLocation
 	public $location;
 	 */
 
 	/**
-	 * @var \GoogleMapsPHP\API\StreetView\StreetViewTileData $tiles
+	 * @var \AdGrafik\GoogleMapsPHP\API\StreetView\StreetViewTileData $tiles
 	 * TODO: implement StreetViewTileData
 	public $tiles;
 	 */
@@ -57,7 +57,7 @@ class StreetViewPanoramaData {
 	 * Set copyright
 	 *
 	 * @param string $copyright
-	 * @return \GoogleMapsPHP\API\StreetView\StreetViewPanoramaData
+	 * @return \AdGrafik\GoogleMapsPHP\API\StreetView\StreetViewPanoramaData
 	 */
 	public function setCopyright($copyright) {
 		$this->copyright = $copyright;
@@ -77,7 +77,7 @@ class StreetViewPanoramaData {
 	 * Set imageDate
 	 *
 	 * @param string $imageDate
-	 * @return \GoogleMapsPHP\API\StreetView\StreetViewPanoramaData
+	 * @return \AdGrafik\GoogleMapsPHP\API\StreetView\StreetViewPanoramaData
 	 */
 	public function setImageDate($imageDate) {
 		$this->imageDate = $imageDate;
@@ -97,7 +97,7 @@ class StreetViewPanoramaData {
 	 * Set links
 	 *
 	 * @param array $links
-	 * @return \GoogleMapsPHP\API\StreetView\StreetViewPanoramaData
+	 * @return \AdGrafik\GoogleMapsPHP\API\StreetView\StreetViewPanoramaData
 	 */
 	public function setLinks(array $links) {
 		$this->links = $links;
@@ -116,10 +116,10 @@ class StreetViewPanoramaData {
 	/**
 	 * Set location
 	 *
-	 * @param \GoogleMapsPHP\API\StreetView\StreetViewLocation $location
-	 * @return \GoogleMapsPHP\API\StreetView\StreetViewPanoramaData
+	 * @param \AdGrafik\GoogleMapsPHP\API\StreetView\StreetViewLocation $location
+	 * @return \AdGrafik\GoogleMapsPHP\API\StreetView\StreetViewPanoramaData
 	 */
-	public function setLocation(\GoogleMapsPHP\API\StreetView\StreetViewLocation $location) {
+	public function setLocation(\AdGrafik\GoogleMapsPHP\API\StreetView\StreetViewLocation $location) {
 		$this->location = $location;
 		return $this;
 	}
@@ -127,7 +127,7 @@ class StreetViewPanoramaData {
 	/**
 	 * Get location
 	 *
-	 * @return \GoogleMapsPHP\API\StreetView\StreetViewLocation
+	 * @return \AdGrafik\GoogleMapsPHP\API\StreetView\StreetViewLocation
 	 */
 	public function getLocation() {
 		return $this->location;
@@ -136,10 +136,10 @@ class StreetViewPanoramaData {
 	/**
 	 * Set tiles
 	 *
-	 * @param \GoogleMapsPHP\API\StreetView\StreetViewTileData $tiles
-	 * @return \GoogleMapsPHP\API\StreetView\StreetViewPanoramaData
+	 * @param \AdGrafik\GoogleMapsPHP\API\StreetView\StreetViewTileData $tiles
+	 * @return \AdGrafik\GoogleMapsPHP\API\StreetView\StreetViewPanoramaData
 	 */
-	public function setTiles(\GoogleMapsPHP\API\StreetView\StreetViewTileData $tiles) {
+	public function setTiles(\AdGrafik\GoogleMapsPHP\API\StreetView\StreetViewTileData $tiles) {
 		$this->tiles = $tiles;
 		return $this;
 	}
@@ -147,7 +147,7 @@ class StreetViewPanoramaData {
 	/**
 	 * Get tiles
 	 *
-	 * @return \GoogleMapsPHP\API\StreetView\StreetViewTileData
+	 * @return \AdGrafik\GoogleMapsPHP\API\StreetView\StreetViewTileData
 	 */
 	public function getTiles() {
 		return $this->tiles;

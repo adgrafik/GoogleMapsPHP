@@ -16,9 +16,9 @@
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-namespace GoogleMapsPHP\API\Overlays;
+namespace AdGrafik\GoogleMapsPHP\API\Overlays;
 
-use GoogleMapsPHP\Utility\ClassUtility;
+use AdGrafik\GoogleMapsPHP\Utility\ClassUtility;
 
 /**
  * API equivalent to google.maps.Symbol.
@@ -39,7 +39,7 @@ class Symbol extends AbstractIcon {
 	public $fillOpacity;
 
 	/**
-	 * @var string<\GoogleMapsPHP\API\Overlays\SymbolPath::BACKWARD_CLOSED_ARROW|BACKWARD_OPEN_ARROW|CIRCLE|FORWARD_CLOSED_ARROW|FORWARD_OPEN_ARROW> $path
+	 * @var string<\AdGrafik\GoogleMapsPHP\API\Overlays\SymbolPath::BACKWARD_CLOSED_ARROW|BACKWARD_OPEN_ARROW|CIRCLE|FORWARD_CLOSED_ARROW|FORWARD_OPEN_ARROW> $path
 	 */
 	public $path;
 
@@ -85,12 +85,12 @@ class Symbol extends AbstractIcon {
 	 * Constructor
 	 *
 	 * @param array $options
-	 * @throws \GoogleMapsPHP\Exceptions\RequiredArgumentMissingException
+	 * @throws \AdGrafik\GoogleMapsPHP\Exceptions\RequiredArgumentMissingException
 	 */
 	public function __construct(array $options = array()) {
 		parent::__construct($options);
 		if ($this->getPath() === NULL) {
-			throw new \GoogleMapsPHP\Exceptions\RequiredArgumentMissingException('Missing option "path".', 1369555245);
+			throw new \AdGrafik\GoogleMapsPHP\Exceptions\RequiredArgumentMissingException('Missing option "path".', 1369555245);
 		}
 	}
 
@@ -98,7 +98,7 @@ class Symbol extends AbstractIcon {
 	 * Set fillColor
 	 *
 	 * @param string $fillColor
-	 * @return \GoogleMapsPHP\API\Overlays\Symbol
+	 * @return \AdGrafik\GoogleMapsPHP\API\Overlays\Symbol
 	 */
 	public function setFillColor($fillColor) {
 		$this->fillColor = $fillColor;
@@ -118,7 +118,7 @@ class Symbol extends AbstractIcon {
 	 * Set fillOpacity
 	 *
 	 * @param float $fillOpacity
-	 * @return \GoogleMapsPHP\API\Overlays\Symbol
+	 * @return \AdGrafik\GoogleMapsPHP\API\Overlays\Symbol
 	 */
 	public function setFillOpacity($fillOpacity) {
 		$this->fillOpacity = (float) $fillOpacity;
@@ -137,8 +137,8 @@ class Symbol extends AbstractIcon {
 	/**
 	 * Set path
 	 *
-	 * @param string<\GoogleMapsPHP\API\Overlays\SymbolPath::BACKWARD_CLOSED_ARROW|BACKWARD_OPEN_ARROW|CIRCLE|FORWARD_CLOSED_ARROW|FORWARD_OPEN_ARROW> $path
-	 * @return \GoogleMapsPHP\API\Overlays\Symbol
+	 * @param string<\AdGrafik\GoogleMapsPHP\API\Overlays\SymbolPath::BACKWARD_CLOSED_ARROW|BACKWARD_OPEN_ARROW|CIRCLE|FORWARD_CLOSED_ARROW|FORWARD_OPEN_ARROW> $path
+	 * @return \AdGrafik\GoogleMapsPHP\API\Overlays\Symbol
 	 */
 	public function setPath($path) {
 
@@ -164,7 +164,7 @@ class Symbol extends AbstractIcon {
 	 * Set rotation
 	 *
 	 * @param integer $rotation
-	 * @return \GoogleMapsPHP\API\Overlays\Symbol
+	 * @return \AdGrafik\GoogleMapsPHP\API\Overlays\Symbol
 	 */
 	public function setRotation($rotation) {
 		$this->rotation = (integer) $rotation;
@@ -184,7 +184,7 @@ class Symbol extends AbstractIcon {
 	 * Set scale
 	 *
 	 * @param integer $scale
-	 * @return \GoogleMapsPHP\API\Overlays\Symbol
+	 * @return \AdGrafik\GoogleMapsPHP\API\Overlays\Symbol
 	 */
 	public function setScale($scale) {
 		$this->scale = (integer) $scale;
@@ -204,7 +204,7 @@ class Symbol extends AbstractIcon {
 	 * Set strokeColor
 	 *
 	 * @param string $strokeColor
-	 * @return \GoogleMapsPHP\API\Overlays\Symbol
+	 * @return \AdGrafik\GoogleMapsPHP\API\Overlays\Symbol
 	 */
 	public function setStrokeColor($strokeColor) {
 		$this->strokeColor = $strokeColor;
@@ -224,7 +224,7 @@ class Symbol extends AbstractIcon {
 	 * Set strokeOpacity
 	 *
 	 * @param float $strokeOpacity
-	 * @return \GoogleMapsPHP\API\Overlays\Symbol
+	 * @return \AdGrafik\GoogleMapsPHP\API\Overlays\Symbol
 	 */
 	public function setStrokeOpacity($strokeOpacity) {
 		$this->strokeOpacity = (float) $strokeOpacity;
@@ -244,7 +244,7 @@ class Symbol extends AbstractIcon {
 	 * Set strokeWeight
 	 *
 	 * @param float $strokeWeight
-	 * @return \GoogleMapsPHP\API\Overlays\Symbol
+	 * @return \AdGrafik\GoogleMapsPHP\API\Overlays\Symbol
 	 */
 	public function setStrokeWeight($strokeWeight) {
 		$this->strokeWeight = (float) $strokeWeight;

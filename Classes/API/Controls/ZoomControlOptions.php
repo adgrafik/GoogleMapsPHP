@@ -16,7 +16,7 @@
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-namespace GoogleMapsPHP\API\Controls;
+namespace AdGrafik\GoogleMapsPHP\API\Controls;
 
 /**
  * API equivalent to google.maps.ZoomControlOptions.
@@ -40,7 +40,7 @@ class ZoomControlOptions extends AbstractControlOptions {
 	 * Set position
 	 *
 	 * @param string $position
-	 * @return \GoogleMapsPHP\API\Controls\ZoomControlOptions
+	 * @return \AdGrafik\GoogleMapsPHP\API\Controls\ZoomControlOptions
 	 */
 	public function setPosition($position) {
 
@@ -64,7 +64,7 @@ class ZoomControlOptions extends AbstractControlOptions {
 	 * Set style
 	 *
 	 * @param string $style
-	 * @return \GoogleMapsPHP\API\Controls\ZoomControlOptions
+	 * @return \AdGrafik\GoogleMapsPHP\API\Controls\ZoomControlOptions
 	 */
 	public function setStyle($style) {
 

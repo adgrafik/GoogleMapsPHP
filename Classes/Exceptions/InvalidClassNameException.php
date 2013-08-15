@@ -16,14 +16,14 @@
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-namespace GoogleMapsPHP\Exceptions;
+namespace AdGrafik\GoogleMapsPHP\Exceptions;
 
 /**
  * InvalidClassNameException.
  *
  * @author Arno Dudek <webmaster@adgrafik.at>
  */
-class InvalidClassNameException extends \GoogleMapsPHP\Exceptions\Exception {
+class InvalidClassNameException extends \AdGrafik\GoogleMapsPHP\Exceptions\Exception {
 
 }
 

@@ -16,9 +16,9 @@
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-namespace GoogleMapsPHP\API\Overlays;
+namespace AdGrafik\GoogleMapsPHP\API\Overlays;
 
-use GoogleMapsPHP\Utility\ClassUtility;
+use AdGrafik\GoogleMapsPHP\Utility\ClassUtility;
 
 /**
  * API equivalent to google.maps.MarkerOptions.
@@ -29,12 +29,12 @@ use GoogleMapsPHP\Utility\ClassUtility;
 class MarkerOptions {
 
 	/**
-	 * @var \GoogleMapsPHP\API\Base\Point $anchorPoint
+	 * @var \AdGrafik\GoogleMapsPHP\API\Base\Point $anchorPoint
 	 */
 	public $anchorPoint;
 
 	/**
-	 * @var string<\GoogleMapsPHP\API\Overlays\Animation::BOUNCE|DROP> $animation
+	 * @var string<\AdGrafik\GoogleMapsPHP\API\Overlays\Animation::BOUNCE|DROP> $animation
 	 */
 	public $animation;
 
@@ -59,7 +59,7 @@ class MarkerOptions {
 	public $flat;
 
 	/**
-	 * @var string|array|\GoogleMapsPHP\API\Overlays\Icon|\GoogleMapsPHP\API\Overlays\Symbol $icon
+	 * @var string|array|\AdGrafik\GoogleMapsPHP\API\Overlays\Icon|\AdGrafik\GoogleMapsPHP\API\Overlays\Symbol $icon
 	 */
 	public $icon;
 
@@ -69,7 +69,7 @@ class MarkerOptions {
 	public $optimized;
 
 	/**
-	 * @var \GoogleMapsPHP\API\Base\LatLng $position
+	 * @var \AdGrafik\GoogleMapsPHP\API\Base\LatLng $position
 	 */
 	public $position;
 
@@ -84,12 +84,12 @@ class MarkerOptions {
 	public $crossOnDrag;
 
 	/**
-	 * @var string|array|\GoogleMapsPHP\API\Overlays\Icon|\GoogleMapsPHP\API\Overlays\Symbol $shadow
+	 * @var string|array|\AdGrafik\GoogleMapsPHP\API\Overlays\Icon|\AdGrafik\GoogleMapsPHP\API\Overlays\Symbol $shadow
 	 */
 	public $shadow;
 
 	/**
-	 * @var array|\GoogleMapsPHP\API\Overlays\MarkerShape $shape
+	 * @var array|\AdGrafik\GoogleMapsPHP\API\Overlays\MarkerShape $shape
 	 */
 	public $shape;
 
@@ -111,10 +111,10 @@ class MarkerOptions {
 	/**
 	 * Set anchorPoint
 	 *
-	 * @param \GoogleMapsPHP\API\Base\Point $anchorPoint
-	 * @return \GoogleMapsPHP\API\Overlays\Marker
+	 * @param \AdGrafik\GoogleMapsPHP\API\Base\Point $anchorPoint
+	 * @return \AdGrafik\GoogleMapsPHP\API\Overlays\Marker
 	 */
-	public function setAnchorPoint(\GoogleMapsPHP\API\Base\Point $anchorPoint) {
+	public function setAnchorPoint(\AdGrafik\GoogleMapsPHP\API\Base\Point $anchorPoint) {
 		$this->anchorPoint = $anchorPoint;
 		return $this;
 	}
@@ -122,7 +122,7 @@ class MarkerOptions {
 	/**
 	 * Get anchorPoint
 	 *
-	 * @return \GoogleMapsPHP\API\Base\Point
+	 * @return \AdGrafik\GoogleMapsPHP\API\Base\Point
 	 */
 	public function getAnchorPoint() {
 		return $this->anchorPoint;
@@ -131,8 +131,8 @@ class MarkerOptions {
 	/**
 	 * Set animation
 	 *
-	 * @param string<\GoogleMapsPHP\API\Overlays\Animation::BOUNCE|DROP> $animation
-	 * @return \GoogleMapsPHP\API\Overlays\Marker
+	 * @param string<\AdGrafik\GoogleMapsPHP\API\Overlays\Animation::BOUNCE|DROP> $animation
+	 * @return \AdGrafik\GoogleMapsPHP\API\Overlays\Marker
 	 */
 	public function setAnimation($animation) {
 
@@ -158,7 +158,7 @@ class MarkerOptions {
 	 * Set clickable
 	 *
 	 * @param boolean $clickable
-	 * @return \GoogleMapsPHP\API\Overlays\Marker
+	 * @return \AdGrafik\GoogleMapsPHP\API\Overlays\Marker
 	 */
 	public function setClickable($clickable) {
 		$this->clickable = (boolean) $clickable;
@@ -178,7 +178,7 @@ class MarkerOptions {
 	 * Set cursor
 	 *
 	 * @param string $cursor
-	 * @return \GoogleMapsPHP\API\Overlays\Marker
+	 * @return \AdGrafik\GoogleMapsPHP\API\Overlays\Marker
 	 */
 	public function setCursor($cursor) {
 		$this->cursor = $cursor;
@@ -198,7 +198,7 @@ class MarkerOptions {
 	 * Set draggable
 	 *
 	 * @param boolean $draggable
-	 * @return \GoogleMapsPHP\API\Overlays\Marker
+	 * @return \AdGrafik\GoogleMapsPHP\API\Overlays\Marker
 	 */
 	public function setDraggable($draggable) {
 		$this->draggable = (boolean) $draggable;
@@ -218,7 +218,7 @@ class MarkerOptions {
 	 * Set flat
 	 *
 	 * @param boolean $flat
-	 * @return \GoogleMapsPHP\API\Overlays\Marker
+	 * @return \AdGrafik\GoogleMapsPHP\API\Overlays\Marker
 	 */
 	public function setFlat($flat) {
 		$this->flat = (boolean) $flat;
@@ -237,13 +237,13 @@ class MarkerOptions {
 	/**
 	 * Set icon
 	 *
-	 * @param string|array|\GoogleMapsPHP\API\Overlays\Icon|\GoogleMapsPHP\API\Overlays\Symbol $icon
-	 * @return \GoogleMapsPHP\API\Overlays\Marker
+	 * @param string|array|\AdGrafik\GoogleMapsPHP\API\Overlays\Icon|\AdGrafik\GoogleMapsPHP\API\Overlays\Symbol $icon
+	 * @return \AdGrafik\GoogleMapsPHP\API\Overlays\Marker
 	 */
 	public function setIcon($icon) {
 
-		if ($icon instanceof \GoogleMapsPHP\API\Overlays\Icon === FALSE) {
-			$icon = ClassUtility::makeInstance('\\GoogleMapsPHP\\API\\Overlays\\Icon', $icon);
+		if ($icon instanceof \AdGrafik\GoogleMapsPHP\API\Overlays\Icon === FALSE) {
+			$icon = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\API\\Overlays\\Icon', $icon);
 		}
 
 		$this->icon = $icon;
@@ -253,7 +253,7 @@ class MarkerOptions {
 	/**
 	 * Get icon
 	 *
-	 * @return string|\GoogleMapsPHP\API\Overlays\IconInterface
+	 * @return string|\AdGrafik\GoogleMapsPHP\API\Overlays\IconInterface
 	 */
 	public function getIcon() {
 		return $this->icon;
@@ -263,7 +263,7 @@ class MarkerOptions {
 	 * Set optimized
 	 *
 	 * @param boolean $optimized
-	 * @return \GoogleMapsPHP\API\Overlays\Marker
+	 * @return \AdGrafik\GoogleMapsPHP\API\Overlays\Marker
 	 */
 	public function setOptimized($optimized) {
 		$this->optimized = (boolean) $optimized;
@@ -283,11 +283,11 @@ class MarkerOptions {
 	 * Set position
 	 *
 	 * @param mixed $position
-	 * @return \GoogleMapsPHP\API\Overlays\Marker
+	 * @return \AdGrafik\GoogleMapsPHP\API\Overlays\Marker
 	 */
 	public function setPosition($position) {
-		if ($position instanceof \GoogleMapsPHP\API\Base\LatLng === FALSE) {
-			$position = ClassUtility::makeInstance('\\GoogleMapsPHP\\API\\Base\\LatLng', $position);
+		if ($position instanceof \AdGrafik\GoogleMapsPHP\API\Base\LatLng === FALSE) {
+			$position = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\API\\Base\\LatLng', $position);
 		}
 		$this->position = $position;
 		return $this;
@@ -296,7 +296,7 @@ class MarkerOptions {
 	/**
 	 * Get position
 	 *
-	 * @return \GoogleMapsPHP\API\Base\LatLng
+	 * @return \AdGrafik\GoogleMapsPHP\API\Base\LatLng
 	 */
 	public function getPosition() {
 		return $this->position;
@@ -306,7 +306,7 @@ class MarkerOptions {
 	 * Set raiseOnDrag
 	 *
 	 * @param boolean $raiseOnDrag
-	 * @return \GoogleMapsPHP\API\Overlays\Marker
+	 * @return \AdGrafik\GoogleMapsPHP\API\Overlays\Marker
 	 */
 	public function setRaiseOnDrag($raiseOnDrag) {
 		$this->raiseOnDrag = (boolean) $raiseOnDrag;
@@ -326,7 +326,7 @@ class MarkerOptions {
 	 * Set crossOnDrag
 	 *
 	 * @param boolean $crossOnDrag
-	 * @return \GoogleMapsPHP\API\Overlays\Marker
+	 * @return \AdGrafik\GoogleMapsPHP\API\Overlays\Marker
 	 */
 	public function setCrossOnDrag($crossOnDrag) {
 		$this->crossOnDrag = (boolean) $crossOnDrag;
@@ -345,13 +345,13 @@ class MarkerOptions {
 	/**
 	 * Set shadow
 	 *
-	 * @param string|array|\GoogleMapsPHP\API\Overlays\Icon|\GoogleMapsPHP\API\Overlays\Symbol $shadow
-	 * @return \GoogleMapsPHP\API\Overlays\Marker
+	 * @param string|array|\AdGrafik\GoogleMapsPHP\API\Overlays\Icon|\AdGrafik\GoogleMapsPHP\API\Overlays\Symbol $shadow
+	 * @return \AdGrafik\GoogleMapsPHP\API\Overlays\Marker
 	 */
 	public function setShadow($shadow) {
 
-		if ($shadow instanceof \GoogleMapsPHP\API\Overlays\Icon === FALSE) {
-			$shadow = ClassUtility::makeInstance('\\GoogleMapsPHP\\API\\Overlays\\Icon', $shadow);
+		if ($shadow instanceof \AdGrafik\GoogleMapsPHP\API\Overlays\Icon === FALSE) {
+			$shadow = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\API\\Overlays\\Icon', $shadow);
 		}
 
 		$this->shadow = $shadow;
@@ -361,7 +361,7 @@ class MarkerOptions {
 	/**
 	 * Get shadow
 	 *
-	 * @return string|\GoogleMapsPHP\API\Overlays\IconInterface
+	 * @return string|\AdGrafik\GoogleMapsPHP\API\Overlays\IconInterface
 	 */
 	public function getShadow() {
 		return $this->shadow;
@@ -370,13 +370,13 @@ class MarkerOptions {
 	/**
 	 * Set shape
 	 *
-	 * @param array|\GoogleMapsPHP\API\Overlays\MarkerShape $shape
-	 * @return \GoogleMapsPHP\API\Overlays\Marker
+	 * @param array|\AdGrafik\GoogleMapsPHP\API\Overlays\MarkerShape $shape
+	 * @return \AdGrafik\GoogleMapsPHP\API\Overlays\Marker
 	 */
 	public function setShape($shape) {
 
-		if ($shape instanceof \GoogleMapsPHP\API\Overlays\MarkerShape === FALSE) {
-			$shape = ClassUtility::makeInstance('\\GoogleMapsPHP\\API\\Overlays\\MarkerShape', $shape);
+		if ($shape instanceof \AdGrafik\GoogleMapsPHP\API\Overlays\MarkerShape === FALSE) {
+			$shape = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\API\\Overlays\\MarkerShape', $shape);
 		}
 
 		$this->shape = $shape;
@@ -386,7 +386,7 @@ class MarkerOptions {
 	/**
 	 * Get shape
 	 *
-	 * @return \GoogleMapsPHP\API\Overlays\MarkerShape
+	 * @return \AdGrafik\GoogleMapsPHP\API\Overlays\MarkerShape
 	 */
 	public function getShape() {
 		return $this->shape;
@@ -396,7 +396,7 @@ class MarkerOptions {
 	 * Set title
 	 *
 	 * @param string $title
-	 * @return \GoogleMapsPHP\API\Overlays\Marker
+	 * @return \AdGrafik\GoogleMapsPHP\API\Overlays\Marker
 	 */
 	public function setTitle($title) {
 		$this->title = $title;
@@ -416,7 +416,7 @@ class MarkerOptions {
 	 * Set visible
 	 *
 	 * @param boolean $visible
-	 * @return \GoogleMapsPHP\API\Overlays\Marker
+	 * @return \AdGrafik\GoogleMapsPHP\API\Overlays\Marker
 	 */
 	public function setVisible($visible) {
 		$this->visible = (boolean) $visible;
@@ -436,7 +436,7 @@ class MarkerOptions {
 	 * Set zIndex
 	 *
 	 * @param integer $zIndex
-	 * @return \GoogleMapsPHP\API\Overlays\Marker
+	 * @return \AdGrafik\GoogleMapsPHP\API\Overlays\Marker
 	 */
 	public function setZIndex($zIndex) {
 		$this->zIndex = (integer) $zIndex;

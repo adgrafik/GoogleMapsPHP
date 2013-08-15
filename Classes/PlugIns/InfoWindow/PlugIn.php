@@ -16,14 +16,14 @@
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-namespace GoogleMapsPHP\PlugIns\InfoWindow;
+namespace AdGrafik\GoogleMapsPHP\PlugIns\InfoWindow;
 
 /**
  * Plug-in class for GoogleMapsPHP initial options.
  *
  * @author Arno Dudek <webmaster@adgrafik.at>
  */
-class PlugIn extends \GoogleMapsPHP\PlugIns\AbstractPlugIn {
+class PlugIn extends \AdGrafik\GoogleMapsPHP\PlugIns\AbstractPlugIn {
 
 	/**
 	 * @var string $anchor
@@ -31,7 +31,7 @@ class PlugIn extends \GoogleMapsPHP\PlugIns\AbstractPlugIn {
 	public $anchor;
 
 	/**
-	 * @var \GoogleMapsPHP\PlugIns\PlugInInterface $anchorObject
+	 * @var \AdGrafik\GoogleMapsPHP\PlugIns\PlugInInterface $anchorObject
 	 */
 	protected $anchorObject;
 
@@ -62,10 +62,10 @@ class PlugIn extends \GoogleMapsPHP\PlugIns\AbstractPlugIn {
 	/**
 	 * Set anchor
 	 *
-	 * @param \GoogleMapsPHP\PlugIns\PlugInInterface $anchor
-	 * @return \GoogleMapsPHP\PlugIns\InfoWindow\PlugIn
+	 * @param \AdGrafik\GoogleMapsPHP\PlugIns\PlugInInterface $anchor
+	 * @return \AdGrafik\GoogleMapsPHP\PlugIns\InfoWindow\PlugIn
 	 */
-	public function setAnchor(\GoogleMapsPHP\PlugIns\PlugInInterface $anchor) {
+	public function setAnchor(\AdGrafik\GoogleMapsPHP\PlugIns\PlugInInterface $anchor) {
 		$this->anchorObject = $anchor;
 		$this->anchor = $anchor->getId();
 		return $this;
@@ -74,7 +74,7 @@ class PlugIn extends \GoogleMapsPHP\PlugIns\AbstractPlugIn {
 	/**
 	 * Get anchor
 	 *
-	 * @return \GoogleMapsPHP\PlugIns\PlugInInterface
+	 * @return \AdGrafik\GoogleMapsPHP\PlugIns\PlugInInterface
 	 */
 	public function getAnchor() {
 		return $this->anchorObject;
@@ -84,7 +84,7 @@ class PlugIn extends \GoogleMapsPHP\PlugIns\AbstractPlugIn {
 	 * Set opened
 	 *
 	 * @param boolean $opened
-	 * @return \GoogleMapsPHP\PlugIns\InfoWindow\PlugIn
+	 * @return \AdGrafik\GoogleMapsPHP\PlugIns\InfoWindow\PlugIn
 	 */
 	public function setOpened($opened) {
 		$this->opened = (boolean) $opened;
@@ -104,7 +104,7 @@ class PlugIn extends \GoogleMapsPHP\PlugIns\AbstractPlugIn {
 	 * Set closeOnClickAgain
 	 *
 	 * @param boolean $closeOnClickAgain
-	 * @return \GoogleMapsPHP\PlugIns\InfoWindow\PlugIn
+	 * @return \AdGrafik\GoogleMapsPHP\PlugIns\InfoWindow\PlugIn
 	 */
 	public function setCloseOnClickAgain($closeOnClickAgain) {
 		$this->closeOnClickAgain = (boolean) $closeOnClickAgain;
@@ -124,7 +124,7 @@ class PlugIn extends \GoogleMapsPHP\PlugIns\AbstractPlugIn {
 	 * Set keepOpen
 	 *
 	 * @param boolean $keepOpen
-	 * @return \GoogleMapsPHP\PlugIns\InfoWindow\PlugIn
+	 * @return \AdGrafik\GoogleMapsPHP\PlugIns\InfoWindow\PlugIn
 	 */
 	public function setKeepOpen($keepOpen) {
 		$this->keepOpen = (boolean) $keepOpen;
@@ -143,10 +143,10 @@ class PlugIn extends \GoogleMapsPHP\PlugIns\AbstractPlugIn {
 	/**
 	 * isWithinViewport
 	 *
-	 * @param \GoogleMapsPHP\API\Base\LatLngBounds $bounds
+	 * @param \AdGrafik\GoogleMapsPHP\API\Base\LatLngBounds $bounds
 	 * @return boolean
 	 */
-	public function isWithinViewport(\GoogleMapsPHP\API\Base\LatLngBounds $bounds) {
+	public function isWithinViewport(\AdGrafik\GoogleMapsPHP\API\Base\LatLngBounds $bounds) {
 
 		if ($position = $this->getObject()->getPosition()) {
 			return $bounds->contains($position);

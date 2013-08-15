@@ -16,14 +16,14 @@
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-namespace GoogleMapsPHP\View\Node;
+namespace AdGrafik\GoogleMapsPHP\View\Node;
 
 /**
  * AbstractNode.
  *
  * @author Arno Dudek <webmaster@adgrafik.at>
  */
-abstract class AbstractNode extends \DOMElement implements \GoogleMapsPHP\View\Node\NodeInterface {
+abstract class AbstractNode extends \DOMElement implements \AdGrafik\GoogleMapsPHP\View\Node\NodeInterface {
 
 	/**
 	 * @var boolean $forceOnTop
@@ -34,7 +34,7 @@ abstract class AbstractNode extends \DOMElement implements \GoogleMapsPHP\View\N
 	 * Set printed
 	 *
 	 * @param boolean $printed
-	 * @return \GoogleMapsPHP\View\Node\NodeInterface
+	 * @return \AdGrafik\GoogleMapsPHP\View\Node\NodeInterface
 	 */
 	abstract public function setPrinted($printed);
 
@@ -49,7 +49,7 @@ abstract class AbstractNode extends \DOMElement implements \GoogleMapsPHP\View\N
 	 * Set forceOnTop
 	 *
 	 * @param boolean $forceOnTop
-	 * @return \GoogleMapsPHP\View\Node\NodeInterface
+	 * @return \AdGrafik\GoogleMapsPHP\View\Node\NodeInterface
 	 */
 	public function setForceOnTop($forceOnTop) {
 		$this->forceOnTop = (boolean) $forceOnTop;

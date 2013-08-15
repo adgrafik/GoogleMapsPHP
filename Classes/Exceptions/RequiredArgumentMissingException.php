@@ -16,14 +16,14 @@
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-namespace GoogleMapsPHP\Exceptions;
+namespace AdGrafik\GoogleMapsPHP\Exceptions;
 
 /**
  * RequiredArgumentMissingException.
  *
  * @author Arno Dudek <webmaster@adgrafik.at>
  */
-class RequiredArgumentMissingException extends \GoogleMapsPHP\Exceptions\Exception {
+class RequiredArgumentMissingException extends \AdGrafik\GoogleMapsPHP\Exceptions\Exception {
 
 }
 

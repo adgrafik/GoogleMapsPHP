@@ -16,9 +16,9 @@
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-namespace GoogleMapsPHP\AddOns\MarkerClusterer\API\Overlays;
+namespace AdGrafik\GoogleMapsPHP\AddOns\MarkerClusterer\API\Overlays;
 
-use GoogleMapsPHP\Utility\ClassUtility;
+use AdGrafik\GoogleMapsPHP\Utility\ClassUtility;
 
 /**
  * MarkerClusterer to manage per-zoom-level clusters for large amounts 
@@ -27,10 +27,10 @@ use GoogleMapsPHP\Utility\ClassUtility;
  * @see http://gmaps-utility-library-dev.googlecode.com/svn/tags/markerclusterer/
  * @author Arno Dudek <webmaster@adgrafik.at>
  */
-class MarkerClusterer extends \GoogleMapsPHP\API\Overlays\OverlayView {
+class MarkerClusterer extends \AdGrafik\GoogleMapsPHP\API\Overlays\OverlayView {
 
 	/**
-	 * @var \GoogleMapsPHP\AddOns\MarkerClusterer\API\Overlays\MarkerClustererOptions $options
+	 * @var \AdGrafik\GoogleMapsPHP\AddOns\MarkerClusterer\API\Overlays\MarkerClustererOptions $options
 	 */
 	public $options;
 
@@ -38,12 +38,12 @@ class MarkerClusterer extends \GoogleMapsPHP\API\Overlays\OverlayView {
 	 * Constructor
 	 *
 	 * @param mixed $options
-	 * @throws \GoogleMapsPHP\Exceptions\RequiredArgumentMissingException
+	 * @throws \AdGrafik\GoogleMapsPHP\Exceptions\RequiredArgumentMissingException
 	 */
 	public function __construct($options) {
 
 		// Set required values
-		$this->options = ClassUtility::makeInstance('\\GoogleMapsPHP\\AddOns\\MarkerClusterer\\API\\Overlays\\MarkerClustererOptions');
+		$this->options = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\AddOns\\MarkerClusterer\\API\\Overlays\\MarkerClustererOptions');
 
 		// Set properties
 		$this->setOptions($options);
@@ -52,14 +52,14 @@ class MarkerClusterer extends \GoogleMapsPHP\API\Overlays\OverlayView {
 	/**
 	 * Set options
 	 *
-	 * @param mixed $options Can be an object of type \GoogleMapsPHP\AddOns\MarkerClusterer\API\Overlays\MarkerClustererOptions or an map options array.
-	 * @return \GoogleMapsPHP\API\Overlays\MarkerClusterer
+	 * @param mixed $options Can be an object of type \AdGrafik\GoogleMapsPHP\AddOns\MarkerClusterer\API\Overlays\MarkerClustererOptions or an map options array.
+	 * @return \AdGrafik\GoogleMapsPHP\API\Overlays\MarkerClusterer
 	 */
 	public function setOptions($options) {
 		if (is_array($options)) {
 			ClassUtility::setPropertiesFromArray($this->options, $options);
-		} else if ($options instanceof \GoogleMapsPHP\AddOns\MarkerClusterer\API\Overlays\MarkerClustererOptions === FALSE) {
-			throw new \GoogleMapsPHP\Exceptions\InvalidValueException('Map options must be an array or an instance of "\\GoogleMapsPHP\\AddOns\\MarkerClusterer\\API\\Overlays\\MarkerClustererOptions".', 1369563745);
+		} else if ($options instanceof \AdGrafik\GoogleMapsPHP\AddOns\MarkerClusterer\API\Overlays\MarkerClustererOptions === FALSE) {
+			throw new \AdGrafik\GoogleMapsPHP\Exceptions\InvalidValueException('Map options must be an array or an instance of "\\AdGrafik\\GoogleMapsPHP\\AddOns\\MarkerClusterer\\API\\Overlays\\MarkerClustererOptions".', 1369563745);
 		} else {
 			$this->options = $options;
 		}
@@ -69,7 +69,7 @@ class MarkerClusterer extends \GoogleMapsPHP\API\Overlays\OverlayView {
 	/**
 	 * Get options
 	 *
-	 * @return \GoogleMapsPHP\AddOns\MarkerClusterer\API\Overlays\MarkerClustererOptions
+	 * @return \AdGrafik\GoogleMapsPHP\AddOns\MarkerClusterer\API\Overlays\MarkerClustererOptions
 	 */
 	public function getOptions() {
 		return $this->options;
@@ -81,11 +81,11 @@ class MarkerClusterer extends \GoogleMapsPHP\API\Overlays\OverlayView {
 	 * @param string $propertyName
 	 * @param mixed $propertyValue
 	 * @return mixed
-	 * @throws \GoogleMapsPHP\Exceptions\InvalidMethodException
+	 * @throws \AdGrafik\GoogleMapsPHP\Exceptions\InvalidMethodException
 	 */
 	public function __call($methodName, $arguments) {
 		if (ClassUtility::methodExists($this->options, $methodName, FALSE) === FALSE) {
-			throw new \GoogleMapsPHP\Exceptions\InvalidMethodException(sprintf('Method "%s" not exists.', $methodName), 1369563744);
+			throw new \AdGrafik\GoogleMapsPHP\Exceptions\InvalidMethodException(sprintf('Method "%s" not exists.', $methodName), 1369563744);
 		}
 		return call_user_func_array(array($this->options, $methodName), $arguments);
 	}

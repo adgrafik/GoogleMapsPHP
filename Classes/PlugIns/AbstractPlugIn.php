@@ -16,19 +16,19 @@
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-namespace GoogleMapsPHP\PlugIns;
+namespace AdGrafik\GoogleMapsPHP\PlugIns;
 
-use GoogleMapsPHP\Utility\ClassUtility;
+use AdGrafik\GoogleMapsPHP\Utility\ClassUtility;
 
 /**
  * AbstractPlugIn.
  *
  * @author Arno Dudek <webmaster@adgrafik.at>
  */
-abstract class AbstractPlugIn implements \GoogleMapsPHP\PlugIns\PlugInInterface {
+abstract class AbstractPlugIn implements \AdGrafik\GoogleMapsPHP\PlugIns\PlugInInterface {
 
 	/**
-	 * @var \GoogleMapsPHP\MapBuilder\MapBuilderInterface $mapBuilder
+	 * @var \AdGrafik\GoogleMapsPHP\MapBuilder\MapBuilderInterface $mapBuilder
 	 */
 	protected $mapBuilder;
 
@@ -55,10 +55,10 @@ abstract class AbstractPlugIn implements \GoogleMapsPHP\PlugIns\PlugInInterface 
 	/**
 	 * Constructor
 	 *
-	 * @param \GoogleMapsPHP\MapBuilder\MapBuilderInterface $mapBuilder
+	 * @param \AdGrafik\GoogleMapsPHP\MapBuilder\MapBuilderInterface $mapBuilder
 	 * @param array $options
 	 */
-	public function __construct(\GoogleMapsPHP\MapBuilder\MapBuilderInterface $mapBuilder, array $options = array()) {
+	public function __construct(\AdGrafik\GoogleMapsPHP\MapBuilder\MapBuilderInterface $mapBuilder, array $options = array()) {
 
 		// Set required values
 		$this->setMapBuilder($mapBuilder);
@@ -73,10 +73,10 @@ abstract class AbstractPlugIn implements \GoogleMapsPHP\PlugIns\PlugInInterface 
 	/**
 	 * Set mapBuilder
 	 *
-	 * @param \GoogleMapsPHP\MapBuilder\MapBuilderInterface $mapBuilder
-	 * @return \GoogleMapsPHP\PlugIns\PlugInInterface
+	 * @param \AdGrafik\GoogleMapsPHP\MapBuilder\MapBuilderInterface $mapBuilder
+	 * @return \AdGrafik\GoogleMapsPHP\PlugIns\PlugInInterface
 	 */
-	public function setMapBuilder(\GoogleMapsPHP\MapBuilder\MapBuilderInterface $mapBuilder) {
+	public function setMapBuilder(\AdGrafik\GoogleMapsPHP\MapBuilder\MapBuilderInterface $mapBuilder) {
 		$this->mapBuilder = $mapBuilder;
 		return $this;
 	}
@@ -84,7 +84,7 @@ abstract class AbstractPlugIn implements \GoogleMapsPHP\PlugIns\PlugInInterface 
 	/**
 	 * Get mapBuilder
 	 *
-	 * @return \GoogleMapsPHP\MapBuilder\MapBuilderInterface
+	 * @return \AdGrafik\GoogleMapsPHP\MapBuilder\MapBuilderInterface
 	 */
 	public function getMapBuilder() {
 		return $this->mapBuilder;
@@ -94,7 +94,7 @@ abstract class AbstractPlugIn implements \GoogleMapsPHP\PlugIns\PlugInInterface 
 	 * Set id
 	 *
 	 * @param string $id
-	 * @return \GoogleMapsPHP\PlugIns\PlugInInterface
+	 * @return \AdGrafik\GoogleMapsPHP\PlugIns\PlugInInterface
 	 */
 	public function setId($id) {
 		$this->id = $id;
@@ -114,7 +114,7 @@ abstract class AbstractPlugIn implements \GoogleMapsPHP\PlugIns\PlugInInterface 
 	 * Set categoryId
 	 *
 	 * @param string $categoryId
-	 * @return \GoogleMapsPHP\PlugIns\AbstractPlugIn
+	 * @return \AdGrafik\GoogleMapsPHP\PlugIns\AbstractPlugIn
 	 */
 	public function setCategoryId($categoryId) {
 		$this->categoryId = $categoryId;
@@ -134,7 +134,7 @@ abstract class AbstractPlugIn implements \GoogleMapsPHP\PlugIns\PlugInInterface 
 	 * Set plugInName
 	 *
 	 * @param string $plugInName
-	 * @return \GoogleMapsPHP\PlugIns\AbstractPlugIn
+	 * @return \AdGrafik\GoogleMapsPHP\PlugIns\AbstractPlugIn
 	 */
 	public function setPlugInName($plugInName) {
 		$this->plugInName = $plugInName;
@@ -154,7 +154,7 @@ abstract class AbstractPlugIn implements \GoogleMapsPHP\PlugIns\PlugInInterface 
 	 * Set object
 	 *
 	 * @param mixed $object
-	 * @return \GoogleMapsPHP\PlugIns\AbstractPlugIn
+	 * @return \AdGrafik\GoogleMapsPHP\PlugIns\AbstractPlugIn
 	 */
 	public function setObject($object) {
 		$this->object = $object;
@@ -173,10 +173,10 @@ abstract class AbstractPlugIn implements \GoogleMapsPHP\PlugIns\PlugInInterface 
 	/**
 	 * isWithinViewport
 	 *
-	 * @param \GoogleMapsPHP\API\Base\LatLngBounds $bounds
+	 * @param \AdGrafik\GoogleMapsPHP\API\Base\LatLngBounds $bounds
 	 * @return boolean
 	 */
-	public function isWithinViewport(\GoogleMapsPHP\API\Base\LatLngBounds $bounds) {
+	public function isWithinViewport(\AdGrafik\GoogleMapsPHP\API\Base\LatLngBounds $bounds) {
 		return TRUE;
 	}
 

@@ -16,16 +16,16 @@
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-namespace GoogleMapsPHP\PlugIns\Map;
+namespace AdGrafik\GoogleMapsPHP\PlugIns\Map;
 
-use GoogleMapsPHP\Utility\ClassUtility;
+use AdGrafik\GoogleMapsPHP\Utility\ClassUtility;
 
 /**
  * Builder class for GoogleMapsPHP plug-in.
  *
  * @author Arno Dudek <webmaster@adgrafik.at>
  */
-class Builder extends \GoogleMapsPHP\PlugIns\AbstractBuilder {
+class Builder extends \AdGrafik\GoogleMapsPHP\PlugIns\AbstractBuilder {
 
 	/**
 	 * Build a plugIn
@@ -36,17 +36,17 @@ class Builder extends \GoogleMapsPHP\PlugIns\AbstractBuilder {
 	public function build(array $options = array()) {
 
 		// Split properties into API and plug-in options.
-		$this->parseOptions($options, $objectOptions, $plugInOptions, $additionalOptions, '\\GoogleMapsPHP\\API\\Map\\MapOptions', '\\GoogleMapsPHP\\PlugIns\\Map\\PlugIn');
+		$this->parseOptions($options, $objectOptions, $plugInOptions, $additionalOptions, '\\AdGrafik\\GoogleMapsPHP\\API\\Map\\MapOptions', '\\AdGrafik\\GoogleMapsPHP\\PlugIns\\Map\\PlugIn');
 
 		// Create API object.
 		$defaultOptions = $this->getSettings()->get('defaultOptions.map');
 		$defaultOptions['mapTypeId'] = eval('return ' . $defaultOptions['mapTypeId'] . ';');
-		$object = ClassUtility::makeInstance('\\GoogleMapsPHP\\API\\Map', $additionalOptions['div'], $defaultOptions)
+		$object = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\API\\Map', $additionalOptions['div'], $defaultOptions)
 			->setOptions($objectOptions)
 			->setDiv($this->getMapBuilder()->getMapId());
 
 		// Create plug-in object.
-		$plugIn = ClassUtility::makeInstance('\\GoogleMapsPHP\\PlugIns\\Map\\PlugIn', $this->getMapBuilder(), $plugInOptions)
+		$plugIn = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\PlugIns\\Map\\PlugIn', $this->getMapBuilder(), $plugInOptions)
 			->setId($this->getMapBuilder()->getMapId())
 			->setObject($object);
 

@@ -16,16 +16,16 @@
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-namespace GoogleMapsPHP\PlugIns;
+namespace AdGrafik\GoogleMapsPHP\PlugIns;
 
-use GoogleMapsPHP\Utility\ClassUtility;
+use AdGrafik\GoogleMapsPHP\Utility\ClassUtility;
 
 /**
  * AbstractBuilder.
  *
  * @author Arno Dudek <webmaster@adgrafik.at>
  */
-abstract class AbstractBuilder implements \GoogleMapsPHP\PlugIns\BuilderInterface {
+abstract class AbstractBuilder implements \AdGrafik\GoogleMapsPHP\PlugIns\BuilderInterface {
 
 	/**
 	 * @var integer $idCount
@@ -33,22 +33,22 @@ abstract class AbstractBuilder implements \GoogleMapsPHP\PlugIns\BuilderInterfac
 	static protected $idCount = 0;
 
 	/**
-	 * @var \GoogleMapsPHP\Configuration\Settings $settings
+	 * @var \AdGrafik\GoogleMapsPHP\Configuration\Settings $settings
 	 */
 	protected $settings;
 
 	/**
-	 * @var \GoogleMapsPHP\MapBuilder\MapBuilderInterface $mapBuilder
+	 * @var \AdGrafik\GoogleMapsPHP\MapBuilder\MapBuilderInterface $mapBuilder
 	 */
 	protected $mapBuilder;
 
 	/**
 	 * Constructor
 	 *
-	 * @param \GoogleMapsPHP\MapBuilder\MapBuilderInterface $mapBuilder
+	 * @param \AdGrafik\GoogleMapsPHP\MapBuilder\MapBuilderInterface $mapBuilder
 	 */
-	public function __construct(\GoogleMapsPHP\MapBuilder\MapBuilderInterface $mapBuilder) {
-		$this->setSettings(ClassUtility::makeInstance('\\GoogleMapsPHP\\Configuration\\Settings'));
+	public function __construct(\AdGrafik\GoogleMapsPHP\MapBuilder\MapBuilderInterface $mapBuilder) {
+		$this->setSettings(ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\Configuration\\Settings'));
 		$this->setMapBuilder($mapBuilder);
 	}
 
@@ -63,10 +63,10 @@ abstract class AbstractBuilder implements \GoogleMapsPHP\PlugIns\BuilderInterfac
 	/**
 	 * Set settings
 	 *
-	 * @param \GoogleMapsPHP\Configuration\Settings $settings
-	 * @return \GoogleMapsPHP\PlugIns\AbstractBuilder
+	 * @param \AdGrafik\GoogleMapsPHP\Configuration\Settings $settings
+	 * @return \AdGrafik\GoogleMapsPHP\PlugIns\AbstractBuilder
 	 */
-	public function setSettings(\GoogleMapsPHP\Configuration\Settings $settings) {
+	public function setSettings(\AdGrafik\GoogleMapsPHP\Configuration\Settings $settings) {
 		$this->settings = $settings;
 		return $this;
 	}
@@ -74,7 +74,7 @@ abstract class AbstractBuilder implements \GoogleMapsPHP\PlugIns\BuilderInterfac
 	/**
 	 * Get settings
 	 *
-	 * @return \GoogleMapsPHP\Configuration\Settings
+	 * @return \AdGrafik\GoogleMapsPHP\Configuration\Settings
 	 */
 	public function getSettings() {
 		return $this->settings;
@@ -83,10 +83,10 @@ abstract class AbstractBuilder implements \GoogleMapsPHP\PlugIns\BuilderInterfac
 	/**
 	 * Set mapBuilder
 	 *
-	 * @param \GoogleMapsPHP\MapBuilder\MapBuilderInterface $mapBuilder
-	 * @return \GoogleMapsPHP\PlugIns\BuilderInterface
+	 * @param \AdGrafik\GoogleMapsPHP\MapBuilder\MapBuilderInterface $mapBuilder
+	 * @return \AdGrafik\GoogleMapsPHP\PlugIns\BuilderInterface
 	 */
-	public function setMapBuilder(\GoogleMapsPHP\MapBuilder\MapBuilderInterface $mapBuilder) {
+	public function setMapBuilder(\AdGrafik\GoogleMapsPHP\MapBuilder\MapBuilderInterface $mapBuilder) {
 		$this->mapBuilder = $mapBuilder;
 		return $this;
 	}
@@ -94,7 +94,7 @@ abstract class AbstractBuilder implements \GoogleMapsPHP\PlugIns\BuilderInterfac
 	/**
 	 * Get mapBuilder
 	 *
-	 * @return \GoogleMapsPHP\MapBuilder\MapBuilderInterface
+	 * @return \AdGrafik\GoogleMapsPHP\MapBuilder\MapBuilderInterface
 	 */
 	public function getMapBuilder() {
 		return $this->mapBuilder;
@@ -105,7 +105,7 @@ abstract class AbstractBuilder implements \GoogleMapsPHP\PlugIns\BuilderInterfac
 	 *
 	 * @param array $options
 	 * @return string
-	 * @throws \GoogleMapsPHP\Exceptions\InvalidArgumentException
+	 * @throws \AdGrafik\GoogleMapsPHP\Exceptions\InvalidArgumentException
 	 */
 	protected function evaluateId($options) {
 
@@ -116,7 +116,7 @@ abstract class AbstractBuilder implements \GoogleMapsPHP\PlugIns\BuilderInterfac
 		$id = preg_replace('/[^0-9a-z_]/i', '_', $id);
 
 		if ($this->getMapBuilder()->getJsonObject()->findPlugInById($id)) {
-			throw new \GoogleMapsPHP\Exceptions\InvalidArgumentException(sprintf('Plug-in with ID "%s" already exists.', $id), 1371394123);
+			throw new \AdGrafik\GoogleMapsPHP\Exceptions\InvalidArgumentException(sprintf('Plug-in with ID "%s" already exists.', $id), 1371394123);
 		}
 
 		return $id;
@@ -171,7 +171,7 @@ abstract class AbstractBuilder implements \GoogleMapsPHP\PlugIns\BuilderInterfac
 					} else {
 
 						// Get the option split configuration.
-						$configuration = \GoogleMapsPHP\Utility\OptionSplit::split(array('objectNumber' => $options[$propertyName]), $count);
+						$configuration = \AdGrafik\GoogleMapsPHP\Utility\OptionSplit::split(array('objectNumber' => $options[$propertyName]), $count);
 
 						// Match each option split value with the content of the property value.
 						foreach ($configuration as $key => &$objectNumber) {

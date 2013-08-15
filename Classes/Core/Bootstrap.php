@@ -16,7 +16,7 @@
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-namespace GoogleMapsPHP\Core;
+namespace AdGrafik\GoogleMapsPHP\Core;
 
 $protocol = ((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off') || $_SERVER['SERVER_PORT'] == 443) ? 'https://' : 'http://';
 $host = $_SERVER['HTTP_HOST'];
@@ -35,7 +35,7 @@ include_once(GMP_PATH . 'GoogleMapsPHP/Classes/Object/SingletonInterface.php');
 // Register class loader.
 if (defined('GMP_LOADER') === FALSE || GMP_LOADER === FALSE) {
 	include_once(GMP_PATH . 'GoogleMapsPHP/Classes/Core/ClassLoader.php');
-	$classLoader = new ClassLoader();
+	$classLoader = new \AdGrafik\GoogleMapsPHP\Core\ClassLoader();
 }
 
 ?>

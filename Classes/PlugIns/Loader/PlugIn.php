@@ -16,14 +16,14 @@
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-namespace GoogleMapsPHP\PlugIns\Loader;
+namespace AdGrafik\GoogleMapsPHP\PlugIns\Loader;
 
 /**
  * Plug-in class for GoogleMapsPHP initial options.
  *
  * @author Arno Dudek <webmaster@adgrafik.at>
  */
-class PlugIn extends \GoogleMapsPHP\PlugIns\AbstractPlugIn {
+class PlugIn extends \AdGrafik\GoogleMapsPHP\PlugIns\AbstractPlugIn {
 
 	/**
 	 * @var string $url
@@ -49,7 +49,7 @@ class PlugIn extends \GoogleMapsPHP\PlugIns\AbstractPlugIn {
 	 * Set url
 	 *
 	 * @param string $url
-	 * @return \GoogleMapsPHP\PlugIns\Loader\PlugIn
+	 * @return \AdGrafik\GoogleMapsPHP\PlugIns\Loader\PlugIn
 	 */
 	public function setUrl($url) {
 		$this->url = $url;
@@ -69,7 +69,7 @@ class PlugIn extends \GoogleMapsPHP\PlugIns\AbstractPlugIn {
 	 * Set parameters
 	 *
 	 * @param array $parameters
-	 * @return \GoogleMapsPHP\PlugIns\Loader\PlugIn
+	 * @return \AdGrafik\GoogleMapsPHP\PlugIns\Loader\PlugIn
 	 */
 	public function setParameters(array $parameters) {
 		$this->parameters = $parameters;
@@ -89,7 +89,7 @@ class PlugIn extends \GoogleMapsPHP\PlugIns\AbstractPlugIn {
 	 * Set viewportManagement
 	 *
 	 * @param boolean $viewportManagement
-	 * @return \GoogleMapsPHP\PlugIns\Loader\PlugIn
+	 * @return \AdGrafik\GoogleMapsPHP\PlugIns\Loader\PlugIn
 	 */
 	public function setViewportManagement($viewportManagement) {
 		$this->viewportManagement = (boolean) $viewportManagement;
@@ -109,7 +109,7 @@ class PlugIn extends \GoogleMapsPHP\PlugIns\AbstractPlugIn {
 	 * Set viewportOffset
 	 *
 	 * @param float $viewportOffset
-	 * @return \GoogleMapsPHP\PlugIns\Loader\PlugIn
+	 * @return \AdGrafik\GoogleMapsPHP\PlugIns\Loader\PlugIn
 	 */
 	public function setViewportOffset($viewportOffset) {
 		$this->viewportOffset = (float) $viewportOffset;

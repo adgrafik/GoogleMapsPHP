@@ -16,40 +16,40 @@
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-namespace GoogleMapsPHP\PlugIns\StyledMapType;
+namespace AdGrafik\GoogleMapsPHP\PlugIns\StyledMapType;
 
-use GoogleMapsPHP\Utility\ClassUtility;
+use AdGrafik\GoogleMapsPHP\Utility\ClassUtility;
 
 /**
  * Builder class for GoogleMapsPHP plug-in.
  *
  * @author Arno Dudek <webmaster@adgrafik.at>
  */
-class Builder extends \GoogleMapsPHP\PlugIns\AbstractBuilder {
+class Builder extends \AdGrafik\GoogleMapsPHP\PlugIns\AbstractBuilder {
 
 	/**
 	 * Build a plugIn
 	 *
 	 * @param array $options
 	 * @return void
-	 * @throws \GoogleMapsPHP\Exceptions\RequiredArgumentMissingException
+	 * @throws \AdGrafik\GoogleMapsPHP\Exceptions\RequiredArgumentMissingException
 	 */
 	public function build(array $options = array()) {
 
 		if (isset($options['name']) === FALSE || isset($options['styles']) === FALSE) {
-			throw new \GoogleMapsPHP\Exceptions\RequiredArgumentMissingException('The properties "name" and "styles" are required.', 1371383146);
+			throw new \AdGrafik\GoogleMapsPHP\Exceptions\RequiredArgumentMissingException('The properties "name" and "styles" are required.', 1371383146);
 		}
 
 		$options['id'] = $this->evaluateId($options);
 
 		// Split properties to API and layer options.
-		$this->parseOptions($options, $objectOptions, $plugInOptions, $additionalOptions, '\\GoogleMapsPHP\\API\\MapTypes\\StyledMapTypeOptions', '\\GoogleMapsPHP\\PlugIns\\StyledMapType\\PlugIn');
+		$this->parseOptions($options, $objectOptions, $plugInOptions, $additionalOptions, '\\AdGrafik\\GoogleMapsPHP\\API\\MapTypes\\StyledMapTypeOptions', '\\AdGrafik\\GoogleMapsPHP\\PlugIns\\StyledMapType\\PlugIn');
 
 		// Create API object.
-		$object = ClassUtility::makeInstance('\\GoogleMapsPHP\\API\\MapTypes\\StyledMapType', $additionalOptions['styles'], $objectOptions);
+		$object = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\API\\MapTypes\\StyledMapType', $additionalOptions['styles'], $objectOptions);
 
 		// Create plug-in object.
-		$plugIn = ClassUtility::makeInstance('\\GoogleMapsPHP\\PlugIns\\StyledMapType\\PlugIn', $this->getMapBuilder(), $plugInOptions)
+		$plugIn = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\PlugIns\\StyledMapType\\PlugIn', $this->getMapBuilder(), $plugInOptions)
 			->setObject($object);
 
 		$this->getMapBuilder()->getJsonObject()->addPlugIn($plugIn);

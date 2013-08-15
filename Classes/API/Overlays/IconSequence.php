@@ -16,7 +16,7 @@
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-namespace GoogleMapsPHP\API\Overlays;
+namespace AdGrafik\GoogleMapsPHP\API\Overlays;
 
 /**
  * API equivalent to google.maps.PolylineOptions.
@@ -24,7 +24,7 @@ namespace GoogleMapsPHP\API\Overlays;
  * @see https://developers.google.com/maps/documentation/javascript/reference
  * @author Arno Dudek <webmaster@adgrafik.at>
  */
-class PolylineOptions extends \GoogleMapsPHP\Object\PropertyArrayAccess {
+class PolylineOptions extends \AdGrafik\GoogleMapsPHP\Object\PropertyArrayAccess {
 
 	/**
 	 * @var boolean $fixedRotation
@@ -32,7 +32,7 @@ class PolylineOptions extends \GoogleMapsPHP\Object\PropertyArrayAccess {
 	public $fixedRotation;
 
 	/**
-	 * @var \GoogleMapsPHP\API\Overlays\Symbol $icon
+	 * @var \AdGrafik\GoogleMapsPHP\API\Overlays\Symbol $icon
 	 */
 	public $icon;
 
@@ -50,7 +50,7 @@ class PolylineOptions extends \GoogleMapsPHP\Object\PropertyArrayAccess {
 	 * Set fixedRotation
 	 *
 	 * @param boolean $fixedRotation
-	 * @return \GoogleMapsPHP\API\Overlays\PolylineOptions
+	 * @return \AdGrafik\GoogleMapsPHP\API\Overlays\PolylineOptions
 	 */
 	public function setFixedRotation($fixedRotation) {
 		$this->fixedRotation = (boolean) $fixedRotation;
@@ -69,10 +69,10 @@ class PolylineOptions extends \GoogleMapsPHP\Object\PropertyArrayAccess {
 	/**
 	 * Set icon
 	 *
-	 * @param \GoogleMapsPHP\API\Overlays\Symbol $icon
-	 * @return \GoogleMapsPHP\API\Overlays\PolylineOptions
+	 * @param \AdGrafik\GoogleMapsPHP\API\Overlays\Symbol $icon
+	 * @return \AdGrafik\GoogleMapsPHP\API\Overlays\PolylineOptions
 	 */
-	public function setIcon(\GoogleMapsPHP\API\Overlays\Symbol $icon) {
+	public function setIcon(\AdGrafik\GoogleMapsPHP\API\Overlays\Symbol $icon) {
 		$this->icon = $icon;
 		return $this;
 	}
@@ -80,7 +80,7 @@ class PolylineOptions extends \GoogleMapsPHP\Object\PropertyArrayAccess {
 	/**
 	 * Get icon
 	 *
-	 * @return \GoogleMapsPHP\API\Overlays\Symbol
+	 * @return \AdGrafik\GoogleMapsPHP\API\Overlays\Symbol
 	 */
 	public function getIcon() {
 		return $this->icon;
@@ -90,7 +90,7 @@ class PolylineOptions extends \GoogleMapsPHP\Object\PropertyArrayAccess {
 	 * Set offset
 	 *
 	 * @param string $offset
-	 * @return \GoogleMapsPHP\API\Overlays\PolylineOptions
+	 * @return \AdGrafik\GoogleMapsPHP\API\Overlays\PolylineOptions
 	 */
 	public function setOffset($offset) {
 		$this->offset = $offset;
@@ -110,7 +110,7 @@ class PolylineOptions extends \GoogleMapsPHP\Object\PropertyArrayAccess {
 	 * Set repeat
 	 *
 	 * @param string $repeat
-	 * @return \GoogleMapsPHP\API\Overlays\PolylineOptions
+	 * @return \AdGrafik\GoogleMapsPHP\API\Overlays\PolylineOptions
 	 */
 	public function setRepeat($repeat) {
 		$this->repeat = $repeat;

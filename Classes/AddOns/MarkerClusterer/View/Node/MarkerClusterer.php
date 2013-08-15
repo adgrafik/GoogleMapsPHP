@@ -16,14 +16,14 @@
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-namespace GoogleMapsPHP\AddOns\MarkerClusterer\View\Node;
+namespace AdGrafik\GoogleMapsPHP\AddOns\MarkerClusterer\View\Node;
 
 /**
  * DOMElement for MarkerClusterer.
  *
  * @author Arno Dudek <webmaster@adgrafik.at>
  */
-class MarkerClusterer extends \GoogleMapsPHP\View\Node\AbstractNode {
+class MarkerClusterer extends \AdGrafik\GoogleMapsPHP\View\Node\AbstractNode {
 
 	/**
 	 * @var boolean $printed
@@ -34,7 +34,7 @@ class MarkerClusterer extends \GoogleMapsPHP\View\Node\AbstractNode {
 	 * Set printed
 	 *
 	 * @param boolean $printed
-	 * @return \GoogleMapsPHP\AddOns\MarkerClusterer\View\Node\MarkerClusterer
+	 * @return \AdGrafik\GoogleMapsPHP\AddOns\MarkerClusterer\View\Node\MarkerClusterer
 	 */
 	public function setPrinted($printed) {
 		static::$printed = (boolean) $printed;

@@ -16,7 +16,7 @@
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-namespace GoogleMapsPHP\Exceptions;
+namespace AdGrafik\GoogleMapsPHP\Exceptions;
 
 /**
  * Exception.

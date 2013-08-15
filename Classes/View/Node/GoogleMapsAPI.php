@@ -16,14 +16,14 @@
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-namespace GoogleMapsPHP\View\Node;
+namespace AdGrafik\GoogleMapsPHP\View\Node;
 
 /**
  * DOMElement for GoogleMapsAPI.
  *
  * @author Arno Dudek <webmaster@adgrafik.at>
  */
-class GoogleMapsAPI extends \GoogleMapsPHP\View\Node\AbstractNode {
+class GoogleMapsAPI extends \AdGrafik\GoogleMapsPHP\View\Node\AbstractNode {
 
 	/**
 	 * @var boolean $printed
@@ -34,7 +34,7 @@ class GoogleMapsAPI extends \GoogleMapsPHP\View\Node\AbstractNode {
 	 * Set printed
 	 *
 	 * @param boolean $printed
-	 * @return \GoogleMapsPHP\View\Node\GoogleMapsAPI
+	 * @return \AdGrafik\GoogleMapsPHP\View\Node\GoogleMapsAPI
 	 */
 	public function setPrinted($printed) {
 		static::$printed = (boolean) $printed;

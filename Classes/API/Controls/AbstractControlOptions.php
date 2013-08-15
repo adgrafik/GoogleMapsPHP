@@ -16,16 +16,16 @@
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-namespace GoogleMapsPHP\API\Controls;
+namespace AdGrafik\GoogleMapsPHP\API\Controls;
 
-use GoogleMapsPHP\Utility\ClassUtility;
+use AdGrafik\GoogleMapsPHP\Utility\ClassUtility;
 
 /**
  * AbstractControlOptions.
  *
  * @author Arno Dudek <webmaster@adgrafik.at>
  */
-abstract class AbstractControlOptions extends \GoogleMapsPHP\Object\PropertyArrayAccess implements ControlOptionsInterface {
+abstract class AbstractControlOptions extends \AdGrafik\GoogleMapsPHP\Object\PropertyArrayAccess implements ControlOptionsInterface {
 
 	/**
 	 * Constructor

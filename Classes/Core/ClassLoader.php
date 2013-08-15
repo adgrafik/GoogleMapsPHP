@@ -16,14 +16,14 @@
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-namespace GoogleMapsPHP\Core;
+namespace AdGrafik\GoogleMapsPHP\Core;
 
 /**
  * ClassLoader class.
  *
  * @author Arno Dudek <webmaster@adgrafik.at>
  */
-class ClassLoader implements \GoogleMapsPHP\Object\SingletonInterface {
+class ClassLoader implements \AdGrafik\GoogleMapsPHP\Object\SingletonInterface {
 
 	/**
 	 * @var array $autoloadFiles
@@ -43,7 +43,7 @@ class ClassLoader implements \GoogleMapsPHP\Object\SingletonInterface {
 	 *
 	 * @param string $className
 	 * @return void
-	 * @throws \GoogleMapsPHP\ClassNotFoundException
+	 * @throws \AdGrafik\GoogleMapsPHP\ClassNotFoundException
 	 */
 	public function autoload($className) {
 
@@ -51,12 +51,12 @@ class ClassLoader implements \GoogleMapsPHP\Object\SingletonInterface {
 			$classPathAndFilename = $this->autoloadFiles[$className];
 		} else {
 			$classPathAndFilename = str_replace('\\', '/', $className);
-			$classPathAndFilename = str_replace('GoogleMapsPHP/', 'GoogleMapsPHP/Classes/', $classPathAndFilename);
+			$classPathAndFilename = str_replace('AdGrafik/GoogleMapsPHP/', 'GoogleMapsPHP/Classes/', $classPathAndFilename);
 			$classPathAndFilename = GMP_PATH . $classPathAndFilename . '.php';
 		}
 
 		if (!is_file($classPathAndFilename)) {
-			throw new \GoogleMapsPHP\Exceptions\ClassNotFoundException(sprintf('Class %s not found.', $className), 1369478990);
+			throw new \AdGrafik\GoogleMapsPHP\Exceptions\ClassNotFoundException(sprintf('Class %s not found.', $className), 1369478990);
 		}
 
 		include_once($classPathAndFilename);

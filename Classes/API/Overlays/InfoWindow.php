@@ -16,9 +16,9 @@
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-namespace GoogleMapsPHP\API\Overlays;
+namespace AdGrafik\GoogleMapsPHP\API\Overlays;
 
-use GoogleMapsPHP\Utility\ClassUtility;
+use AdGrafik\GoogleMapsPHP\Utility\ClassUtility;
 
 /**
  * API equivalent to google.maps.InfoWindow.
@@ -26,10 +26,10 @@ use GoogleMapsPHP\Utility\ClassUtility;
  * @see https://developers.google.com/maps/documentation/javascript/reference
  * @author Arno Dudek <webmaster@adgrafik.at>
  */
-class InfoWindow extends \GoogleMapsPHP\Object\OptionsArrayAccess implements \GoogleMapsPHP\API\Overlays\OverlayInterface {
+class InfoWindow extends \AdGrafik\GoogleMapsPHP\Object\OptionsArrayAccess implements \AdGrafik\GoogleMapsPHP\API\Overlays\OverlayInterface {
 
 	/**
-	 * @var \GoogleMapsPHP\API\Overlays\InfoWindowOptions $options
+	 * @var \AdGrafik\GoogleMapsPHP\API\Overlays\InfoWindowOptions $options
 	 */
 	public $options;
 
@@ -41,7 +41,7 @@ class InfoWindow extends \GoogleMapsPHP\Object\OptionsArrayAccess implements \Go
 	public function __construct($options) {
 
 		// Set required values
-		$this->options = ClassUtility::makeInstance('\\GoogleMapsPHP\\API\\Overlays\\InfoWindowOptions');
+		$this->options = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\API\\Overlays\\InfoWindowOptions');
 
 		// Set properties
 		$this->setOptions($options);
@@ -50,14 +50,14 @@ class InfoWindow extends \GoogleMapsPHP\Object\OptionsArrayAccess implements \Go
 	/**
 	 * Set options
 	 *
-	 * @param mixed $options Can be an object of type \GoogleMapsPHP\API\Overlays\InfoWindowOptions or an map options array.
-	 * @return \GoogleMapsPHP\API\Overlays\Marker
+	 * @param mixed $options Can be an object of type \AdGrafik\GoogleMapsPHP\API\Overlays\InfoWindowOptions or an map options array.
+	 * @return \AdGrafik\GoogleMapsPHP\API\Overlays\Marker
 	 */
 	public function setOptions($options) {
 		if (is_array($options)) {
 			ClassUtility::setPropertiesFromArray($this->options, $options);
-		} else if ($options instanceof \GoogleMapsPHP\API\Overlays\InfoWindowOptions === FALSE) {
-			throw new \GoogleMapsPHP\Exceptions\InvalidValueException('Map options must be an array or an instance of "\GoogleMapsPHP\API\Overlays\InfoWindowOptions".', 1369568350);
+		} else if ($options instanceof \AdGrafik\GoogleMapsPHP\API\Overlays\InfoWindowOptions === FALSE) {
+			throw new \AdGrafik\GoogleMapsPHP\Exceptions\InvalidValueException('Map options must be an array or an instance of "\AdGrafik\GoogleMapsPHP\API\Overlays\InfoWindowOptions".', 1369568350);
 		} else {
 			$this->options = $options;
 		}
@@ -67,7 +67,7 @@ class InfoWindow extends \GoogleMapsPHP\Object\OptionsArrayAccess implements \Go
 	/**
 	 * Get options
 	 *
-	 * @return \GoogleMapsPHP\API\Overlays\InfoWindowOptions
+	 * @return \AdGrafik\GoogleMapsPHP\API\Overlays\InfoWindowOptions
 	 */
 	public function getOptions() {
 		return $this->options;
@@ -79,11 +79,11 @@ class InfoWindow extends \GoogleMapsPHP\Object\OptionsArrayAccess implements \Go
 	 * @param string $propertyName
 	 * @param mixed $propertyValue
 	 * @return mixed
-	 * @throws \GoogleMapsPHP\Exceptions\InvalidMethodException
+	 * @throws \AdGrafik\GoogleMapsPHP\Exceptions\InvalidMethodException
 	 */
 	public function __call($methodName, $arguments) {
 		if (ClassUtility::methodExists($this->options, $methodName, FALSE) === FALSE) {
-			throw new \GoogleMapsPHP\Exceptions\InvalidMethodException(sprintf('Method "%s" not exists.', $methodName), 1369568351);
+			throw new \AdGrafik\GoogleMapsPHP\Exceptions\InvalidMethodException(sprintf('Method "%s" not exists.', $methodName), 1369568351);
 		}
 		return call_user_func_array(array($this->options, $methodName), $arguments);
 	}

@@ -16,32 +16,32 @@
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-namespace GoogleMapsPHP\API\Overlays;
+namespace AdGrafik\GoogleMapsPHP\API\Overlays;
 
-use GoogleMapsPHP\Utility\ClassUtility;
+use AdGrafik\GoogleMapsPHP\Utility\ClassUtility;
 
 /**
  * AbstractIcon.
  *
  * @author Arno Dudek <webmaster@adgrafik.at>
  */
-abstract class AbstractIcon extends \GoogleMapsPHP\Object\PropertyArrayAccess implements IconInterface {
+abstract class AbstractIcon extends \AdGrafik\GoogleMapsPHP\Object\PropertyArrayAccess implements IconInterface {
 
 	/**
-	 * @var \GoogleMapsPHP\API\Base\Point $anchor
+	 * @var \AdGrafik\GoogleMapsPHP\API\Base\Point $anchor
 	 */
 	public $anchor;
 
 	/**
 	 * Set anchor
 	 *
-	 * @param array|\GoogleMapsPHP\API\Base\Point $anchor
-	 * @return \GoogleMapsPHP\API\Overlays\Icon
+	 * @param array|\AdGrafik\GoogleMapsPHP\API\Base\Point $anchor
+	 * @return \AdGrafik\GoogleMapsPHP\API\Overlays\Icon
 	 */
 	public function setAnchor($anchor) {
 
-		if ($anchor instanceof \GoogleMapsPHP\API\Base\Point === FALSE) {
-			$anchor = ClassUtility::makeInstance('\\GoogleMapsPHP\\API\\Base\\Point', $anchor);
+		if ($anchor instanceof \AdGrafik\GoogleMapsPHP\API\Base\Point === FALSE) {
+			$anchor = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\API\\Base\\Point', $anchor);
 		}
 
 		$this->anchor = $anchor;
@@ -51,7 +51,7 @@ abstract class AbstractIcon extends \GoogleMapsPHP\Object\PropertyArrayAccess im
 	/**
 	 * Get anchor
 	 *
-	 * @return \GoogleMapsPHP\API\Base\Point
+	 * @return \AdGrafik\GoogleMapsPHP\API\Base\Point
 	 */
 	public function getAnchor() {
 		return $this->anchor;

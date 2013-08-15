@@ -16,7 +16,7 @@
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-namespace GoogleMapsPHP\View\Node;
+namespace AdGrafik\GoogleMapsPHP\View\Node;
 
 /**
  * NodeInterface.
@@ -29,7 +29,7 @@ interface NodeInterface {
 	 * Set printed
 	 *
 	 * @param boolean $printed
-	 * @return \GoogleMapsPHP\View\Node\NodeInterface
+	 * @return \AdGrafik\GoogleMapsPHP\View\Node\NodeInterface
 	 */
 	public function setPrinted($printed);
 
@@ -44,7 +44,7 @@ interface NodeInterface {
 	 * Set forceOnTop
 	 *
 	 * @param boolean $forceOnTop
-	 * @return \GoogleMapsPHP\View\Node\NodeInterface
+	 * @return \AdGrafik\GoogleMapsPHP\View\Node\NodeInterface
 	 */
 	public function setForceOnTop($forceOnTop);
 

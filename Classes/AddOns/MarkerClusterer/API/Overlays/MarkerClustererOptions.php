@@ -16,9 +16,9 @@
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-namespace GoogleMapsPHP\AddOns\MarkerClusterer\API\Overlays;
+namespace AdGrafik\GoogleMapsPHP\AddOns\MarkerClusterer\API\Overlays;
 
-use GoogleMapsPHP\Utility\ClassUtility;
+use AdGrafik\GoogleMapsPHP\Utility\ClassUtility;
 
 /**
  * This class represents optional arguments to the MarkerClusterer constructor.
@@ -52,7 +52,7 @@ class MarkerClustererOptions {
 	 * Set maxZoom
 	 *
 	 * @param integer $maxZoom
-	 * @return \GoogleMapsPHP\AddOns\MarkerClusterer\API\Overlays\MarkerClustererOptions
+	 * @return \AdGrafik\GoogleMapsPHP\AddOns\MarkerClusterer\API\Overlays\MarkerClustererOptions
 	 */
 	public function setMaxZoom($maxZoom) {
 		$this->maxZoom = (integer) $maxZoom;
@@ -72,7 +72,7 @@ class MarkerClustererOptions {
 	 * Set gridSize
 	 *
 	 * @param integer $gridSize
-	 * @return \GoogleMapsPHP\AddOns\MarkerClusterer\API\Overlays\MarkerClustererOptions
+	 * @return \AdGrafik\GoogleMapsPHP\AddOns\MarkerClusterer\API\Overlays\MarkerClustererOptions
 	 */
 	public function setGridSize($gridSize) {
 		$this->gridSize = (integer) $gridSize;
@@ -92,7 +92,7 @@ class MarkerClustererOptions {
 	 * Set zoomOnClick
 	 *
 	 * @param boolean $zoomOnClick
-	 * @return \GoogleMapsPHP\AddOns\MarkerClusterer\API\Overlays\MarkerClustererOptions
+	 * @return \AdGrafik\GoogleMapsPHP\AddOns\MarkerClusterer\API\Overlays\MarkerClustererOptions
 	 */
 	public function setZoomOnClick($zoomOnClick) {
 		$this->zoomOnClick = (boolean) $zoomOnClick;
@@ -112,12 +112,12 @@ class MarkerClustererOptions {
 	 * Set styles
 	 *
 	 * @param array $styles
-	 * @return \GoogleMapsPHP\AddOns\MarkerClusterer\API\Overlays\MarkerClustererOptions
+	 * @return \AdGrafik\GoogleMapsPHP\AddOns\MarkerClusterer\API\Overlays\MarkerClustererOptions
 	 */
 	public function setStyles(array $styles) {
 		foreach ($styles as $key => $style) {
-			if ($style instanceof \GoogleMapsPHP\AddOns\MarkerClusterer\API\MapTypes\MarkerClustererStyle === FALSE) {
-				$styles[$key] = ClassUtility::makeInstance('\\GoogleMapsPHP\\AddOns\\MarkerClusterer\\API\\MapTypes\\MarkerClustererStyle', $style);
+			if ($style instanceof \AdGrafik\GoogleMapsPHP\AddOns\MarkerClusterer\API\MapTypes\MarkerClustererStyle === FALSE) {
+				$styles[$key] = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\AddOns\\MarkerClusterer\\API\\MapTypes\\MarkerClustererStyle', $style);
 			}
 		}
 		$this->styles = $styles;
