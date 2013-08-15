@@ -99,6 +99,16 @@ class View {
 	}
 
 	/**
+	 * addHtml
+	 *
+	 * @param array $settings
+	 * @return \AdGrafik\GoogleMapsPHP\View\Node\Html
+	 */
+	public function addHtml(array $settings = array()) {
+		return $this->addHtmlNode('\\AdGrafik\\GoogleMapsPHP\\View\\Node\\Html', $settings);
+	}
+
+	/**
 	 * addHead
 	 *
 	 * @param \AdGrafik\GoogleMapsPHP\View\Node\NodeInterface $node
@@ -290,6 +300,35 @@ class View {
 			$node->setAttribute('src', $source);
 		} else {
 			$node->nodeValue = $source;
+		}
+
+		return $node;
+	}
+
+	/**
+	 * addHtmlNode
+	 *
+	 * @param string $nodeClassName
+	 * @param array $settings
+	 * @return \AdGrafik\GoogleMapsPHP\View\Node\JavaScript
+	 */
+	protected function addHtmlNode($nodeClassName, array $settings = array()) {
+
+		$tagName = isset($settings['tagName']) ? $settings['tagName'] : 'div';
+		$attributes = isset($settings['attributes']) ? $settings['attributes'] : array();
+		$forceOnTop = isset($settings['forceOnTop']) ? $settings['forceOnTop'] : FALSE;
+
+		$node = ClassUtility::makeInstance($nodeClassName, $tagName);
+		$this->addBody($node, $forceOnTop);
+
+		if (isset($attributes['id'])) {
+			$node->setAttribute('id', $attributes['id']);
+			$node->setIdAttribute('id', TRUE);
+			unset($attributes['id']);
+		}
+
+		foreach ($attributes as $attributeName => &$attributeValue) {
+			$node->setAttribute($attributeName, $attributeValue);
 		}
 
 		return $node;

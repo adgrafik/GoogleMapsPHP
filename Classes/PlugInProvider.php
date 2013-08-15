@@ -54,11 +54,6 @@ class PlugInProvider implements \AdGrafik\GoogleMapsPHP\MapBuilder\MapBuilderInt
 	protected $mapId;
 
 	/**
-	 * @var array $options
-	 */
-	protected $options;
-
-	/**
 	 * @var \AdGrafik\GoogleMapsPHP\API\Base\LatLngBounds $bounds
 	 */
 	protected $bounds;
@@ -84,8 +79,6 @@ class PlugInProvider implements \AdGrafik\GoogleMapsPHP\MapBuilder\MapBuilderInt
 		} else if ($mapId == '') {
 			$mapId = 'map' . ++self::$mapIdCount;
 		}
-
-		$this->options = (array) $options;
 
 		$this->setSettings(ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\Configuration\\Settings'));
 

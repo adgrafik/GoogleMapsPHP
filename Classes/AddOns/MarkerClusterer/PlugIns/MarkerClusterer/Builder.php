@@ -50,9 +50,7 @@ class Builder extends \AdGrafik\GoogleMapsPHP\PlugIns\AbstractBuilder {
 
 		$this->getMapBuilder()->getJsonObject()->addPlugIn($plugIn);
 
-		$this->getMapBuilder()->getView()->addJavaScriptLibrary(
-			$this->getSettings()->get('view.node.markerClusterer')
-		);
+		$this->getMapBuilder()->getView()->addJavaScriptLibrary($this->getSettings()->get('view.node.markerClusterer'));
 	}
 
 }

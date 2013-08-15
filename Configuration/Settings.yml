@@ -16,8 +16,10 @@ view:
       xmlEncoding: utf-8
 
     canvas:
+      forceOnTop: TRUE
       tagName: div
-      defaultStyle: height: 300px;
+      attributes:
+        style: height: 300px;
 
     jQuery:
       source: http://code.jquery.com/jquery-1.10.1.min.js

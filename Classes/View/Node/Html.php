@@ -19,11 +19,11 @@
 namespace AdGrafik\GoogleMapsPHP\View\Node;
 
 /**
- * DOMElement for Canvas.
+ * DOMElement for HTML tags.
  *
  * @author Arno Dudek <webmaster@adgrafik.at>
  */
-class Canvas extends \AdGrafik\GoogleMapsPHP\View\Node\AbstractNode {
+class Html extends \AdGrafik\GoogleMapsPHP\View\Node\AbstractNode {
 
 	/**
 	 * @var boolean $printed
@@ -34,7 +34,7 @@ class Canvas extends \AdGrafik\GoogleMapsPHP\View\Node\AbstractNode {
 	 * Set printed
 	 *
 	 * @param boolean $printed
-	 * @return \AdGrafik\GoogleMapsPHP\View\Node\Canvas
+	 * @return \AdGrafik\GoogleMapsPHP\View\Node\Html
 	 */
 	public function setPrinted($printed) {
 		$this->printed = (boolean) $printed;
@@ -48,15 +48,6 @@ class Canvas extends \AdGrafik\GoogleMapsPHP\View\Node\AbstractNode {
 	 */
 	public function isPrinted() {
 		return $this->printed;
-	}
-
-	/**
-	 * Get id of the div
-	 *
-	 * @return integer
-	 */
-	public function getId() {
-		return $this->getAttribute('id');
 	}
 
 }
