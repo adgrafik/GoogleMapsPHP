@@ -19,16 +19,16 @@
 namespace AdGrafik\GoogleMapsPHP\View\Node;
 
 /**
- * DOMElement for JavaScriptLibrary.
+ * DOMElement for unique JavaScript libraries.
  *
  * @author Arno Dudek <webmaster@adgrafik.at>
  */
 class JavaScriptLibrary extends \AdGrafik\GoogleMapsPHP\View\Node\AbstractNode {
 
 	/**
-	 * @var boolean $printed
+	 * @var array $printed
 	 */
-	static protected $printed = FALSE;
+	static protected $printed = array();
 
 	/**
 	 * Set printed
@@ -37,7 +37,19 @@ class JavaScriptLibrary extends \AdGrafik\GoogleMapsPHP\View\Node\AbstractNode {
 	 * @return \AdGrafik\GoogleMapsPHP\View\Node\JavaScriptLibrary
 	 */
 	public function setPrinted($printed) {
-		static::$printed = (boolean) $printed;
+
+		$reference = $this->getPrintReference();
+
+		// If $printed TRUE and not in stack, add to stack.
+		if ($printed && in_array($reference, static::$printed) === FALSE) {
+			static::$printed[] = $reference;
+		}
+
+		// If $printed FALSE and in stack, remove from stack.
+		if ($printed === FALSE && ($key = array_search($reference, static::$printed))) {
+			unset(static::$printed[$key]);
+		}
+
 		return $this;
 	}
 
@@ -47,7 +59,18 @@ class JavaScriptLibrary extends \AdGrafik\GoogleMapsPHP\View\Node\AbstractNode {
 	 * @return boolean
 	 */
 	public function isPrinted() {
-		return static::$printed;
+		return in_array($this->getPrintReference(), static::$printed);
+	}
+
+	/**
+	 * getPrintReference
+	 *
+	 * @return string
+	 */
+	public function getPrintReference() {
+		return $this->nodeValue
+			? md5($this->nodeValue)
+			: md5($this->getAttribute('src'));
 	}
 
 }

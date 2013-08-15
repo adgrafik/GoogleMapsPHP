@@ -50,14 +50,9 @@ class Builder extends \AdGrafik\GoogleMapsPHP\PlugIns\AbstractBuilder {
 
 		$this->getMapBuilder()->getJsonObject()->addPlugIn($plugIn);
 
-		$markerClustererSource = $this->getSettings()->get('view.node.markerClusterer.source');
-		if ($markerClustererSource) {
-			$http = $this->getSettings()->get('view.node.markerClusterer.external') ? '' : GMP_HTTP_PATH;
-			$markerClustererNode = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\AddOns\\MarkerClusterer\\View\\Node\\MarkerClusterer', 'script');
-			$this->getMapBuilder()->getView()->addHead($markerClustererNode, TRUE);
-			$markerClustererNode->setAttribute('type', 'text/javascript');
-			$markerClustererNode->setAttribute('src', $http . $markerClustererSource);
-		}
+		$this->getMapBuilder()->getView()->addJavaScriptLibrary(
+			$this->getSettings()->get('view.node.markerClusterer')
+		);
 	}
 
 }

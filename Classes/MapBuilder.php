@@ -34,22 +34,22 @@ class MapBuilder extends \AdGrafik\GoogleMapsPHP\PlugInProvider {
 	protected $view;
 
 	/**
-	 * @var \AdGrafik\GoogleMapsPHP\View\Node\JQuery $jQueryNode
+	 * @var \AdGrafik\GoogleMapsPHP\View\Node\JavaScriptLibrary $jQueryNode
 	 */
 	protected $jQueryNode;
 
 	/**
-	 * @var \AdGrafik\GoogleMapsPHP\View\Node\GoogleMapsAPI $googleMapsApiNode
+	 * @var \AdGrafik\GoogleMapsPHP\View\Node\JavaScriptLibrary $googleMapsApiNode
 	 */
 	protected $googleMapsApiNode;
 
 	/**
-	 * @var \AdGrafik\GoogleMapsPHP\View\Node\MapBuilder $mapBuilderNode
+	 * @var \AdGrafik\GoogleMapsPHP\View\Node\JavaScriptLibrary $mapBuilderNode
 	 */
 	protected $mapBuilderNode;
 
 	/**
-	 * @var \AdGrafik\GoogleMapsPHP\View\Node\Options $optionsNode
+	 * @var \AdGrafik\GoogleMapsPHP\View\Node\JavaScript $optionsNode
 	 */
 	protected $optionsNode;
 
@@ -73,55 +73,10 @@ class MapBuilder extends \AdGrafik\GoogleMapsPHP\PlugInProvider {
 		// Create XML document and nodes in order of appearance.
 		$this->view = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\View\\View');
 
-/*
-		// TODO: Use of universal JavaScript nodes.
-		$jQueryNode = $this->view->addJavaScriptLibrary($this->getSettings()->get('view.node.jQuery.source'), TRUE);
-		if ($jQueryNode) {
-			$this->setJQueryNode($jQueryNode);
-		}
-
-		$googleMapsApiNode = $this->view->addJavaScriptLibrary($this->getSettings()->get('view.node.googleMapsApi.source'), TRUE);
-		if ($googleMapsApiNode) {
-			$this->setGoogleMapsApiNode($googleMapsApiNode);
-		}
-
-		$mapBuilderNode = $this->view->addJavaScriptLibrary($this->getSettings()->get('view.node.mapBuilder.source'), TRUE);
-		if ($mapBuilderNode) {
-			$this->setMapBuilderNode($mapBuilderNode);
-		}
-#print_r($this->mapBuilderNode);
-*/
-
-		$jQuerySource = $this->getSettings()->get('view.node.jQuery.source');
-		if ($jQuerySource) {
-			$http = $this->getSettings()->get('view.node.jQuery.external') ? '' : GMP_HTTP_PATH;
-			$this->jQueryNode = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\View\\Node\\JQuery', 'script');
-			$this->view->addHead($this->jQueryNode, TRUE);
-			$this->jQueryNode->setAttribute('type', 'text/javascript');
-			$this->jQueryNode->setAttribute('src', $http . $jQuerySource);
-		}
-
-		$googleMapsApiSource = $this->getSettings()->get('view.node.googleMapsApi.source');
-		if ($googleMapsApiSource) {
-			$http = $this->getSettings()->get('view.node.googleMapsApi.external') ? '' : GMP_HTTP_PATH;
-			$this->googleMapsApiNode = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\View\\Node\\GoogleMapsAPI', 'script');
-			$this->view->addHead($this->googleMapsApiNode, TRUE);
-			$this->googleMapsApiNode->setAttribute('type', 'text/javascript');
-			$this->googleMapsApiNode->setAttribute('src', $http . $googleMapsApiSource);
-		}
-
-		$mapBuilderSource = $this->getSettings()->get('view.node.mapBuilder.source');
-		if ($mapBuilderSource) {
-			$http = $this->getSettings()->get('view.node.mapBuilder.external') ? '' : GMP_HTTP_PATH;
-			$this->mapBuilderNode = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\View\\Node\\MapBuilder', 'script');
-			$this->view->addHead($this->mapBuilderNode, TRUE);
-			$this->mapBuilderNode->setAttribute('type', 'text/javascript');
-			$this->mapBuilderNode->setAttribute('src', $http . $mapBuilderSource);
-		}
-
-		$this->optionsNode = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\View\\Node\\Options', 'script');
-		$this->view->addHead($this->optionsNode);
-		$this->optionsNode->setAttribute('type', 'text/javascript');
+		$this->setJQueryNode($this->view->addJavaScriptLibrary($this->getSettings()->get('view.node.jQuery')));
+		$this->setGoogleMapsApiNode($this->view->addJavaScriptLibrary($this->getSettings()->get('view.node.googleMapsApi')));
+		$this->setMapBuilderNode($this->view->addJavaScriptLibrary($this->getSettings()->get('view.node.mapBuilder')));
+		$this->setOptionsNode($this->view->addJavaScript());
 
 		if (($tagName = $this->getSettings()->get('view.node.canvas.tagName')) === NULL) {
 			$tagName = 'div';
@@ -242,10 +197,10 @@ class MapBuilder extends \AdGrafik\GoogleMapsPHP\PlugInProvider {
 	/**
 	 * Set optionsNode
 	 *
-	 * @param \AdGrafik\GoogleMapsPHP\View\Node\Options $optionsNode
+	 * @param \AdGrafik\GoogleMapsPHP\View\Node\JavaScript $optionsNode
 	 * @return \AdGrafik\GoogleMapsPHP\MapBuilder
 	 */
-	public function setOptionsNode(\AdGrafik\GoogleMapsPHP\View\Node\Options $optionsNode) {
+	public function setOptionsNode(\AdGrafik\GoogleMapsPHP\View\Node\JavaScript $optionsNode) {
 		$this->optionsNode = $optionsNode;
 		return $this;
 	}
@@ -253,7 +208,7 @@ class MapBuilder extends \AdGrafik\GoogleMapsPHP\PlugInProvider {
 	/**
 	 * Get optionsNode
 	 *
-	 * @return \AdGrafik\GoogleMapsPHP\View\Node\Options
+	 * @return \AdGrafik\GoogleMapsPHP\View\Node\JavaScript
 	 */
 	public function getOptionsNode() {
 		return $this->optionsNode;

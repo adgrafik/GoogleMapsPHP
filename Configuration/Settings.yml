@@ -20,17 +20,18 @@ view:
       defaultStyle: height: 300px;
 
     jQuery:
-      source: //code.jquery.com/jquery-1.10.1.min.js
+      source: http://code.jquery.com/jquery-1.10.1.min.js
       forceOnTop: TRUE
       external: TRUE
 
     googleMapsApi:
-      source: //maps.googleapis.com/maps/api/js?v=3.exp&sensor=false
+      source: http://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false
       forceOnTop: TRUE
       external: TRUE
 
     markerClusterer:
       source: GoogleMapsPHP/Ressources/Public/JavaScript/markerclusterer-1.0.0.min.js
+      forceOnTop: TRUE
 
     mapBuilder:
       source: GoogleMapsPHP/Ressources/Public/JavaScript/mapbuilder-1.0.0.js

@@ -79,28 +79,24 @@ class View {
 	}
 
 	/**
-	 * TODO: Use of universal JavaScript nodes.
-	 * addHead
+	 * addJavaScriptLibrary
 	 *
-	 * @param string $source
-	 * @param boolean $external
-	 * @param boolean $forceOnTop
-	 * @return \AdGrafik\GoogleMapsPHP\View\Node\NodeInterface
-	public function addJavaScriptLibrary($source, $forceOnTop = FALSE) {
-
-		$node = NULL;
-
-		if ($source) {
-			$node = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\View\\Node\\JavaScriptLibrary', 'script');
-			$this->addHead($node, $forceOnTop);
-			$node->setAttribute('type', 'text/javascript');
-			$node->setAttribute('src', $source);
-		}
-#echo $this->getDocumentNode()->saveXML($this->headNode, LIBXML_NOEMPTYTAG);
-#print_r($this->headStack);
-		return $node;
-	}
+	 * @param array $settings
+	 * @return \AdGrafik\GoogleMapsPHP\View\Node\JavaScriptLibrary
 	 */
+	public function addJavaScriptLibrary(array $settings = array()) {
+		return $this->addJavaScriptNode('\\AdGrafik\\GoogleMapsPHP\\View\\Node\\JavaScriptLibrary', $settings);
+	}
+
+	/**
+	 * addJavaScript
+	 *
+	 * @param array $settings
+	 * @return \AdGrafik\GoogleMapsPHP\View\Node\JavaScript
+	 */
+	public function addJavaScript(array $settings = array()) {
+		return $this->addJavaScriptNode('\\AdGrafik\\GoogleMapsPHP\\View\\Node\\JavaScript', $settings);
+	}
 
 	/**
 	 * addHead
@@ -265,6 +261,38 @@ class View {
 		}
 
 		return $html;
+	}
+
+	/**
+	 * addJavaScriptNode
+	 *
+	 * @param string $nodeClassName
+	 * @param array $settings
+	 * @return \AdGrafik\GoogleMapsPHP\View\Node\JavaScript
+	 */
+	protected function addJavaScriptNode($nodeClassName, array $settings = array()) {
+
+		$external = isset($settings['external']) ? $settings['external'] : FALSE;
+		$forceOnTop = isset($settings['forceOnTop']) ? $settings['forceOnTop'] : FALSE;
+		$source = isset($settings['source'])
+			? ($external
+				? $settings['source']
+				: GMP_HTTP_PATH . $settings['source'])
+			: '';
+
+		$node = ClassUtility::makeInstance($nodeClassName, 'script');
+		$this->addHead($node, $forceOnTop);
+		$node->setAttribute('type', 'text/javascript');
+
+		// Check if is file or source.
+		$fileHeaders = @get_headers($source);
+		if (strpos($fileHeaders[0], '200')) {
+			$node->setAttribute('src', $source);
+		} else {
+			$node->nodeValue = $source;
+		}
+
+		return $node;
 	}
 
 }

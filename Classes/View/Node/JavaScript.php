@@ -19,25 +19,25 @@
 namespace AdGrafik\GoogleMapsPHP\View\Node;
 
 /**
- * DOMElement for GoogleMapsAPI.
+ * DOMElement for non unique JavaScript.
  *
  * @author Arno Dudek <webmaster@adgrafik.at>
  */
-class GoogleMapsAPI extends \AdGrafik\GoogleMapsPHP\View\Node\AbstractNode {
+class JavaScript extends \AdGrafik\GoogleMapsPHP\View\Node\AbstractNode {
 
 	/**
 	 * @var boolean $printed
 	 */
-	static protected $printed = FALSE;
+	protected $printed = FALSE;
 
 	/**
 	 * Set printed
 	 *
 	 * @param boolean $printed
-	 * @return \AdGrafik\GoogleMapsPHP\View\Node\GoogleMapsAPI
+	 * @return \AdGrafik\GoogleMapsPHP\View\Node\JavaScript
 	 */
 	public function setPrinted($printed) {
-		static::$printed = (boolean) $printed;
+		$this->printed = (boolean) $printed;
 		return $this;
 	}
 
@@ -47,7 +47,7 @@ class GoogleMapsAPI extends \AdGrafik\GoogleMapsPHP\View\Node\AbstractNode {
 	 * @return boolean
 	 */
 	public function isPrinted() {
-		return static::$printed;
+		return $this->printed;
 	}
 
 }
