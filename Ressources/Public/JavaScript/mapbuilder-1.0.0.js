@@ -129,7 +129,7 @@ GoogleMapsPHP.Utility = {
 	 */
 	prepareData: function( data ) {
 		if ( data.hasOwnProperty( 'className' ) ) {
-			target = google.maps[data.className];
+			var target = google.maps[data.className];
 			if ( data.hasOwnProperty( 'constant' ) ) {
 				data = target[data.constant];
 			} else {
@@ -1278,6 +1278,64 @@ GoogleMapsPHP.PlugIns.Polygon = GoogleMapsPHP.PlugIns.Polyline.extend({
 		bounds.union( this.getObject().getPaths() );
 
 		return bounds;
+	}
+});
+
+GoogleMapsPHP.PlugIns.Rectangle = GoogleMapsPHP.PlugIns.Polyline.extend({
+
+	/**
+	 * create
+	 *
+	 * @return GoogleMapsPHP.PlugIns.Rectangle
+	 */
+	create: function() {
+
+		this.object = new google.maps.Rectangle( this.options );
+
+		// Set current map.
+		if ( this.getMapBuilder().isCategoryHidden() === false ) {
+			this.show();
+		}
+
+		return this;
+	},
+
+	/**
+	 * getBounds
+	 *
+	 * @return google.maps.LatLngBounds
+	 */
+	getBounds: function() {
+		return this.getObject().getBounds();
+	}
+});
+
+GoogleMapsPHP.PlugIns.Circle = GoogleMapsPHP.PlugIns.Polyline.extend({
+
+	/**
+	 * create
+	 *
+	 * @return GoogleMapsPHP.PlugIns.Circle
+	 */
+	create: function() {
+
+		this.object = new google.maps.Circle( this.options );
+
+		// Set current map.
+		if ( this.getMapBuilder().isCategoryHidden() === false ) {
+			this.show();
+		}
+
+		return this;
+	},
+
+	/**
+	 * getBounds
+	 *
+	 * @return google.maps.LatLngBounds
+	 */
+	getBounds: function() {
+		return this.getObject().getBounds();
 	}
 });
 
