@@ -28,14 +28,26 @@ class ClassLoader implements \AdGrafik\GoogleMapsPHP\Object\SingletonInterface {
 	/**
 	 * @var array $autoloadFiles
 	 */
-	protected $autoloadFiles;
+	protected static $autoloadFiles;
 
 	/**
 	 * Constructor
 	 */
-	public function __construct() {
-		spl_autoload_register(array($this, 'autoload'));
-		$this->autoloadFiles = (array) include_once(GMP_PATH . 'GoogleMapsPHP/Configuration/Autoload.php');
+	public static function registerAutoloader() {
+		spl_autoload_register(__CLASS__ . '::autoload');
+		self::$autoloadFiles = (array) include_once(GMP_PATH . 'GoogleMapsPHP/Configuration/Autoload.php');
+	}
+
+	/**
+	 * Unload TYPO3 class loader and write any additional classes
+	 * found during the script run to the cache file.
+	 *
+	 * This method is called during shutdown of the framework.
+	 *
+	 * @return boolean TRUE in case of success
+	 */
+	public static function unregisterAutoloader() {
+		return spl_autoload_unregister(__CLASS__ . '::autoload');
 	}
 
 	/**
@@ -43,23 +55,20 @@ class ClassLoader implements \AdGrafik\GoogleMapsPHP\Object\SingletonInterface {
 	 *
 	 * @param string $className
 	 * @return void
-	 * @throws \AdGrafik\GoogleMapsPHP\ClassNotFoundException
 	 */
-	public function autoload($className) {
+	public static function autoload($className) {
 
-		if (array_key_exists($className, $this->autoloadFiles)) {
-			$classPathAndFilename = $this->autoloadFiles[$className];
+		if (array_key_exists($className, self::$autoloadFiles)) {
+			$classPathAndFilename = self::$autoloadFiles[$className];
 		} else {
 			$classPathAndFilename = str_replace('\\', '/', $className);
 			$classPathAndFilename = str_replace('AdGrafik/GoogleMapsPHP/', 'GoogleMapsPHP/Classes/', $classPathAndFilename);
 			$classPathAndFilename = GMP_PATH . $classPathAndFilename . '.php';
 		}
 
-		if (!is_file($classPathAndFilename)) {
-			throw new \AdGrafik\GoogleMapsPHP\Exceptions\ClassNotFoundException(sprintf('Class %s not found.', $className), 1369478990);
+		if (is_file($classPathAndFilename)) {
+			require_once($classPathAndFilename);
 		}
-
-		include_once($classPathAndFilename);
 	}
 }
 

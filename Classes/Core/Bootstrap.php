@@ -33,9 +33,7 @@ define('GMP_XHR', (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERV
 include_once(GMP_PATH . 'GoogleMapsPHP/Classes/Object/SingletonInterface.php');
 
 // Register class loader.
-if (defined('GMP_LOADER') === FALSE || GMP_LOADER === FALSE) {
-	include_once(GMP_PATH . 'GoogleMapsPHP/Classes/Core/ClassLoader.php');
-	$classLoader = new \AdGrafik\GoogleMapsPHP\Core\ClassLoader();
-}
+include_once(GMP_PATH . 'GoogleMapsPHP/Classes/Core/ClassLoader.php');
+\AdGrafik\GoogleMapsPHP\Core\ClassLoader::registerAutoloader();
 
 ?>
