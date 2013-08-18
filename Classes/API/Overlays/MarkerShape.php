@@ -28,6 +28,10 @@ use AdGrafik\GoogleMapsPHP\Utility\ClassUtility;
  */
 class MarkerShape extends \AdGrafik\GoogleMapsPHP\Object\PropertyArrayAccess {
 
+	const CIRCLE = 'circle';
+	const POLY = 'poly';
+	const RECT = 'rect';
+
 	/**
 	 * @var array $coords
 	 */
