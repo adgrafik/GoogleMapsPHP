@@ -31,27 +31,26 @@ class ClassLoader implements \AdGrafik\GoogleMapsPHP\Object\SingletonInterface {
 	protected static $autoloadFiles;
 
 	/**
-	 * Constructor
+	 * registerAutoloader
+	 *
+	 * @return boolean
 	 */
 	public static function registerAutoloader() {
-		spl_autoload_register(__CLASS__ . '::autoload');
 		self::$autoloadFiles = (array) include_once(GMP_PATH . 'GoogleMapsPHP/Configuration/Autoload.php');
+		return spl_autoload_register(__CLASS__ . '::autoload');
 	}
 
 	/**
-	 * Unload TYPO3 class loader and write any additional classes
-	 * found during the script run to the cache file.
+	 * unregisterAutoloader
 	 *
-	 * This method is called during shutdown of the framework.
-	 *
-	 * @return boolean TRUE in case of success
+	 * @return boolean
 	 */
 	public static function unregisterAutoloader() {
 		return spl_autoload_unregister(__CLASS__ . '::autoload');
 	}
 
 	/**
-	 * Autoloader
+	 * autoload
 	 *
 	 * @param string $className
 	 * @return void
