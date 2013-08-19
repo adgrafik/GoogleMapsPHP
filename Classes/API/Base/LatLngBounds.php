@@ -83,8 +83,8 @@ class LatLngBounds extends \AdGrafik\GoogleMapsPHP\Object\PropertyArrayAccess {
 
 		$this->className = 'LatLngBounds';
 		$this->arguments = array(
+			&$this->southWest,
 			&$this->northEast,
-			&$this->southWest
 		);
 	}
 

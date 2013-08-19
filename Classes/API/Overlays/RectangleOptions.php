@@ -21,12 +21,17 @@ namespace AdGrafik\GoogleMapsPHP\API\Overlays;
 use AdGrafik\GoogleMapsPHP\Utility\ClassUtility;
 
 /**
- * API equivalent to google.maps.PolylineOptions.
+ * API equivalent to google.maps.RectangleOptions.
  *
  * @see https://developers.google.com/maps/documentation/javascript/reference
  * @author Arno Dudek <webmaster@adgrafik.at>
  */
-class PolylineOptions {
+class RectangleOptions {
+
+	/**
+	 * @var string|array|\AdGrafik\GoogleMapsPHP\API\Base\LatLngBounds $bounds
+	 */
+	public $bounds;
 
 	/**
 	 * @var boolean $clickable
@@ -44,19 +49,14 @@ class PolylineOptions {
 	public $editable;
 
 	/**
-	 * @var boolean $geodesic
+	 * @var string $fillColor
 	 */
-	public $geodesic;
+	public $fillColor;
 
 	/**
-	 * @var array<array>|array<string>|array<\AdGrafik\GoogleMapsPHP\API\Overlays\Icon> $icons
+	 * @var float $fillOpacity
 	 */
-	public $icons;
-
-	/**
-	 * @var array<string>|array<\AdGrafik\GoogleMapsPHP\API\Base\LatLng> $path
-	 */
-	public $path;
+	public $fillOpacity;
 
 	/**
 	 * @var string $strokeColor
@@ -67,6 +67,11 @@ class PolylineOptions {
 	 * @var float $strokeOpacity
 	 */
 	public $strokeOpacity;
+
+	/**
+	 * @var string<\AdGrafik\GoogleMapsPHP\API\Overlays\StrokePosition::CENTER|INSIDE|OUTSIDE> $strokePosition
+	 */
+	public $strokePosition;
 
 	/**
 	 * @var integer $strokeWeight
@@ -93,10 +98,34 @@ class PolylineOptions {
 	}
 
 	/**
+	 * Set bounds
+	 *
+	 * @param string|array|\AdGrafik\GoogleMapsPHP\API\Base\LatLng|\AdGrafik\GoogleMapsPHP\API\Base\LatLngBounds $bounds
+	 * @param string|array|\AdGrafik\GoogleMapsPHP\API\Base\LatLng $northEast
+	 * @return \AdGrafik\GoogleMapsPHP\API\Overlays\RectangleOptions
+	 */
+	public function setBounds($bounds, $northEast = NULL) {
+		if ($bounds instanceof \AdGrafik\GoogleMapsPHP\API\Base\LatLngBounds === FALSE) {
+			$bounds = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\API\\Base\\LatLngBounds', $bounds, $northEast);
+		}
+		$this->bounds = $bounds;
+		return $this;
+	}
+
+	/**
+	 * Get bounds
+	 *
+	 * @return \AdGrafik\GoogleMapsPHP\API\Base\LatLngBounds
+	 */
+	public function getBounds() {
+		return $this->bounds;
+	}
+
+	/**
 	 * Set clickable
 	 *
 	 * @param boolean $clickable
-	 * @return \AdGrafik\GoogleMapsPHP\API\Overlays\PolylineOptions
+	 * @return \AdGrafik\GoogleMapsPHP\API\Overlays\RectangleOptions
 	 */
 	public function setClickable($clickable) {
 		$this->clickable = (boolean) $clickable;
@@ -116,7 +145,7 @@ class PolylineOptions {
 	 * Set draggable
 	 *
 	 * @param boolean $draggable
-	 * @return \AdGrafik\GoogleMapsPHP\API\Overlays\PolylineOptions
+	 * @return \AdGrafik\GoogleMapsPHP\API\Overlays\RectangleOptions
 	 */
 	public function setDraggable($draggable) {
 		$this->draggable = (boolean) $draggable;
@@ -136,7 +165,7 @@ class PolylineOptions {
 	 * Set editable
 	 *
 	 * @param boolean $editable
-	 * @return \AdGrafik\GoogleMapsPHP\API\Overlays\PolylineOptions
+	 * @return \AdGrafik\GoogleMapsPHP\API\Overlays\RectangleOptions
 	 */
 	public function setEditable($editable) {
 		$this->editable = (boolean) $editable;
@@ -153,84 +182,50 @@ class PolylineOptions {
 	}
 
 	/**
-	 * Set geodesic
+	 * Set fillColor
 	 *
-	 * @param boolean $geodesic
-	 * @return \AdGrafik\GoogleMapsPHP\API\Overlays\PolylineOptions
+	 * @param string $fillColor
+	 * @return \AdGrafik\GoogleMapsPHP\API\Overlays\RectangleOptions
 	 */
-	public function setGeodesic($geodesic) {
-		$this->geodesic = (boolean) $geodesic;
+	public function setFillColor($fillColor) {
+		$this->fillColor = $fillColor;
 		return $this;
 	}
 
 	/**
-	 * Get geodesic
+	 * Get fillColor
 	 *
-	 * @return boolean
+	 * @return string
 	 */
-	public function isGeodesic() {
-		return $this->geodesic;
+	public function getFillColor() {
+		return $this->fillColor;
 	}
 
 	/**
-	 * Set icons
+	 * Set fillOpacity
 	 *
-	 * @param array<array>|array<string>|array<\AdGrafik\GoogleMapsPHP\API\Overlays\Icon> $icons
-	 * @return \AdGrafik\GoogleMapsPHP\API\Overlays\PolylineOptions
+	 * @param float $fillOpacity
+	 * @return \AdGrafik\GoogleMapsPHP\API\Overlays\RectangleOptions
 	 */
-	public function setIcons(array $icons) {
-
-		foreach ($icons as $key => &$icon) {
-			if ($icon instanceof \AdGrafik\GoogleMapsPHP\API\Overlays\Icon === FALSE) {
-				$icons[$key] = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\API\\Overlays\\Icon', $icon);
-			}
-		}
-
-		$this->icons = $icons;
+	public function setFillOpacity($fillOpacity) {
+		$this->fillOpacity = (float) $fillOpacity;
 		return $this;
 	}
 
 	/**
-	 * Get icons
+	 * Get fillOpacity
 	 *
-	 * @return array
+	 * @return float
 	 */
-	public function getIcons() {
-		return $this->icons;
-	}
-
-	/**
-	 * Set path
-	 *
-	 * @param array<string>|array<\AdGrafik\GoogleMapsPHP\API\Base\LatLng> $path
-	 * @return \AdGrafik\GoogleMapsPHP\API\Overlays\PolylineOptions
-	 */
-	public function setPath(array $path) {
-
-		foreach ($path as $key => &$latlng) {
-			if ($latlng instanceof \AdGrafik\GoogleMapsPHP\API\Base\LatLng === FALSE) {
-				$path[$key] = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\API\\Base\\LatLng', $latlng);
-			}
-		}
-
-		$this->path = $path;
-		return $this;
-	}
-
-	/**
-	 * Get path
-	 *
-	 * @return array
-	 */
-	public function getPath() {
-		return $this->path;
+	public function getFillOpacity() {
+		return $this->fillOpacity;
 	}
 
 	/**
 	 * Set strokeColor
 	 *
 	 * @param string $strokeColor
-	 * @return \AdGrafik\GoogleMapsPHP\API\Overlays\PolylineOptions
+	 * @return \AdGrafik\GoogleMapsPHP\API\Overlays\RectangleOptions
 	 */
 	public function setStrokeColor($strokeColor) {
 		$this->strokeColor = $strokeColor;
@@ -250,7 +245,7 @@ class PolylineOptions {
 	 * Set strokeOpacity
 	 *
 	 * @param float $strokeOpacity
-	 * @return \AdGrafik\GoogleMapsPHP\API\Overlays\PolylineOptions
+	 * @return \AdGrafik\GoogleMapsPHP\API\Overlays\RectangleOptions
 	 */
 	public function setStrokeOpacity($strokeOpacity) {
 		$this->strokeOpacity = (float) $strokeOpacity;
@@ -267,10 +262,30 @@ class PolylineOptions {
 	}
 
 	/**
+	 * Set strokePosition
+	 *
+	 * @param string<\AdGrafik\GoogleMapsPHP\API\Overlays\StrokePosition::CENTER|INSIDE|OUTSIDE> $strokePosition
+	 * @return \AdGrafik\GoogleMapsPHP\API\Overlays\RectangleOptions
+	 */
+	public function setStrokePosition($strokePosition) {
+		$this->strokePosition = $strokePosition;
+		return $this;
+	}
+
+	/**
+	 * Get strokePosition
+	 *
+	 * @return string
+	 */
+	public function getStrokePosition() {
+		return $this->strokePosition;
+	}
+
+	/**
 	 * Set strokeWeight
 	 *
 	 * @param integer $strokeWeight
-	 * @return \AdGrafik\GoogleMapsPHP\API\Overlays\PolylineOptions
+	 * @return \AdGrafik\GoogleMapsPHP\API\Overlays\RectangleOptions
 	 */
 	public function setStrokeWeight($strokeWeight) {
 		$this->strokeWeight = (integer) $strokeWeight;
@@ -290,7 +305,7 @@ class PolylineOptions {
 	 * Set visible
 	 *
 	 * @param boolean $visible
-	 * @return \AdGrafik\GoogleMapsPHP\API\Overlays\PolylineOptions
+	 * @return \AdGrafik\GoogleMapsPHP\API\Overlays\RectangleOptions
 	 */
 	public function setVisible($visible) {
 		$this->visible = (boolean) $visible;
@@ -310,7 +325,7 @@ class PolylineOptions {
 	 * Set zIndex
 	 *
 	 * @param integer $zIndex
-	 * @return \AdGrafik\GoogleMapsPHP\API\Overlays\PolylineOptions
+	 * @return \AdGrafik\GoogleMapsPHP\API\Overlays\RectangleOptions
 	 */
 	public function setZIndex($zIndex) {
 		$this->zIndex = (integer) $zIndex;

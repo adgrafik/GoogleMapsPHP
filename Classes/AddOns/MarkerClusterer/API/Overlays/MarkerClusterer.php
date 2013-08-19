@@ -37,31 +37,26 @@ class MarkerClusterer extends \AdGrafik\GoogleMapsPHP\API\Overlays\OverlayView {
 	/**
 	 * Constructor
 	 *
-	 * @param mixed $options
+	 * @param array|\AdGrafik\GoogleMapsPHP\AddOns\MarkerClusterer\API\Overlays\MarkerClustererOptions
 	 * @throws \AdGrafik\GoogleMapsPHP\Exceptions\RequiredArgumentMissingException
 	 */
 	public function __construct($options) {
-
-		// Set required values
-		$this->options = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\AddOns\\MarkerClusterer\\API\\Overlays\\MarkerClustererOptions');
-
-		// Set properties
 		$this->setOptions($options);
 	}
 
 	/**
 	 * Set options
 	 *
-	 * @param mixed $options Can be an object of type \AdGrafik\GoogleMapsPHP\AddOns\MarkerClusterer\API\Overlays\MarkerClustererOptions or an map options array.
-	 * @return \AdGrafik\GoogleMapsPHP\API\Overlays\MarkerClusterer
+	 * @param array|\AdGrafik\GoogleMapsPHP\AddOns\MarkerClusterer\API\Overlays\MarkerClustererOptions $options
+	 * @return \AdGrafik\GoogleMapsPHP\AddOns\MarkerClusterer\API\Overlays\MarkerClusterer
 	 */
 	public function setOptions($options) {
 		if (is_array($options)) {
-			ClassUtility::setPropertiesFromArray($this->options, $options);
-		} else if ($options instanceof \AdGrafik\GoogleMapsPHP\AddOns\MarkerClusterer\API\Overlays\MarkerClustererOptions === FALSE) {
-			throw new \AdGrafik\GoogleMapsPHP\Exceptions\InvalidValueException('Map options must be an array or an instance of "\\AdGrafik\\GoogleMapsPHP\\AddOns\\MarkerClusterer\\API\\Overlays\\MarkerClustererOptions".', 1369563745);
-		} else {
+			$this->options = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\AddOns\\MarkerClusterer\\API\\Overlays\\MarkerClustererOptions', $options);
+		} else if ($options instanceof \AdGrafik\GoogleMapsPHP\AddOns\MarkerClusterer\API\Overlays\MarkerClustererOptions) {
 			$this->options = $options;
+		} else {
+			throw new \AdGrafik\GoogleMapsPHP\Exceptions\InvalidValueException('Options must be an array or an instance of "\AdGrafik\GoogleMapsPHP\AddOns\MarkerClusterer\API\Overlays\MarkerClustererOptions".', 1369563745);
 		}
 		return $this;
 	}

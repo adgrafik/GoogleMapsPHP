@@ -84,11 +84,20 @@ plugInBuilders:
   Polygon:
     className: \AdGrafik\GoogleMapsPHP\PlugIns\Polygon\Builder
 
+  Rectangle:
+    className: \AdGrafik\GoogleMapsPHP\PlugIns\Rectangle\Builder
+
+  Circle:
+    className: \AdGrafik\GoogleMapsPHP\PlugIns\Circle\Builder
+
   KmlLayer:
     className: \AdGrafik\GoogleMapsPHP\PlugIns\KmlLayer\Builder
 
   MarkerClusterer:
     className: \AdGrafik\GoogleMapsPHP\AddOns\MarkerClusterer\PlugIns\MarkerClusterer\Builder
+
+  DrawingManager:
+    className: \AdGrafik\GoogleMapsPHP\PlugIns\DrawingManager\Builder
 
 
 #

@@ -36,30 +36,25 @@ class Polygon extends \AdGrafik\GoogleMapsPHP\Object\OptionsArrayAccess implemen
 	/**
 	 * Constructor
 	 *
-	 * @param mixed $options
+	 * @param array|\AdGrafik\GoogleMapsPHP\API\Overlays\PolygonOptions $options
 	 */
 	public function __construct($options) {
-
-		// Set required values
-		$this->options = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\API\\Overlays\\PolygonOptions');
-
-		// Set properties
 		$this->setOptions($options);
 	}
 
 	/**
 	 * Set options
 	 *
-	 * @param mixed $options Can be an object of type \AdGrafik\GoogleMapsPHP\API\Overlays\PolygonOptions or an map options array.
+	 * @param array|\AdGrafik\GoogleMapsPHP\API\Overlays\PolygonOptions $options
 	 * @return \AdGrafik\GoogleMapsPHP\API\Overlays\Polygon
 	 */
 	public function setOptions($options) {
 		if (is_array($options)) {
-			ClassUtility::setPropertiesFromArray($this->options, $options);
-		} else if ($options instanceof \AdGrafik\GoogleMapsPHP\API\Overlays\PolygonOptions === FALSE) {
-			throw new \AdGrafik\GoogleMapsPHP\Exceptions\InvalidValueException('Map options must be an array or an instance of "\AdGrafik\GoogleMapsPHP\API\Overlays\PolygonOptions".', 1369563745);
-		} else {
+			$this->options = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\API\\Overlays\\PolygonOptions', $options);
+		} else if ($options instanceof \AdGrafik\GoogleMapsPHP\API\Overlays\PolygonOptions) {
 			$this->options = $options;
+		} else {
+			throw new \AdGrafik\GoogleMapsPHP\Exceptions\InvalidValueException('Options must be an array or an instance of "\AdGrafik\GoogleMapsPHP\API\Overlays\PolygonOptions".', 1369563745);
 		}
 		return $this;
 	}

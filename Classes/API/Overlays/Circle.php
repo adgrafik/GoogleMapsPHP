@@ -21,22 +21,22 @@ namespace AdGrafik\GoogleMapsPHP\API\Overlays;
 use AdGrafik\GoogleMapsPHP\Utility\ClassUtility;
 
 /**
- * API equivalent to google.maps.InfoWindow.
+ * API equivalent to google.maps.Circle.
  *
  * @see https://developers.google.com/maps/documentation/javascript/reference
  * @author Arno Dudek <webmaster@adgrafik.at>
  */
-class InfoWindow extends \AdGrafik\GoogleMapsPHP\Object\OptionsArrayAccess implements \AdGrafik\GoogleMapsPHP\API\Overlays\OverlayInterface {
+class Circle extends \AdGrafik\GoogleMapsPHP\Object\OptionsArrayAccess implements \AdGrafik\GoogleMapsPHP\API\Overlays\OverlayInterface {
 
 	/**
-	 * @var \AdGrafik\GoogleMapsPHP\API\Overlays\InfoWindowOptions $options
+	 * @var \AdGrafik\GoogleMapsPHP\API\Overlays\CircleOptions $options
 	 */
 	public $options;
 
 	/**
 	 * Constructor
 	 *
-	 * @param array|\AdGrafik\GoogleMapsPHP\API\Overlays\InfoWindowOptions $options
+	 * @param array|\AdGrafik\GoogleMapsPHP\API\Overlays\CircleOptions
 	 */
 	public function __construct($options) {
 		$this->setOptions($options);
@@ -45,16 +45,16 @@ class InfoWindow extends \AdGrafik\GoogleMapsPHP\Object\OptionsArrayAccess imple
 	/**
 	 * Set options
 	 *
-	 * @param array|\AdGrafik\GoogleMapsPHP\API\Overlays\InfoWindowOptions $options
-	 * @return \AdGrafik\GoogleMapsPHP\API\Overlays\InfoWindow
+	 * @param array|\AdGrafik\GoogleMapsPHP\API\Overlays\CircleOptions $options
+	 * @return \AdGrafik\GoogleMapsPHP\API\Overlays\Circle
 	 */
 	public function setOptions($options) {
 		if (is_array($options)) {
-			$this->options = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\API\\Overlays\\InfoWindowOptions', $options);
-		} else if ($options instanceof \AdGrafik\GoogleMapsPHP\API\Overlays\InfoWindowOptions) {
+			$this->options = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\API\\Overlays\\CircleOptions', $options);
+		} else if ($options instanceof \AdGrafik\GoogleMapsPHP\API\Overlays\CircleOptions) {
 			$this->options = $options;
 		} else {
-			throw new \AdGrafik\GoogleMapsPHP\Exceptions\InvalidValueException('Options must be an array or an instance of "\AdGrafik\GoogleMapsPHP\API\Overlays\InfoWindowOptions".', 1369563745);
+			throw new \AdGrafik\GoogleMapsPHP\Exceptions\InvalidValueException('Options must be an array or an instance of "\AdGrafik\GoogleMapsPHP\API\Overlays\CircleOptions".', 1369563745);
 		}
 		return $this;
 	}
@@ -62,7 +62,7 @@ class InfoWindow extends \AdGrafik\GoogleMapsPHP\Object\OptionsArrayAccess imple
 	/**
 	 * Get options
 	 *
-	 * @return \AdGrafik\GoogleMapsPHP\API\Overlays\InfoWindowOptions
+	 * @return \AdGrafik\GoogleMapsPHP\API\Overlays\CircleOptions
 	 */
 	public function getOptions() {
 		return $this->options;
@@ -78,7 +78,7 @@ class InfoWindow extends \AdGrafik\GoogleMapsPHP\Object\OptionsArrayAccess imple
 	 */
 	public function __call($methodName, $arguments) {
 		if (ClassUtility::methodExists($this->options, $methodName, FALSE) === FALSE) {
-			throw new \AdGrafik\GoogleMapsPHP\Exceptions\InvalidMethodException(sprintf('Method "%s" not exists.', $methodName), 1369568351);
+			throw new \AdGrafik\GoogleMapsPHP\Exceptions\InvalidMethodException(sprintf('Method "%s" not exists.', $methodName), 1369563744);
 		}
 		return call_user_func_array(array($this->options, $methodName), $arguments);
 	}
