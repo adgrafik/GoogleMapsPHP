@@ -1168,7 +1168,7 @@ GoogleMapsPHP.PlugIns.Marker = GoogleMapsPHP.PlugIns.AbstractPlugIn.extend({
 	}
 });
 
-GoogleMapsPHP.PlugIns.Polyline = GoogleMapsPHP.PlugIns.AbstractPlugIn.extend({
+GoogleMapsPHP.PlugIns.Shape = GoogleMapsPHP.PlugIns.AbstractPlugIn.extend({
 
 	/**
 	 * initialize
@@ -1183,23 +1183,6 @@ GoogleMapsPHP.PlugIns.Polyline = GoogleMapsPHP.PlugIns.AbstractPlugIn.extend({
 
 		this.options = settings.object.options || {};
 		GoogleMapsPHP.Utility.prepareData( this.options );
-	},
-
-	/**
-	 * create
-	 *
-	 * @return GoogleMapsPHP.PlugIns.Polyline
-	 */
-	create: function() {
-
-		this.object = new google.maps.Polyline( this.options );
-
-		// Set current map.
-		if ( this.getMapBuilder().isCategoryHidden() === false ) {
-			this.show();
-		}
-
-		return this;
 	},
 
 	/**
@@ -1247,7 +1230,45 @@ GoogleMapsPHP.PlugIns.Polyline = GoogleMapsPHP.PlugIns.AbstractPlugIn.extend({
 	}
 });
 
-GoogleMapsPHP.PlugIns.Polygon = GoogleMapsPHP.PlugIns.Polyline.extend({
+GoogleMapsPHP.PlugIns.Polyline = GoogleMapsPHP.PlugIns.Shape.extend({
+
+	/**
+	 * create
+	 *
+	 * @return GoogleMapsPHP.PlugIns.Polyline
+	 */
+	create: function() {
+
+		this.object = new google.maps.Polyline( this.options );
+
+		// Set current map.
+		if ( this.getMapBuilder().isCategoryHidden() === false ) {
+			this.show();
+		}
+
+		return this;
+	},
+
+	/**
+	 * getBounds
+	 *
+	 * @return google.maps.LatLngBounds
+	 */
+	getBounds: function() {
+
+		// Get bounds of object position.
+		var bounds = new google.maps.LatLngBounds();
+		var path = this.getObject().getPath().getArray();
+		var i = path.length;
+		while ( i-- ) {
+			bounds.extend( path[i] );
+		}
+
+		return bounds;
+	}
+});
+
+GoogleMapsPHP.PlugIns.Polygon = GoogleMapsPHP.PlugIns.Shape.extend({
 
 	/**
 	 * create
@@ -1275,13 +1296,21 @@ GoogleMapsPHP.PlugIns.Polygon = GoogleMapsPHP.PlugIns.Polyline.extend({
 
 		// Get bounds of object position.
 		var bounds = new google.maps.LatLngBounds();
-		bounds.union( this.getObject().getPaths() );
+		var paths = this.getObject().getPaths().getArray();
+		var i = paths.length;
+		while ( i-- ) {
+			var path = paths[i].getArray();
+			var n = path.length;
+			while ( n-- ) {
+				bounds.extend( path[n] );
+			}
+		}
 
 		return bounds;
 	}
 });
 
-GoogleMapsPHP.PlugIns.Rectangle = GoogleMapsPHP.PlugIns.Polyline.extend({
+GoogleMapsPHP.PlugIns.Rectangle = GoogleMapsPHP.PlugIns.Shape.extend({
 
 	/**
 	 * create
@@ -1310,7 +1339,7 @@ GoogleMapsPHP.PlugIns.Rectangle = GoogleMapsPHP.PlugIns.Polyline.extend({
 	}
 });
 
-GoogleMapsPHP.PlugIns.Circle = GoogleMapsPHP.PlugIns.Polyline.extend({
+GoogleMapsPHP.PlugIns.Circle = GoogleMapsPHP.PlugIns.Shape.extend({
 
 	/**
 	 * create
