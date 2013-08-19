@@ -36,30 +36,25 @@ class InfoWindow extends \AdGrafik\GoogleMapsPHP\Object\OptionsArrayAccess imple
 	/**
 	 * Constructor
 	 *
-	 * @param mixed $options
+	 * @param array|\AdGrafik\GoogleMapsPHP\API\Overlays\InfoWindowOptions $options
 	 */
 	public function __construct($options) {
-
-		// Set required values
-		$this->options = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\API\\Overlays\\InfoWindowOptions');
-
-		// Set properties
 		$this->setOptions($options);
 	}
 
 	/**
 	 * Set options
 	 *
-	 * @param mixed $options Can be an object of type \AdGrafik\GoogleMapsPHP\API\Overlays\InfoWindowOptions or an map options array.
-	 * @return \AdGrafik\GoogleMapsPHP\API\Overlays\Marker
+	 * @param array|\AdGrafik\GoogleMapsPHP\API\Overlays\InfoWindowOptions $options
+	 * @return \AdGrafik\GoogleMapsPHP\API\Overlays\InfoWindow
 	 */
 	public function setOptions($options) {
 		if (is_array($options)) {
-			ClassUtility::setPropertiesFromArray($this->options, $options);
-		} else if ($options instanceof \AdGrafik\GoogleMapsPHP\API\Overlays\InfoWindowOptions === FALSE) {
-			throw new \AdGrafik\GoogleMapsPHP\Exceptions\InvalidValueException('Map options must be an array or an instance of "\AdGrafik\GoogleMapsPHP\API\Overlays\InfoWindowOptions".', 1369568350);
-		} else {
+			$this->options = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\API\\Overlays\\InfoWindowOptions', $options);
+		} else if ($options instanceof \AdGrafik\GoogleMapsPHP\API\Overlays\InfoWindowOptions) {
 			$this->options = $options;
+		} else {
+			throw new \AdGrafik\GoogleMapsPHP\Exceptions\InvalidValueException('Options must be an array or an instance of "\AdGrafik\GoogleMapsPHP\API\Overlays\InfoWindowOptions".', 1369563745);
 		}
 		return $this;
 	}

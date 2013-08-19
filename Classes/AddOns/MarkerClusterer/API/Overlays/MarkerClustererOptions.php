@@ -49,6 +49,15 @@ class MarkerClustererOptions {
 	public $styles;
 
 	/**
+	 * Constructor
+	 *
+	 * @param array $options
+	 */
+	public function __construct(array $options = array()) {
+		ClassUtility::setPropertiesFromArray($this, $options);
+	}
+
+	/**
 	 * Set maxZoom
 	 *
 	 * @param integer $maxZoom

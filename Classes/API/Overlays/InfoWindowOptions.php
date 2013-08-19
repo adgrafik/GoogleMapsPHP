@@ -59,6 +59,15 @@ class InfoWindowOptions {
 	public $zIndex;
 
 	/**
+	 * Constructor
+	 *
+	 * @param array $options
+	 */
+	public function __construct(array $options = array()) {
+		ClassUtility::setPropertiesFromArray($this, $options);
+	}
+
+	/**
 	 * Set content
 	 *
 	 * @param string $content

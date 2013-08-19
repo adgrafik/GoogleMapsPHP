@@ -84,6 +84,15 @@ class PolylineOptions {
 	public $zIndex;
 
 	/**
+	 * Constructor
+	 *
+	 * @param array $options
+	 */
+	public function __construct(array $options = array()) {
+		ClassUtility::setPropertiesFromArray($this, $options);
+	}
+
+	/**
 	 * Set clickable
 	 *
 	 * @param boolean $clickable

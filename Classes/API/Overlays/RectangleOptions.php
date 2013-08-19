@@ -89,6 +89,15 @@ class RectangleOptions {
 	public $zIndex;
 
 	/**
+	 * Constructor
+	 *
+	 * @param array $options
+	 */
+	public function __construct(array $options = array()) {
+		ClassUtility::setPropertiesFromArray($this, $options);
+	}
+
+	/**
 	 * Set bounds
 	 *
 	 * @param string|array|\AdGrafik\GoogleMapsPHP\API\Base\LatLng|\AdGrafik\GoogleMapsPHP\API\Base\LatLngBounds $bounds

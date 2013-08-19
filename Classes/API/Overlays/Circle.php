@@ -36,30 +36,25 @@ class Circle extends \AdGrafik\GoogleMapsPHP\Object\OptionsArrayAccess implement
 	/**
 	 * Constructor
 	 *
-	 * @param mixed $options
+	 * @param array|\AdGrafik\GoogleMapsPHP\API\Overlays\CircleOptions
 	 */
 	public function __construct($options) {
-
-		// Set required values
-		$this->options = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\API\\Overlays\\CircleOptions');
-
-		// Set properties
 		$this->setOptions($options);
 	}
 
 	/**
 	 * Set options
 	 *
-	 * @param mixed $options Can be an object of type \AdGrafik\GoogleMapsPHP\API\Overlays\CircleOptions or an map options array.
+	 * @param array|\AdGrafik\GoogleMapsPHP\API\Overlays\CircleOptions $options
 	 * @return \AdGrafik\GoogleMapsPHP\API\Overlays\Circle
 	 */
 	public function setOptions($options) {
 		if (is_array($options)) {
-			ClassUtility::setPropertiesFromArray($this->options, $options);
-		} else if ($options instanceof \AdGrafik\GoogleMapsPHP\API\Overlays\CircleOptions === FALSE) {
-			throw new \AdGrafik\GoogleMapsPHP\Exceptions\InvalidValueException('Map options must be an array or an instance of "\AdGrafik\GoogleMapsPHP\API\Overlays\CircleOptions".', 1369563745);
-		} else {
+			$this->options = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\API\\Overlays\\CircleOptions', $options);
+		} else if ($options instanceof \AdGrafik\GoogleMapsPHP\API\Overlays\CircleOptions) {
 			$this->options = $options;
+		} else {
+			throw new \AdGrafik\GoogleMapsPHP\Exceptions\InvalidValueException('Options must be an array or an instance of "\AdGrafik\GoogleMapsPHP\API\Overlays\CircleOptions".', 1369563745);
 		}
 		return $this;
 	}

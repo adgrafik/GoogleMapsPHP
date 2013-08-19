@@ -94,6 +94,15 @@ class CircleOptions {
 	public $zIndex;
 
 	/**
+	 * Constructor
+	 *
+	 * @param array $options
+	 */
+	public function __construct(array $options = array()) {
+		ClassUtility::setPropertiesFromArray($this, $options);
+	}
+
+	/**
 	 * Set center
 	 *
 	 * @param string|\AdGrafik\GoogleMapsPHP\API\Base\LatLng $center
