@@ -129,7 +129,7 @@ GoogleMapsPHP.Utility = {
 	 */
 	prepareData: function( data ) {
 		if ( data.hasOwnProperty( 'className' ) ) {
-			var target = google.maps[data.className];
+			var target = eval( 'google.maps.' + data.className );
 			if ( data.hasOwnProperty( 'constant' ) ) {
 				data = target[data.constant];
 			} else {
@@ -1554,6 +1554,37 @@ GoogleMapsPHP.PlugIns.MarkerClusterer = GoogleMapsPHP.PlugIns.AbstractPlugIn.ext
 				$this.object.addMarker( this.getObject() );
 			}
 		});
+
+		return this;
+	}
+});
+
+GoogleMapsPHP.PlugIns.DrawingManager = GoogleMapsPHP.PlugIns.AbstractPlugIn.extend({
+
+	/**
+	 * initialize
+	 *
+	 * @param object settings
+	 * @param object mapBuilder
+	 * @return void
+	 */
+	initialize: function( settings, mapBuilder ) {
+
+		this.parent( settings, mapBuilder );
+
+		this.options = settings.object.options || {};
+		GoogleMapsPHP.Utility.prepareData( this.options );
+	},
+
+	/**
+	 * create
+	 *
+	 * @return GoogleMapsPHP.PlugIns.DrawingManager
+	 */
+	create: function() {
+
+		this.object = new google.maps.drawing.DrawingManager( this.options );
+		this.object.setMap( this.getMap() );
 
 		return this;
 	}
