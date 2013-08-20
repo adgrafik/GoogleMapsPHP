@@ -67,7 +67,7 @@ class MapBuilder extends \AdGrafik\GoogleMapsPHP\PlugInProvider {
 	 */
 	public function __construct($mapId = '', $options = array()) {
 
-		parent::__construct(&$mapId, &$options);
+		parent::__construct($mapId, $options);
 
 		// Create XML document and nodes in order of appearance.
 		$this->view = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\View\\View');
