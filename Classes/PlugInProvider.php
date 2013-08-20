@@ -70,7 +70,7 @@ class PlugInProvider implements \AdGrafik\GoogleMapsPHP\MapBuilder\MapBuilderInt
 	 * @param mixed $mapId
 	 * @param mixed $options Can be an object of type \AdGrafik\GoogleMapsPHP\API\Map\MapOptions or an map options array.
 	 */
-	public function __construct($mapId = '', $options = array()) {
+	public function __construct(&$mapId = '', &$options = array()) {
 
 		$arguments = func_get_args();
 		if (is_array($mapId) || $mapId instanceof \AdGrafik\GoogleMapsPHP\Object\OptionsArrayAccess) {
