@@ -35,6 +35,11 @@ class ArrayUtility {
 	 */
 	static public function setValueByObjectPath(array &$reference, $key, $value) {
 
+		if ($key === NULL) {
+			$reference = array_replace_recursive($reference, $value);
+			return;
+		}
+
 		$key = strpos($key, '.')
 			? explode('.', $key)
 			: array($key);
