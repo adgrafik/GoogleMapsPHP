@@ -330,6 +330,14 @@ class PlugInProvider implements \AdGrafik\GoogleMapsPHP\MapBuilder\MapBuilderInt
 		$arguments = func_get_args();
 		array_shift($arguments);
 
+		// Set default options.
+		$plugInArguments = $this->getSettings()->get('plugInBuilders.' . $plugInBuilderName . '.arguments');
+		foreach ($arguments as $key => &$argument) {
+			if (array_key_exists($key, $plugInArguments)) {
+				$argument = array_replace_recursive($plugInArguments[$key], $argument);
+			}
+		}
+
 		$plugInBuilder = ClassUtility::makeInstance($plugInBuilder['className'], $this);
 		ClassUtility::callMethod(array($plugInBuilder, 'build'), $arguments);
 

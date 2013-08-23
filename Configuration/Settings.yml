@@ -46,18 +46,6 @@ view:
 
 
 #
-# defaultOptions
-# Currently only default map options can set.
-#
-defaultOptions:
-
-  map:
-    center: 48.208202, 16.373749
-    mapTypeId: \AdGrafik\GoogleMapsPHP\API\Map\MapTypeId::ROADMAP
-    zoom: 7
-
-
-#
 # plugInBuilders
 # Add user defined builders if you want. methodName is by default "build".
 #
@@ -68,6 +56,12 @@ plugInBuilders:
 
   Map:
     className: \AdGrafik\GoogleMapsPHP\PlugIns\Map\Builder
+    # Set default options here.
+    arguments:
+      -
+        center: 48.208202, 16.373749
+        mapTypeId: \AdGrafik\GoogleMapsPHP\API\Map\MapTypeId::ROADMAP
+        zoom: 7
 
   StyledMapType:
     className: \AdGrafik\GoogleMapsPHP\PlugIns\StyledMapType\Builder

@@ -59,7 +59,10 @@ class Settings implements \AdGrafik\GoogleMapsPHP\Object\SingletonInterface {
 	 * @return mixed
 	 */
 	public function get($key) {
-		return \AdGrafik\GoogleMapsPHP\Utility\ArrayUtility::getValueByObjectPath($this->settings, $key);
+		$value = \AdGrafik\GoogleMapsPHP\Utility\ArrayUtility::getValueByObjectPath($this->settings, $key);
+		return is_array($value)
+			? $this->parseClassConstants($value)
+			: $value;
 	}
 
 	/**
@@ -80,6 +83,25 @@ class Settings implements \AdGrafik\GoogleMapsPHP\Object\SingletonInterface {
 	 */
 	public function getSettings() {
 		return $this->settings;
+	}
+
+	/**
+	 * parseClassConstants
+	 *
+	 * @param mixed $needle
+	 * @param array $haystack
+	 * @param boolean $strict
+	 * @return boolean
+	 */
+	protected function parseClassConstants(array $array) {
+		foreach ($array as $key => &$value) {
+			if (is_array($value)) {
+				$array[$key] = $this->parseClassConstants($value);
+			} else if (is_string($value) && strpos($value, '::') && defined($value)) {
+				$array[$key] = constant($value);
+			}
+		}
+		return $array;
 	}
 
 }
