@@ -90,31 +90,6 @@ class ArrayUtility {
 		return NULL;
 	}
 
-	/**
-	 * TODO: Is ArrayUtility::arrayMerge needed?
-	 *
-	 * @param mixed $array1
-	 * @param mixed $array2
-	 * @return mixed
-	 * @throws \AdGrafik\GoogleMapsPHP\InvalidArgumentException
-	 */
-	static public function arrayMerge($array1, $array2) {
-
-		$arrays = func_get_args();
-		foreach ($arrays as $key => &$array) {
-			if (is_array($array) === FALSE && $array instanceof \Traversable === FALSE && $array instanceof \ArrayAccess === FALSE) {
-				throw new \AdGrafik\GoogleMapsPHP\Exceptions\InvalidArgumentException(sprintf('\\AdGrafik\\GoogleMapsPHP\\Utility\ArrayUtility::arrayMerge: Argument #%s is not an array in', $key + 1), 1369925720);
-			}
-		}
-		foreach ($array1 as $key => &$value) {
-			if (isset($array2[$key]) && $array2[$key]) {
-				$array1[$key] = $array2[$key];
-			}
-		}
-
-		return $array1;
-	}
-
 }
 
 ?>
