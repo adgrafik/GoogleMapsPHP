@@ -66,6 +66,7 @@ class Builder extends \AdGrafik\GoogleMapsPHP\PlugIns\AbstractBuilder {
 					$additionalOptions['infoWindow']['position'] = $object->getCenter();
 				}
 
+				$additionalOptions['infoWindow']['anchor'] = $plugIn;
 				$this->getMapBuilder()->add('InfoWindow', $additionalOptions['infoWindow']);
 			}
 		}

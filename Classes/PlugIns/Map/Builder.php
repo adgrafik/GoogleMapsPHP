@@ -39,9 +39,7 @@ class Builder extends \AdGrafik\GoogleMapsPHP\PlugIns\AbstractBuilder {
 		$this->parseOptions($options, $objectOptions, $plugInOptions, $additionalOptions, '\\AdGrafik\\GoogleMapsPHP\\API\\Map\\MapOptions', '\\AdGrafik\\GoogleMapsPHP\\PlugIns\\Map\\PlugIn');
 
 		// Create API object.
-		$defaultOptions = $this->getSettings()->get('defaultOptions.map');
-		$defaultOptions['mapTypeId'] = eval('return ' . $defaultOptions['mapTypeId'] . ';');
-		$object = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\API\\Map', $additionalOptions['div'], $defaultOptions)
+		$object = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\API\\Map', $additionalOptions['div'], $objectOptions)
 			->setOptions($objectOptions)
 			->setDiv($this->getMapBuilder()->getMapId());
 
