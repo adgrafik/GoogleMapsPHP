@@ -379,7 +379,8 @@ class MapBuilder extends \AdGrafik\GoogleMapsPHP\PlugInProvider {
 				throw new \AdGrafik\GoogleMapsPHP\Exceptions\InvalidMethodException(sprintf('Method "%s" not exists.', $methodName), 1369563764);
 			}
 		}
-		return call_user_func_array(array($object, $methodName), $arguments);
+		call_user_func_array(array($object, $methodName), $arguments);
+		return $this;
 	}
 
 	/**
