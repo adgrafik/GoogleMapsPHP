@@ -395,24 +395,8 @@ class MapBuilder extends \AdGrafik\GoogleMapsPHP\PlugInProvider {
 			return;
 		}
 
-		$mapId = ucfirst($this->getMapId());
-
 		$nodeValue = PHP_EOL . $this->printJavaScriptOptions() . PHP_EOL;
 		$nodeValue .= $this->printJavaScriptConstruction() . PHP_EOL;
-
-		// TODO: Save configuration file external needed?
-/*
-		if ($this->getSettings()->get('view.inlineToExternal.activate')) {
-			$filename = strtolower($this->printJavaScriptOptionsVariableName()) . '_' . md5($nodeValue) . '.js';
-			$inlineToExternalPathAndFilename = GMP_PATH . $this->getSettings()->get('view.inlineToExternal.path') . $filename;
-			if (!is_file($inlineToExternalPathAndFilename)) {
-				file_put_contents($inlineToExternalPathAndFilename, $nodeValue);
-			}
-			$inlineToExternalHttp = GMP_HTTP_PATH . $this->getSettings()->get('view.inlineToExternal.path') . $filename;
-			$this->getOptionsNode()->setAttribute('src', $inlineToExternalHttp);
-		} else {
-		}
-*/
 
 		$cDataNode = new \DOMCdataSection($nodeValue);
 		$this->getOptionsNode()->appendChild($cDataNode);
