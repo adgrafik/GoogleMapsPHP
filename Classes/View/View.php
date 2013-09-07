@@ -27,6 +27,15 @@ use AdGrafik\GoogleMapsPHP\Utility\ClassUtility;
  */
 class View {
 
+	const HEAD_TYPE_JAVASCRIPT_LIBRARY = 'javaScriptLibrary';
+	const HEAD_TYPE_JAVASCRIPT_SOURCE = 'javaScriptSource';
+	const HEAD_TYPE_JAVASCRIPT_INLINE = 'javaScriptInline';
+
+	/**
+	 * @var \AdGrafik\GoogleMapsPHP\Configuration\Settings $settings
+	 */
+	protected $settings;
+
 	/**
 	 * @var \AdGrafik\GoogleMapsPHP\View\Node\Document $documentNode
 	 */
@@ -53,49 +62,110 @@ class View {
 	protected $bodyStack;
 
 	/**
-	 * @var array $nodeStack
-	 */
-	protected $nodeStack;
-
-	/**
 	 * Constructor
 	 */
 	public function __construct() {
 
-		$this->nodeStack = array();
+		$this->settings = ClassUtility::makeInstance('\AdGrafik\GoogleMapsPHP\Configuration\Settings');
 
-		$settings = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\Configuration\\Settings');
-
-		$this->documentNode = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\View\\Node\\Document', $settings->get('view.node.document.xmlVersion'), $settings->get('view.node.document.xmlEncoding'));
-		$this->documentNode->encoding = $settings->get('view.node.document.xmlEncoding');
+		$this->documentNode = ClassUtility::makeInstance('\AdGrafik\GoogleMapsPHP\View\Node\Document', $this->settings->get('view.node.document.xmlVersion'), $this->settings->get('view.node.document.xmlEncoding'));
+		$this->documentNode->encoding = $this->settings->get('view.node.document.xmlEncoding');
 		$this->documentNode->preserveWhiteSpace = FALSE;
 		$this->documentNode->formatOutput = TRUE;
 
-		$this->headNode = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\View\\Node\\Head', 'head');
+		$this->headNode = ClassUtility::makeInstance('\AdGrafik\GoogleMapsPHP\View\Node\Head', 'head');
 		$this->documentNode->appendChild($this->headNode);
 
-		$this->bodyNode = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\View\\Node\\Body', 'body');
+		$this->bodyNode = ClassUtility::makeInstance('\AdGrafik\GoogleMapsPHP\View\Node\Body', 'body');
 		$this->documentNode->appendChild($this->bodyNode);
+
+		$this->headStack = array(
+			self::HEAD_TYPE_JAVASCRIPT_LIBRARY => array(),
+			self::HEAD_TYPE_JAVASCRIPT_SOURCE => array(),
+			self::HEAD_TYPE_JAVASCRIPT_INLINE => array(),
+		);
+	}
+
+	/**
+	 * includeJava
+	 *
+	 * @param array $settings
+	 * @return void
+	 */
+	public function addResources(array $settings = array()) {
+
+		if (count($settings['includeJavaScriptLibrary'])) {
+			foreach ($settings['includeJavaScriptLibrary'] as &$javaScriptSettings) {
+				$this->addJavaScriptLibrary($javaScriptSettings);
+			}
+		}
+
+		if (count($settings['includeJavaScriptSource'])) {
+			foreach ($settings['includeJavaScriptSource'] as &$javaScriptSettings) {
+				$this->addJavaScriptSource($javaScriptSettings);
+			}
+		}
+
+		if (count($settings['includeJavaScriptInline'])) {
+			foreach ($settings['includeJavaScriptInline'] as &$javaScriptSettings) {
+				$this->addJavaScriptInline($javaScriptSettings);
+			}
+		}
 	}
 
 	/**
 	 * addJavaScriptLibrary
 	 *
 	 * @param array $settings
-	 * @return \AdGrafik\GoogleMapsPHP\View\Node\JavaScriptLibrary
+	 * @return \AdGrafik\GoogleMapsPHP\View\View
 	 */
 	public function addJavaScriptLibrary(array $settings = array()) {
-		return $this->addJavaScriptNode('\\AdGrafik\\GoogleMapsPHP\\View\\Node\\JavaScriptLibrary', $settings);
+		return $this->addJavaScriptNode(self::HEAD_TYPE_JAVASCRIPT_LIBRARY, $settings);
 	}
 
 	/**
-	 * addJavaScript
+	 * addJavaScriptSource
 	 *
 	 * @param array $settings
-	 * @return \AdGrafik\GoogleMapsPHP\View\Node\JavaScript
+	 * @return \AdGrafik\GoogleMapsPHP\View\View
 	 */
-	public function addJavaScript(array $settings = array()) {
-		return $this->addJavaScriptNode('\\AdGrafik\\GoogleMapsPHP\\View\\Node\\JavaScript', $settings);
+	public function addJavaScriptSource(array $settings = array()) {
+		return $this->addJavaScriptNode(self::HEAD_TYPE_JAVASCRIPT_SOURCE, $settings);
+	}
+
+	/**
+	 * addJavaScriptInline
+	 *
+	 * @param array $settings
+	 * @return \AdGrafik\GoogleMapsPHP\View\View
+	 */
+	public function addJavaScriptInline(array $settings = array()) {
+		return $this->addJavaScriptNode(self::HEAD_TYPE_JAVASCRIPT_INLINE, $settings);
+	}
+
+	/**
+	 * addHead
+	 *
+	 * @param \AdGrafik\GoogleMapsPHP\View\Node\NodeInterface $node
+	 * @return \AdGrafik\GoogleMapsPHP\View\View
+	 */
+	public function addHead($node) {
+
+		$key = count($this->headStack);
+
+		$referenceNode = NULL;
+		if ($node->isForceOnTop()) {
+			foreach ($this->headNode->childNodes as $childNode) {
+				if ($childNode->isForceOnTop() === FALSE) {
+					$referenceNode = $childNode;
+					break;
+				}
+			}
+		}
+
+		$this->headNode->insertBefore($node, $referenceNode);
+
+		return $this;
 	}
 
 	/**
@@ -105,35 +175,15 @@ class View {
 	 * @return \AdGrafik\GoogleMapsPHP\View\Node\Html
 	 */
 	public function addHtml(array $settings = array()) {
-		return $this->addHtmlNode('\\AdGrafik\\GoogleMapsPHP\\View\\Node\\Html', $settings);
-	}
 
-	/**
-	 * addHead
-	 *
-	 * @param \AdGrafik\GoogleMapsPHP\View\Node\NodeInterface $node
-	 * @param boolean $forceOnTop
-	 * @return \AdGrafik\GoogleMapsPHP\View\View
-	 */
-	public function addHead($node, $forceOnTop = FALSE) {
+		// Overwrite default settings.
+		$settings = array_replace_recursive(array(
+			'tagName' => 'div',
+			'forceOnTop' => FALSE,
+			'attributes' => FALSE,
+		), $settings);
 
-		$key = count($this->headStack);
-		$this->headStack[$key] = $node;
-		$this->headStack[$key]->setForceOnTop($forceOnTop);
-
-		$referenceNode = NULL;
-		if ($forceOnTop) {
-			foreach ($this->headNode->childNodes as $childNode) {
-				if ($childNode->isForceOnTop() === FALSE) {
-					$referenceNode = $childNode;
-					break;
-				}
-			}
-		}
-
-		$this->headNode->insertBefore($this->headStack[$key], $referenceNode);
-
-		return $this;
+		return $this->addHtmlNode('\AdGrafik\GoogleMapsPHP\View\Node\Html', $settings);
 	}
 
 	/**
@@ -162,6 +212,26 @@ class View {
 		$this->bodyNode->insertBefore($this->bodyStack[$key], $referenceNode);
 
 		return $this;
+	}
+
+	/**
+	 * Set settings
+	 *
+	 * @param \AdGrafik\GoogleMapsPHP\Configuration\Settings $settings
+	 * @return \AdGrafik\GoogleMapsPHP\View\to
+	 */
+	public function setSettings(\AdGrafik\GoogleMapsPHP\Configuration\Settings $settings) {
+		$this->settings = $settings;
+		return $this;
+	}
+
+	/**
+	 * Get settings
+	 *
+	 * @return \AdGrafik\GoogleMapsPHP\Configuration\Settings
+	 */
+	public function getSettings() {
+		return $this->settings;
 	}
 
 	/**
@@ -274,32 +344,63 @@ class View {
 	}
 
 	/**
+	 * Shortcut of printHtmlBody
+	 *
+	 * @return string
+	 */
+	public function printHtml() {
+		return $this->printHead() . PHP_EOL . $this->printBody();
+	}
+
+	/**
 	 * addJavaScriptNode
 	 *
-	 * @param string $nodeClassName
+	 * @param string $type
 	 * @param array $settings
 	 * @return \AdGrafik\GoogleMapsPHP\View\Node\JavaScript
 	 */
-	protected function addJavaScriptNode($nodeClassName, array $settings = array()) {
+	protected function addJavaScriptNode($type, array $settings = array()) {
 
-		$external = isset($settings['external']) ? $settings['external'] : FALSE;
-		$forceOnTop = isset($settings['forceOnTop']) ? $settings['forceOnTop'] : FALSE;
-		$source = isset($settings['source'])
-			? ($external
+		// Overwrite default settings.
+		$settings = array_replace_recursive(array(
+			'source' => '',
+			'forceOnTop' => FALSE,
+			'external' => FALSE,
+		), $settings);
+
+		// If source empty, nothing else to do.
+		if (!$settings['source']) {
+			return;
+		}
+
+		if ($type !== self::HEAD_TYPE_JAVASCRIPT_INLINE) {
+			$settings['source'] = $settings['external']
 				? $settings['source']
-				: GMP_HTTP_PATH . $settings['source'])
-			: '';
+				: GMP_HTTP_PATH . $settings['source'];
+		}
 
-		$node = ClassUtility::makeInstance($nodeClassName, 'script');
-		$this->addHead($node, $forceOnTop);
+		$key = md5($settings['source']);
+
+		// If source already set, nothing else to do.
+		if (isset($this->javaScriptStack[$type][$key])) {
+			return $this->javaScriptStack[$type][$key];
+		}
+
+		$node = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\View\\Node\\JavaScript', 'script');
+
+		$this->headStack[$type][$key] = $node;
+		$this->headStack[$type][$key]->setForceOnTop($settings['forceOnTop']);
+
+		$this->addHead($node);
 		$node->setAttribute('type', 'text/javascript');
 
-		// Check if is file or source.
-		$fileHeaders = @get_headers($source);
-		if (strpos($fileHeaders[0], '200')) {
-			$node->setAttribute('src', $source);
+		$this->javaScriptStack[$type][$key] = $node;
+
+		if ($type === self::HEAD_TYPE_JAVASCRIPT_INLINE) {
+			$cDataNode = new \DOMCdataSection($settings['source']);
+			$node->appendChild($cDataNode);
 		} else {
-			$node->nodeValue = $source;
+			$node->setAttribute('src', $settings['source']);
 		}
 
 		return $node;
@@ -314,20 +415,16 @@ class View {
 	 */
 	protected function addHtmlNode($nodeClassName, array $settings = array()) {
 
-		$tagName = isset($settings['tagName']) ? $settings['tagName'] : 'div';
-		$attributes = isset($settings['attributes']) ? $settings['attributes'] : array();
-		$forceOnTop = isset($settings['forceOnTop']) ? $settings['forceOnTop'] : FALSE;
+		$node = ClassUtility::makeInstance($nodeClassName, $settings['tagName']);
+		$this->addBody($node, $settings['forceOnTop']);
 
-		$node = ClassUtility::makeInstance($nodeClassName, $tagName);
-		$this->addBody($node, $forceOnTop);
-
-		if (isset($attributes['id'])) {
-			$node->setAttribute('id', $attributes['id']);
+		if (isset($settings['attributes']['id'])) {
+			$node->setAttribute('id', $settings['attributes']['id']);
 			$node->setIdAttribute('id', TRUE);
-			unset($attributes['id']);
+			unset($settings['attributes']['id']);
 		}
 
-		foreach ($attributes as $attributeName => &$attributeValue) {
+		foreach ($settings['attributes'] as $attributeName => &$attributeValue) {
 			$node->setAttribute($attributeName, $attributeValue);
 		}
 

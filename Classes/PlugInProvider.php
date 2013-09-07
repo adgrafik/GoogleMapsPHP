@@ -44,6 +44,11 @@ class PlugInProvider implements \AdGrafik\GoogleMapsPHP\MapBuilder\MapBuilderInt
 	protected $settings;
 
 	/**
+	 * @var \AdGrafik\GoogleMapsPHP\View\Document $view
+	 */
+	protected $view;
+
+	/**
 	 * @var \AdGrafik\GoogleMapsPHP\MapBuilder\JsonObject $jsonObject
 	 */
 	protected $jsonObject;
@@ -195,6 +200,26 @@ class PlugInProvider implements \AdGrafik\GoogleMapsPHP\MapBuilder\MapBuilderInt
 	}
 
 	/**
+	 * Set view
+	 *
+	 * @param \AdGrafik\GoogleMapsPHP\View\Document $view
+	 * @return \AdGrafik\GoogleMapsPHP\MapBuilder
+	 */
+	public function setView(\AdGrafik\GoogleMapsPHP\View\Document $view) {
+		$this->view = $view;
+		return $this;
+	}
+
+	/**
+	 * Get view
+	 *
+	 * @return \AdGrafik\GoogleMapsPHP\View\Document
+	 */
+	public function getView() {
+		return $this->view;
+	}
+
+	/**
 	 * Set jsonObject
 	 *
 	 * @param \AdGrafik\GoogleMapsPHP\MapBuilder\JsonObject $jsonObject
@@ -323,7 +348,7 @@ class PlugInProvider implements \AdGrafik\GoogleMapsPHP\MapBuilder\MapBuilderInt
 			return $this;
 		}
 
-		if (($plugInBuilder = $this->getSettings()->get('plugInBuilders.' . $plugInBuilderName)) === NULL) {
+		if (($plugInBuilder = $this->getSettings()->get('plugInBuilder.' . $plugInBuilderName)) === NULL) {
 			throw new \AdGrafik\GoogleMapsPHP\Exceptions\InvalidArgumentException(sprintf('Plug-in builder "%s" is not registered.', $plugInBuilderName), 1371909752);
 		}
 
@@ -331,16 +356,16 @@ class PlugInProvider implements \AdGrafik\GoogleMapsPHP\MapBuilder\MapBuilderInt
 		array_shift($arguments);
 
 		// Set default options.
-		$plugInArguments = $this->getSettings()->get('plugInBuilders.' . $plugInBuilderName . '.arguments');
-		if (count($plugInArguments)) {
+		$plugInBuilderSettings = (array) $this->getSettings()->get('plugInBuilder.' . $plugInBuilderName);
+		if (isset($plugInBuilderSettings['arguments'])) {
 			foreach ($arguments as $key => &$argument) {
-				if (is_array($argument) && array_key_exists($key, $plugInArguments)) {
-					$argument = array_replace_recursive($plugInArguments[$key], $argument);
+				if (is_array($argument) && array_key_exists($key, $plugInBuilderSettings['arguments'])) {
+					$argument = array_replace_recursive($plugInBuilderSettings['arguments'][$key], $argument);
 				}
 			}
 		}
 
-		$plugInBuilder = ClassUtility::makeInstance($plugInBuilder['className'], $this);
+		$plugInBuilder = ClassUtility::makeInstance($plugInBuilder['className'], $this, $plugInBuilderSettings);
 		ClassUtility::callMethod(array($plugInBuilder, 'build'), $arguments);
 
 		return $this;

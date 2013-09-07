@@ -15,83 +15,38 @@ view:
       xmlVersion: 1.0
       xmlEncoding: utf-8
 
-    canvas:
-      forceOnTop: TRUE
-      tagName: div
-      attributes:
-        style: height: 300px;
-
-    jQuery:
-      source: http://code.jquery.com/jquery-1.10.1.min.js
-      forceOnTop: TRUE
-      external: TRUE
-
-    googleMapsApi:
-      source: http://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false
-      forceOnTop: TRUE
-      external: TRUE
-
-    markerClusterer:
-      source: GoogleMapsPHP/Ressources/Public/JavaScript/markerclusterer-1.0.0.min.js
-      forceOnTop: TRUE
-
-    mapBuilder:
-      source: GoogleMapsPHP/Ressources/Public/JavaScript/mapbuilder-1.0.0.js
-
-    options:
-      # DOM ready function
-      wrap:
-        - google.maps.event.addDomListener(window, 'load', function(){
-        - });
-
 
 #
-# plugInBuilders
-# Add user defined builders if you want. methodName is by default "build".
+# mapBuilder
 #
-plugInBuilders:
+mapBuilder:
 
-  Loader:
-    className: \AdGrafik\GoogleMapsPHP\PlugIns\Loader\Builder
+  canvas:
+    forceOnTop: TRUE
+    tagName: div
+    attributes:
+      style: height: 300px;
 
-  Map:
-    className: \AdGrafik\GoogleMapsPHP\PlugIns\Map\Builder
-    # Set default options here.
-    arguments:
-      -
-        center: 48.208202, 16.373749
-        mapTypeId: \AdGrafik\GoogleMapsPHP\API\Map\MapTypeId::ROADMAP
-        zoom: 7
+  options:
+    # DOM ready function
+    wrap:
+      - google.maps.event.addDomListener(window, 'load', function(){
+      - });
 
-  StyledMapType:
-    className: \AdGrafik\GoogleMapsPHP\PlugIns\StyledMapType\Builder
+  view:
 
-  Marker:
-    className: \AdGrafik\GoogleMapsPHP\PlugIns\Marker\Builder
+    # Global head resources
+    includeJavaScriptLibrary:
 
-  InfoWindow:
-    className: \AdGrafik\GoogleMapsPHP\PlugIns\InfoWindow\Builder
+      googleMapsApi:
+        source: http://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false
+        forceOnTop: TRUE
+        external: TRUE
 
-  Polyline:
-    className: \AdGrafik\GoogleMapsPHP\PlugIns\Polyline\Builder
+    includeJavaScriptSource:
 
-  Polygon:
-    className: \AdGrafik\GoogleMapsPHP\PlugIns\Polygon\Builder
-
-  Rectangle:
-    className: \AdGrafik\GoogleMapsPHP\PlugIns\Rectangle\Builder
-
-  Circle:
-    className: \AdGrafik\GoogleMapsPHP\PlugIns\Circle\Builder
-
-  KmlLayer:
-    className: \AdGrafik\GoogleMapsPHP\PlugIns\KmlLayer\Builder
-
-  MarkerClusterer:
-    className: \AdGrafik\GoogleMapsPHP\AddOns\MarkerClusterer\PlugIns\MarkerClusterer\Builder
-
-  DrawingManager:
-    className: \AdGrafik\GoogleMapsPHP\PlugIns\DrawingManager\Builder
+      mapBuilder:
+        source: GoogleMapsPHP/Ressources/Public/JavaScript/mapbuilder-1.0.0.js
 
 
 #
@@ -107,3 +62,72 @@ plugInProvider:
   exceptionHandler:
     className: \AdGrafik\GoogleMapsPHP\PlugInProvider
     methodName: exceptionHandler
+
+
+#
+# plugInBuilders
+# Add user defined builders if you want. methodName is by default "build".
+#
+plugInBuilder:
+
+  Map:
+
+    className: \AdGrafik\GoogleMapsPHP\PlugIns\Map\Builder
+    # Set default options here.
+    arguments:
+      -
+        center: 48.208202, 16.373749
+        mapTypeId: \AdGrafik\GoogleMapsPHP\API\Map\MapTypeId::ROADMAP
+        zoom: 7
+
+  Circle:
+    className: \AdGrafik\GoogleMapsPHP\PlugIns\Circle\Builder
+
+  DrawingManager:
+    className: \AdGrafik\GoogleMapsPHP\PlugIns\DrawingManager\Builder
+
+  InfoWindow:
+    className: \AdGrafik\GoogleMapsPHP\PlugIns\InfoWindow\Builder
+
+  KmlLayer:
+    className: \AdGrafik\GoogleMapsPHP\PlugIns\KmlLayer\Builder
+
+  Loader:
+
+    className: \AdGrafik\GoogleMapsPHP\PlugIns\Loader\Builder
+
+    view:
+
+      includeJavaScriptLibrary:
+
+        jQuery:
+          source: http://code.jquery.com/jquery-1.10.1.min.js
+          forceOnTop: TRUE
+          external: TRUE
+
+  Marker:
+    className: \AdGrafik\GoogleMapsPHP\PlugIns\Marker\Builder
+
+  MarkerClusterer:
+
+    className: \AdGrafik\GoogleMapsPHP\AddOns\MarkerClusterer\PlugIns\MarkerClusterer\Builder
+
+    view:
+
+      includeJavaScriptLibrary:
+
+        markerClusterer:
+          source: GoogleMapsPHP/Ressources/Public/JavaScript/markerclusterer-1.0.0.min.js
+          forceOnTop: TRUE
+
+  Polygon:
+    className: \AdGrafik\GoogleMapsPHP\PlugIns\Polygon\Builder
+
+  Polyline:
+    className: \AdGrafik\GoogleMapsPHP\PlugIns\Polyline\Builder
+
+  Rectangle:
+    className: \AdGrafik\GoogleMapsPHP\PlugIns\Rectangle\Builder
+
+  StyledMapType:
+    className: \AdGrafik\GoogleMapsPHP\PlugIns\StyledMapType\Builder

@@ -33,7 +33,7 @@ abstract class AbstractBuilder implements \AdGrafik\GoogleMapsPHP\PlugIns\Builde
 	static protected $idCount = 0;
 
 	/**
-	 * @var \AdGrafik\GoogleMapsPHP\Configuration\Settings $settings
+	 * @var array $settings
 	 */
 	protected $settings;
 
@@ -47,9 +47,15 @@ abstract class AbstractBuilder implements \AdGrafik\GoogleMapsPHP\PlugIns\Builde
 	 *
 	 * @param \AdGrafik\GoogleMapsPHP\MapBuilder\MapBuilderInterface $mapBuilder
 	 */
-	public function __construct(\AdGrafik\GoogleMapsPHP\MapBuilder\MapBuilderInterface $mapBuilder) {
-		$this->setSettings(ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\Configuration\\Settings'));
+	public function __construct(\AdGrafik\GoogleMapsPHP\MapBuilder\MapBuilderInterface $mapBuilder, array $settings) {
+
+		$this->setSettings($settings);
 		$this->setMapBuilder($mapBuilder);
+
+		// Include head resources only if view exists.
+		if ($mapBuilder->getView()) {
+			$mapBuilder->getView()->addResources((array) $settings['view']);
+		}
 	}
 
 	/**
@@ -63,10 +69,10 @@ abstract class AbstractBuilder implements \AdGrafik\GoogleMapsPHP\PlugIns\Builde
 	/**
 	 * Set settings
 	 *
-	 * @param \AdGrafik\GoogleMapsPHP\Configuration\Settings $settings
+	 * @param array $settings
 	 * @return \AdGrafik\GoogleMapsPHP\PlugIns\AbstractBuilder
 	 */
-	public function setSettings(\AdGrafik\GoogleMapsPHP\Configuration\Settings $settings) {
+	public function setSettings(array $settings) {
 		$this->settings = $settings;
 		return $this;
 	}
@@ -74,7 +80,7 @@ abstract class AbstractBuilder implements \AdGrafik\GoogleMapsPHP\PlugIns\Builde
 	/**
 	 * Get settings
 	 *
-	 * @return \AdGrafik\GoogleMapsPHP\Configuration\Settings
+	 * @return array
 	 */
 	public function getSettings() {
 		return $this->settings;

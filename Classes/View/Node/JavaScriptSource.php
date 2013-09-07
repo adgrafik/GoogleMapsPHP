@@ -19,7 +19,7 @@
 namespace AdGrafik\GoogleMapsPHP\View\Node;
 
 /**
- * DOMElement for JavaScript.
+ * DOMElement for non unique JavaScript.
  *
  * @author Arno Dudek <webmaster@adgrafik.at>
  */
