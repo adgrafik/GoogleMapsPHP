@@ -25,7 +25,7 @@ use AdGrafik\GoogleMapsPHP\Utility\ClassUtility;
  *
  * @author Arno Dudek <webmaster@adgrafik.at>
  */
-class Settings implements \AdGrafik\GoogleMapsPHP\Object\SingletonInterface {
+class Settings implements \ArrayAccess, \Iterator, \Countable, \AdGrafik\GoogleMapsPHP\Object\SingletonInterface {
 
 	/**
 	 * @var array $settings
@@ -33,11 +33,17 @@ class Settings implements \AdGrafik\GoogleMapsPHP\Object\SingletonInterface {
 	protected $settings;
 
 	/**
+	 * @var integer $_arrayAccessPosition
+	 */
+	private $_arrayAccessPosition;
+
+	/**
 	 * Constructor
 	 */
 	public function __construct() {
 		$settings = (array) \Symfony\Component\Yaml\Yaml::parse(GMP_PATH . 'GoogleMapsPHP/Configuration/Settings.yml');
 		$this->setSettings($settings);
+		$this->_arrayAccessPosition = 0;
 	}
 
 	/**
@@ -103,6 +109,103 @@ class Settings implements \AdGrafik\GoogleMapsPHP\Object\SingletonInterface {
 		}
 		return $array;
 	}
+
+	/**
+	 * ArrayAccess
+	 *
+	 * @param mixed $propertyName
+	 * @param mixed $propertyValue
+	 * @return void
+	 */
+	public function offsetSet($propertyName, $propertyValue) {
+		$this->settings[$propertyName] = $propertyValue;
+	}
+
+	/**
+	 * ArrayAccess
+	 *
+	 * @param mixed $propertyName
+	 * @return boolean
+	 */
+	public function offsetExists($propertyName) {
+		return isset($this->settings[$propertyName]);
+	}
+
+	/**
+	 * ArrayAccess
+	 *
+	 * @param mixed $propertyName
+	 * @return void
+	 */
+	public function offsetUnset($propertyName) {
+		unset($this->settings[$propertyName]);
+	}
+
+	/**
+	 * ArrayAccess
+	 *
+	 * @param mixed $propertyName
+	 * @return mixed
+	 */
+	public function &offsetGet($propertyName) {
+		return $this->settings[$propertyName];
+	}
+
+	/**
+	 * Iterator
+	 *
+	 * @return void
+	 */
+	public function rewind() {
+        reset($this->settings);
+		$this->_arrayAccessPosition = key($this->settings);
+    }
+
+    /**
+	 * Iterator
+	 *
+	 * @return mixed
+	 */
+	public function current() {
+		return current($this->settings);
+    }
+
+    /**
+	 * Iterator
+	 *
+	 * @return integer
+	 */
+	public function key() {
+        return key($this->settings);
+    }
+
+    /**
+	 * Iterator
+	 *
+	 * @return void
+	 */
+	public function next() {
+        next($this->settings);
+		$this->_arrayAccessPosition = key($this->settings);
+    }
+
+    /**
+	 * Iterator
+	 *
+	 * @return boolean
+	 */
+	public function valid() {
+		return isset($this->settings[$this->_arrayAccessPosition]);
+    }
+
+    /**
+	 * Countable
+	 *
+	 * @return integer
+	 */
+	public function count() {
+		return count($this->settings);
+    }
 
 }
 
