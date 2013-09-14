@@ -136,7 +136,7 @@ class InfoWindowOptions {
 	public function setPixelOffset($pixelOffset) {
 
 		if ($pixelOffset instanceof \AdGrafik\GoogleMapsPHP\API\Base\LatLng === FALSE) {
-			$pixelOffset = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\API\\Base\\Size', $pixelOffset);
+			$pixelOffset = ClassUtility::makeInstance('AdGrafik\\GoogleMapsPHP\\API\\Base\\Size', $pixelOffset);
 		}
 
 		$this->pixelOffset = $pixelOffset;
@@ -161,7 +161,7 @@ class InfoWindowOptions {
 	public function setPosition($position) {
 
 		if ($position instanceof \AdGrafik\GoogleMapsPHP\API\Base\LatLng === FALSE) {
-			$position = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\API\\Base\\LatLng', $position);
+			$position = ClassUtility::makeInstance('AdGrafik\\GoogleMapsPHP\\API\\Base\\LatLng', $position);
 		}
 
 		$this->position = $position;

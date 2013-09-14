@@ -182,7 +182,7 @@ class PolylineOptions {
 
 		foreach ($icons as $key => &$icon) {
 			if ($icon instanceof \AdGrafik\GoogleMapsPHP\API\Overlays\Icon === FALSE) {
-				$icons[$key] = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\API\\Overlays\\Icon', $icon);
+				$icons[$key] = ClassUtility::makeInstance('AdGrafik\\GoogleMapsPHP\\API\\Overlays\\Icon', $icon);
 			}
 		}
 
@@ -209,7 +209,7 @@ class PolylineOptions {
 
 		foreach ($path as $key => &$latlng) {
 			if ($latlng instanceof \AdGrafik\GoogleMapsPHP\API\Base\LatLng === FALSE) {
-				$path[$key] = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\API\\Base\\LatLng', $latlng);
+				$path[$key] = ClassUtility::makeInstance('AdGrafik\\GoogleMapsPHP\\API\\Base\\LatLng', $latlng);
 			}
 		}
 

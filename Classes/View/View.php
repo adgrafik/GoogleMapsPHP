@@ -66,17 +66,17 @@ class View {
 	 */
 	public function __construct() {
 
-		$this->settings = ClassUtility::makeInstance('\AdGrafik\GoogleMapsPHP\Configuration\Settings');
+		$this->settings = ClassUtility::makeInstance('AdGrafik\\GoogleMapsPHP\\Configuration\\Settings');
 
-		$this->documentNode = ClassUtility::makeInstance('\AdGrafik\GoogleMapsPHP\View\Node\Document', $this->settings->get('view.node.document.xmlVersion'), $this->settings->get('view.node.document.xmlEncoding'));
+		$this->documentNode = ClassUtility::makeInstance('AdGrafik\\GoogleMapsPHP\\View\\Node\\Document', $this->settings->get('view.node.document.xmlVersion'), $this->settings->get('view.node.document.xmlEncoding'));
 		$this->documentNode->encoding = $this->settings->get('view.node.document.xmlEncoding');
 		$this->documentNode->preserveWhiteSpace = FALSE;
 		$this->documentNode->formatOutput = TRUE;
 
-		$this->headNode = ClassUtility::makeInstance('\AdGrafik\GoogleMapsPHP\View\Node\Head', 'head');
+		$this->headNode = ClassUtility::makeInstance('AdGrafik\\GoogleMapsPHP\\View\\Node\\Head', 'head');
 		$this->documentNode->appendChild($this->headNode);
 
-		$this->bodyNode = ClassUtility::makeInstance('\AdGrafik\GoogleMapsPHP\View\Node\Body', 'body');
+		$this->bodyNode = ClassUtility::makeInstance('AdGrafik\\GoogleMapsPHP\\View\\Node\\Body', 'body');
 		$this->documentNode->appendChild($this->bodyNode);
 
 		$this->headStack = array(
@@ -183,7 +183,7 @@ class View {
 			'attributes' => FALSE,
 		), $settings);
 
-		return $this->addHtmlNode('\AdGrafik\GoogleMapsPHP\View\Node\Html', $settings);
+		return $this->addHtmlNode('AdGrafik\\GoogleMapsPHP\\View\\Node\\Html', $settings);
 	}
 
 	/**
@@ -386,7 +386,7 @@ class View {
 			return $this->javaScriptStack[$type][$key];
 		}
 
-		$node = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\View\\Node\\JavaScript', 'script');
+		$node = ClassUtility::makeInstance('AdGrafik\\GoogleMapsPHP\\View\\Node\\JavaScript', 'script');
 
 		$this->headStack[$type][$key] = $node;
 		$this->headStack[$type][$key]->setForceOnTop($settings['forceOnTop']);

@@ -252,7 +252,7 @@ class MarkerOptions {
 	public function setIcon($icon) {
 
 		if ($icon instanceof \AdGrafik\GoogleMapsPHP\API\Overlays\Icon === FALSE) {
-			$icon = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\API\\Overlays\\Icon', $icon);
+			$icon = ClassUtility::makeInstance('AdGrafik\\GoogleMapsPHP\\API\\Overlays\\Icon', $icon);
 		}
 
 		$this->icon = $icon;
@@ -296,7 +296,7 @@ class MarkerOptions {
 	 */
 	public function setPosition($position) {
 		if ($position instanceof \AdGrafik\GoogleMapsPHP\API\Base\LatLng === FALSE) {
-			$position = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\API\\Base\\LatLng', $position);
+			$position = ClassUtility::makeInstance('AdGrafik\\GoogleMapsPHP\\API\\Base\\LatLng', $position);
 		}
 		$this->position = $position;
 		return $this;
@@ -360,7 +360,7 @@ class MarkerOptions {
 	public function setShadow($shadow) {
 
 		if ($shadow instanceof \AdGrafik\GoogleMapsPHP\API\Overlays\Icon === FALSE) {
-			$shadow = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\API\\Overlays\\Icon', $shadow);
+			$shadow = ClassUtility::makeInstance('AdGrafik\\GoogleMapsPHP\\API\\Overlays\\Icon', $shadow);
 		}
 
 		$this->shadow = $shadow;
@@ -385,7 +385,7 @@ class MarkerOptions {
 	public function setShape($shape) {
 
 		if ($shape instanceof \AdGrafik\GoogleMapsPHP\API\Overlays\MarkerShape === FALSE) {
-			$shape = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\API\\Overlays\\MarkerShape', $shape);
+			$shape = ClassUtility::makeInstance('AdGrafik\\GoogleMapsPHP\\API\\Overlays\\MarkerShape', $shape);
 		}
 
 		$this->shape = $shape;

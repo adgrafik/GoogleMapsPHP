@@ -39,13 +39,13 @@ class Builder extends \AdGrafik\GoogleMapsPHP\PlugIns\AbstractBuilder {
 		$options['id'] = $this->evaluateId($options);
 
 		// Split properties to API and layer options.
-		$this->parseOptions($options, $objectOptions, $plugInOptions, $additionalOptions, '\\AdGrafik\\GoogleMapsPHP\\AddOns\\MarkerClusterer\\API\\Overlays\\MarkerClustererOptions', '\\AdGrafik\\GoogleMapsPHP\\AddOns\\MarkerClusterer\\PlugIns\\MarkerClusterer\\PlugIn');
+		$this->parseOptions($options, $objectOptions, $plugInOptions, $additionalOptions, 'AdGrafik\\GoogleMapsPHP\\AddOns\\MarkerClusterer\\API\\Overlays\\MarkerClustererOptions', 'AdGrafik\\GoogleMapsPHP\\AddOns\\MarkerClusterer\\PlugIns\\MarkerClusterer\\PlugIn');
 
 		// Create API object.
-		$object = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\AddOns\\MarkerClusterer\\API\\Overlays\\MarkerClusterer', $objectOptions);
+		$object = ClassUtility::makeInstance('AdGrafik\\GoogleMapsPHP\\AddOns\\MarkerClusterer\\API\\Overlays\\MarkerClusterer', $objectOptions);
 
 		// Create plug-in object.
-		$plugIn = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\AddOns\\MarkerClusterer\\PlugIns\\MarkerClusterer\\PlugIn', $this->getMapBuilder(), $plugInOptions)
+		$plugIn = ClassUtility::makeInstance('AdGrafik\\GoogleMapsPHP\\AddOns\\MarkerClusterer\\PlugIns\\MarkerClusterer\\PlugIn', $this->getMapBuilder(), $plugInOptions)
 			->setObject($object);
 
 		$this->getMapBuilder()->getJsonObject()->addPlugIn($plugIn);

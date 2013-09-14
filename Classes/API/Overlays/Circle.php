@@ -50,7 +50,7 @@ class Circle extends \AdGrafik\GoogleMapsPHP\Object\OptionsArrayAccess implement
 	 */
 	public function setOptions($options) {
 		if (is_array($options)) {
-			$this->options = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\API\\Overlays\\CircleOptions', $options);
+			$this->options = ClassUtility::makeInstance('AdGrafik\\GoogleMapsPHP\\API\\Overlays\\CircleOptions', $options);
 		} else if ($options instanceof \AdGrafik\GoogleMapsPHP\API\Overlays\CircleOptions) {
 			$this->options = $options;
 		} else {

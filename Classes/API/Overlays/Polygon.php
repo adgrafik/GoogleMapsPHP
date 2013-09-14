@@ -50,7 +50,7 @@ class Polygon extends \AdGrafik\GoogleMapsPHP\Object\OptionsArrayAccess implemen
 	 */
 	public function setOptions($options) {
 		if (is_array($options)) {
-			$this->options = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\API\\Overlays\\PolygonOptions', $options);
+			$this->options = ClassUtility::makeInstance('AdGrafik\\GoogleMapsPHP\\API\\Overlays\\PolygonOptions', $options);
 		} else if ($options instanceof \AdGrafik\GoogleMapsPHP\API\Overlays\PolygonOptions) {
 			$this->options = $options;
 		} else {

@@ -97,7 +97,7 @@ class LatLngBounds extends \AdGrafik\GoogleMapsPHP\Object\PropertyArrayAccess {
 	public function setNorthEast($northEast) {
 
 		if ($northEast instanceof \AdGrafik\GoogleMapsPHP\API\Base\LatLng === FALSE) {
-			$northEast = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\API\\Base\\LatLng', $northEast);
+			$northEast = ClassUtility::makeInstance('AdGrafik\\GoogleMapsPHP\\API\\Base\\LatLng', $northEast);
 		}
 
 		$this->northEast = $northEast;
@@ -123,7 +123,7 @@ class LatLngBounds extends \AdGrafik\GoogleMapsPHP\Object\PropertyArrayAccess {
 	public function setSouthWest($southWest) {
 
 		if ($southWest instanceof \AdGrafik\GoogleMapsPHP\API\Base\LatLng === FALSE) {
-			$southWest = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\API\\Base\\LatLng', $southWest);
+			$southWest = ClassUtility::makeInstance('AdGrafik\\GoogleMapsPHP\\API\\Base\\LatLng', $southWest);
 		}
 
 		$this->southWest = $southWest;
@@ -153,7 +153,7 @@ class LatLngBounds extends \AdGrafik\GoogleMapsPHP\Object\PropertyArrayAccess {
 		$latitude = $southWest->getLatitude() + (($northEast->getLatitude() - $southWest->getLatitude()) / 2);
 		$longitude = $southWest->getLongitude() + (($northEast->getLongitude() - $southWest->getLongitude()) / 2);
 
-		return ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\API\\Base\\LatLng', $latitude, $longitude);
+		return ClassUtility::makeInstance('AdGrafik\\GoogleMapsPHP\\API\\Base\\LatLng', $latitude, $longitude);
 	}
 
 	/**
@@ -177,19 +177,19 @@ class LatLngBounds extends \AdGrafik\GoogleMapsPHP\Object\PropertyArrayAccess {
 		if ($this->getSouthWest() === NULL) {
 			$southWest = ($latLng instanceof \AdGrafik\GoogleMapsPHP\API\Base\LatLng)
 				? clone $latLng
-				: ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\API\\Base\\LatLng', $latLng);
+				: ClassUtility::makeInstance('AdGrafik\\GoogleMapsPHP\\API\\Base\\LatLng', $latLng);
 			$this->setSouthWest(clone $southWest);
 		}
 
 		if ($this->getNorthEast() === NULL) {
 			$northEast = ($latLng instanceof \AdGrafik\GoogleMapsPHP\API\Base\LatLng)
 				? clone $latLng
-				: ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\API\\Base\\LatLng', $latLng);
+				: ClassUtility::makeInstance('AdGrafik\\GoogleMapsPHP\\API\\Base\\LatLng', $latLng);
 			$this->setNorthEast(clone $northEast);
 		}
 
 		if ($latLng instanceof \AdGrafik\GoogleMapsPHP\API\Base\LatLng === FALSE) {
-			$latLng = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\API\\Base\\LatLng', $latLng);
+			$latLng = ClassUtility::makeInstance('AdGrafik\\GoogleMapsPHP\\API\\Base\\LatLng', $latLng);
 		}
 
 		if ($latLng->getLatitude()  < $this->getSouthWest()->getLatitude())  $this->getSouthWest()->setLatitude($latLng->getLatitude());
@@ -209,7 +209,7 @@ class LatLngBounds extends \AdGrafik\GoogleMapsPHP\Object\PropertyArrayAccess {
 	public function contains($latLng) {
 
 		if ($latLng instanceof \AdGrafik\GoogleMapsPHP\API\Base\LatLng === FALSE) {
-			$latLng = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\API\\Base\\LatLng', $latLng);
+			$latLng = ClassUtility::makeInstance('AdGrafik\\GoogleMapsPHP\\API\\Base\\LatLng', $latLng);
 		}
 
 		return (
@@ -229,7 +229,7 @@ class LatLngBounds extends \AdGrafik\GoogleMapsPHP\Object\PropertyArrayAccess {
 	public function intersects($bounds) {
 
 		if ($bounds instanceof \AdGrafik\GoogleMapsPHP\API\Base\LatLngBounds === FALSE) {
-			$bounds = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\API\\Base\\LatLngBounds', $bounds);
+			$bounds = ClassUtility::makeInstance('AdGrafik\\GoogleMapsPHP\\API\\Base\\LatLngBounds', $bounds);
 		}
 	 // TODO: implement intersects for LatLngBounds
 	}
@@ -243,7 +243,7 @@ class LatLngBounds extends \AdGrafik\GoogleMapsPHP\Object\PropertyArrayAccess {
 	public function union($bounds) {
 
 		if ($bounds instanceof \AdGrafik\GoogleMapsPHP\API\Base\LatLngBounds === FALSE) {
-			$bounds = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\API\\Base\\LatLngBounds', $bounds);
+			$bounds = ClassUtility::makeInstance('AdGrafik\\GoogleMapsPHP\\API\\Base\\LatLngBounds', $bounds);
 		}
 
 		if ($this->southWest === NULL) {

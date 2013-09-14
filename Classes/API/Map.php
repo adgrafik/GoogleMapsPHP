@@ -47,7 +47,7 @@ class Map extends \AdGrafik\GoogleMapsPHP\Object\OptionsArrayAccess {
 	public function __construct($div, $options = array()) {
 
 		// Set required values
-		$this->options = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\API\\Map\\MapOptions');
+		$this->options = ClassUtility::makeInstance('AdGrafik\\GoogleMapsPHP\\API\\Map\\MapOptions');
 
 		// Set properties
 		$this->setDiv($div);

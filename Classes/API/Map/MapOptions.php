@@ -234,7 +234,7 @@ class MapOptions {
 	public function setCenter($center, $longitude = NULL, $noWrap = FALSE) {
 
 		if ($center instanceof \AdGrafik\GoogleMapsPHP\API\Base\LatLng === FALSE) {
-			$center = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\API\\Base\\LatLng', $center, $longitude, $noWrap);
+			$center = ClassUtility::makeInstance('AdGrafik\\GoogleMapsPHP\\API\\Base\\LatLng', $center, $longitude, $noWrap);
 		}
 
 		$this->center = $center;
@@ -439,7 +439,7 @@ class MapOptions {
 	public function setMapTypeControlOptions($mapTypeControlOptions) {
 
 		if ($mapTypeControlOptions instanceof \AdGrafik\GoogleMapsPHP\API\Controls\MapTypeControlOptions === FALSE) {
-			$mapTypeControlOptions = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\API\\Controls\\MapTypeControlOptions', $mapTypeControlOptions);
+			$mapTypeControlOptions = ClassUtility::makeInstance('AdGrafik\\GoogleMapsPHP\\API\\Controls\\MapTypeControlOptions', $mapTypeControlOptions);
 		}
 
 		$this->mapTypeControlOptions = $mapTypeControlOptions;
@@ -570,7 +570,7 @@ class MapOptions {
 	public function setOverviewMapControlOptions($overviewMapControlOptions) {
 
 		if ($overviewMapControlOptions instanceof AdGrafik\GoogleMapsPHP\API\Controls\OverviewMapControlOptions === FALSE) {
-			$overviewMapControlOptions = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\API\\Controls\\OverviewMapControlOptions', $overviewMapControlOptions);
+			$overviewMapControlOptions = ClassUtility::makeInstance('AdGrafik\\GoogleMapsPHP\\API\\Controls\\OverviewMapControlOptions', $overviewMapControlOptions);
 		}
 
 		$this->overviewMapControlOptions = $overviewMapControlOptions;
@@ -615,7 +615,7 @@ class MapOptions {
 	public function setPanControlOptions($panControlOptions) {
 
 		if ($panControlOptions instanceof AdGrafik\GoogleMapsPHP\API\Controls\PanControlOptions === FALSE) {
-			$panControlOptions = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\API\\Controls\\PanControlOptions', $panControlOptions);
+			$panControlOptions = ClassUtility::makeInstance('AdGrafik\\GoogleMapsPHP\\API\\Controls\\PanControlOptions', $panControlOptions);
 		}
 
 		$this->panControlOptions = $panControlOptions;
@@ -660,7 +660,7 @@ class MapOptions {
 	public function setRotateControlOptions($rotateControlOptions) {
 
 		if ($rotateControlOptions instanceof AdGrafik\GoogleMapsPHP\API\Controls\RotateControlOptions === FALSE) {
-			$rotateControlOptions = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\API\\Controls\\RotateControlOptions', $rotateControlOptions);
+			$rotateControlOptions = ClassUtility::makeInstance('AdGrafik\\GoogleMapsPHP\\API\\Controls\\RotateControlOptions', $rotateControlOptions);
 		}
 
 		$this->rotateControlOptions = $rotateControlOptions;
@@ -705,7 +705,7 @@ class MapOptions {
 	public function setScaleControlOptions($scaleControlOptions) {
 
 		if ($scaleControlOptions instanceof AdGrafik\GoogleMapsPHP\API\Controls\ScaleControlOptions === FALSE) {
-			$scaleControlOptions = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\API\\Controls\\ScaleControlOptions', $scaleControlOptions);
+			$scaleControlOptions = ClassUtility::makeInstance('AdGrafik\\GoogleMapsPHP\\API\\Controls\\ScaleControlOptions', $scaleControlOptions);
 		}
 
 		$this->scaleControlOptions = $scaleControlOptions;
@@ -790,7 +790,7 @@ class MapOptions {
 	public function setStreetViewControlOptions($streetViewControlOptions) {
 
 		if ($streetViewControlOptions instanceof AdGrafik\GoogleMapsPHP\API\Controls\StreetViewControlOptions === FALSE) {
-			$streetViewControlOptions = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\API\\Controls\\StreetViewControlOptions', $streetViewControlOptions);
+			$streetViewControlOptions = ClassUtility::makeInstance('AdGrafik\\GoogleMapsPHP\\API\\Controls\\StreetViewControlOptions', $streetViewControlOptions);
 		}
 
 		$this->streetViewControlOptions = $streetViewControlOptions;
@@ -895,7 +895,7 @@ class MapOptions {
 	public function setZoomControlOptions($zoomControlOptions) {
 
 		if ($zoomControlOptions instanceof AdGrafik\GoogleMapsPHP\API\Controls\ZoomControlOptions === FALSE) {
-			$zoomControlOptions = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\API\\Controls\\ZoomControlOptions', $zoomControlOptions);
+			$zoomControlOptions = ClassUtility::makeInstance('AdGrafik\\GoogleMapsPHP\\API\\Controls\\ZoomControlOptions', $zoomControlOptions);
 		}
 
 		$this->zoomControlOptions = $zoomControlOptions;

@@ -106,7 +106,7 @@ class RectangleOptions {
 	 */
 	public function setBounds($bounds, $northEast = NULL) {
 		if ($bounds instanceof \AdGrafik\GoogleMapsPHP\API\Base\LatLngBounds === FALSE) {
-			$bounds = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\API\\Base\\LatLngBounds', $bounds, $northEast);
+			$bounds = ClassUtility::makeInstance('AdGrafik\\GoogleMapsPHP\\API\\Base\\LatLngBounds', $bounds, $northEast);
 		}
 		$this->bounds = $bounds;
 		return $this;

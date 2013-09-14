@@ -38,7 +38,7 @@ class Builder extends \AdGrafik\GoogleMapsPHP\PlugIns\AbstractBuilder {
 		$options['id'] = $this->evaluateId($options);
 
 		// Create plug-in object.
-		$plugIn = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\PlugIns\\Loader\\PlugIn', $this->getMapBuilder(), $options);
+		$plugIn = ClassUtility::makeInstance('AdGrafik\\GoogleMapsPHP\\PlugIns\\Loader\\PlugIn', $this->getMapBuilder(), $options);
 
 		$this->getMapBuilder()->getJsonObject()->addPlugIn($plugIn);
 	}

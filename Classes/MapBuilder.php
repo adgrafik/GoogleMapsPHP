@@ -50,7 +50,7 @@ class MapBuilder extends \AdGrafik\GoogleMapsPHP\PlugInProvider {
 		parent::__construct($mapId, $options);
 
 		// Create XML document and nodes in order of appearance.
-		$this->view = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\View\\View');
+		$this->view = ClassUtility::makeInstance('AdGrafik\\GoogleMapsPHP\\View\\View');
 
 		$this->getSettings()->set('mapBuilder.canvas.attributes.id', $this->getMapId());
 		$this->setCanvasNode($this->getView()->addHtml($this->getSettings()->get('mapBuilder.canvas')));

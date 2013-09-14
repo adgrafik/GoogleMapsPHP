@@ -37,13 +37,13 @@ class Builder extends \AdGrafik\GoogleMapsPHP\PlugIns\AbstractBuilder {
 	public function build(array $options = array()) {
 
 		// Split properties to API and layer options.
-		$this->parseOptions($options, $objectOptions, $plugInOptions, $additionalOptions, '\\AdGrafik\\GoogleMapsPHP\\API\\Drawing\\DrawingManagerOptions', '\\AdGrafik\\GoogleMapsPHP\\PlugIns\\DrawingManager\\PlugIn');
+		$this->parseOptions($options, $objectOptions, $plugInOptions, $additionalOptions, 'AdGrafik\\GoogleMapsPHP\\API\\Drawing\\DrawingManagerOptions', 'AdGrafik\\GoogleMapsPHP\\PlugIns\\DrawingManager\\PlugIn');
 
 		// Create API object.
-		$object = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\API\\Drawing\\DrawingManager', $objectOptions);
+		$object = ClassUtility::makeInstance('AdGrafik\\GoogleMapsPHP\\API\\Drawing\\DrawingManager', $objectOptions);
 
 		// Create plug-in object.
-		$plugIn = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\PlugIns\\DrawingManager\\PlugIn', $this->getMapBuilder(), $plugInOptions)
+		$plugIn = ClassUtility::makeInstance('AdGrafik\\GoogleMapsPHP\\PlugIns\\DrawingManager\\PlugIn', $this->getMapBuilder(), $plugInOptions)
 			->setId($this->evaluateId($plugInOptions))
 			->setObject($object);
 

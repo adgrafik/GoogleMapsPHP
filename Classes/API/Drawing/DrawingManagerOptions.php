@@ -86,7 +86,7 @@ class DrawingManagerOptions {
 	public function setCircleOptions($circleOptions) {
 
 		if ($circleOptions instanceof \AdGrafik\GoogleMapsPHP\API\Overlays\CircleOptions === FALSE) {
-			$pixelOffset = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\API\\Overlays\\CircleOptions', $circleOptions);
+			$pixelOffset = ClassUtility::makeInstance('AdGrafik\\GoogleMapsPHP\\API\\Overlays\\CircleOptions', $circleOptions);
 		}
 
 		$this->circleOptions = $circleOptions;
@@ -131,7 +131,7 @@ class DrawingManagerOptions {
 	public function setDrawingControlOptions($drawingControlOptions) {
 
 		if ($drawingControlOptions instanceof \AdGrafik\GoogleMapsPHP\API\Drawing\DrawingControlOptions === FALSE) {
-			$drawingControlOptions = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\API\\Drawing\\DrawingControlOptions', $drawingControlOptions);
+			$drawingControlOptions = ClassUtility::makeInstance('AdGrafik\\GoogleMapsPHP\\API\\Drawing\\DrawingControlOptions', $drawingControlOptions);
 		}
 
 		$this->drawingControlOptions = $drawingControlOptions;
@@ -180,7 +180,7 @@ class DrawingManagerOptions {
 	public function setMarkerOptions($markerOptions) {
 
 		if ($markerOptions instanceof \AdGrafik\GoogleMapsPHP\API\Overlays\MarkerOptions === FALSE) {
-			$markerOptions = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\API\\Overlays\\MarkerOptions', $markerOptions);
+			$markerOptions = ClassUtility::makeInstance('AdGrafik\\GoogleMapsPHP\\API\\Overlays\\MarkerOptions', $markerOptions);
 		}
 
 		$this->markerOptions = $markerOptions;
@@ -205,7 +205,7 @@ class DrawingManagerOptions {
 	public function setPolygonOptions($polygonOptions) {
 
 		if ($polygonOptions instanceof \AdGrafik\GoogleMapsPHP\API\Overlays\PolygonOptions === FALSE) {
-			$polygonOptions = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\API\\Overlays\\PolygonOptions', $polygonOptions);
+			$polygonOptions = ClassUtility::makeInstance('AdGrafik\\GoogleMapsPHP\\API\\Overlays\\PolygonOptions', $polygonOptions);
 		}
 
 		$this->polygonOptions = $polygonOptions;
@@ -230,7 +230,7 @@ class DrawingManagerOptions {
 	public function setPolylineOptions($polylineOptions) {
 
 		if ($polylineOptions instanceof \AdGrafik\GoogleMapsPHP\API\Overlays\PolylineOptions === FALSE) {
-			$polylineOptions = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\API\\Overlays\\PolylineOptions', $polylineOptions);
+			$polylineOptions = ClassUtility::makeInstance('AdGrafik\\GoogleMapsPHP\\API\\Overlays\\PolylineOptions', $polylineOptions);
 		}
 
 		$this->polylineOptions = $polylineOptions;
@@ -255,7 +255,7 @@ class DrawingManagerOptions {
 	public function setRectangleOptions($rectangleOptions) {
 
 		if ($rectangleOptions instanceof \AdGrafik\GoogleMapsPHP\API\Overlays\RectangleOptions === FALSE) {
-			$rectangleOptions = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\API\\Overlays\\RectangleOptions', $rectangleOptions);
+			$rectangleOptions = ClassUtility::makeInstance('AdGrafik\\GoogleMapsPHP\\API\\Overlays\\RectangleOptions', $rectangleOptions);
 		}
 
 		$this->rectangleOptions = $rectangleOptions;

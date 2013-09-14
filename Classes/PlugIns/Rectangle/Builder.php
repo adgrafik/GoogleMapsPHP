@@ -46,13 +46,13 @@ class Builder extends \AdGrafik\GoogleMapsPHP\PlugIns\AbstractBuilder {
 		foreach ($options as $key => &$value) {
 
 			// Split properties to API and layer options.
-			$this->parseOptions($value, $objectOptions, $plugInOptions, $additionalOptions, '\\AdGrafik\\GoogleMapsPHP\\API\\Overlays\\RectangleOptions', '\\AdGrafik\\GoogleMapsPHP\\PlugIns\\Rectangle\\PlugIn');
+			$this->parseOptions($value, $objectOptions, $plugInOptions, $additionalOptions, 'AdGrafik\\GoogleMapsPHP\\API\\Overlays\\RectangleOptions', 'AdGrafik\\GoogleMapsPHP\\PlugIns\\Rectangle\\PlugIn');
 
 			// Create API object.
-			$object = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\API\\Overlays\\Rectangle', $objectOptions);
+			$object = ClassUtility::makeInstance('AdGrafik\\GoogleMapsPHP\\API\\Overlays\\Rectangle', $objectOptions);
 
 			// Create plug-in object.
-			$plugIn = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\PlugIns\\Rectangle\\PlugIn', $this->getMapBuilder(), $plugInOptions)
+			$plugIn = ClassUtility::makeInstance('AdGrafik\\GoogleMapsPHP\\PlugIns\\Rectangle\\PlugIn', $this->getMapBuilder(), $plugInOptions)
 				->setId($this->evaluateId($plugInOptions))
 				->setObject($object);
 
@@ -71,28 +71,28 @@ class Builder extends \AdGrafik\GoogleMapsPHP\PlugIns\AbstractBuilder {
 						switch ($additionalOptions['infoWindow']['position']) {
 							case 1:
 								$additionalOptions['infoWindow']['position'] = ClassUtility::makeInstance(
-									'\\AdGrafik\\GoogleMapsPHP\\API\\Base\\LatLng',
+									'AdGrafik\\GoogleMapsPHP\\API\\Base\\LatLng',
 									$object->getBounds()->getSouthWest()->getLatitude(),
 									$object->getBounds()->getSouthWest()->getLongitude()
 								);
 								break;
 							case 2:
 								$additionalOptions['infoWindow']['position'] = ClassUtility::makeInstance(
-									'\\AdGrafik\\GoogleMapsPHP\\API\\Base\\LatLng',
+									'AdGrafik\\GoogleMapsPHP\\API\\Base\\LatLng',
 									$object->getBounds()->getSouthWest()->getLatitude(),
 									$object->getBounds()->getNorthEast()->getLongitude()
 								);
 								break;
 							case 3:
 								$additionalOptions['infoWindow']['position'] = ClassUtility::makeInstance(
-									'\\AdGrafik\\GoogleMapsPHP\\API\\Base\\LatLng',
+									'AdGrafik\\GoogleMapsPHP\\API\\Base\\LatLng',
 									$object->getBounds()->getNorthEast()->getLatitude(),
 									$object->getBounds()->getNorthEast()->getLongitude()
 								);
 								break;
 							case 4:
 								$additionalOptions['infoWindow']['position'] = ClassUtility::makeInstance(
-									'\\AdGrafik\\GoogleMapsPHP\\API\\Base\\LatLng',
+									'AdGrafik\\GoogleMapsPHP\\API\\Base\\LatLng',
 									$object->getBounds()->getNorthEast()->getLatitude(),
 									$object->getBounds()->getSouthWest()->getLongitude()
 								);

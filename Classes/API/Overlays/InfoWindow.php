@@ -50,7 +50,7 @@ class InfoWindow extends \AdGrafik\GoogleMapsPHP\Object\OptionsArrayAccess imple
 	 */
 	public function setOptions($options) {
 		if (is_array($options)) {
-			$this->options = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\API\\Overlays\\InfoWindowOptions', $options);
+			$this->options = ClassUtility::makeInstance('AdGrafik\\GoogleMapsPHP\\API\\Overlays\\InfoWindowOptions', $options);
 		} else if ($options instanceof \AdGrafik\GoogleMapsPHP\API\Overlays\InfoWindowOptions) {
 			$this->options = $options;
 		} else {

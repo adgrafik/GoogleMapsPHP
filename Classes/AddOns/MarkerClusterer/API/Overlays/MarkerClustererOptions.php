@@ -126,7 +126,7 @@ class MarkerClustererOptions {
 	public function setStyles(array $styles) {
 		foreach ($styles as $key => $style) {
 			if ($style instanceof \AdGrafik\GoogleMapsPHP\AddOns\MarkerClusterer\API\MapTypes\MarkerClustererStyle === FALSE) {
-				$styles[$key] = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\AddOns\\MarkerClusterer\\API\\MapTypes\\MarkerClustererStyle', $style);
+				$styles[$key] = ClassUtility::makeInstance('AdGrafik\\GoogleMapsPHP\\AddOns\\MarkerClusterer\\API\\MapTypes\\MarkerClustererStyle', $style);
 			}
 		}
 		$this->styles = $styles;

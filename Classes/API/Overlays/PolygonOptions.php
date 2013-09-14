@@ -231,7 +231,7 @@ class PolygonOptions {
 	public function setPaths(array $paths) {
 		foreach ($paths as $key => &$latlng) {
 			if ($latlng instanceof \AdGrafik\GoogleMapsPHP\API\Base\LatLng === FALSE) {
-				$paths[$key] = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\API\\Base\\LatLng', $latlng);
+				$paths[$key] = ClassUtility::makeInstance('AdGrafik\\GoogleMapsPHP\\API\\Base\\LatLng', $latlng);
 			}
 		}
 		$this->paths = $paths;
