@@ -50,7 +50,7 @@ class Polyline extends \AdGrafik\GoogleMapsPHP\Object\OptionsArrayAccess impleme
 	 */
 	public function setOptions($options) {
 		if (is_array($options)) {
-			$this->options = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\API\\Overlays\\PolylineOptions', $options);
+			$this->options = ClassUtility::makeInstance('AdGrafik\\GoogleMapsPHP\\API\\Overlays\\PolylineOptions', $options);
 		} else if ($options instanceof \AdGrafik\GoogleMapsPHP\API\Overlays\PolylineOptions) {
 			$this->options = $options;
 		} else {

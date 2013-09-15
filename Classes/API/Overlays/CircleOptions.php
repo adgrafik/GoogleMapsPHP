@@ -110,7 +110,7 @@ class CircleOptions {
 	 */
 	public function setCenter($center) {
 		if ($center instanceof \AdGrafik\GoogleMapsPHP\API\Base\LatLng === FALSE) {
-			$center = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\API\\Base\\LatLng', $center);
+			$center = ClassUtility::makeInstance('AdGrafik\\GoogleMapsPHP\\API\\Base\\LatLng', $center);
 		}
 		$this->center = $center;
 		return $this;

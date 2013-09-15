@@ -50,7 +50,7 @@ class Rectangle extends \AdGrafik\GoogleMapsPHP\Object\OptionsArrayAccess implem
 	 */
 	public function setOptions($options) {
 		if (is_array($options)) {
-			$this->options = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\API\\Overlays\\RectangleOptions', $options);
+			$this->options = ClassUtility::makeInstance('AdGrafik\\GoogleMapsPHP\\API\\Overlays\\RectangleOptions', $options);
 		} else if ($options instanceof \AdGrafik\GoogleMapsPHP\API\Overlays\RectangleOptions) {
 			$this->options = $options;
 		} else {

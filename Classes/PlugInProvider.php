@@ -85,7 +85,7 @@ class PlugInProvider implements \AdGrafik\GoogleMapsPHP\MapBuilder\MapBuilderInt
 			$mapId = 'map' . ++self::$mapIdCount;
 		}
 
-		$this->setSettings(ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\Configuration\\Settings'));
+		$this->setSettings(ClassUtility::makeInstance('AdGrafik\\GoogleMapsPHP\\Configuration\\Settings'));
 
 		// Register error handler if current object is this class.
 		if (GMP_XHR && get_class($this) === get_class()) {
@@ -109,7 +109,7 @@ class PlugInProvider implements \AdGrafik\GoogleMapsPHP\MapBuilder\MapBuilderInt
 		$this->registerMapId($mapId);
 		$this->setMapId($mapId);
 
-		$this->setJsonObject(ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\MapBuilder\\JsonObject'));
+		$this->setJsonObject(ClassUtility::makeInstance('AdGrafik\\GoogleMapsPHP\\MapBuilder\\JsonObject'));
 
 		if (isset($_REQUEST['bounds'])) {
 			$this->setBounds($_REQUEST['bounds']);
@@ -289,7 +289,7 @@ class PlugInProvider implements \AdGrafik\GoogleMapsPHP\MapBuilder\MapBuilderInt
 	public function setBounds($bounds) {
 
 		if ($bounds instanceof \AdGrafik\GoogleMapsPHP\API\Base\LatLngBounds === FALSE) {
-			$bounds = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\API\\Base\\LatLngBounds', $bounds);
+			$bounds = ClassUtility::makeInstance('AdGrafik\\GoogleMapsPHP\\API\\Base\\LatLngBounds', $bounds);
 		}
 
 		$this->bounds = $bounds;

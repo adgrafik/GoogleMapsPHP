@@ -41,7 +41,7 @@ abstract class AbstractIcon extends \AdGrafik\GoogleMapsPHP\Object\PropertyArray
 	public function setAnchor($anchor) {
 
 		if ($anchor instanceof \AdGrafik\GoogleMapsPHP\API\Base\Point === FALSE) {
-			$anchor = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\API\\Base\\Point', $anchor);
+			$anchor = ClassUtility::makeInstance('AdGrafik\\GoogleMapsPHP\\API\\Base\\Point', $anchor);
 		}
 
 		$this->anchor = $anchor;

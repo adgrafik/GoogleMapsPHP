@@ -50,7 +50,7 @@ class DrawingManager extends \AdGrafik\GoogleMapsPHP\Object\OptionsArrayAccess  
 	 */
 	public function setOptions($options) {
 		if (is_array($options)) {
-			$this->options = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\API\\Drawing\\DrawingManagerOptions', $options);
+			$this->options = ClassUtility::makeInstance('AdGrafik\\GoogleMapsPHP\\API\\Drawing\\DrawingManagerOptions', $options);
 		} else if ($options instanceof \AdGrafik\GoogleMapsPHP\API\Drawing\DrawingManagerOptions) {
 			$this->options = $options;
 		} else {

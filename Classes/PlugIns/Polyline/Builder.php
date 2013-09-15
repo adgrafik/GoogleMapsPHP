@@ -49,13 +49,13 @@ class Builder extends \AdGrafik\GoogleMapsPHP\PlugIns\AbstractBuilder {
 		foreach ($options as $key => &$value) {
 
 			// Split properties into API and plug-in options.
-			$this->parseOptions($value, $objectOptions, $plugInOptions, $additionalOptions, '\\AdGrafik\\GoogleMapsPHP\\API\\Overlays\\PolylineOptions', '\\AdGrafik\\GoogleMapsPHP\\PlugIns\\Polyline\\PlugIn');
+			$this->parseOptions($value, $objectOptions, $plugInOptions, $additionalOptions, 'AdGrafik\\GoogleMapsPHP\\API\\Overlays\\PolylineOptions', 'AdGrafik\\GoogleMapsPHP\\PlugIns\\Polyline\\PlugIn');
 
 			// Create API object.
-			$object = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\API\\Overlays\\Polyline', $objectOptions);
+			$object = ClassUtility::makeInstance('AdGrafik\\GoogleMapsPHP\\API\\Overlays\\Polyline', $objectOptions);
 
 			// Create plug-in object.
-			$plugIn = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\PlugIns\\Polyline\\PlugIn', $this->getMapBuilder(), $plugInOptions)
+			$plugIn = ClassUtility::makeInstance('AdGrafik\\GoogleMapsPHP\\PlugIns\\Polyline\\PlugIn', $this->getMapBuilder(), $plugInOptions)
 				->setId($this->evaluateId($plugInOptions))
 				->setObject($object);
 
@@ -74,7 +74,7 @@ class Builder extends \AdGrafik\GoogleMapsPHP\PlugIns\AbstractBuilder {
 						$additionalOptions['infoWindow']['position'] = $value['path'][$pathKey];
 					}
 				} else {
-					$bounds = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\API\\Base\\LatLngBounds');
+					$bounds = ClassUtility::makeInstance('AdGrafik\\GoogleMapsPHP\\API\\Base\\LatLngBounds');
 					foreach ($value['path'] as &$latlng) {
 						$bounds->extend($latlng);
 					}

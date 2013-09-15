@@ -115,7 +115,7 @@ class MapTypeStyle {
 	public function addStyler(array $styler) {
 
 		if ($styler instanceof \AdGrafik\GoogleMapsPHP\API\MapTypes\MapTypeStyler === FALSE) {
-			$styler = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\API\\MapTypes\\MapTypeStyler', $styler);
+			$styler = ClassUtility::makeInstance('AdGrafik\\GoogleMapsPHP\\API\\MapTypes\\MapTypeStyler', $styler);
 		}
 
 		$this->stylers[] = $styler;

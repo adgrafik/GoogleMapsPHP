@@ -49,7 +49,7 @@ class Builder extends \AdGrafik\GoogleMapsPHP\PlugIns\AbstractBuilder {
 		foreach ($options as $key => &$value) {
 
 			// Split properties into API and plug-in options.
-			$this->parseOptions($value, $objectOptions, $plugInOptions, $additionalOptions, '\\AdGrafik\\GoogleMapsPHP\\API\\Overlays\\InfoWindowOptions', '\\AdGrafik\\GoogleMapsPHP\\PlugIns\\InfoWindow\\PlugIn');
+			$this->parseOptions($value, $objectOptions, $plugInOptions, $additionalOptions, 'AdGrafik\\GoogleMapsPHP\\API\\Overlays\\InfoWindowOptions', 'AdGrafik\\GoogleMapsPHP\\PlugIns\\InfoWindow\\PlugIn');
 
 			// If an anchor is set by ID attach this layer instead.
 			if (isset($plugInOptions['anchor']) && $plugInOptions['anchor'] instanceof \AdGrafik\GoogleMapsPHP\PlugIns\PlugInInterface === FALSE) {
@@ -57,10 +57,10 @@ class Builder extends \AdGrafik\GoogleMapsPHP\PlugIns\AbstractBuilder {
 			}
 
 			// Create API object.
-			$object = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\API\\Overlays\\InfoWindow', $objectOptions);
+			$object = ClassUtility::makeInstance('AdGrafik\\GoogleMapsPHP\\API\\Overlays\\InfoWindow', $objectOptions);
 
 			// Create plug-in object.
-			$plugIn = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\PlugIns\\InfoWindow\\PlugIn', $this->getMapBuilder(), $plugInOptions)
+			$plugIn = ClassUtility::makeInstance('AdGrafik\\GoogleMapsPHP\\PlugIns\\InfoWindow\\PlugIn', $this->getMapBuilder(), $plugInOptions)
 				->setId($this->evaluateId($plugInOptions))
 				->setObject($object);
 

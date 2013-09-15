@@ -42,7 +42,7 @@ class KmlLayer extends \AdGrafik\GoogleMapsPHP\Object\OptionsArrayAccess impleme
 	public function __construct($options) {
 
 		// Set required values
-		$this->options = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\API\\Layers\\KmlOptions');
+		$this->options = ClassUtility::makeInstance('AdGrafik\\GoogleMapsPHP\\API\\Layers\\KmlOptions');
 
 		// Set properties
 		$this->setOptions($options);

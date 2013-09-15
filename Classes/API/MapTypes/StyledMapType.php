@@ -47,7 +47,7 @@ class StyledMapType extends \AdGrafik\GoogleMapsPHP\Object\OptionsArrayAccess {
 	public function __construct($styles = array(), $options = array()) {
 
 		// Set required values
-		$this->options = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\API\\MapTypes\\StyledMapTypeOptions');
+		$this->options = ClassUtility::makeInstance('AdGrafik\\GoogleMapsPHP\\API\\MapTypes\\StyledMapTypeOptions');
 
 		// Set properties
 		$this->setStyles($styles);
@@ -64,7 +64,7 @@ class StyledMapType extends \AdGrafik\GoogleMapsPHP\Object\OptionsArrayAccess {
 
 		foreach ($styles as $key => &$style) {
 			if ($style instanceof \AdGrafik\GoogleMapsPHP\API\MapTypes\MapTypeStyle === FALSE) {
-				$styles[$key] = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\API\\MapTypes\\MapTypeStyle', $style);
+				$styles[$key] = ClassUtility::makeInstance('AdGrafik\\GoogleMapsPHP\\API\\MapTypes\\MapTypeStyle', $style);
 			}
 		}
 

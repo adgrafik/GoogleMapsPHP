@@ -52,7 +52,7 @@ class MarkerClusterer extends \AdGrafik\GoogleMapsPHP\API\Overlays\OverlayView {
 	 */
 	public function setOptions($options) {
 		if (is_array($options)) {
-			$this->options = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\AddOns\\MarkerClusterer\\API\\Overlays\\MarkerClustererOptions', $options);
+			$this->options = ClassUtility::makeInstance('AdGrafik\\GoogleMapsPHP\\AddOns\\MarkerClusterer\\API\\Overlays\\MarkerClustererOptions', $options);
 		} else if ($options instanceof \AdGrafik\GoogleMapsPHP\AddOns\MarkerClusterer\API\Overlays\MarkerClustererOptions) {
 			$this->options = $options;
 		} else {

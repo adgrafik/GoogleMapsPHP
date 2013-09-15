@@ -56,7 +56,7 @@ class Marker extends \AdGrafik\GoogleMapsPHP\Object\OptionsArrayAccess implement
 	 */
 	public function setOptions($options) {
 		if (is_array($options)) {
-			$this->options = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\API\\Overlays\\MarkerOptions', $options);
+			$this->options = ClassUtility::makeInstance('AdGrafik\\GoogleMapsPHP\\API\\Overlays\\MarkerOptions', $options);
 		} else if ($options instanceof \AdGrafik\GoogleMapsPHP\API\Overlays\MarkerOptions) {
 			$this->options = $options;
 		} else {

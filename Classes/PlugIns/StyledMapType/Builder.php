@@ -43,13 +43,13 @@ class Builder extends \AdGrafik\GoogleMapsPHP\PlugIns\AbstractBuilder {
 		$options['id'] = $this->evaluateId($options);
 
 		// Split properties to API and layer options.
-		$this->parseOptions($options, $objectOptions, $plugInOptions, $additionalOptions, '\\AdGrafik\\GoogleMapsPHP\\API\\MapTypes\\StyledMapTypeOptions', '\\AdGrafik\\GoogleMapsPHP\\PlugIns\\StyledMapType\\PlugIn');
+		$this->parseOptions($options, $objectOptions, $plugInOptions, $additionalOptions, 'AdGrafik\\GoogleMapsPHP\\API\\MapTypes\\StyledMapTypeOptions', 'AdGrafik\\GoogleMapsPHP\\PlugIns\\StyledMapType\\PlugIn');
 
 		// Create API object.
-		$object = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\API\\MapTypes\\StyledMapType', $additionalOptions['styles'], $objectOptions);
+		$object = ClassUtility::makeInstance('AdGrafik\\GoogleMapsPHP\\API\\MapTypes\\StyledMapType', $additionalOptions['styles'], $objectOptions);
 
 		// Create plug-in object.
-		$plugIn = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\PlugIns\\StyledMapType\\PlugIn', $this->getMapBuilder(), $plugInOptions)
+		$plugIn = ClassUtility::makeInstance('AdGrafik\\GoogleMapsPHP\\PlugIns\\StyledMapType\\PlugIn', $this->getMapBuilder(), $plugInOptions)
 			->setObject($object);
 
 		$this->getMapBuilder()->getJsonObject()->addPlugIn($plugIn);

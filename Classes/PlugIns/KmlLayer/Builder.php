@@ -40,13 +40,13 @@ class Builder extends \AdGrafik\GoogleMapsPHP\PlugIns\AbstractBuilder {
 		}
 
 		// Split properties into API and plug-in options.
-		$this->parseOptions($options, $objectOptions, $plugInOptions, $additionalOptions, '\\AdGrafik\\GoogleMapsPHP\\API\\Layers\\KmlOptions', '\\AdGrafik\\GoogleMapsPHP\\PlugIns\\KmlLayer\\PlugIn');
+		$this->parseOptions($options, $objectOptions, $plugInOptions, $additionalOptions, 'AdGrafik\\GoogleMapsPHP\\API\\Layers\\KmlOptions', 'AdGrafik\\GoogleMapsPHP\\PlugIns\\KmlLayer\\PlugIn');
 
 		// Create API object.
-		$object = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\API\\Layers\\KmlLayer', $objectOptions);
+		$object = ClassUtility::makeInstance('AdGrafik\\GoogleMapsPHP\\API\\Layers\\KmlLayer', $objectOptions);
 
 		// Create plug-in object.
-		$plugIn = ClassUtility::makeInstance('\\AdGrafik\\GoogleMapsPHP\\PlugIns\\KmlLayer\\PlugIn', $this->getMapBuilder(), $plugInOptions)
+		$plugIn = ClassUtility::makeInstance('AdGrafik\\GoogleMapsPHP\\PlugIns\\KmlLayer\\PlugIn', $this->getMapBuilder(), $plugInOptions)
 			->setId($this->evaluateId($plugInOptions))
 			->setObject($object);
 
