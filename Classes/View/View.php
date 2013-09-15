@@ -382,8 +382,12 @@ class View {
 		$key = md5($settings['source']);
 
 		// If source already set, nothing else to do.
-		if (isset($this->javaScriptStack[$type][$key])) {
-			return $this->javaScriptStack[$type][$key];
+		if (isset($this->javaScriptStack[self::HEAD_TYPE_JAVASCRIPT_LIBRARY][$key])) {
+			return $this->javaScriptStack[self::HEAD_TYPE_JAVASCRIPT_LIBRARY][$key];
+		} else if (isset($this->javaScriptStack[self::HEAD_TYPE_JAVASCRIPT_SOURCE][$key])) {
+			return $this->javaScriptStack[self::HEAD_TYPE_JAVASCRIPT_SOURCE][$key];
+		} else if (isset($this->javaScriptStack[self::HEAD_TYPE_JAVASCRIPT_INLINE][$key])) {
+			return $this->javaScriptStack[self::HEAD_TYPE_JAVASCRIPT_INLINE][$key];
 		}
 
 		$node = ClassUtility::makeInstance('AdGrafik\\GoogleMapsPHP\\View\\Node\\JavaScript', 'script');
