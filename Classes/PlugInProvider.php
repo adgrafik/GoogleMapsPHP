@@ -435,7 +435,7 @@ class PlugInProvider implements \AdGrafik\GoogleMapsPHP\MapBuilder\MapBuilderInt
 	public function __toString() {
 
 		try {
-			$html = $this->printJson();
+			$html = $this->sendJson();
 		} catch (\Exception $exception) {
 			$html = (string) $exception;
 		}
