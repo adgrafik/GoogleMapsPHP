@@ -191,8 +191,8 @@ abstract class AbstractBuilder implements \AdGrafik\GoogleMapsPHP\PlugIns\Builde
 
 			} else if (array_key_exists($propertyName . 'OptionSplit', $options) === FALSE) {
 
-				for ($x = 0; $x < $count; $x++) { 
-					$finalOptions[$x][$propertyName] = $propertyValue;
+				foreach ($options[$counterPropertyName] as $key => $propertyValue) {
+					$finalOptions[$key][$propertyName] = $propertyValue;
 				}
 
 			}
