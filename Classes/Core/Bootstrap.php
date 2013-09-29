@@ -23,17 +23,17 @@ $host = $_SERVER['HTTP_HOST'];
 
 // Define constants
 define('GMP_VERSION', '1.0.0-beta');
-define('GMP_PATH', str_replace('GoogleMapsPHP/Classes/Core/Bootstrap.php', '', __FILE__));
+define('GMP_PATH', rtrim(realpath(__DIR__ . '/../../'), '/') . '/');
 define('GMP_DIR', ltrim(str_replace($_SERVER['DOCUMENT_ROOT'], '', GMP_PATH), '/'));
 define('GMP_HTTP', $protocol.$host . '/');
 define('GMP_HTTP_PATH', GMP_HTTP . GMP_DIR);
 define('GMP_XHR', (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest'));
 
 // Include autoloader
-include_once(GMP_PATH . 'GoogleMapsPHP/Classes/Object/SingletonInterface.php');
+include_once(GMP_PATH . 'Classes/Object/SingletonInterface.php');
 
 // Register class loader.
-include_once(GMP_PATH . 'GoogleMapsPHP/Classes/Core/ClassLoader.php');
+include_once(GMP_PATH . 'Classes/Core/ClassLoader.php');
 \AdGrafik\GoogleMapsPHP\Core\ClassLoader::registerAutoloader();
 
 ?>

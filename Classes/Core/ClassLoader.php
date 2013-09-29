@@ -36,7 +36,7 @@ class ClassLoader implements \AdGrafik\GoogleMapsPHP\Object\SingletonInterface {
 	 * @return boolean
 	 */
 	public static function registerAutoloader() {
-		self::$autoloadFiles = (array) include_once(GMP_PATH . 'GoogleMapsPHP/Configuration/Autoload.php');
+		self::$autoloadFiles = (array) include_once(GMP_PATH . 'Configuration/Autoload.php');
 		return spl_autoload_register(__CLASS__ . '::autoload');
 	}
 
@@ -61,7 +61,7 @@ class ClassLoader implements \AdGrafik\GoogleMapsPHP\Object\SingletonInterface {
 			$classPathAndFilename = self::$autoloadFiles[$className];
 		} else {
 			$classPathAndFilename = str_replace('\\', '/', $className);
-			$classPathAndFilename = str_replace('AdGrafik/GoogleMapsPHP/', 'GoogleMapsPHP/Classes/', $classPathAndFilename);
+			$classPathAndFilename = str_replace('AdGrafik/GoogleMapsPHP/', 'Classes/', $classPathAndFilename);
 			$classPathAndFilename = GMP_PATH . $classPathAndFilename . '.php';
 		}
 

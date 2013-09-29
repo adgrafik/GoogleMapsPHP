@@ -46,7 +46,7 @@ mapBuilder:
     includeJavaScriptSource:
 
       mapBuilder:
-        source: GoogleMapsPHP/Ressources/Public/JavaScript/mapbuilder-1.0.0.js
+        source: Ressources/Public/JavaScript/mapbuilder-1.0.0.js
         forceOnTop: TRUE
 
 
@@ -118,7 +118,7 @@ plugInBuilder:
       includeJavaScriptLibrary:
 
         markerClusterer:
-          source: GoogleMapsPHP/Ressources/Public/JavaScript/markerclusterer-1.0.0.min.js
+          source: Ressources/Public/JavaScript/markerclusterer-1.0.0.min.js
           forceOnTop: TRUE
 
   Polygon:

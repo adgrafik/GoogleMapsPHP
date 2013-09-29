@@ -41,7 +41,7 @@ class Settings implements \ArrayAccess, \Iterator, \Countable, \AdGrafik\GoogleM
 	 * Constructor
 	 */
 	public function __construct() {
-		$settings = (array) \Symfony\Component\Yaml\Yaml::parse(GMP_PATH . 'GoogleMapsPHP/Configuration/Settings.yml');
+		$settings = (array) \Symfony\Component\Yaml\Yaml::parse(GMP_PATH . 'Configuration/Settings.yml');
 		$this->setSettings($settings);
 		$this->_arrayAccessPosition = 0;
 	}
