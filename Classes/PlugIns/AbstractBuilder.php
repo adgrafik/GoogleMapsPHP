@@ -180,8 +180,9 @@ abstract class AbstractBuilder implements \AdGrafik\GoogleMapsPHP\PlugIns\Builde
 						$configuration = \AdGrafik\GoogleMapsPHP\Utility\OptionSplit::split(array('objectNumber' => $options[$propertyName]), $count);
 
 						// Match each option split value with the content of the property value.
-						foreach ($configuration as $key => &$objectNumber) {
-							$objectNumber = $objectNumber['objectNumber'];
+						$i = 0;
+						foreach ($finalOptions as $key => &$finalOption) {
+							$objectNumber = $configuration[$i++]['objectNumber'];
 							if (isset($options[$referenceProperty][$objectNumber])) {
 								$finalOptions[$key][$referenceProperty] = $options[$referenceProperty][$objectNumber];
 							}
@@ -191,7 +192,7 @@ abstract class AbstractBuilder implements \AdGrafik\GoogleMapsPHP\PlugIns\Builde
 
 			} else if (array_key_exists($propertyName . 'OptionSplit', $options) === FALSE) {
 
-				foreach ($options[$counterPropertyName] as $key => $propertyValue) {
+				foreach ($options[$counterPropertyName] as $key => &$propertyValue) {
 					$finalOptions[$key][$propertyName] = $propertyValue;
 				}
 

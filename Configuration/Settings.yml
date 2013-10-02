@@ -17,6 +17,17 @@ view:
 
 
 #
+# Geocoder
+#
+utility:
+
+  geocoder:
+    source: http://maps.googleapis.com/maps/api/geocode/
+    parameters:
+      sensor: false
+
+
+#
 # mapBuilder
 #
 mapBuilder:
