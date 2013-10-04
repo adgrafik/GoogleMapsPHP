@@ -135,7 +135,14 @@ class MapBuilder extends \AdGrafik\GoogleMapsPHP\PlugInProvider {
 	 * @return string
 	 */
 	public function printHtml() {
-		return $this->printHtmlHead() . PHP_EOL . $this->printHtmlBody();
+
+		$html = $this->printHtmlHead() . PHP_EOL . $this->printHtmlBody();
+
+		if ($this->isDebug()) {
+			$html .= '<!-- Parse time: ' . (microtime(TRUE) - GMP_DEBUG_STAR_TIME) . ' -->';
+		}
+
+		return $html;
 	}
 
 	/**
@@ -214,17 +221,6 @@ class MapBuilder extends \AdGrafik\GoogleMapsPHP\PlugInProvider {
 		}
 		call_user_func_array(array($object, $methodName), $arguments);
 		return $this;
-	}
-
-	/**
-	 * Overload __destruct
-	 *
-	 * @return void
-	 */
-	public function __destruct() {
-		if ($this->isDebug()) {
-			echo '<!-- Parse time: ' . (microtime(TRUE) - GMP_DEBUG_STAR_TIME) . ' -->';
-		}
 	}
 
 	/**

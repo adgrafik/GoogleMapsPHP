@@ -19,6 +19,7 @@
 namespace AdGrafik\GoogleMapsPHP\Configuration;
 
 use AdGrafik\GoogleMapsPHP\Utility\ClassUtility;
+use AdGrafik\GoogleMapsPHP\Utility\CacheManager;
 
 /**
  * Settings class.
@@ -41,7 +42,14 @@ class Settings implements \ArrayAccess, \Iterator, \Countable, \AdGrafik\GoogleM
 	 * Constructor
 	 */
 	public function __construct() {
-		$settings = (array) \Symfony\Component\Yaml\Yaml::parse(GMP_PATH . 'Configuration/Settings.yml');
+
+		// Try to get from cache first.
+		$cacheManager = ClassUtility::makeInstance('AdGrafik\GoogleMapsPHP\Utility\CacheManager');
+		if (($settings = $cacheManager->readFile(GMP_PATH . 'Configuration/Settings.yml', TRUE)) === FALSE) {
+			$settings = (array) \Symfony\Component\Yaml\Yaml::parse(GMP_PATH . 'Configuration/Settings.yml');
+			$cacheManager->saveFile(GMP_PATH . 'Configuration/Settings.yml', $settings, TRUE);
+		}
+
 		$this->setSettings($settings);
 		$this->_arrayAccessPosition = 0;
 	}
