@@ -57,7 +57,7 @@ mapBuilder:
     includeJavaScriptSource:
 
       mapBuilder:
-        source: Ressources/Public/JavaScript/mapbuilder-1.0.0.js
+        source: Ressources/Public/JavaScript/mapbuilder.js
         forceOnTop: TRUE
 
 
@@ -129,7 +129,7 @@ plugInBuilder:
       includeJavaScriptLibrary:
 
         markerClusterer:
-          source: Ressources/Public/JavaScript/markerclusterer-1.0.0.min.js
+          source: Ressources/Public/JavaScript/markerclusterer.min.js
           forceOnTop: TRUE
 
   Polygon:
