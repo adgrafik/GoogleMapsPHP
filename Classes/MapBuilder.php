@@ -217,6 +217,17 @@ class MapBuilder extends \AdGrafik\GoogleMapsPHP\PlugInProvider {
 	}
 
 	/**
+	 * Overload __destruct
+	 *
+	 * @return void
+	 */
+	public function __destruct() {
+		if ($this->isDebug()) {
+			echo '<!-- Parse time: ' . (microtime(TRUE) - GMP_DEBUG_STAR_TIME) . ' -->';
+		}
+	}
+
+	/**
 	 * initializePrint
 	 *
 	 * @return \AdGrafik\GoogleMapsPHP\View\Node\JavaScript

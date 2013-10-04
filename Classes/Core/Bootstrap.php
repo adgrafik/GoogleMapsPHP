@@ -28,6 +28,7 @@ define('GMP_DIR', ltrim(str_replace($_SERVER['DOCUMENT_ROOT'], '', GMP_PATH), '/
 define('GMP_HTTP', $protocol.$host . '/');
 define('GMP_HTTP_PATH', GMP_HTTP . GMP_DIR);
 define('GMP_XHR', (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest'));
+define('GMP_DEBUG_STAR_TIME', microtime(TRUE));
 
 // Include autoloader
 include_once(GMP_PATH . 'Classes/Object/SingletonInterface.php');
