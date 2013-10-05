@@ -25,7 +25,7 @@ use AdGrafik\GoogleMapsPHP\Utility\ClassUtility;
  *
  * @author Arno Dudek <webmaster@adgrafik.at>
  */
-class View {
+class Html extends \AdGrafik\GoogleMapsPHP\View\AbstractView {
 
 	const HEAD_TYPE_JAVASCRIPT_LIBRARY = 'javaScriptLibrary';
 	const HEAD_TYPE_JAVASCRIPT_SOURCE = 'javaScriptSource';
@@ -94,19 +94,19 @@ class View {
 	 */
 	public function addResources(array $settings = array()) {
 
-		if (count($settings['includeJavaScriptLibrary'])) {
+		if (isset($settings['includeJavaScriptLibrary'])) {
 			foreach ($settings['includeJavaScriptLibrary'] as &$javaScriptSettings) {
 				$this->addJavaScriptLibrary($javaScriptSettings);
 			}
 		}
 
-		if (count($settings['includeJavaScriptSource'])) {
+		if (isset($settings['includeJavaScriptSource'])) {
 			foreach ($settings['includeJavaScriptSource'] as &$javaScriptSettings) {
 				$this->addJavaScriptSource($javaScriptSettings);
 			}
 		}
 
-		if (count($settings['includeJavaScriptInline'])) {
+		if (isset($settings['includeJavaScriptInline'])) {
 			foreach ($settings['includeJavaScriptInline'] as &$javaScriptSettings) {
 				$this->addJavaScriptInline($javaScriptSettings);
 			}
@@ -117,7 +117,7 @@ class View {
 	 * addJavaScriptLibrary
 	 *
 	 * @param array $settings
-	 * @return \AdGrafik\GoogleMapsPHP\View\View
+	 * @return \AdGrafik\GoogleMapsPHP\View\Node\JavaScript
 	 */
 	public function addJavaScriptLibrary(array $settings = array()) {
 		return $this->addJavaScriptNode(self::HEAD_TYPE_JAVASCRIPT_LIBRARY, $settings);
@@ -127,7 +127,7 @@ class View {
 	 * addJavaScriptSource
 	 *
 	 * @param array $settings
-	 * @return \AdGrafik\GoogleMapsPHP\View\View
+	 * @return \AdGrafik\GoogleMapsPHP\View\Node\JavaScript
 	 */
 	public function addJavaScriptSource(array $settings = array()) {
 		return $this->addJavaScriptNode(self::HEAD_TYPE_JAVASCRIPT_SOURCE, $settings);
@@ -137,7 +137,7 @@ class View {
 	 * addJavaScriptInline
 	 *
 	 * @param array $settings
-	 * @return \AdGrafik\GoogleMapsPHP\View\View
+	 * @return \AdGrafik\GoogleMapsPHP\View\Node\JavaScript
 	 */
 	public function addJavaScriptInline(array $settings = array()) {
 		return $this->addJavaScriptNode(self::HEAD_TYPE_JAVASCRIPT_INLINE, $settings);
@@ -147,7 +147,7 @@ class View {
 	 * addHead
 	 *
 	 * @param \AdGrafik\GoogleMapsPHP\View\Node\NodeInterface $node
-	 * @return \AdGrafik\GoogleMapsPHP\View\View
+	 * @return \AdGrafik\GoogleMapsPHP\View\Html
 	 */
 	public function addHead($node) {
 
@@ -191,7 +191,7 @@ class View {
 	 *
 	 * @param \AdGrafik\GoogleMapsPHP\View\Node\NodeInterface $node
 	 * @param boolean $forceOnTop
-	 * @return \AdGrafik\GoogleMapsPHP\View\View
+	 * @return \AdGrafik\GoogleMapsPHP\View\Html
 	 */
 	public function addBody($node, $forceOnTop = FALSE) {
 
@@ -218,7 +218,7 @@ class View {
 	 * Set settings
 	 *
 	 * @param \AdGrafik\GoogleMapsPHP\Configuration\Settings $settings
-	 * @return \AdGrafik\GoogleMapsPHP\View\to
+	 * @return \AdGrafik\GoogleMapsPHP\View\Html
 	 */
 	public function setSettings(\AdGrafik\GoogleMapsPHP\Configuration\Settings $settings) {
 		$this->settings = $settings;
@@ -238,7 +238,7 @@ class View {
 	 * Set documentNode
 	 *
 	 * @param \AdGrafik\GoogleMapsPHP\View\Node\Document $documentNode
-	 * @return \AdGrafik\GoogleMapsPHP\View\View
+	 * @return \AdGrafik\GoogleMapsPHP\View\Html
 	 */
 	public function setDocumentNode(\AdGrafik\GoogleMapsPHP\View\Node\Document $documentNode) {
 		$this->documentNode = $documentNode;
@@ -258,7 +258,7 @@ class View {
 	 * Set headNode
 	 *
 	 * @param \AdGrafik\GoogleMapsPHP\View\Node\Head $headNode
-	 * @return \AdGrafik\GoogleMapsPHP\View\View
+	 * @return \AdGrafik\GoogleMapsPHP\View\Html
 	 */
 	public function setHeadNode(\AdGrafik\GoogleMapsPHP\View\Node\Head $headNode) {
 		$this->headNode = $headNode;
@@ -278,7 +278,7 @@ class View {
 	 * Set bodyNode
 	 *
 	 * @param \AdGrafik\GoogleMapsPHP\View\Node\Body $bodyNode
-	 * @return \AdGrafik\GoogleMapsPHP\View\View
+	 * @return \AdGrafik\GoogleMapsPHP\View\Html
 	 */
 	public function setBodyNode(\AdGrafik\GoogleMapsPHP\View\Node\Body $bodyNode) {
 		$this->bodyNode = $bodyNode;
@@ -433,6 +433,15 @@ class View {
 		}
 
 		return $node;
+	}
+
+	/**
+	 * Shortcut of printHtmlBody
+	 *
+	 * @return string
+	 */
+	public function printView() {
+		return $this->printHead() . PHP_EOL . $this->printBody();
 	}
 
 }

@@ -53,8 +53,8 @@ abstract class AbstractBuilder implements \AdGrafik\GoogleMapsPHP\PlugIns\Builde
 		$this->setMapBuilder($mapBuilder);
 
 		// Include head resources only if view exists.
-		if ($mapBuilder->getView()) {
-			$mapBuilder->getView()->addResources((array) $settings['view']);
+		if ($mapBuilder->getView() instanceof \AdGrafik\GoogleMapsPHP\View\Html && isset($settings['view'])) {
+			$mapBuilder->getView()->addResources($settings['view']);
 		}
 	}
 

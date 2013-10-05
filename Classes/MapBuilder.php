@@ -26,7 +26,7 @@ use AdGrafik\GoogleMapsPHP\Utility\ClassUtility;
  * @author Arno Dudek <webmaster@adgrafik.at>
  * @api
  */
-class MapBuilder extends \AdGrafik\GoogleMapsPHP\PlugInProvider {
+class MapBuilder extends \AdGrafik\GoogleMapsPHP\MapBuilder\AbstractMapBuilder {
 
 	/**
 	 * @var \AdGrafik\GoogleMapsPHP\View\Node\JavaScript $optionsNode
@@ -39,24 +39,19 @@ class MapBuilder extends \AdGrafik\GoogleMapsPHP\PlugInProvider {
 	protected $canvasNode;
 
 	/**
-	 * Constructor
-	 * MapBuilder( [$mapId] [, $options] );
+	 * initializeObject
 	 *
-	 * @param mixed $mapId
-	 * @param mixed $options Can be an object of type \AdGrafik\GoogleMapsPHP\API\Map\MapOptions or an map options array.
+	 * @return void
 	 */
-	public function __construct($mapId = '', $options = array()) {
+	public function initializeObject() {
 
-		parent::__construct($mapId, $options);
-
-		// Create XML document and nodes in order of appearance.
-		$this->view = ClassUtility::makeInstance('AdGrafik\\GoogleMapsPHP\\View\\View');
+		$this->setView(ClassUtility::makeInstance('AdGrafik\\GoogleMapsPHP\\View\\Html'));
 
 		$this->getSettings()->set('mapBuilder.canvas.attributes.id', $this->getMapId());
 		$this->setCanvasNode($this->getView()->addHtml($this->getSettings()->get('mapBuilder.canvas')));
 
-		$options['div'] = $this->getCanvasNode();
-		$this->add('Map', $options);
+		$this->mapOptions['div'] = $this->getCanvasNode();
+		$this->add('Map', $this->mapOptions);
 	}
 
 	/**
@@ -160,7 +155,7 @@ class MapBuilder extends \AdGrafik\GoogleMapsPHP\PlugInProvider {
 	 * @return string
 	 */
 	public function printJavaScriptOptions() {
-		return 'var ' . $this->printJavaScriptOptionsVariableName() . ' = ' . $this->printJsonObject() . ';';
+		return 'var ' . $this->printJavaScriptOptionsVariableName() . ' = ' . $this->printJavaScriptJsonObject() . ';';
 	}
 
 	/**

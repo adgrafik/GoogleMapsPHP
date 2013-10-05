@@ -26,37 +26,7 @@ use AdGrafik\GoogleMapsPHP\Utility\ClassUtility;
  * @author Arno Dudek <webmaster@adgrafik.at>
  * @api
  */
-class PlugInProvider implements \AdGrafik\GoogleMapsPHP\MapBuilder\MapBuilderInterface {
-
-	/**
-	 * @var array $registeredMapIds
-	 */
-	static protected $registeredMapIds = array();
-
-	/**
-	 * @var integer $mapIdCount
-	 */
-	static protected $mapIdCount = 0;
-
-	/**
-	 * @var \AdGrafik\GoogleMapsPHP\Configuration\Settings $settings
-	 */
-	protected $settings;
-
-	/**
-	 * @var \AdGrafik\GoogleMapsPHP\View\Document $view
-	 */
-	protected $view;
-
-	/**
-	 * @var \AdGrafik\GoogleMapsPHP\MapBuilder\JsonObject $jsonObject
-	 */
-	protected $jsonObject;
-
-	/**
-	 * @var string $mapId
-	 */
-	protected $mapId;
+class PlugInProvider extends \AdGrafik\GoogleMapsPHP\MapBuilder\AbstractMapBuilder {
 
 	/**
 	 * @var \AdGrafik\GoogleMapsPHP\API\Base\LatLngBounds $bounds
@@ -69,27 +39,17 @@ class PlugInProvider implements \AdGrafik\GoogleMapsPHP\MapBuilder\MapBuilderInt
 	protected $viewportManagement;
 
 	/**
-	 * Constructor
-	 * MapBuilder( [$mapId] [, $options] );
+	 * initializeObject
 	 *
-	 * @param mixed $mapId
-	 * @param mixed $options Can be an object of type \AdGrafik\GoogleMapsPHP\API\Map\MapOptions or an map options array.
+	 * @return void
 	 */
-	public function __construct(&$mapId = '', &$options = array()) {
+	public function initializeObject() {
 
-		$arguments = func_get_args();
-		if (is_array($mapId) || $mapId instanceof \AdGrafik\GoogleMapsPHP\Object\OptionsArrayAccess) {
-			$options = $mapId;
-			$mapId = 'map' . ++self::$mapIdCount;
-		} else if ($mapId == '') {
-			$mapId = 'map' . ++self::$mapIdCount;
-		}
+		$this->setView(ClassUtility::makeInstance('AdGrafik\\GoogleMapsPHP\\View\\Json'));
 
-		$this->setSettings(ClassUtility::makeInstance('AdGrafik\\GoogleMapsPHP\\Configuration\\Settings'));
-
-		// Register error handler if current object is this class.
 		if (GMP_XHR && get_class($this) === get_class()) {
 
+			// Register error handler if current object is this class.
 			set_error_handler(array(
 				$this->getSettings()->get('plugInProvider.errorHandler.className'),
 				$this->getSettings()->get('plugInProvider.errorHandler.methodName'),
@@ -99,17 +59,8 @@ class PlugInProvider implements \AdGrafik\GoogleMapsPHP\MapBuilder\MapBuilderInt
 				$this->getSettings()->get('plugInProvider.exceptionHandler.className'),
 				$this->getSettings()->get('plugInProvider.exceptionHandler.methodName'),
 			));
+
 		}
-
-		// Get AJAX request
-		if (isset($_REQUEST['mapId'])) {
-			$mapId = $_REQUEST['mapId'];
-		}
-
-		$this->registerMapId($mapId);
-		$this->setMapId($mapId);
-
-		$this->setJsonObject(ClassUtility::makeInstance('AdGrafik\\GoogleMapsPHP\\MapBuilder\\JsonObject'));
 
 		if (isset($_REQUEST['bounds'])) {
 			$this->setBounds($_REQUEST['bounds']);
@@ -163,120 +114,11 @@ class PlugInProvider implements \AdGrafik\GoogleMapsPHP\MapBuilder\MapBuilderInt
 			$severity = 'Exception';
 		}
 
-		$json = array(
-			'status' => 'error',
-			'message' => $severity . PHP_EOL . $exception->getMessage() . ' in ' . $exception->getFile() . ' on line ' . $exception->getLine() . PHP_EOL . $exception->getTraceAsString(),
-		);
+		$this->getView()->getJson()
+			->setStatus(\AdGrafik\GoogleMapsPHP\View\Json::JSON_STATUS_ERROR)
+			->setMessage($severity . PHP_EOL . $exception->getMessage() . ' in ' . $exception->getFile() . ' on line ' . $exception->getLine() . PHP_EOL . $exception->getTraceAsString());
 
-		$json = json_encode($json);
-
-		header('Cache-Control: no-store, no-cache, must-revalidate');
-		header('Content-Type: application/json');
-		header('Content-Length: ' . strlen($json));
-
-		echo $json;
-
-		exit;
-	}
-
-	/**
-	 * Set settings
-	 *
-	 * @param \AdGrafik\GoogleMapsPHP\Configuration\Settings $settings
-	 * @return \AdGrafik\GoogleMapsPHP\MapBuilder\MapBuilderInterface
-	 */
-	public function setSettings(\AdGrafik\GoogleMapsPHP\Configuration\Settings $settings) {
-		$this->settings = $settings;
-		return $this;
-	}
-
-	/**
-	 * Get settings
-	 *
-	 * @return \AdGrafik\GoogleMapsPHP\Configuration\Settings
-	 */
-	public function getSettings() {
-		return $this->settings;
-	}
-
-	/**
-	 * Set view
-	 *
-	 * @param \AdGrafik\GoogleMapsPHP\View\Document $view
-	 * @return \AdGrafik\GoogleMapsPHP\MapBuilder
-	 */
-	public function setView(\AdGrafik\GoogleMapsPHP\View\Document $view) {
-		$this->view = $view;
-		return $this;
-	}
-
-	/**
-	 * Get view
-	 *
-	 * @return \AdGrafik\GoogleMapsPHP\View\Document
-	 */
-	public function getView() {
-		return $this->view;
-	}
-
-	/**
-	 * Set jsonObject
-	 *
-	 * @param \AdGrafik\GoogleMapsPHP\MapBuilder\JsonObject $jsonObject
-	 * @return \AdGrafik\GoogleMapsPHP\PlugInProvider
-	 */
-	public function setJsonObject(\AdGrafik\GoogleMapsPHP\MapBuilder\JsonObject $jsonObject) {
-		$this->jsonObject = $jsonObject;
-		return $this;
-	}
-
-	/**
-	 * Get jsonObject
-	 *
-	 * @return \AdGrafik\GoogleMapsPHP\MapBuilder\JsonObject
-	 */
-	public function getJsonObject() {
-		return $this->jsonObject;
-	}
-
-	/**
-	 * Set debug
-	 *
-	 * @param boolean $debug
-	 * @return \AdGrafik\GoogleMapsPHP\MapBuilder\MapBuilderInterface
-	 */
-	public function setDebug($debug) {
-		$this->getSettings()->set('debug', $debug);
-		return $this;
-	}
-
-	/**
-	 * Get debug
-	 *
-	 * @return boolean
-	 */
-	public function isDebug() {
-		return $this->getSettings()->get('debug');
-	}
-
-	/**
-	 * Set mapId
-	 *
-	 * @param string $mapId
-	 * @return \AdGrafik\GoogleMapsPHP\MapBuilder\MapBuilderInterface
-	 */
-	public function setMapId($mapId) {
-		$this->mapId = $mapId;
-		return $this;
-	}
-
-	/**
-	 * Get mapId
-	 *
-	 * @return string
-	 */
-	public function getMapId() {
-		return $this->mapId;
+		$this->getView()->printView();
 	}
 
 	/**
@@ -327,56 +169,11 @@ class PlugInProvider implements \AdGrafik\GoogleMapsPHP\MapBuilder\MapBuilderInt
 	}
 
 	/**
-	 * Add a plug-in.
-	 *
-	 * @param string|array|\AdGrafik\GoogleMapsPHP\PlugIns\PlugInInterface $plugInBuilderName
-	 * @param array [$options]
-	 * @return \AdGrafik\GoogleMapsPHP\MapBuilder\MapBuilderInterface
-	 * @throws \AdGrafik\GoogleMapsPHP\Exceptions\InvalidArgumentException
-	 */
-	public function add($plugInBuilderName) {
-
-		// If $plugInBuilderName is array add every item, else if is already 
-		// an instance of PlugInInterface, add it directly to the JsonObject.
-		if (is_array($plugInBuilderName)) {
-			foreach ($plugInBuilderName as &$options) {
-				ClassUtility::callMethod(array($this, 'add'), $options);
-			}
-			return $this;
-		} else if ($plugInBuilderName instanceof \AdGrafik\GoogleMapsPHP\PlugIns\PlugInInterface) {
-			$this->getJsonObject()->addPlugIn($plugInBuilderName);
-			return $this;
-		}
-
-		if (($plugInBuilder = $this->getSettings()->get('plugInBuilder.' . $plugInBuilderName)) === NULL) {
-			throw new \AdGrafik\GoogleMapsPHP\Exceptions\InvalidArgumentException(sprintf('Plug-in builder "%s" is not registered.', $plugInBuilderName), 1371909752);
-		}
-
-		$arguments = func_get_args();
-		array_shift($arguments);
-
-		// Set default options.
-		$plugInBuilderSettings = (array) $this->getSettings()->get('plugInBuilder.' . $plugInBuilderName);
-		if (isset($plugInBuilderSettings['arguments'])) {
-			foreach ($arguments as $key => &$argument) {
-				if (is_array($argument) && array_key_exists($key, $plugInBuilderSettings['arguments'])) {
-					$argument = array_replace_recursive($plugInBuilderSettings['arguments'][$key], $argument);
-				}
-			}
-		}
-
-		$plugInBuilder = ClassUtility::makeInstance($plugInBuilder['className'], $this, $plugInBuilderSettings);
-		ClassUtility::callMethod(array($plugInBuilder, 'build'), $arguments);
-
-		return $this;
-	}
-
-	/**
-	 * printJsonObject
+	 * printJavaScriptJsonObject
 	 *
 	 * @return string
 	 */
-	public function printJsonObject() {
+	public function printJavaScriptJsonObject() {
 
 		// Don't attach layer if viewport management in use and layer is out of map.
 		if ($this->isViewportManagement()) {
@@ -390,41 +187,19 @@ class PlugInProvider implements \AdGrafik\GoogleMapsPHP\MapBuilder\MapBuilderInt
 			$this->getJsonObject()->setPlugIns($withinViewport);
 		}
 
-		$options = 0;
-		if ($this->isDebug() && defined('JSON_PRETTY_PRINT')) {
-			$options = $options | JSON_PRETTY_PRINT;
-		}
-
-		$this->getJsonObject()->setDebug($this->isDebug());
-		$json = json_encode($this->getJsonObject(), $options);
-
-		if ($this->isDebug() && defined('JSON_PRETTY_PRINT') === FALSE) {
-			$json = \AdGrafik\GoogleMapsPHP\Utility\JsonUtility::prettify($json);
-		}
-
-		// Remove all NULL values to reduce output length.
-		$json = preg_replace('/[\t\s]*"[^"]*":\s*null,?/', '', $json);
-
-		return $json;
+		return parent::printJavaScriptJsonObject();
 	}
 
 
 	/**
-	 * printJson
+	 * sendJson
 	 *
 	 * @return string
 	 */
 	public function sendJson() {
-
-		$json = $this->printJsonObject();
-
-		header('Cache-Control: no-store, no-cache, must-revalidate');
-		header('Content-Type: application/json');
-		header('Content-Length: ' . strlen($json));
-
-		echo $json;
-
-		exit;
+		$this->getView()
+			->setData($this->printJavaScriptJsonObject())
+			->printView();
 	}
 
 	/**
@@ -441,20 +216,6 @@ class PlugInProvider implements \AdGrafik\GoogleMapsPHP\MapBuilder\MapBuilderInt
 		}
 
 		return $html;
-	}
-
-	/**
-	 * registerMapId
-	 *
-	 * @param string $mapId
-	 * @return void
-	 * @throws \AdGrafik\GoogleMapsPHP\Exceptions\InvalidArgumentException
-	 */
-	protected function registerMapId($mapId) {
-		if (in_array($mapId, self::$registeredMapIds)) {
-			throw new \AdGrafik\GoogleMapsPHP\Exceptions\InvalidArgumentException(sprintf('Given UID "%s" is already used.', $mapId), 1370096543);
-		}
-		self::$registeredMapIds[] = $mapId;
 	}
 
 }
