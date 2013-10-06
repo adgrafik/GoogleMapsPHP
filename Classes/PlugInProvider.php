@@ -45,22 +45,26 @@ class PlugInProvider extends \AdGrafik\GoogleMapsPHP\MapBuilder\AbstractMapBuild
 	 */
 	public function initializeObject() {
 
-		$this->setView(ClassUtility::makeInstance('AdGrafik\\GoogleMapsPHP\\View\\Json'));
-
 		if (GMP_XHR && get_class($this) === get_class()) {
+
+			$errorHandlerSettings = $this->getSettings()->get('plugInProvider.errorHandler');
 
 			// Register error handler if current object is this class.
 			set_error_handler(array(
-				$this->getSettings()->get('plugInProvider.errorHandler.className'),
-				$this->getSettings()->get('plugInProvider.errorHandler.methodName'),
+				ClassUtility::makeInstance($errorHandlerSettings['className']),
+				$errorHandlerSettings['methodName'],
 			));
 
+			$exceptionHandlerSettings = $this->getSettings()->get('plugInProvider.exceptionHandler');
+
 			set_exception_handler(array(
-				$this->getSettings()->get('plugInProvider.exceptionHandler.className'),
-				$this->getSettings()->get('plugInProvider.exceptionHandler.methodName'),
+				ClassUtility::makeInstance($exceptionHandlerSettings['className']),
+				$exceptionHandlerSettings['methodName'],
 			));
 
 		}
+
+		$this->setView(ClassUtility::makeInstance('AdGrafik\\GoogleMapsPHP\\View\\Json'));
 
 		if (isset($_REQUEST['bounds'])) {
 			$this->setBounds($_REQUEST['bounds']);
@@ -69,56 +73,6 @@ class PlugInProvider extends \AdGrafik\GoogleMapsPHP\MapBuilder\AbstractMapBuild
 		if (isset($_REQUEST['viewportManagement'])) {
 			$this->setViewportManagement($_REQUEST['viewportManagement']);
 		}
-	}
-
-	/**
-	 * errorHandler
-	 *
-	 * @param integer $number
-	 * @param string $message
-	 * @param string $file
-	 * @param integer $line
-	 * @return void
-	 * @throws \AdGrafik\GoogleMapsPHP\Exceptions\ErrorException
-	 */
-	static public function errorHandler($number, $message, $file, $line) {
-		throw new \AdGrafik\GoogleMapsPHP\Exceptions\ErrorException($message, 0, $number, $file, $line);
-	}
-
-	/**
-	 * exceptionHandler
-	 *
-	 * @param \Exception $exception
-	 * @return void
-	 */
-	static public function exceptionHandler(\Exception $exception) {
-
-		if ($exception instanceof \ErrorException) {
-			switch($exception->getSeverity()){
-				case E_ERROR:				$severity = 'Error';				break;
-				case E_WARNING:				$severity = 'Warning';				break;
-				case E_PARSE:				$severity = 'Parse Error';			break;
-				case E_NOTICE:				$severity = 'Notice';				break;
-				case E_CORE_ERROR:			$severity = 'Core Error';			break;
-				case E_CORE_WARNING:		$severity = 'Core Warning';			break;
-				case E_COMPILE_ERROR:		$severity = 'Compile Error';		break;
-				case E_COMPILE_WARNING:		$severity = 'Compile Warning';		break;
-				case E_USER_ERROR:			$severity = 'User Error';			break;
-				case E_USER_WARNING:		$severity = 'User Warning';			break;
-				case E_USER_NOTICE:			$severity = 'User Notice';			break;
-				case E_STRICT:				$severity = 'Strict Notice';		break;
-				case E_RECOVERABLE_ERROR:	$severity = 'Recoverable Error';	break;
-				default:					$severity = 'Unknown error'; 		break;
-			}
-		} else {
-			$severity = 'Exception';
-		}
-
-		$this->getView()->getJson()
-			->setStatus(\AdGrafik\GoogleMapsPHP\View\Json::JSON_STATUS_ERROR)
-			->setMessage($severity . PHP_EOL . $exception->getMessage() . ' in ' . $exception->getFile() . ' on line ' . $exception->getLine() . PHP_EOL . $exception->getTraceAsString());
-
-		$this->getView()->printView();
 	}
 
 	/**

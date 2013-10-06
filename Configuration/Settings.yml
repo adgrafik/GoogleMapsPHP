@@ -68,11 +68,11 @@ mapBuilder:
 plugInProvider:
 
   errorHandler:
-    className: \AdGrafik\GoogleMapsPHP\PlugInProvider
+    className: \AdGrafik\GoogleMapsPHP\Utility\ErrorHandler
     methodName: errorHandler
 
   exceptionHandler:
-    className: \AdGrafik\GoogleMapsPHP\PlugInProvider
+    className: \AdGrafik\GoogleMapsPHP\Utility\ErrorHandler
     methodName: exceptionHandler
 
 
