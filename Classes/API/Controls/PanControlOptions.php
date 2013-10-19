@@ -39,9 +39,9 @@ class PanControlOptions extends AbstractControlOptions {
 	 */
 	public function setPosition($position) {
 
-		$this->position = new \StdClass();
-		$this->position->className = 'ControlPosition';
-		$this->position->constant = $position;
+		$this->position = ($position === \AdGrafik\GoogleMapsPHP\API\Controls\ControlPosition::TOP_LEFT)
+			? NULL
+			: \AdGrafik\GoogleMapsPHP\Utility\JsonUtility::makeConstant('ControlPosition', $position);
 
 		return $this;
 	}

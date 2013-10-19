@@ -210,7 +210,7 @@ class MapOptions {
 	 * @return \AdGrafik\GoogleMapsPHP\API\Map\MapOptions
 	 */
 	public function setBackgroundColor($backgroundColor) {
-		$this->backgroundColor = $backgroundColor;
+		$this->backgroundColor = $backgroundColor ?: NULL;
 		return $this;
 	}
 
@@ -257,7 +257,7 @@ class MapOptions {
 	 * @return \AdGrafik\GoogleMapsPHP\API\Map\MapOptions
 	 */
 	public function setDisableDefaultUI($disableDefaultUI) {
-		$this->disableDefaultUI = (boolean) $disableDefaultUI;
+		$this->disableDefaultUI = (boolean) $disableDefaultUI ?: NULL;
 		return $this;
 	}
 
@@ -277,7 +277,7 @@ class MapOptions {
 	 * @return \AdGrafik\GoogleMapsPHP\API\Map\MapOptions
 	 */
 	public function setDisableDoubleClickZoom($disableDoubleClickZoom) {
-		$this->disableDoubleClickZoom = (boolean) $disableDoubleClickZoom;
+		$this->disableDoubleClickZoom = (boolean) $disableDoubleClickZoom ?: NULL;
 		return $this;
 	}
 
@@ -297,7 +297,7 @@ class MapOptions {
 	 * @return \AdGrafik\GoogleMapsPHP\API\Map\MapOptions
 	 */
 	public function setDraggable($draggable) {
-		$this->draggable = (boolean) $draggable;
+		$this->draggable = (boolean) $draggable ?: NULL;
 		return $this;
 	}
 
@@ -317,7 +317,7 @@ class MapOptions {
 	 * @return \AdGrafik\GoogleMapsPHP\API\Map\MapOptions
 	 */
 	public function setDraggableCursor($draggableCursor) {
-		$this->draggableCursor = $draggableCursor;
+		$this->draggableCursor = $draggableCursor ?: NULL;
 		return $this;
 	}
 
@@ -337,7 +337,7 @@ class MapOptions {
 	 * @return \AdGrafik\GoogleMapsPHP\API\Map\MapOptions
 	 */
 	public function setDraggingCursor($draggingCursor) {
-		$this->draggingCursor = $draggingCursor;
+		$this->draggingCursor = $draggingCursor ?: NULL;
 		return $this;
 	}
 
@@ -357,7 +357,7 @@ class MapOptions {
 	 * @return \AdGrafik\GoogleMapsPHP\API\Map\MapOptions
 	 */
 	public function setHeading($heading) {
-		$this->heading = (integer) $heading;
+		$this->heading = (integer) $heading ?: NULL;
 		return $this;
 	}
 
@@ -377,7 +377,7 @@ class MapOptions {
 	 * @return \AdGrafik\GoogleMapsPHP\API\Map\MapOptions
 	 */
 	public function setKeyboardShortcuts($keyboardShortcuts) {
-		$this->keyboardShortcuts = (boolean) $keyboardShortcuts;
+		$this->keyboardShortcuts = (boolean) $keyboardShortcuts ?: NULL;
 		return $this;
 	}
 
@@ -397,7 +397,7 @@ class MapOptions {
 	 * @return \AdGrafik\GoogleMapsPHP\API\Map\MapOptions
 	 */
 	public function setMapMaker($mapMaker) {
-		$this->mapMaker = (boolean) $mapMaker;
+		$this->mapMaker = (boolean) $mapMaker ?: NULL;
 		return $this;
 	}
 
@@ -417,7 +417,7 @@ class MapOptions {
 	 * @return \AdGrafik\GoogleMapsPHP\API\Map\MapOptions
 	 */
 	public function setMapTypeControl($mapTypeControl) {
-		$this->mapTypeControl = (boolean) $mapTypeControl;
+		$this->mapTypeControl = (boolean) $mapTypeControl ?: NULL;
 		return $this;
 	}
 
@@ -488,7 +488,7 @@ class MapOptions {
 	 * @return \AdGrafik\GoogleMapsPHP\API\Map\MapOptions
 	 */
 	public function setMaxZoom($maxZoom) {
-		$this->maxZoom = (integer) $maxZoom;
+		$this->maxZoom = (integer) $maxZoom ?: NULL;
 		return $this;
 	}
 
@@ -508,7 +508,7 @@ class MapOptions {
 	 * @return \AdGrafik\GoogleMapsPHP\API\Map\MapOptions
 	 */
 	public function setMinZoom($minZoom) {
-		$this->minZoom = (integer) $minZoom;
+		$this->minZoom = (integer) $minZoom ?: NULL;
 		return $this;
 	}
 
@@ -528,7 +528,7 @@ class MapOptions {
 	 * @return \AdGrafik\GoogleMapsPHP\API\Map\MapOptions
 	 */
 	public function setNoClear($noClear) {
-		$this->noClear = (boolean) $noClear;
+		$this->noClear = (boolean) $noClear ?: NULL;
 		return $this;
 	}
 
@@ -548,7 +548,7 @@ class MapOptions {
 	 * @return \AdGrafik\GoogleMapsPHP\API\Map\MapOptions
 	 */
 	public function setOverviewMapControl($overviewMapControl) {
-		$this->overviewMapControl = (boolean) $overviewMapControl;
+		$this->overviewMapControl = (boolean) $overviewMapControl ?: NULL;
 		return $this;
 	}
 
@@ -593,7 +593,7 @@ class MapOptions {
 	 * @return \AdGrafik\GoogleMapsPHP\API\Map\MapOptions
 	 */
 	public function setPanControl($panControl) {
-		$this->panControl = (boolean) $panControl;
+		$this->panControl = (boolean) $panControl ?: NULL;
 		return $this;
 	}
 
@@ -638,7 +638,7 @@ class MapOptions {
 	 * @return \AdGrafik\GoogleMapsPHP\API\Map\MapOptions
 	 */
 	public function setRotateControl($rotateControl) {
-		$this->rotateControl = (boolean) $rotateControl;
+		$this->rotateControl = (boolean) $rotateControl ?: NULL;
 		return $this;
 	}
 
@@ -683,7 +683,7 @@ class MapOptions {
 	 * @return \AdGrafik\GoogleMapsPHP\API\Map\MapOptions
 	 */
 	public function setScaleControl($scaleControl) {
-		$this->scaleControl = (boolean) $scaleControl;
+		$this->scaleControl = (boolean) $scaleControl ?: NULL;
 		return $this;
 	}
 
@@ -728,7 +728,7 @@ class MapOptions {
 	 * @return \AdGrafik\GoogleMapsPHP\API\Map\MapOptions
 	 */
 	public function setScrollwheel($scrollwheel) {
-		$this->scrollwheel = (boolean) $scrollwheel;
+		$this->scrollwheel = (boolean) $scrollwheel ?: NULL;
 		return $this;
 	}
 
@@ -768,7 +768,7 @@ class MapOptions {
 	 * @return \AdGrafik\GoogleMapsPHP\API\Map\MapOptions
 	 */
 	public function setStreetViewControl($streetViewControl) {
-		$this->streetViewControl = (boolean) $streetViewControl;
+		$this->streetViewControl = (boolean) $streetViewControl ?: NULL;
 		return $this;
 	}
 
@@ -833,7 +833,7 @@ class MapOptions {
 	 * @return \AdGrafik\GoogleMapsPHP\API\Map\MapOptions
 	 */
 	public function setTilt($tilt) {
-		$this->tilt = (integer) $tilt;
+		$this->tilt = (integer) $tilt ?: NULL;
 		return $this;
 	}
 
@@ -853,7 +853,7 @@ class MapOptions {
 	 * @return \AdGrafik\GoogleMapsPHP\API\Map\MapOptions
 	 */
 	public function setZoom($zoom) {
-		$this->zoom = (integer) $zoom;
+		$this->zoom = (integer) $zoom ?: NULL;
 		return $this;
 	}
 
@@ -873,7 +873,7 @@ class MapOptions {
 	 * @return \AdGrafik\GoogleMapsPHP\API\Map\MapOptions
 	 */
 	public function setZoomControl($zoomControl) {
-		$this->zoomControl = (boolean) $zoomControl;
+		$this->zoomControl = (boolean) $zoomControl ?: NULL;
 		return $this;
 	}
 

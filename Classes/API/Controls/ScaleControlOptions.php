@@ -44,9 +44,9 @@ class ScaleControlOptions extends AbstractControlOptions {
 	 */
 	public function setPosition($position) {
 
-		$this->position = new \StdClass();
-		$this->position->className = 'ControlPosition';
-		$this->position->constant = $position;
+		$this->position = ($position === \AdGrafik\GoogleMapsPHP\API\Controls\ControlPosition::BOTTOM_LEFT)
+			? NULL
+			: \AdGrafik\GoogleMapsPHP\Utility\JsonUtility::makeConstant('ControlPosition', $position);
 
 		return $this;
 	}
@@ -68,9 +68,9 @@ class ScaleControlOptions extends AbstractControlOptions {
 	 */
 	public function setStyle($style) {
 
-		$this->style = new \StdClass();
-		$this->style->className = 'ScaleControlStyle';
-		$this->style->constant = $style;
+		$this->style = ($style === \AdGrafik\GoogleMapsPHP\API\Controls\ScaleControlStyle::DEFAULT_STYLE)
+			? NULL
+			: \AdGrafik\GoogleMapsPHP\Utility\JsonUtility::makeConstant('ScaleControlStyle', $style);
 
 
 		return $this;

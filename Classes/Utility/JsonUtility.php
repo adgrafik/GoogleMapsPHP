@@ -80,6 +80,20 @@ class JsonUtility {
 
 	}
 
+	/**
+	 * makeConstant
+	 *
+	 * @param string $className
+	 * @param string $value
+	 * @return \StdClass
+	 */
+	static public function makeConstant($className, $value) {
+		$stdClass = new \StdClass();
+		$stdClass->className = $className;
+		$stdClass->constant = $value;
+		return $stdClass;
+	}
+
 }
 
 ?>

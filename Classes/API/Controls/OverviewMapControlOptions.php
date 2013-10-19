@@ -38,7 +38,7 @@ class OverviewMapControlOptions extends AbstractControlOptions {
 	 * @return \AdGrafik\GoogleMapsPHP\API\Controls\OverviewMapControlOptions
 	 */
 	public function setOpened($opened) {
-		$this->opened = (boolean) $opened;
+		$this->opened = (boolean) $opened ?: NULL;
 		return $this;
 	}
 

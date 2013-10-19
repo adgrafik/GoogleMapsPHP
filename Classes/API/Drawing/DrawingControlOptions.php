@@ -47,9 +47,7 @@ class DrawingControlOptions extends \AdGrafik\GoogleMapsPHP\API\Controls\Abstrac
 	public function setDrawingModes($drawingModes) {
 
 		foreach ($drawingModes as $key => &$drawingMode) {
-			$this->drawingModes[$key] = new \StdClass();
-			$this->drawingModes[$key]->className = 'drawing.OverlayType';
-			$this->drawingModes[$key]->constant = $drawingMode;
+			$this->drawingModes[$key] = \AdGrafik\GoogleMapsPHP\Utility\JsonUtility::makeConstant('drawing.OverlayType', $drawingMode);
 		}
 
 		return $this;
@@ -72,9 +70,9 @@ class DrawingControlOptions extends \AdGrafik\GoogleMapsPHP\API\Controls\Abstrac
 	 */
 	public function setPosition($position) {
 
-		$this->position = new \StdClass();
-		$this->position->className = 'ControlPosition';
-		$this->position->constant = $position;
+		$this->position = ($position === \AdGrafik\GoogleMapsPHP\API\Controls\ControlPosition::TOP_LEFT)
+			? NULL
+			: \AdGrafik\GoogleMapsPHP\Utility\JsonUtility::makeConstant('ControlPosition', $position);
 
 		return $this;
 	}

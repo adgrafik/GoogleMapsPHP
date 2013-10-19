@@ -44,10 +44,19 @@ class MapTypeControlOptions extends AbstractControlOptions {
 	/**
 	 * Set mapTypeIds
 	 *
-	 * @param array $mapTypeIds
+	 * @param string|array $mapTypeIds
 	 * @return \AdGrafik\GoogleMapsPHP\API\Controls\MapTypeControlOptions
 	 */
 	public function setMapTypeIds($mapTypeIds) {
+
+		if (!$mapTypeIds) {
+			$this->mapTypeIds = NULL;
+			return $this;
+		}
+
+		if (is_array($mapTypeIds) === FALSE) {
+			$mapTypeIds = explode(',', $mapTypeIds);
+		}
 
 		$this->mapTypeIds = array();
 
@@ -73,11 +82,7 @@ class MapTypeControlOptions extends AbstractControlOptions {
 					|| $mapTypeId == \AdGrafik\GoogleMapsPHP\API\Map\MapTypeId::SATELLITE
 					|| $mapTypeId == \AdGrafik\GoogleMapsPHP\API\Map\MapTypeId::TERRAIN) {
 
-				$id = new \StdClass();
-				$id->className = 'MapTypeId';
-				$id->constant = $mapTypeId;
-
-				$this->mapTypeIds[] = $id;
+				$this->mapTypeIds[] = \AdGrafik\GoogleMapsPHP\Utility\JsonUtility::makeConstant('MapTypeId', $mapTypeId);
 
 			} else {
 				$this->mapTypeIds[] = $mapTypeId;
@@ -117,9 +122,9 @@ class MapTypeControlOptions extends AbstractControlOptions {
 	 */
 	public function setPosition($position) {
 
-		$this->position = new \StdClass();
-		$this->position->className = 'ControlPosition';
-		$this->position->constant = $position;
+		$this->position = ($position === \AdGrafik\GoogleMapsPHP\API\Controls\ControlPosition::TOP_RIGHT)
+			? NULL
+			: \AdGrafik\GoogleMapsPHP\Utility\JsonUtility::makeConstant('ControlPosition', $position);
 
 		return $this;
 	}
@@ -141,9 +146,9 @@ class MapTypeControlOptions extends AbstractControlOptions {
 	 */
 	public function setStyle($style) {
 
-		$this->style = new \StdClass();
-		$this->style->className = 'MapTypeControlStyle';
-		$this->style->constant = $style;
+		$this->style = ($style === \AdGrafik\GoogleMapsPHP\API\Controls\MapTypeControlStyle::DEFAULT_STYLE)
+			? NULL
+			: \AdGrafik\GoogleMapsPHP\Utility\JsonUtility::makeConstant('MapTypeControlStyle', $style);
 
 		return $this;
 	}
