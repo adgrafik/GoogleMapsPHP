@@ -68,11 +68,11 @@ mapBuilder:
 plugInProvider:
 
   errorHandler:
-    className: \AdGrafik\GoogleMapsPHP\Utility\ErrorHandler
+    className: AdGrafik\GoogleMapsPHP\Utility\ErrorHandler
     methodName: errorHandler
 
   exceptionHandler:
-    className: \AdGrafik\GoogleMapsPHP\Utility\ErrorHandler
+    className: AdGrafik\GoogleMapsPHP\Utility\ExceptionHandler
     methodName: exceptionHandler
 
 
@@ -84,29 +84,29 @@ plugInBuilder:
 
   Map:
 
-    className: \AdGrafik\GoogleMapsPHP\PlugIns\Map\Builder
+    className: AdGrafik\GoogleMapsPHP\PlugIns\Map\Builder
     # Set default options here.
     arguments:
       -
         center: 48.208202, 16.373749
-        mapTypeId: \AdGrafik\GoogleMapsPHP\API\Map\MapTypeId::ROADMAP
+        mapTypeId: AdGrafik\GoogleMapsPHP\API\Map\MapTypeId::ROADMAP
         zoom: 7
 
   Circle:
-    className: \AdGrafik\GoogleMapsPHP\PlugIns\Circle\Builder
+    className: AdGrafik\GoogleMapsPHP\PlugIns\Circle\Builder
 
   DrawingManager:
-    className: \AdGrafik\GoogleMapsPHP\PlugIns\DrawingManager\Builder
+    className: AdGrafik\GoogleMapsPHP\PlugIns\DrawingManager\Builder
 
   InfoWindow:
-    className: \AdGrafik\GoogleMapsPHP\PlugIns\InfoWindow\Builder
+    className: AdGrafik\GoogleMapsPHP\PlugIns\InfoWindow\Builder
 
   KmlLayer:
-    className: \AdGrafik\GoogleMapsPHP\PlugIns\KmlLayer\Builder
+    className: AdGrafik\GoogleMapsPHP\PlugIns\KmlLayer\Builder
 
   Loader:
 
-    className: \AdGrafik\GoogleMapsPHP\PlugIns\Loader\Builder
+    className: AdGrafik\GoogleMapsPHP\PlugIns\Loader\Builder
 
     view:
 
@@ -118,11 +118,11 @@ plugInBuilder:
           external: TRUE
 
   Marker:
-    className: \AdGrafik\GoogleMapsPHP\PlugIns\Marker\Builder
+    className: AdGrafik\GoogleMapsPHP\PlugIns\Marker\Builder
 
   MarkerClusterer:
 
-    className: \AdGrafik\GoogleMapsPHP\AddOns\MarkerClusterer\PlugIns\MarkerClusterer\Builder
+    className: AdGrafik\GoogleMapsPHP\AddOns\MarkerClusterer\PlugIns\MarkerClusterer\Builder
 
     view:
 
@@ -133,13 +133,13 @@ plugInBuilder:
           forceOnTop: TRUE
 
   Polygon:
-    className: \AdGrafik\GoogleMapsPHP\PlugIns\Polygon\Builder
+    className: AdGrafik\GoogleMapsPHP\PlugIns\Polygon\Builder
 
   Polyline:
-    className: \AdGrafik\GoogleMapsPHP\PlugIns\Polyline\Builder
+    className: AdGrafik\GoogleMapsPHP\PlugIns\Polyline\Builder
 
   Rectangle:
-    className: \AdGrafik\GoogleMapsPHP\PlugIns\Rectangle\Builder
+    className: AdGrafik\GoogleMapsPHP\PlugIns\Rectangle\Builder
 
   StyledMapType:
-    className: \AdGrafik\GoogleMapsPHP\PlugIns\StyledMapType\Builder
+    className: AdGrafik\GoogleMapsPHP\PlugIns\StyledMapType\Builder

@@ -86,6 +86,7 @@ abstract class AbstractMapBuilder implements \AdGrafik\GoogleMapsPHP\MapBuilder\
 
 		$this->registerMapId($mapId);
 		$this->setMapId($mapId);
+		$this->setMapOptions($options);
 
 		$this->setSettings(ClassUtility::makeInstance('AdGrafik\GoogleMapsPHP\Configuration\Settings'));
 		$this->setJsonObject(ClassUtility::makeInstance('AdGrafik\\GoogleMapsPHP\\MapBuilder\\JsonObject'));

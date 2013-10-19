@@ -47,20 +47,13 @@ class PlugInProvider extends \AdGrafik\GoogleMapsPHP\MapBuilder\AbstractMapBuild
 
 		if (GMP_XHR && get_class($this) === get_class()) {
 
+			// Register error handler.
 			$errorHandlerSettings = $this->getSettings()->get('plugInProvider.errorHandler');
+			ClassUtility::makeInstance($errorHandlerSettings['className'], $errorHandlerSettings['methodName']);
 
-			// Register error handler if current object is this class.
-			set_error_handler(array(
-				ClassUtility::makeInstance($errorHandlerSettings['className']),
-				$errorHandlerSettings['methodName'],
-			));
-
+			// Register exception handler.
 			$exceptionHandlerSettings = $this->getSettings()->get('plugInProvider.exceptionHandler');
-
-			set_exception_handler(array(
-				ClassUtility::makeInstance($exceptionHandlerSettings['className']),
-				$exceptionHandlerSettings['methodName'],
-			));
+			ClassUtility::makeInstance($exceptionHandlerSettings['className'], $exceptionHandlerSettings['methodName']);
 
 		}
 
