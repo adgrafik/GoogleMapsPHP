@@ -30,11 +30,13 @@ define('GMP_HTTP_PATH', GMP_HTTP . GMP_DIR);
 define('GMP_XHR', (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest'));
 define('GMP_DEBUG_STAR_TIME', microtime(TRUE));
 
-// Include autoloader
-include_once(GMP_PATH . 'Classes/Object/SingletonInterface.php');
-
 // Register class loader.
+include_once(GMP_PATH . 'Classes/Object/SingletonInterface.php');
 include_once(GMP_PATH . 'Classes/Core/ClassLoader.php');
 \AdGrafik\GoogleMapsPHP\Core\ClassLoader::registerAutoloader();
+
+// Set cache settings.
+\AdGrafik\GoogleMapsPHP\Utility\CacheManager::setCachePath(GMP_PATH . 'Ressources/Private/Cache/');
+\AdGrafik\GoogleMapsPHP\Utility\CacheManager::setCacheLifeTime(604800);
 
 ?>
