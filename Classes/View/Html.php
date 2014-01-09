@@ -95,20 +95,20 @@ class Html extends \AdGrafik\GoogleMapsPHP\View\AbstractView {
 	public function addResources(array $settings = array()) {
 
 		if (isset($settings['includeJavaScriptLibrary'])) {
-			foreach ($settings['includeJavaScriptLibrary'] as &$javaScriptSettings) {
-				$this->addJavaScriptLibrary($javaScriptSettings);
+			foreach ($settings['includeJavaScriptLibrary'] as $key => &$javaScriptSettings) {
+				$this->addJavaScriptLibrary($key, $javaScriptSettings);
 			}
 		}
 
 		if (isset($settings['includeJavaScriptSource'])) {
-			foreach ($settings['includeJavaScriptSource'] as &$javaScriptSettings) {
-				$this->addJavaScriptSource($javaScriptSettings);
+			foreach ($settings['includeJavaScriptSource'] as $key => &$javaScriptSettings) {
+				$this->addJavaScriptSource($key, $javaScriptSettings);
 			}
 		}
 
 		if (isset($settings['includeJavaScriptInline'])) {
-			foreach ($settings['includeJavaScriptInline'] as &$javaScriptSettings) {
-				$this->addJavaScriptInline($javaScriptSettings);
+			foreach ($settings['includeJavaScriptInline'] as $key => &$javaScriptSettings) {
+				$this->addJavaScriptInline($key, $javaScriptSettings);
 			}
 		}
 	}
@@ -116,31 +116,34 @@ class Html extends \AdGrafik\GoogleMapsPHP\View\AbstractView {
 	/**
 	 * addJavaScriptLibrary
 	 *
+	 * @param string $key
 	 * @param array $settings
 	 * @return \AdGrafik\GoogleMapsPHP\View\Node\JavaScript
 	 */
-	public function addJavaScriptLibrary(array $settings = array()) {
-		return $this->addJavaScriptNode(self::HEAD_TYPE_JAVASCRIPT_LIBRARY, $settings);
+	public function addJavaScriptLibrary($key, array $settings = array()) {
+		return $this->addJavaScriptNode(self::HEAD_TYPE_JAVASCRIPT_LIBRARY, $key, $settings);
 	}
 
 	/**
 	 * addJavaScriptSource
 	 *
+	 * @param string $key
 	 * @param array $settings
 	 * @return \AdGrafik\GoogleMapsPHP\View\Node\JavaScript
 	 */
-	public function addJavaScriptSource(array $settings = array()) {
-		return $this->addJavaScriptNode(self::HEAD_TYPE_JAVASCRIPT_SOURCE, $settings);
+	public function addJavaScriptSource($key, array $settings = array()) {
+		return $this->addJavaScriptNode(self::HEAD_TYPE_JAVASCRIPT_SOURCE, $key, $settings);
 	}
 
 	/**
 	 * addJavaScriptInline
 	 *
+	 * @param string $key
 	 * @param array $settings
 	 * @return \AdGrafik\GoogleMapsPHP\View\Node\JavaScript
 	 */
-	public function addJavaScriptInline(array $settings = array()) {
-		return $this->addJavaScriptNode(self::HEAD_TYPE_JAVASCRIPT_INLINE, $settings);
+	public function addJavaScriptInline($key, array $settings = array()) {
+		return $this->addJavaScriptNode(self::HEAD_TYPE_JAVASCRIPT_INLINE, $key, $settings);
 	}
 
 	/**
@@ -356,10 +359,11 @@ class Html extends \AdGrafik\GoogleMapsPHP\View\AbstractView {
 	 * addJavaScriptNode
 	 *
 	 * @param string $type
+	 * @param string $key
 	 * @param array $settings
 	 * @return \AdGrafik\GoogleMapsPHP\View\Node\JavaScript
 	 */
-	protected function addJavaScriptNode($type, array $settings = array()) {
+	protected function addJavaScriptNode($type, $key, array $settings = array()) {
 
 		// Overwrite default settings.
 		$settings = array_replace_recursive(array(
@@ -378,8 +382,6 @@ class Html extends \AdGrafik\GoogleMapsPHP\View\AbstractView {
 				? $settings['source']
 				: GMP_HTTP_PATH . $settings['source'];
 		}
-
-		$key = md5($settings['source']);
 
 		// If source already set, nothing else to do.
 		if (isset($this->javaScriptStack[self::HEAD_TYPE_JAVASCRIPT_LIBRARY][$key])) {

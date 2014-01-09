@@ -214,7 +214,7 @@ abstract class AbstractMapBuilder implements \AdGrafik\GoogleMapsPHP\MapBuilder\
 			return $this;
 		}
 
-		if (($plugInBuilder = $this->getSettings()->get('plugInBuilder.' . $plugInBuilderName)) === NULL) {
+		if (($plugInBuilderSettings = $this->getSettings()->get('plugInBuilder.' . $plugInBuilderName)) === NULL) {
 			throw new \AdGrafik\GoogleMapsPHP\Exceptions\InvalidArgumentException(sprintf('Plug-in builder "%s" is not registered.', $plugInBuilderName), 1371909752);
 		}
 
@@ -222,7 +222,6 @@ abstract class AbstractMapBuilder implements \AdGrafik\GoogleMapsPHP\MapBuilder\
 		array_shift($arguments);
 
 		// Set default options.
-		$plugInBuilderSettings = (array) $this->getSettings()->get('plugInBuilder.' . $plugInBuilderName);
 		if (isset($plugInBuilderSettings['arguments'])) {
 			foreach ($arguments as $key => &$argument) {
 				if (is_array($argument) && array_key_exists($key, $plugInBuilderSettings['arguments'])) {
@@ -231,7 +230,7 @@ abstract class AbstractMapBuilder implements \AdGrafik\GoogleMapsPHP\MapBuilder\
 			}
 		}
 
-		$plugInBuilder = ClassUtility::makeInstance($plugInBuilder['className'], $this, $plugInBuilderSettings);
+		$plugInBuilder = ClassUtility::makeInstance($plugInBuilderSettings['className'], $this, $plugInBuilderSettings);
 		ClassUtility::callMethod(array($plugInBuilder, 'build'), $arguments);
 
 		return $this;

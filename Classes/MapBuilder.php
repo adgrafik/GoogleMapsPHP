@@ -95,6 +95,30 @@ class MapBuilder extends \AdGrafik\GoogleMapsPHP\MapBuilder\AbstractMapBuilder {
 	}
 
 	/**
+	 * Add plug-in resources.
+	 *
+	 * @param array $plugInBuilderNames
+	 * @return \AdGrafik\GoogleMapsPHP\MapBuilder
+	 * @throws \AdGrafik\GoogleMapsPHP\Exceptions\InvalidArgumentException
+	 */
+	public function addPlugInViewResources(array $plugInBuilderNames) {
+
+		foreach ($plugInBuilderNames as &$plugInBuilderName) {
+
+			if (($plugInBuilderSettings = $this->getSettings()->get('plugInBuilder.' . $plugInBuilderName)) === NULL) {
+				throw new \AdGrafik\GoogleMapsPHP\Exceptions\InvalidArgumentException(sprintf('Plug-in builder "%s" is not registered.', $plugInBuilderName), 1371919752);
+			}
+
+			// Include head resources only if view exists.
+			if ($this->getView() instanceof \AdGrafik\GoogleMapsPHP\View\Html && isset($plugInBuilderSettings['view'])) {
+				$this->getView()->addResources($plugInBuilderSettings['view']);
+			}
+		}
+
+		return $this;
+	}
+
+	/**
 	 * Print canvas DIV-tag.
 	 *
 	 * @return string
@@ -228,7 +252,7 @@ class MapBuilder extends \AdGrafik\GoogleMapsPHP\MapBuilder\AbstractMapBuilder {
 		$this->getView()->addResources($this->getSettings()->get('mapBuilder.view'));
 
 		$source = PHP_EOL . $this->printJavaScriptOptions() . PHP_EOL . $this->printJavaScriptConstruction() . PHP_EOL;
-		$this->getView()->addJavaScriptInline(array('source' => $source));
+		$this->getView()->addJavaScriptInline(md5($source), array('source' => $source));
 	}
 
 }

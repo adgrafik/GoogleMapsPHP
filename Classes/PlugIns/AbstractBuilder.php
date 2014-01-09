@@ -46,6 +46,7 @@ abstract class AbstractBuilder implements \AdGrafik\GoogleMapsPHP\PlugIns\Builde
 	 * Constructor
 	 *
 	 * @param \AdGrafik\GoogleMapsPHP\MapBuilder\MapBuilderInterface $mapBuilder
+	 * @param array $settings
 	 */
 	public function __construct(\AdGrafik\GoogleMapsPHP\MapBuilder\MapBuilderInterface $mapBuilder, array $settings) {
 

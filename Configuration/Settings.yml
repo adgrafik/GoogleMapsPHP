@@ -10,7 +10,6 @@ debug: FALSE
 view:
 
   node:
-
     document:
       xmlVersion: '1.0'
       xmlEncoding: utf-8
@@ -45,20 +44,12 @@ mapBuilder:
       - });
 
   view:
-
     # Global head resources
     includeJavaScriptLibrary:
-
       googleMapsApi:
         source: http://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false
         forceOnTop: TRUE
         external: TRUE
-
-    includeJavaScriptSource:
-
-      mapBuilder:
-        source: Ressources/Public/JavaScript/mapbuilder.js
-        forceOnTop: TRUE
 
 
 #
@@ -92,54 +83,131 @@ plugInBuilder:
         mapTypeId: AdGrafik\GoogleMapsPHP\API\Map\MapTypeId::ROADMAP
         zoom: 7
 
+    view:
+      includeJavaScriptLibrary:
+        jquery:
+          source: http://code.jquery.com/jquery-1.10.1.min.js
+          forceOnTop: TRUE
+          external: TRUE
+        core:
+          source: Ressources/Public/JavaScript/mapbuilder/core.js
+        map:
+          source: Ressources/Public/JavaScript/mapbuilder/map.js
+
   Circle:
+
     className: AdGrafik\GoogleMapsPHP\PlugIns\Circle\Builder
 
+    view:
+      includeJavaScriptLibrary:
+        shape:
+          source: Ressources/Public/JavaScript/mapbuilder/shape.js
+        circle:
+          source: Ressources/Public/JavaScript/mapbuilder/circle.js
+
   DrawingManager:
+
     className: AdGrafik\GoogleMapsPHP\PlugIns\DrawingManager\Builder
 
+    view:
+      includeJavaScriptLibrary:
+        googleMapsApi:
+          source: http://maps.googleapis.com/maps/api/js?v=3.exp&libraries=drawing&sensor=false
+          forceOnTop: TRUE
+          external: TRUE
+        drawingmanager:
+          source: Ressources/Public/JavaScript/mapbuilder/drawingmanager.js
+
   InfoWindow:
+
     className: AdGrafik\GoogleMapsPHP\PlugIns\InfoWindow\Builder
 
+    view:
+      includeJavaScriptLibrary:
+        infowindow:
+          source: Ressources/Public/JavaScript/mapbuilder/infowindow.js
+
   KmlLayer:
+
     className: AdGrafik\GoogleMapsPHP\PlugIns\KmlLayer\Builder
+
+    view:
+      includeJavaScriptLibrary:
+        kmllayer:
+          source: Ressources/Public/JavaScript/mapbuilder/kmllayer.js
 
   Loader:
 
     className: AdGrafik\GoogleMapsPHP\PlugIns\Loader\Builder
 
     view:
-
       includeJavaScriptLibrary:
-
-        jQuery:
+        jquery:
           source: http://code.jquery.com/jquery-1.10.1.min.js
           forceOnTop: TRUE
           external: TRUE
+        loader:
+          source: Ressources/Public/JavaScript/mapbuilder/loader.js
 
   Marker:
+
     className: AdGrafik\GoogleMapsPHP\PlugIns\Marker\Builder
+
+    view:
+      includeJavaScriptLibrary:
+        marker:
+          source: Ressources/Public/JavaScript/mapbuilder/marker.js
 
   MarkerClusterer:
 
     className: AdGrafik\GoogleMapsPHP\AddOns\MarkerClusterer\PlugIns\MarkerClusterer\Builder
 
     view:
-
       includeJavaScriptLibrary:
-
-        markerClusterer:
-          source: Ressources/Public/JavaScript/markerclusterer.min.js
+        markerclustererlib:
+          source: Ressources/Public/JavaScript/markerclusterer/markerclusterer.min.js
           forceOnTop: TRUE
+        markerclusterer:
+          source: Ressources/Public/JavaScript/mapbuilder/markerclusterer.js
 
   Polygon:
+
     className: AdGrafik\GoogleMapsPHP\PlugIns\Polygon\Builder
 
+    view:
+      includeJavaScriptLibrary:
+        shape:
+          source: Ressources/Public/JavaScript/mapbuilder/shape.js
+        polygon:
+          source: Ressources/Public/JavaScript/mapbuilder/polygon.js
+
   Polyline:
+
     className: AdGrafik\GoogleMapsPHP\PlugIns\Polyline\Builder
 
+    view:
+      includeJavaScriptLibrary:
+        shape:
+          source: Ressources/Public/JavaScript/mapbuilder/shape.js
+        polyline:
+          source: Ressources/Public/JavaScript/mapbuilder/polyline.js
+
   Rectangle:
+
     className: AdGrafik\GoogleMapsPHP\PlugIns\Rectangle\Builder
 
+    view:
+      includeJavaScriptLibrary:
+        shape:
+          source: Ressources/Public/JavaScript/mapbuilder/shape.js
+        rectangle:
+          source: Ressources/Public/JavaScript/mapbuilder/rectangle.js
+
   StyledMapType:
+
     className: AdGrafik\GoogleMapsPHP\PlugIns\StyledMapType\Builder
+
+    view:
+      includeJavaScriptLibrary:
+        styledmaptype:
+          source: Ressources/Public/JavaScript/mapbuilder/styledmaptype.js
