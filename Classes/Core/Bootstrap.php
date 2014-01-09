@@ -22,7 +22,7 @@ $protocol = ((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off') || $_SERV
 $host = $_SERVER['HTTP_HOST'];
 
 // Define constants
-define('GMP_VERSION', '1.0.0-beta');
+define('GMP_VERSION', '1.0.0');
 define('GMP_PATH', rtrim(realpath(__DIR__ . '/../../'), '/') . '/');
 define('GMP_DIR', ltrim(str_replace($_SERVER['DOCUMENT_ROOT'], '', GMP_PATH), '/'));
 define('GMP_HTTP', $protocol.$host . '/');
